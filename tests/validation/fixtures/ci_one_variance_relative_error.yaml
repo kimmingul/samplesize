@@ -1,0 +1,63 @@
+chapter: "Confidence Intervals for One Variance using Relative Error"
+method: "ci_one_variance_relative_error"
+examples:
+
+  - id: "Ex1 row 2 (CL=0.95, RE=0.10)"
+    description: >
+      Two-sided 95% CI such that the variance estimate is within 10% of
+      the population variance.  Reference reports N=769 with actual CL=0.950.
+    solve_for: "n"
+    inputs:
+      relative_error: 0.10
+      confidence_level: 0.95
+      sides: 2
+    expected:
+      n: 769
+      achieved_confidence_level: 0.950
+    tolerance:
+      n: 0
+      achieved_confidence_level: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Variance using Relative Error/
+      hybrid_auto/Confidence Intervals for One Variance using Relative Error.md,
+      §Example 1 (row 2)
+
+  - id: "Ex1 row 1 (CL=0.95, RE=0.05)"
+    description: >
+      RE=0.05, CL=0.95 -> N=3074 with actual CL≈0.950.
+    solve_for: "n"
+    inputs:
+      relative_error: 0.05
+      confidence_level: 0.95
+      sides: 2
+    expected:
+      n: 3074
+      achieved_confidence_level: 0.950
+    tolerance:
+      n: 0
+      achieved_confidence_level: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Variance using Relative Error/
+      hybrid_auto/Confidence Intervals for One Variance using Relative Error.md,
+      §Example 1 (row 1)
+
+  - id: "Ex2 (Desu & Raghavarao validation, RE=0.20)"
+    description: >
+      Desu and Raghavarao (1990, p. 6) approximation gives N=194; reference
+      verifies the exact chi-square minimum to be N=192 (CL=0.950005 at
+      192 vs 0.951171 at 194).
+    solve_for: "n"
+    inputs:
+      relative_error: 0.20
+      confidence_level: 0.95
+      sides: 2
+    expected:
+      n: 192
+      achieved_confidence_level: 0.950005
+    tolerance:
+      n: 0
+      achieved_confidence_level: 0.0001
+    source: >
+      reference/md/Confidence Intervals for One Variance using Relative Error/
+      hybrid_auto/Confidence Intervals for One Variance using Relative Error.md,
+      §Example 2

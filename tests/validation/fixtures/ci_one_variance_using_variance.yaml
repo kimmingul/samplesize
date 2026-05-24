@@ -1,0 +1,76 @@
+chapter: "Confidence Intervals for One Variance using Variance"
+method: "ci_one_variance_using_variance"
+examples:
+
+  - id: "Ex1 row 1 (CL=0.95, W=30)"
+    description: >
+      Two-sided 95% CI for one variance, target width 30, variance estimate
+      24.  Reference reports N=28 with actual width 29.463 and limits
+      [15.002, 44.465].
+    solve_for: "n"
+    inputs:
+      variance: 24.0
+      alpha: 0.05
+      width: 30.0
+      sides: 2
+    expected:
+      n: 28
+      achieved_width: 29.463
+      lower_limit: 15.002
+      upper_limit: 44.465
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.01
+      upper_limit: 0.01
+    source: >
+      reference/md/Confidence Intervals for One Variance using Variance/
+      hybrid_auto/Confidence Intervals for One Variance using Variance.md,
+      §Example 1 (row 1)
+
+  - id: "Ex1 row 6 (CL=0.99, W=35)"
+    description: >
+      Two-sided 99% CI, target width 35, variance 24.  reference N=36, actual
+      width 34.924.
+    solve_for: "n"
+    inputs:
+      variance: 24.0
+      alpha: 0.01
+      width: 35.0
+      sides: 2
+    expected:
+      n: 36
+      achieved_width: 34.924
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Variance using Variance/
+      hybrid_auto/Confidence Intervals for One Variance using Variance.md,
+      §Example 1 (row 4)
+
+  - id: "Ex2 (Zar 1984 validation)"
+    description: >
+      Zar (1984, p. 115) validation: CL=0.95, variance=18.0388,
+      target width=23.91244, expected N=25 with actual width 23.912 and
+      limits [10.998, 34.911].
+    solve_for: "n"
+    inputs:
+      variance: 18.0388
+      alpha: 0.05
+      width: 23.91244
+      sides: 2
+    expected:
+      n: 25
+      achieved_width: 23.912
+      lower_limit: 10.998
+      upper_limit: 34.911
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.01
+      upper_limit: 0.01
+    source: >
+      reference/md/Confidence Intervals for One Variance using Variance/
+      hybrid_auto/Confidence Intervals for One Variance using Variance.md,
+      §Example 2

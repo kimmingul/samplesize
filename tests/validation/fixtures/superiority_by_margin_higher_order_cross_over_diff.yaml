@@ -1,0 +1,108 @@
+chapter: "Superiority by a Margin Tests for the Difference of Two Means in a Higher-Order Cross-Over Design"
+method: "superiority_by_margin_higher_order_cross_over_diff"
+examples:
+
+  # Example 1: 3x2 dual, D = 15, sigma_w = 10, alpha = 0.025.
+  - id: "Ex1 N=6 |SM|=5 (3x2 dual) - power"
+    description: >
+      Chapter 528, Example 1.  3x2 dual, N = 6, |SM| = 5,
+      D = 15, sigma_w = 10, alpha = 0.025, higher means better.
+      Expected power = 0.3837.
+    inputs:
+      margin: 5.0
+      diff: 15.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      n: 6
+    expected: {n: 6, achieved_power: 0.3837}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  - id: "Ex1 N=16 |SM|=5 (3x2 dual) - power"
+    description: >
+      Chapter 528, Example 1.  3x2 dual, N = 16, |SM| = 5,
+      D = 15, sigma_w = 10, alpha = 0.025.  Expected power = 0.8832.
+    inputs:
+      margin: 5.0
+      diff: 15.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      n: 16
+    expected: {n: 16, achieved_power: 0.8832}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  - id: "Ex1 N=66 |SM|=10 (3x2 dual) - power"
+    description: >
+      Chapter 528, Example 1.  3x2 dual, N = 66, |SM| = 10,
+      D = 15, sigma_w = 10, alpha = 0.025.  Expected power = 0.9084.
+    inputs:
+      margin: 10.0
+      diff: 15.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      n: 66
+    expected: {n: 66, achieved_power: 0.9084}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  # Example 2: Sample Size (Exact) for 80%/90% power.
+  - id: "Ex2 |SM|=5 power=0.80 (3x2 dual exact) - N"
+    description: >
+      Chapter 528, Example 2.  3x2 dual, |SM| = 5, D = 15,
+      sigma_w = 10, alpha = 0.025, target power = 0.80, exact.
+      Expected N = 13, achieved power = 0.8032.
+    inputs:
+      margin: 5.0
+      diff: 15.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      power: 0.80
+      equal_per_sequence: false
+    expected: {n: 13, achieved_power: 0.8032}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 2)"
+
+  - id: "Ex2 |SM|=10 power=0.80 (3x2 dual exact) - N"
+    description: >
+      Chapter 528, Example 2.  3x2 dual, |SM| = 10, D = 15,
+      sigma_w = 10, alpha = 0.025, target power = 0.80, exact.
+      Expected N = 49, achieved power = 0.8073.
+    inputs:
+      margin: 10.0
+      diff: 15.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      power: 0.80
+      equal_per_sequence: false
+    expected: {n: 49, achieved_power: 0.8073}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 2)"
+
+  - id: "Ex2 |SM|=10 power=0.90 (3x2 dual exact) - N"
+    description: >
+      Chapter 528, Example 2.  3x2 dual, |SM| = 10, D = 15,
+      sigma_w = 10, alpha = 0.025, target power = 0.90, exact.
+      Expected N = 65, achieved power = 0.9041.
+    inputs:
+      margin: 10.0
+      diff: 15.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      power: 0.90
+      equal_per_sequence: false
+    expected: {n: 65, achieved_power: 0.9041}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 2)"

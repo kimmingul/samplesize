@@ -1,0 +1,90 @@
+chapter: "Standard Deviation Estimator"
+method: "standard_deviation_estimator"
+examples:
+
+  - id: "Ex1 SD from a set of values (N-1)"
+    description: >
+      Chapter Example 1 (Data tab).  Twelve hypothesised values
+      10, 12, 14, 10, 11, 10, 12, 13, 9, 13, 15, 11 with the N-1
+      divisor.  Reference reports SD = 1.825742.
+    solve_for: "estimate"
+    inputs:
+      values: [10, 12, 14, 10, 11, 10, 12, 13, 9, 13, 15, 11]
+      use_n_minus_1: true
+    expected:
+      result: 1.825742
+    tolerance:
+      result: 0.0001
+    source: "Standard Deviation Estimator (Example 1)"
+
+  - id: "Ex1 SD from values + counts"
+    description: >
+      Same Example 1 expressed via the Counts column: value->count of
+      (9->1, 10->3, 11->2, 12->2, 13->2, 14->1, 15->1).  Reference reports
+      SD = 1.825742 with the N-1 divisor.
+    solve_for: "estimate"
+    inputs:
+      values: [9, 10, 11, 12, 13, 14, 15]
+      counts: [1, 3, 2, 2, 2, 1, 1]
+      use_n_minus_1: true
+    expected:
+      result: 1.825742
+    tolerance:
+      result: 0.0001
+    source: "Standard Deviation Estimator (Example 1)"
+
+  - id: "Ex2 SD of a set of means (population, N divisor)"
+    description: >
+      Chapter Example 2 (Data tab).  Heart-rate planning: hypothesised
+      group means 80, 72, 64, 56 with the population (N) divisor so the
+      result feeds ANOVA power.  Reference reports SD = 8.944272.
+    solve_for: "estimate"
+    inputs:
+      values: [80, 72, 64, 56]
+      use_n_minus_1: false
+    expected:
+      result: 8.944272
+    tolerance:
+      result: 0.0001
+    source: "Standard Deviation Estimator (Example 2)"
+
+  - id: "Range tab Ex1 (population range known)"
+    description: >
+      Range tab Example 1.  Population range = 150 with divisor C = 4.
+      Reference reports SD = 37.5.
+    solve_for: "estimate"
+    inputs:
+      range_value: 150
+      range_divisor: 4
+    expected:
+      result: 37.5
+    tolerance:
+      result: 0.0001
+    source: "Standard Deviation Estimator (Range Tab Example 1)"
+
+  - id: "Range tab Ex2 (sample range, N=20)"
+    description: >
+      Range tab Example 2.  Sample of N=20 with range 3.4 and median
+      range constant C = 3.685916.  Reference reports SD = 0.92243.
+    solve_for: "estimate"
+    inputs:
+      range_value: 3.4
+      range_divisor: 3.685916
+    expected:
+      result: 0.92243
+    tolerance:
+      result: 0.0001
+    source: "Standard Deviation Estimator (Range Tab Example 2)"
+
+  - id: "COV tab (mean=127, COV=0.832)"
+    description: >
+      COV tab example.  SD = COV · Mean = 0.832 · 127 = 105.664.
+    solve_for: "estimate"
+    inputs:
+      cov: 0.832
+      mean: 127
+    expected:
+      result: 105.664
+    tolerance:
+      result: 0.0001
+    source: "Standard Deviation Estimator (COV Tab Example)"

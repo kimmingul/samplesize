@@ -1,0 +1,51 @@
+chapter: "Confidence Intervals for One Standard Deviation using Relative Error"
+method: "ci_one_sd_relative_error"
+examples:
+
+  - id: "Ex1 row 1 (CL=0.95, r=0.05)"
+    description: >
+      Two-sided 95% relative-error CI with r=0.05.  Reference reports N=769
+      with actual confidence 0.950.
+    inputs:
+      relative_error: 0.05
+      confidence: 0.95
+      sides: 2
+    expected:
+      n: 769
+      achieved_confidence: 0.950
+    tolerance:
+      n: 0
+      achieved_confidence: 0.001
+    source: "Confidence Intervals for One Standard Deviation using Relative Error (Example 1, row 1)"
+
+  - id: "Ex1 row 3 (CL=0.95, r=0.15)"
+    description: >
+      Two-sided 95% relative-error CI with r=0.15.  Reference reports N=87
+      with actual confidence 0.951.
+    inputs:
+      relative_error: 0.15
+      confidence: 0.95
+      sides: 2
+    expected:
+      n: 87
+      achieved_confidence: 0.951
+    tolerance:
+      n: 0
+      achieved_confidence: 0.001
+    source: "Confidence Intervals for One Standard Deviation using Relative Error (Example 1, row 3)"
+
+  - id: "Ex2 (Greenwood & Sandomire 1950 p.259)"
+    description: >
+      Two-sided 80% relative-error CI with r=0.10.  Greenwood and
+      Sandomire (1950) and reference report N=84 with actual confidence 0.802.
+    inputs:
+      relative_error: 0.10
+      confidence: 0.80
+      sides: 2
+    expected:
+      n: 84
+      achieved_confidence: 0.802
+    tolerance:
+      n: 0
+      achieved_confidence: 0.001
+    source: "Confidence Intervals for One Standard Deviation using Relative Error (Example 2)"

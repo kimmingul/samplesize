@@ -1,0 +1,71 @@
+chapter: "Confidence Intervals for One Proportion from a Finite Population"
+method: "ci_one_proportion_finite"
+examples:
+
+  - id: "Ex2 Machin et al. (N=1000, d=0.04)"
+    description: >
+      Machin, Campbell, Tan & Tan (2009) p.132 (Example 2 in reference): 95%
+      two-sided CI for one proportion in a finite population of N=1000;
+      P=0.20, precision d=0.04.  Reference reports n=278 (Machin reports 277;
+      reference notes 277 produces d=0.0401 > 0.0400, so 278 is needed).
+    solve_for: "n"
+    inputs:
+      p: 0.2
+      N: 1000
+      alpha: 0.05
+      distance: 0.04
+      sides: 2
+    expected:
+      n: 278
+      achieved_distance: 0.0400
+    tolerance:
+      n: 0
+      achieved_distance: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Proportion from a Finite
+      Population/hybrid_auto/Confidence Intervals for One Proportion
+      from a Finite Population.md, §Example 2.
+
+  - id: "Ex1 row1 (N=3000, P=0.2, d=0.04)"
+    description: >
+      Example 1, row 1 of the reference chapter (N=3000, P=0.2, d=0.04):
+      reported n=341.
+    solve_for: "n"
+    inputs:
+      p: 0.20
+      N: 3000
+      alpha: 0.05
+      distance: 0.04
+      sides: 2
+    expected:
+      n: 341
+      achieved_distance: 0.040
+    tolerance:
+      n: 0
+      achieved_distance: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Proportion from a Finite
+      Population/hybrid_auto/Confidence Intervals for One Proportion
+      from a Finite Population.md, §Example 1 (row 1).
+
+  - id: "Ex1 row 5 (N=3000, P=0.4, d=0.04)"
+    description: >
+      Example 1, row 5 of the reference chapter (N=3000, P=0.4, d=0.04):
+      reported n=484.
+    solve_for: "n"
+    inputs:
+      p: 0.40
+      N: 3000
+      alpha: 0.05
+      distance: 0.04
+      sides: 2
+    expected:
+      n: 484
+      achieved_distance: 0.040
+    tolerance:
+      n: 0
+      achieved_distance: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Proportion from a Finite
+      Population/hybrid_auto/Confidence Intervals for One Proportion
+      from a Finite Population.md, §Example 1 (row 5).

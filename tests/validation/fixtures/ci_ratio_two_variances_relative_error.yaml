@@ -1,0 +1,74 @@
+chapter: "Confidence Intervals for the Ratio of Two Variances using Relative Error"
+method: "ci_ratio_two_variances_relative_error"
+examples:
+
+  - id: "Ex1 row 2 (CL=0.95, RE=0.10)"
+    description: >
+      Two-sided 95% CI such that the variance-ratio estimate is within
+      10% of the true ratio.  Reference reports N1=N2=1544 with actual
+      CL=0.950.
+    solve_for: "n"
+    inputs:
+      relative_error: 0.10
+      confidence_level: 0.95
+      allocation_ratio: 1.0
+      sides: 2
+    expected:
+      n1: 1544
+      n2: 1544
+      achieved_confidence_level: 0.950
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_confidence_level: 0.001
+    source: >
+      reference/md/Confidence Intervals for the Ratio of Two Variances using Relative Error/
+      hybrid_auto/Confidence Intervals for the Ratio of Two Variances using Relative Error.md,
+      §Example 1 (row 2)
+
+  - id: "Ex1 row 4 (CL=0.95, RE=0.20)"
+    description: >
+      RE=0.20, CL=0.95 -> reference N1=N2=392 with actual CL≈0.950.
+    solve_for: "n"
+    inputs:
+      relative_error: 0.20
+      confidence_level: 0.95
+      allocation_ratio: 1.0
+      sides: 2
+    expected:
+      n1: 392
+      n2: 392
+      achieved_confidence_level: 0.950
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_confidence_level: 0.001
+    source: >
+      reference/md/Confidence Intervals for the Ratio of Two Variances using Relative Error/
+      hybrid_auto/Confidence Intervals for the Ratio of Two Variances using Relative Error.md,
+      §Example 1 (row 4)
+
+  - id: "Ex2 (direct calculation, n=200 -> CL=0.8421669)"
+    description: >
+      Direct-calculation validation: with n1=n2=200 and r=0.20, reference
+      computes the achieved confidence level to be 0.9003379878 -
+      0.0581710981 = 0.8421668897.
+    solve_for: "power"
+    inputs:
+      relative_error: 0.20
+      confidence_level: 0.95
+      n1: 200
+      n2: 200
+      sides: 2
+    expected:
+      n1: 200
+      n2: 200
+      achieved_confidence_level: 0.8421669
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_confidence_level: 0.0001
+    source: >
+      reference/md/Confidence Intervals for the Ratio of Two Variances using Relative Error/
+      hybrid_auto/Confidence Intervals for the Ratio of Two Variances using Relative Error.md,
+      §Example 2

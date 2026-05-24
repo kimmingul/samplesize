@@ -1,0 +1,69 @@
+chapter: "MxM Cross-Over Designs"
+method: "mxm_crossover"
+examples:
+
+  # Example 1: M=3, means=[80,80,72], sigma=13, rho=0.4, alpha=0.05
+  # Geisser-Greenhouse F test -> N=32, power=0.9011
+  - id: "Ex1 M=3 sigma=13 rho=0.4 - solve N"
+    description: >
+      Chapter 568, Example 1.  M=3 treatments, means=[80,80,72],
+      sigma=13, rho=0.4, alpha=0.05, Geisser-Greenhouse F test.
+      Expected N=32, power=0.9011.
+    inputs:
+      means: [80.0, 80.0, 72.0]
+      sigma: 13.0
+      rho: 0.4
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 32, achieved_power: 0.9011}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "MxM Cross-Over Designs (Example 1)"
+
+  # Example 1: sigma=13, rho=0.5 -> N=27, power=0.9014
+  - id: "Ex1 M=3 sigma=13 rho=0.5 - solve N"
+    description: >
+      Chapter 568, Example 1.  M=3 treatments, means=[80,80,72],
+      sigma=13, rho=0.5, alpha=0.05, Geisser-Greenhouse F test.
+      Expected N=27, power=0.9014.
+    inputs:
+      means: [80.0, 80.0, 72.0]
+      sigma: 13.0
+      rho: 0.5
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 27, achieved_power: 0.9014}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "MxM Cross-Over Designs (Example 1)"
+
+  # Example 1: sigma=15, rho=0.4 -> N=42, power=0.9012
+  - id: "Ex1 M=3 sigma=15 rho=0.4 - solve N"
+    description: >
+      Chapter 568, Example 1.  M=3 treatments, means=[80,80,72],
+      sigma=15, rho=0.4, alpha=0.05, Geisser-Greenhouse F test.
+      Expected N=42, power=0.9012.
+    inputs:
+      means: [80.0, 80.0, 72.0]
+      sigma: 15.0
+      rho: 0.4
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 42, achieved_power: 0.9012}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "MxM Cross-Over Designs (Example 1)"
+
+  # Example 1: sigma=17, rho=0.6 -> N=37, power=0.9078
+  - id: "Ex1 M=3 sigma=17 rho=0.6 - solve N"
+    description: >
+      Chapter 568, Example 1.  M=3 treatments, means=[80,80,72],
+      sigma=17, rho=0.6, alpha=0.05, Geisser-Greenhouse F test.
+      Expected N=37, power=0.9078.
+    inputs:
+      means: [80.0, 80.0, 72.0]
+      sigma: 17.0
+      rho: 0.6
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 37, achieved_power: 0.9078}
+    tolerance: {n: 1, achieved_power: 0.01}
+    notes: "Geisser-Greenhouse ε vs. reference internal ε estimate: ~0.006 power gap."
+    source: "MxM Cross-Over Designs (Example 1)"

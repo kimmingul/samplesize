@@ -1,0 +1,118 @@
+chapter: "Multiple Comparisons of Treatments vs a Control (Simulation)"
+method: "multiple_comparisons_vs_control_sim"
+
+# Monte-Carlo Dunnett power fixtures vs the reference Chapter 585.
+# All results are stochastic; we use seed=42 and n_sims=10000 to make
+# them deterministic for CI.
+#
+# Tolerance: +/-0.015 absolute on achieved_power.  the reference's published
+# Example 1 values are 2000-sim estimates with reported precision
+# ~+/-0.021; Example 3 (Mukerjee/Dunnett validation) uses 1000 sims
+# (precision ~0.018) but matches the analytic Dunnett values 0.80/0.90.
+
+examples:
+
+  - id: "Ex1 row 1 (Dunnett, k=4, n=5, any-pair)"
+    description: >
+      Example 1 row 1: control + 3 treatments, means=[0,2,2,2],
+      sd=3, n=5/group, FWER=0.05, Dunnett.  reference any-pair=0.187
+      (2000 sims).
+    inputs:
+      k_groups: 4
+      means: [0.0, 2.0, 2.0, 2.0]
+      sd: 3.0
+      n_per_group: 5
+      alpha: 0.05
+      adjustment: "dunnett"
+      power_definition: "any"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 5
+      n_total: 20
+      achieved_power: 0.187
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.178."
+    source: "Multiple Comparisons of Treatments vs a Control (Simulation) (Example 1 Summary row 1)"
+
+  - id: "Ex1 row 3 (Dunnett, k=4, n=15, any-pair)"
+    description: >
+      Example 1 row 3: control + 3 treatments, means=[0,2,2,2],
+      sd=3, n=15/group. reference any-pair=0.507 (2000 sims).
+    inputs:
+      k_groups: 4
+      means: [0.0, 2.0, 2.0, 2.0]
+      sd: 3.0
+      n_per_group: 15
+      alpha: 0.05
+      adjustment: "dunnett"
+      power_definition: "any"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 15
+      n_total: 60
+      achieved_power: 0.507
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.513."
+    source: "Multiple Comparisons of Treatments vs a Control (Simulation) (Example 1 Summary row 3)"
+
+  - id: "Ex3 Mukerjee validation n=16 (Dunnett, k=6, any-pair)"
+    description: >
+      Example 3 (Mukerjee/Robertson/Wright 1987, Dunnett 1955):
+      control + 5 treatments, only the 5th treatment differs.
+      means=[-0.182574]*5 + [0.912871], sd=1, FWER=0.10 (two-sided,
+      corresponds to one-sided 0.05 in the article), n=16/group.
+      Reported analytic all-pair power=0.80.
+    inputs:
+      k_groups: 6
+      means: [-0.182574, -0.182574, -0.182574, -0.182574, -0.182574, 0.912871]
+      sd: 1.0
+      n_per_group: 16
+      alpha: 0.10
+      adjustment: "dunnett"
+      power_definition: "any"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 16
+      n_total: 96
+      achieved_power: 0.800
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.805. Ex3 1000-sim CI (0.777, 0.812) contains 0.80."
+    source: "Multiple Comparisons of Treatments vs a Control (Simulation) (Example 3 Numeric Results row 1)"
+
+  - id: "Ex3 Mukerjee validation n=21 (Dunnett, k=6, any-pair)"
+    description: >
+      Example 3 continued: same design with n=21/group.
+      Reported analytic all-pair power=0.90; reference 1000-sim run reports
+      0.894 with CI (0.880, 0.907).
+    inputs:
+      k_groups: 6
+      means: [-0.182574, -0.182574, -0.182574, -0.182574, -0.182574, 0.912871]
+      sd: 1.0
+      n_per_group: 21
+      alpha: 0.10
+      adjustment: "dunnett"
+      power_definition: "any"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 21
+      n_total: 126
+      achieved_power: 0.900
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.904."
+    source: "Multiple Comparisons of Treatments vs a Control (Simulation) (Example 3 Numeric Results row 2)"

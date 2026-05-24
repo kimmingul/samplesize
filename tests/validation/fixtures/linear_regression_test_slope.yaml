@@ -1,0 +1,57 @@
+chapter: "Linear Regression"
+method: "linear_regression_test_slope"
+examples:
+
+  # Example 2 – Validation using Neter, Wasserman & Kutner (1983)
+  # N=10, B=0.25, SX=sqrt(3400/10)=18.439, SY=sqrt(10+0.25^2*(3400/10))=5.59015
+  # alpha=0.05, 2-sided -> power 0.97975
+  - id: "Ex2 N=10 B=0.25 NWK validation - power"
+    description: >
+      Chapter 855, Example 2 — Neter, Wasserman & Kutner (1983) validation.
+      N=10, slope=0.25, SX=18.439, SY=5.59015, alpha=0.05 two-sided.
+      Expected power=0.97975.
+    inputs:
+      slope: 0.25
+      sx: 18.439
+      sd_y: 5.59015
+      b0: 0.0
+      alpha: 0.05
+      sides: 2
+      n: 10
+    expected: {n: 10, achieved_power: 0.97975}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Linear Regression (Example 2)"
+
+  # Example 1 – Power scan: N=25, B=0.5, SX=1, SY=1, alpha=0.05 -> power 0.78944
+  - id: "Ex1 N=25 B=0.5 alpha=0.05 - power"
+    description: >
+      Chapter 855, Example 1.  N=25, slope=0.5, SX=1.0, SY=1.0,
+      alpha=0.05 two-sided.  Expected power=0.78944.
+    inputs:
+      slope: 0.5
+      sx: 1.0
+      sd_y: 1.0
+      b0: 0.0
+      alpha: 0.05
+      sides: 2
+      n: 25
+    expected: {n: 25, achieved_power: 0.78944}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Linear Regression (Example 1)"
+
+  # Example 1 – Power scan: N=45, B=0.5, SX=1, SY=1, alpha=0.01 -> power 0.87415
+  - id: "Ex1 N=45 B=0.5 alpha=0.01 - power"
+    description: >
+      Chapter 855, Example 1.  N=45, slope=0.5, SX=1.0, SY=1.0,
+      alpha=0.01 two-sided.  Expected power=0.87415.
+    inputs:
+      slope: 0.5
+      sx: 1.0
+      sd_y: 1.0
+      b0: 0.0
+      alpha: 0.01
+      sides: 2
+      n: 45
+    expected: {n: 45, achieved_power: 0.87415}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Linear Regression (Example 1)"

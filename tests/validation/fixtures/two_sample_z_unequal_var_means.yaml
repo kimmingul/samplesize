@@ -1,0 +1,96 @@
+chapter: "Two-Sample Z-Tests Allowing Unequal Variance (Enter Means)"
+method: "two_sample_z_unequal_var_means"
+notes: |
+  Unequal-variance z-test: SE = sqrt(sigma1^2/n1 + sigma2^2/n2),
+  with the standard normal used for power (variances assumed
+  known).  Validated against reference chapter Examples 1, 2 and 4 plus
+  the Chow, Shao & Wang (2008) worked example (which reduces to
+  the equal-variance case when sigma1 = sigma2).
+
+examples:
+
+  - id: "Ex1 row1 anesthesia (find N, two-sided, alpha=0.01)"
+    description: >
+      mu1=9, mu2=11, sigma1=4.1, sigma2=5.3, alpha=0.01,
+      target power=0.90.  Reference reports N1=N2=168,
+      achieved_power=0.90197.
+    inputs:
+      mean1: 9.0
+      mean2: 11.0
+      sd1: 4.1
+      sd2: 5.3
+      alpha: 0.01
+      power: 0.90
+      sides: 2
+    expected: {n1: 168, n2: 168, achieved_power: 0.90197}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Allowing Unequal Variance (Enter Means) (Example 1 (row 1))"
+
+  - id: "Ex1 row2 anesthesia (find N, two-sided, alpha=0.05)"
+    description: >
+      Same scenario as row 1 but alpha=0.05.  Reference reports
+      N1=N2=118, achieved_power=0.90013.
+    inputs:
+      mean1: 9.0
+      mean2: 11.0
+      sd1: 4.1
+      sd2: 5.3
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n1: 118, n2: 118, achieved_power: 0.90013}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Allowing Unequal Variance (Enter Means) (Example 1 (row 2))"
+
+  - id: "Ex2 row1 fertilizer (find power, one-sided, n=10)"
+    description: >
+      One-sided Ha: mu1 < mu2.  mu1=74, mu2=84, sigma1=24,
+      sigma2=26, alpha=0.05, n1=n2=10.  Reference reports
+      power=0.22628.
+    inputs:
+      mean1: 74.0
+      mean2: 84.0
+      sd1: 24.0
+      sd2: 26.0
+      alpha: 0.05
+      n1: 10
+      n2: 10
+      sides: 1
+    expected: {n1: 10, n2: 10, achieved_power: 0.22628}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Allowing Unequal Variance (Enter Means) (Example 2 (n=10))"
+
+  - id: "Ex2 row8 fertilizer (find power, one-sided, n=80)"
+    description: >
+      Same one-sided scenario at n1=n2=80.  Reference reports
+      power=0.81137.
+    inputs:
+      mean1: 74.0
+      mean2: 84.0
+      sd1: 24.0
+      sd2: 26.0
+      alpha: 0.05
+      n1: 80
+      n2: 80
+      sides: 1
+    expected: {n1: 80, n2: 80, achieved_power: 0.81137}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Allowing Unequal Variance (Enter Means) (Example 2 (n=80))"
+
+  - id: "Ex4 Chow Shao Wang 2008 (validation, sigma1=sigma2=0.1)"
+    description: >
+      Chow, Shao & Wang (2008) pp.63-64.  mu1=0, mu2=0.05,
+      sigma1=sigma2=0.10, power=0.80, alpha=0.05.  Reduces to
+      the equal-variance case.  Reference reports N1=N2=63,
+      achieved_power=0.80130.
+    inputs:
+      mean1: 0.0
+      mean2: 0.05
+      sd1: 0.1
+      sd2: 0.1
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected: {n1: 63, n2: 63, achieved_power: 0.80130}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Allowing Unequal Variance (Enter Means) (Example 4)"

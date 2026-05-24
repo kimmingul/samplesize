@@ -1,0 +1,40 @@
+chapter: "Equivalence Tests for the Difference Between Two Proportions"
+method: "equivalence_two_proportions"
+examples:
+
+  - id: "Ex7 Julius-Campbell 2012 (D1=-0.05)"
+    description: >
+      Julius & Campbell (2012) Table XVI row D1=-0.05: P1=0.65, P2=0.70,
+      symmetric margin ±0.20, α=0.025, power=0.90, unpooled z.  reference
+      n=205 per group, achieved=0.9007.
+    inputs:
+      p1: 0.65
+      p2: 0.70
+      margin: 0.20
+      alpha: 0.025
+      power: 0.90
+    expected: {n1: 205, n2: 205, achieved_power: 0.9007}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for the Difference Between Two Proportions (Example 7 row 1)"
+
+  - id: "Ex7 Julius-Campbell 2012 (D1=0)"
+    inputs:
+      p1: 0.70
+      p2: 0.70
+      margin: 0.20
+      alpha: 0.025
+      power: 0.90
+    expected: {n1: 137, n2: 137, achieved_power: 0.9015}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for the Difference Between Two Proportions (Example 7 row 6)"
+
+  - id: "Ex7 Julius-Campbell 2012 (D1=+0.05)"
+    inputs:
+      p1: 0.75
+      p2: 0.70
+      margin: 0.20
+      alpha: 0.025
+      power: 0.90
+    expected: {n1: 186, n2: 186, achieved_power: 0.9003}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for the Difference Between Two Proportions (Example 7 row 11)"

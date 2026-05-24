@@ -1,0 +1,86 @@
+chapter: "Cox Regression"
+method: "cox_regression"
+examples:
+
+  - id: "Ex2 Hsieh & Lavori 2000 (joint adjustment)"
+    description: >
+      Hsieh & Lavori (2000) validation example with B=1.0, S=0.3126,
+      R²=0.1837, P=0.738, one-sided α=0.05, power=0.80.  Reference reports
+      N=106 (achieved power 0.80321); the original paper's 107 came
+      from sequential rather than joint rounding of R² and P.
+    inputs:
+      B: 1.0
+      sd_x: 0.3126
+      event_rate: 0.738
+      r_squared: 0.1837
+      alpha: 0.05
+      power: 0.80
+      sides: 1
+    expected:
+      n: 106
+      achieved_power: 0.80321
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Cox Regression (Example 2)"
+
+  - id: "Ex2b Hsieh & Lavori 2000 (R²=0, P=1)"
+    description: >
+      Companion case in Hsieh & Lavori (2000) with R²=0 and P=1.0
+      (sample size equals number of events).  B=1.0, S=0.3126,
+      one-sided α=0.05, power=0.80.  Reference reports N=64
+      (achieved power 0.80399).
+    inputs:
+      B: 1.0
+      sd_x: 0.3126
+      event_rate: 1.0
+      r_squared: 0.0
+      alpha: 0.05
+      power: 0.80
+      sides: 1
+    expected:
+      n: 64
+      achieved_power: 0.80399
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Cox Regression (Example 2)"
+
+  - id: "Ex3 Schoenfeld 1983 (binary covariate)"
+    description: >
+      Schoenfeld (1983) p.502 binary-covariate example.  B=ln(1.5)=0.4055,
+      S=0.5, R²=0, P=0.71, one-sided α=0.05, power=0.80.  Reference reports
+      N=212 (achieved power 0.80028); matches Schoenfeld exactly.
+    inputs:
+      B: 0.4055
+      sd_x: 0.5
+      event_rate: 0.71
+      r_squared: 0.0
+      alpha: 0.05
+      power: 0.80
+      sides: 1
+    expected:
+      n: 212
+      achieved_power: 0.80028
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Cox Regression (Example 3)"
+
+  - id: "Ex1 power at N=85, B=0.3 (two-sided)"
+    description: >
+      Example 1 power-mode row: N=85, B=0.3, SD=1.2, P=0.7,
+      R²=0.18, two-sided α=0.05.  Reference reports power 0.71043.
+    inputs:
+      B: 0.3
+      sd_x: 1.2
+      event_rate: 0.7
+      r_squared: 0.18
+      alpha: 0.05
+      n: 85
+      sides: 2
+    expected:
+      achieved_power: 0.71043
+    tolerance:
+      achieved_power: 0.001
+    source: "Cox Regression (Example 1)"

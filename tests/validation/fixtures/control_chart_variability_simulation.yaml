@@ -1,0 +1,43 @@
+chapter: "Control Charts for Variability (Simulation)"
+method: "control_chart_variability_simulation"
+examples:
+
+  # Example 1: n=10, sigma0=3.8, sigma1=4.6, R chart, probability=0.00135 (z=3.0)
+  # one-sided upper only, Expected ARL~22, MRL~15
+  - id: "Ex1 n=10 R chart sigma shift 3.8->4.6 - ARL"
+    description: >
+      Chapter 295, Example 1.  n=10, in-control sigma=3.8,
+      out-of-control sigma=4.6, R chart, one-sided upper,
+      probability=0.00135 (z=3.0).
+      Expected ARL≈22.0, MRL≈15.0.  Simulation tolerance ±4 on ARL.
+    inputs:
+      n: 10
+      sigma0: 3.8
+      sigma1: 4.6
+      chart_type: "r"
+      z_multiplier: 3.0
+      one_sided_upper: true
+      n_sim: 50000
+      seed: 42
+    expected: {n: 10, achieved_power: 0.046}
+    tolerance: {n: 0, achieved_power: 0.015}
+    source: "Control Charts for Variability (Simulation) (Example 1)"
+
+  # S chart scenario: n=10, sigma0=3.8, sigma1=4.6, z=3.0, two-sided
+  - id: "Ex1 n=10 S chart sigma shift 3.8->4.6 - ARL"
+    description: >
+      Chapter 295 scenario using S chart.  n=10, in-control sigma=3.8,
+      out-of-control sigma=4.6, S chart, two-sided, z=3.0.
+      Expected power≈0.047 (ARL≈21).  Simulation tolerance ±0.015.
+    inputs:
+      n: 10
+      sigma0: 3.8
+      sigma1: 4.6
+      chart_type: "s"
+      z_multiplier: 3.0
+      one_sided_upper: false
+      n_sim: 50000
+      seed: 42
+    expected: {n: 10, achieved_power: 0.047}
+    tolerance: {n: 0, achieved_power: 0.015}
+    source: "Control Charts for Variability (Simulation) (Example 1)"

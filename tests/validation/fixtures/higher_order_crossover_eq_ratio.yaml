@@ -1,0 +1,46 @@
+chapter: "Equivalence Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design"
+method: "higher_order_crossover_eq_ratio"
+examples:
+  - id: "Ex2 3x2 N-solve power=0.80 RL=0.80 RU=1.25 COV=0.40 r1=0.96 alpha=0.05"
+    description: >
+      Example 2 from reference chapter: 3x2 two-sequence dual design (ABB|BAA),
+      RL=0.80, RU=1.25, COV=0.40, R1=0.96, alpha=0.05, solving for N to achieve
+      80% power (exact). Reference reports N=45 with achieved power 0.8026.
+    inputs:
+      design: "3x2"
+      r1: 0.96
+      rl: 0.80
+      ru: 1.25
+      cov: 0.40
+      alpha: 0.05
+      power: 0.80
+      equal_per_sequence: false
+    expected:
+      n: 45
+      achieved_power: 0.8026
+    tolerance:
+      n: 0
+      achieved_power: 0.005
+    source: "Equivalence Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design (Example 2)"
+
+  - id: "Ex2 3x2 N-solve power=0.90 RL=0.80 RU=1.25 COV=0.40 r1=0.96 alpha=0.05"
+    description: >
+      Example 2 from reference chapter (90% power arm): 3x2 two-sequence dual design,
+      RL=0.80, RU=1.25, COV=0.40, R1=0.96, alpha=0.05, solving for N to achieve
+      90% power (exact). Reference reports N=60 with achieved power 0.9035.
+    inputs:
+      design: "3x2"
+      r1: 0.96
+      rl: 0.80
+      ru: 1.25
+      cov: 0.40
+      alpha: 0.05
+      power: 0.90
+      equal_per_sequence: false
+    expected:
+      n: 60
+      achieved_power: 0.9035
+    tolerance:
+      n: 0
+      achieved_power: 0.005
+    source: "Equivalence Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design (Example 2)"

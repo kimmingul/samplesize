@@ -1,0 +1,87 @@
+chapter: "Kappa Test for Agreement Between Two Raters"
+method: "kappa_two_raters_binary"
+examples:
+
+  - id: "Ex1 row1 (power, N=30, k0=0.4, k1=0.5, freqs=[0.4,0.5,0.1])"
+    description: >
+      Ch.811 Example 1.  Three categories, frequencies=[0.4,0.5,0.1],
+      kappa0=0.4, kappa1=0.5, two-sided Z test, alpha=0.05.
+      N=30.  Reference reports power=0.07748.
+    inputs:
+      kappa1: 0.5
+      kappa0: 0.4
+      freqs: [0.4, 0.5, 0.1]
+      n: 30
+      alpha: 0.05
+      sides: 2
+      solve_for: "power"
+    expected:
+      achieved_power: 0.07748
+    tolerance:
+      achieved_power: 0.005
+    notes: >
+      The _tau_max helper in the current implementation contains a bug in the
+      off-diagonal bound formula (inner term goes negative) causing it to
+      return tau=0 and power=alpha for all inputs.  These fixtures document
+      the reference ground-truth values and will FAIL until the bug is fixed.
+    source: "Kappa Test for Agreement Between Two Raters (Example 1, row 1 (k1=0.5, N=30))"
+
+  - id: "Ex1 row2 (power, N=30, k0=0.4, k1=0.6)"
+    description: >
+      Same setup, kappa1=0.6.  Reference reports power=0.19421.
+    inputs:
+      kappa1: 0.6
+      kappa0: 0.4
+      freqs: [0.4, 0.5, 0.1]
+      n: 30
+      alpha: 0.05
+      sides: 2
+      solve_for: "power"
+    expected:
+      achieved_power: 0.19421
+    tolerance:
+      achieved_power: 0.005
+    notes: >
+      Buggy implementation returns power=alpha.  Documented for regression
+      once _tau_max is corrected.
+    source: "Kappa Test for Agreement Between Two Raters (Example 1, row 2 (k1=0.6, N=30))"
+
+  - id: "Ex2 row1 (sample size, k0=0.4, k1=0.5, power=0.95)"
+    description: >
+      Ch.811 Example 2.  Solve for N with power=0.95, kappa1=0.5.
+      Reference reports N=983.
+    inputs:
+      kappa1: 0.5
+      kappa0: 0.4
+      freqs: [0.4, 0.5, 0.1]
+      alpha: 0.05
+      power: 0.95
+      sides: 2
+      solve_for: "n"
+    expected:
+      n: 983
+    tolerance:
+      n: 1
+    notes: >
+      Buggy implementation returns N>10,000,000 due to tau=0.  Documented
+      for regression once _tau_max is corrected.
+    source: "Kappa Test for Agreement Between Two Raters (Example 2, row 1 (k1=0.5))"
+
+  - id: "Ex2 row2 (sample size, k0=0.4, k1=0.6, power=0.95)"
+    description: >
+      Solve for N with power=0.95, kappa1=0.6.  Reference reports N=228.
+    inputs:
+      kappa1: 0.6
+      kappa0: 0.4
+      freqs: [0.4, 0.5, 0.1]
+      alpha: 0.05
+      power: 0.95
+      sides: 2
+      solve_for: "n"
+    expected:
+      n: 228
+    tolerance:
+      n: 1
+    notes: >
+      Buggy implementation returns N>10,000,000.
+    source: "Kappa Test for Agreement Between Two Raters (Example 2, row 2 (k1=0.6))"

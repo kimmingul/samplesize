@@ -1,0 +1,123 @@
+chapter: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Ratios"
+method: "non_inferiority_cross_over_ratios"
+
+# Examples from the reference Chapter 515.  Power and sample size are obtained
+# by log-transforming the ratio-scale hypothesis to the difference scale:
+#   sigma_w = sqrt(ln(CV^2 + 1))
+#   margin_log = |ln(1 - NIM)| when higher_means='better'
+# and applying the NI difference-scale test.
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 power-at-N rows.  NIM = 0.20, R1 = 1.0, CV = 1.50,
+  # alpha = 0.05, higher_means = 'better'.
+  # ------------------------------------------------------------------
+  - id: "Ex1 N=50 - Power"
+    description: >
+      Example 1 Chapter 515: NIM = 0.20, R1 = 1.0, CV = 1.50,
+      alpha = 0.05, N = 50.  Reference reports power = 0.2638.
+    inputs:
+      margin: 0.20
+      r1: 1.0
+      cv: 1.50
+      alpha: 0.05
+      n: 50
+      higher_means: "better"
+    expected: {n: 50, achieved_power: 0.2638}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=50)"
+
+  - id: "Ex1 N=150 - Power"
+    description: >
+      Example 1 Chapter 515 (N=150, NIM=0.20, R1=1.0, CV=1.50,
+      alpha=0.05).  Reference reports power = 0.5505.
+    inputs:
+      margin: 0.20
+      r1: 1.0
+      cv: 1.50
+      alpha: 0.05
+      n: 150
+      higher_means: "better"
+    expected: {n: 150, achieved_power: 0.5505}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=150)"
+
+  - id: "Ex1 N=250 - Power"
+    description: >
+      Example 1 Chapter 515 (N=250).  Reference reports power = 0.7411.
+    inputs:
+      margin: 0.20
+      r1: 1.0
+      cv: 1.50
+      alpha: 0.05
+      n: 250
+      higher_means: "better"
+    expected: {n: 250, achieved_power: 0.7411}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=250)"
+
+  - id: "Ex1 N=350 - Power"
+    description: >
+      Example 1 Chapter 515 (N=350).  Reference reports power = 0.8574.
+    inputs:
+      margin: 0.20
+      r1: 1.0
+      cv: 1.50
+      alpha: 0.05
+      n: 350
+      higher_means: "better"
+    expected: {n: 350, achieved_power: 0.8574}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=350)"
+
+  - id: "Ex1 N=450 - Power"
+    description: >
+      Example 1 Chapter 515 (N=450).  Reference reports power = 0.9241.
+    inputs:
+      margin: 0.20
+      r1: 1.0
+      cv: 1.50
+      alpha: 0.05
+      n: 450
+      higher_means: "better"
+    expected: {n: 450, achieved_power: 0.9241}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=450)"
+
+  - id: "Ex1 N=550 - Power"
+    description: >
+      Example 1 Chapter 515 (N=550).  Reference reports power = 0.9607.
+    inputs:
+      margin: 0.20
+      r1: 1.0
+      cv: 1.50
+      alpha: 0.05
+      n: 550
+      higher_means: "better"
+    expected: {n: 550, achieved_power: 0.9607}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=550)"
+
+  # ------------------------------------------------------------------
+  # Example 2 - Validation against the NI differences procedure.
+  # Sw = sqrt(ln(1.5^2 + 1)) = 1.085659; |E_log| = |ln(0.8)| = 0.223144.
+  # reference prints essentially identical power values; reproduce the row
+  # for N = 450 (power = 0.9242 vs 0.9241 in Example 1; the 4th
+  # decimal differs by ±1e-4 due to rounding of intermediate inputs).
+  # ------------------------------------------------------------------
+  - id: "Ex2 Validation diff vs ratio - N=450"
+    description: >
+      Example 2 Chapter 515 (validation against NI difference
+      procedure): NIM = 0.20, R1 = 1.0, CV = 1.50, alpha = 0.05,
+      N = 450.  reference difference output reports power = 0.9242 and
+      the ratio output reports 0.9241; we use the ratio-scale value.
+    inputs:
+      margin: 0.20
+      r1: 1.0
+      cv: 1.50
+      alpha: 0.05
+      n: 450
+      higher_means: "better"
+    expected: {n: 450, achieved_power: 0.9241}
+    tolerance: {n: 0, achieved_power: 0.0002}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 2 - Validation)"

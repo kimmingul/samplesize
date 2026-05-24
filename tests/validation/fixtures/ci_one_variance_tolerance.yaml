@@ -1,0 +1,76 @@
+chapter: "Confidence Intervals for One Variance with Tolerance Probability"
+method: "ci_one_variance_tolerance"
+examples:
+
+  - id: "Ex1 row 1 (tol=0.70, prev sample)"
+    description: >
+      Two-sided 95% CI, variance 35.4 from a previous sample of m=16,
+      target width 10, tolerance probability 0.70.  reference N=641, actual
+      width 9.995.
+    solve_for: "n"
+    inputs:
+      variance: 35.4
+      alpha: 0.05
+      tolerance_probability: 0.70
+      variance_source: "previous_sample"
+      m_previous: 16
+      width: 10.0
+      sides: 2
+    expected:
+      n: 641
+      achieved_width: 9.995
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Variance with Tolerance Probability/
+      hybrid_auto/Confidence Intervals for One Variance with Tolerance Probability.md,
+      §Example 1 (row 1)
+
+  - id: "Ex1 row 6 (tol=0.95, prev sample)"
+    description: >
+      Same as row 1 with tolerance 0.95 -> reference N=1658, actual width
+      9.999.
+    solve_for: "n"
+    inputs:
+      variance: 35.4
+      alpha: 0.05
+      tolerance_probability: 0.95
+      variance_source: "previous_sample"
+      m_previous: 16
+      width: 10.0
+      sides: 2
+    expected:
+      n: 1658
+      achieved_width: 9.999
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Variance with Tolerance Probability/
+      hybrid_auto/Confidence Intervals for One Variance with Tolerance Probability.md,
+      §Example 1 (row 6)
+
+  - id: "Ex2 (population variance, n=57 -> W=0.989)"
+    description: >
+      Validation against simulation: CL=0.95, variance=1 (population),
+      n=57, tolerance=0.900 -> Reference reports actual width 0.989.
+    solve_for: "power"
+    inputs:
+      variance: 1.0
+      alpha: 0.05
+      tolerance_probability: 0.90
+      variance_source: "population"
+      n: 57
+      width: 0.989
+      sides: 2
+    expected:
+      n: 57
+      achieved_width: 0.989
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Variance with Tolerance Probability/
+      hybrid_auto/Confidence Intervals for One Variance with Tolerance Probability.md,
+      §Example 2

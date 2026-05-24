@@ -1,0 +1,68 @@
+chapter: "Tests for the Difference Between Two Linear Regression Intercepts"
+method: "tests_difference_two_regression_intercepts"
+examples:
+
+  # Example 1 – Finding Sample Size (Ch.853 Example 1)
+  # X values: 10,20,30,40,50 → mu_X=30, sigma_X=14.1421
+  # alpha=0.05 two-sided, power=0.90, equal groups, delta=1, sigma=0.5
+  # Reference reports N1=30, N2=30, total=60, achieved power=0.9005
+  - id: "Ex1 delta=1 sigma=0.5 muX=30 sxX=14.1421 equal-n solve-n"
+    description: >
+      Chapter 853, Example 1 first row — delta=1, sigma=0.5,
+      mx1=mx2=30, sx1=sx2=14.1421, alpha=0.05 two-sided, target power=0.90.
+      Reference reports N1=30, N2=30 (total 60), achieved power 0.9005.
+    inputs:
+      intercept_diff: 1.0
+      sigma: 0.5
+      sx1: 14.1421
+      sx2: 14.1421
+      mx1: 30.0
+      mx2: 30.0
+      alpha: 0.05
+      sides: 2
+      power: 0.90
+    expected: {n: 60, achieved_power: 0.9005}
+    tolerance: {n: 2, achieved_power: 0.005}
+    source: "Tests for the Difference Between Two Linear Regression Intercepts (Example 1)"
+
+  # Example 1 second row: sigma=0.7 → N1=58, N2=58, total=116, power=0.9017
+  - id: "Ex1 delta=1 sigma=0.7 muX=30 sxX=14.1421 equal-n solve-n"
+    description: >
+      Chapter 853, Example 1 second row — delta=1, sigma=0.7,
+      mx1=mx2=30, sx1=sx2=14.1421, alpha=0.05 two-sided, target power=0.90.
+      Reference reports N1=58, N2=58 (total 116), achieved power 0.9017.
+    inputs:
+      intercept_diff: 1.0
+      sigma: 0.7
+      sx1: 14.1421
+      sx2: 14.1421
+      mx1: 30.0
+      mx2: 30.0
+      alpha: 0.05
+      sides: 2
+      power: 0.90
+    expected: {n: 116, achieved_power: 0.9017}
+    tolerance: {n: 2, achieved_power: 0.005}
+    source: "Tests for the Difference Between Two Linear Regression Intercepts (Example 1)"
+
+  # Example 2 – Manual verification of first row (power check)
+  # N1=30, N2=30, delta=1, sigma=0.5, mx=30, sx=14.1421 → power=0.90047
+  - id: "Ex2 manual-verification power-at-n30"
+    description: >
+      Chapter 853, Example 2 — manual verification of achieved power.
+      N1=30, N2=30, delta=1, sigma=0.5, mx1=mx2=30, sx1=sx2=14.1421,
+      alpha=0.05 two-sided.  Expected power=0.9005 (matches 0.90047).
+    inputs:
+      intercept_diff: 1.0
+      sigma: 0.5
+      sx1: 14.1421
+      sx2: 14.1421
+      mx1: 30.0
+      mx2: 30.0
+      alpha: 0.05
+      sides: 2
+      n1: 30
+      n2: 30
+    expected: {n: 60, achieved_power: 0.9005}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Tests for the Difference Between Two Linear Regression Intercepts (Example 2)"

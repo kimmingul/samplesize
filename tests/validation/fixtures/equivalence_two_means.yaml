@@ -1,0 +1,49 @@
+chapter: "Equivalence Tests for Two Means using Differences"
+method: "equivalence_two_means"
+examples:
+
+  - id: "Ex2 Julious 2010 (D=0)"
+    description: >
+      Julious (2010) p.87 Example 5.1: D=0, equivalence limits ±10mm,
+      σ=100mm, α=0.025, power=0.90.  reference n=2600 per group,
+      achieved=0.90011.
+    inputs:
+      mean1: 0.0
+      mean2: 0.0
+      sd: 100.0
+      margin: 10.0
+      alpha: 0.025
+      power: 0.90
+    expected: {n1: 2600, n2: 2600, achieved_power: 0.90011}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for Two Means using Differences (Example 2 row 1)"
+
+  - id: "Ex2 Julious 2010 (D=2)"
+    description: >
+      Julious (2010) p.87 Example 5.2: D=2 (mean1=2, mean2=0), limits
+      ±10, σ=100, α=0.025, power=0.90.  reference n=3305 per group.
+    inputs:
+      mean1: 2.0
+      mean2: 0.0
+      sd: 100.0
+      margin: 10.0
+      alpha: 0.025
+      power: 0.90
+    expected: {n1: 3305, n2: 3305, achieved_power: 0.90006}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for Two Means using Differences (Example 2 row 2)"
+
+  - id: "Ex3 Machin 1997 (asymmetric)"
+    description: >
+      Machin et al. (1997) p.107: mean1=94, mean2=96 (D=-2), limits ±5,
+      σ=8, α=0.05, power=0.80.  reference n=89 per group, achieved=0.8015.
+    inputs:
+      mean1: 94.0
+      mean2: 96.0
+      sd: 8.0
+      margin: 5.0
+      alpha: 0.05
+      power: 0.80
+    expected: {n1: 89, n2: 89, achieved_power: 0.8015}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for Two Means using Differences (Example 3)"

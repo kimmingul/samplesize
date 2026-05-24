@@ -1,0 +1,103 @@
+chapter: "Tests for Two Means in a 2x2 Cross-Over Design using Differences"
+method: "cross_over_two_means"
+examples:
+
+  # Example 3 - Validation using Julious (2004).  the reference's own output
+  # table for this example reports N = 88 with achieved power 0.906483
+  # (chapter narrative cites Julious's manuscript value of 86, but the
+  # reference numeric-results table is N = 88 because reference searches only
+  # even N for the balanced design).
+  - id: "Ex3 Validation - Julious (Sw=20, Diff1=10, power=0.90)"
+    description: >
+      Julious (2004) p.1933: Diff0 = 0, Diff1 = 10, Sw = 20,
+      alpha = 0.05, beta = 0.10 (power 0.90), two-sided.  reference output
+      table reports N = 88, achieved power = 0.906483.
+    inputs:
+      mean1: 10.0
+      mean2: 0.0
+      sd_w: 20.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 88, achieved_power: 0.906483}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 3 - Validation using Julious)"
+
+  # Example 2 row 2: SdPeriod = 10 -> Sw = SdPeriod * sqrt(2) = 14.1421356
+  - id: "Ex2 row2 - Sample size (Diff1=10, SdPeriod=10, power=0.90)"
+    description: >
+      Sample size for Diff1 = 10, SdPeriod = 10 (i.e. Sw = sqrt(2)*10),
+      alpha = 0.05, target power 0.90, two-sided.  Reference reports
+      N = 46, achieved power = 0.9125.
+    inputs:
+      mean1: 10.0
+      mean2: 0.0
+      sd_w: 14.142135623730951
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 46, achieved_power: 0.9125}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 2 row 2)"
+
+  - id: "Ex2 row1 - Sample size (Diff1=5, SdPeriod=10, power=0.90)"
+    description: >
+      Sample size for Diff1 = 5, SdPeriod = 10 (Sw = sqrt(2)*10),
+      alpha = 0.05, target power 0.90, two-sided.  Reference reports
+      N = 172, achieved power = 0.9032.
+    inputs:
+      mean1: 5.0
+      mean2: 0.0
+      sd_w: 14.142135623730951
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 172, achieved_power: 0.9032}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 2 row 1)"
+
+  # Example 1 power-at-N rows (Diff1 = 10, SdPeriod = 10)
+  - id: "Ex1 N=50 Diff1=10 - Power"
+    description: >
+      Power at N = 50 with Diff1 = 10, SdPeriod = 10 (Sw = sqrt(2)*10),
+      alpha = 0.05, two-sided.  Reference reports power = 0.9337.
+    inputs:
+      mean1: 10.0
+      mean2: 0.0
+      sd_w: 14.142135623730951
+      alpha: 0.05
+      n: 50
+      sides: 2
+    expected: {n: 50, achieved_power: 0.9337}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 N=50 Diff1=10)"
+
+  - id: "Ex1 N=20 Diff1=10 - Power"
+    description: >
+      Power at N = 20 with Diff1 = 10, SdPeriod = 10 (Sw = sqrt(2)*10),
+      alpha = 0.05, two-sided.  Reference reports power = 0.5620.
+    inputs:
+      mean1: 10.0
+      mean2: 0.0
+      sd_w: 14.142135623730951
+      alpha: 0.05
+      n: 20
+      sides: 2
+    expected: {n: 20, achieved_power: 0.5620}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 N=20 Diff1=10)"
+
+  - id: "Ex1 N=30 Diff1=5 - Power"
+    description: >
+      Power at N = 30 with Diff1 = 5, SdPeriod = 10 (Sw = sqrt(2)*10),
+      alpha = 0.05, two-sided.  Reference reports power = 0.2624.
+    inputs:
+      mean1: 5.0
+      mean2: 0.0
+      sd_w: 14.142135623730951
+      alpha: 0.05
+      n: 30
+      sides: 2
+    expected: {n: 30, achieved_power: 0.2624}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 N=30 Diff1=5)"

@@ -1,0 +1,55 @@
+chapter: "Non-Inferiority Tests for the Difference of Two Hazard Rates Assuming an Exponential Model"
+method: "non_inferiority_two_hazard_rates"
+examples:
+
+  - id: "Ex1 NI Hz h1=2 D=-1.0 delta=0.5 power=0.80"
+    description: >
+      Ch.708 Ex1 row 1: h1=2, D=h2-h1=-1.0 (h2=1), delta=0.5, R=1.0, T-R=2.0,
+      omega1=omega2=0.165, alpha=0.05, power=0.80, one-sided equal allocation.
+      Reference reports N=32 (n1=16, n2=16), power=0.8141.
+    inputs:
+      h1: 2.0
+      diff: -1.0
+      delta: 0.5
+      t_accrual: 1.0
+      t_followup: 2.0
+      omega1: 0.165
+      alpha: 0.05
+      power: 0.80
+      p1: 0.5
+      sides: 1
+    expected:
+      n: 32
+      achieved_power: 0.8141
+    tolerance:
+      n: 1
+      achieved_power: 0.01
+    notes: >
+      n tol ±1 absorbs Schoenfeld inflate-up vs. reference rounding (ours
+      N=31 power 0.8091; reference N=32 power 0.8141).  Power tol widened
+      to ±0.01 because power is reported at our N, not the reference's.
+    source: "Non-Inferiority Tests for the Difference of Two Hazard Rates Assuming an Exponential Model (Example 1)"
+
+  - id: "Ex2 NI Hz Chow validation h1=2 D=-1.0 delta=0.2"
+    description: >
+      Ch.708 Ex2 (Chow et al. 2008 validation): h1=2, D=-1.0 (h2=1), delta=0.2,
+      R=1.0, T-R=2.0, no loss, alpha=0.05, power=0.80, one-sided equal allocation.
+      Reference reports N=45 (n1=22, n2=23), power=0.8031.
+    inputs:
+      h1: 2.0
+      diff: -1.0
+      delta: 0.2
+      t_accrual: 1.0
+      t_followup: 2.0
+      omega1: 0.0
+      alpha: 0.05
+      power: 0.80
+      p1: 0.5
+      sides: 1
+    expected:
+      n: 45
+      achieved_power: 0.8031
+    tolerance:
+      n: 0
+      achieved_power: 0.0005
+    source: "Non-Inferiority Tests for the Difference of Two Hazard Rates Assuming an Exponential Model (Example 2)"

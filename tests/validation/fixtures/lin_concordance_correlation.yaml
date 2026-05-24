@@ -1,0 +1,78 @@
+chapter: "Lin's Concordance Correlation Coefficient"
+method: "lin_concordance_correlation"
+notes: |
+  One-sided non-inferiority test of CCC > CCC0, where CCC =
+  rho * 2 / (v^2 + omega + 1/omega). Power is computed on the
+  Fisher-z (tanh^{-1}) scale with Lin (2002) asymptotic variance.
+  Reproduces Chapter 812 Example 1 numeric table to 4 sig
+  figs and the Lin et al. (2002) Table 1 cross-check (Example 2)
+  exactly.
+examples:
+
+  - id: "Ex2 Lin et al. (2002, Table 1)"
+    description: >
+      Validation example from Lin, Hedayat, Sinha & Yang (2002) Table 1:
+      rho0=0.8, rho1=0.8332, v0=0.15, v1=0.05, omega0=1.15, omega1=1.05,
+      alpha=0.05, n=30. They (and reference) report power = 0.1935.
+    inputs:
+      rho0: 0.8
+      rho1: 0.8332
+      v0: 0.15
+      v1: 0.05
+      omega0: 1.15
+      omega1: 1.05
+      n: 30
+      alpha: 0.05
+    expected: {achieved_power: 0.1935}
+    tolerance: {achieved_power: 0.001}
+    source: "Lin's Concordance Correlation Coefficient (Example 2)"
+
+  - id: "Ex1 n=10, rho1=0.975"
+    description: >
+      Ch.812 Example 1: rho0=0.97, rho1=0.975, v0=0.15, v1=0.05,
+      omega0=1.15, omega1=1.05, alpha=0.05, n=10. Reference reports
+      power = 0.2784.
+    inputs:
+      rho0: 0.97
+      rho1: 0.975
+      v0: 0.15
+      v1: 0.05
+      omega0: 1.15
+      omega1: 1.05
+      n: 10
+      alpha: 0.05
+    expected: {achieved_power: 0.2784}
+    tolerance: {achieved_power: 0.001}
+    source: "Lin's Concordance Correlation Coefficient (Example 1 (n=10, rho1=0.975))"
+
+  - id: "Ex1 n=20, rho1=0.980"
+    description: >
+      Ch.812 Example 1: rho1=0.98, n=20. reference power = 0.6183.
+    inputs:
+      rho0: 0.97
+      rho1: 0.98
+      v0: 0.15
+      v1: 0.05
+      omega0: 1.15
+      omega1: 1.05
+      n: 20
+      alpha: 0.05
+    expected: {achieved_power: 0.6183}
+    tolerance: {achieved_power: 0.001}
+    source: "Lin's Concordance Correlation Coefficient (Example 1 (n=20, rho1=0.980))"
+
+  - id: "Ex1 n=40, rho1=0.985"
+    description: >
+      Ch.812 Example 1: rho1=0.985, n=40. reference power = 0.9735.
+    inputs:
+      rho0: 0.97
+      rho1: 0.985
+      v0: 0.15
+      v1: 0.05
+      omega0: 1.15
+      omega1: 1.05
+      n: 40
+      alpha: 0.05
+    expected: {achieved_power: 0.9735}
+    tolerance: {achieved_power: 0.001}
+    source: "Lin's Concordance Correlation Coefficient (Example 1 (n=40, rho1=0.985))"

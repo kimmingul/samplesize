@@ -1,0 +1,61 @@
+chapter: "Hotelling's Two-Sample T2"
+method: "hotelling_two_sample_t2"
+examples:
+
+  - id: "Ex1 Rencher p.107 N1=N2=10"
+    description: >
+      Rencher (1998) pp.107-108 two-group example: μ_1 - μ_2 = (3, -2, 3),
+      Σ = [[6, -3, 3], [-3, 5, -6], [3, -6, 9]], N1 = N2 = 10, α=0.05.
+      Reference reports power 0.64423.
+    solve_for: "power"
+    inputs:
+      mean_diff: [3, -2, 3]
+      sigma_matrix: [[6, -3, 3], [-3, 5, -6], [3, -6, 9]]
+      alpha: 0.05
+      n1: 10
+      n2: 10
+    expected:
+      n: 20
+      achieved_power: 0.64423
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Hotelling's Two-Sample T2 (Example 1)"
+
+  - id: "Ex1 Rencher p.107 N1=N2=14"
+    description: >
+      Same Rencher two-group setup with N1 = N2 = 14, α=0.05.  reference
+      reports power 0.83613.
+    solve_for: "power"
+    inputs:
+      mean_diff: [3, -2, 3]
+      sigma_matrix: [[6, -3, 3], [-3, 5, -6], [3, -6, 9]]
+      alpha: 0.05
+      n1: 14
+      n2: 14
+    expected:
+      n: 28
+      achieved_power: 0.83613
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Hotelling's Two-Sample T2 (Example 1)"
+
+  - id: "Ex1 Rencher p.107 N1=N2=16"
+    description: >
+      Same Rencher two-group setup with N1 = N2 = 16, α=0.05.  reference
+      reports power 0.89360.
+    solve_for: "power"
+    inputs:
+      mean_diff: [3, -2, 3]
+      sigma_matrix: [[6, -3, 3], [-3, 5, -6], [3, -6, 9]]
+      alpha: 0.05
+      n1: 16
+      n2: 16
+    expected:
+      n: 32
+      achieved_power: 0.89360
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Hotelling's Two-Sample T2 (Example 1)"

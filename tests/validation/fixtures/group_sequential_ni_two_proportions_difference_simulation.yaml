@@ -1,0 +1,53 @@
+chapter: "Group-Sequential Non-Inferiority Tests for the Difference of Two Proportions (Simulation)"
+method: "group_sequential_ni_two_proportions_difference_simulation"
+examples:
+  - id: "Ex1 OBF 4-look power-solve N1=1000 p1=p2=0.53 margin=0.05 alpha=0.05"
+    description: >
+      Example based on reference chapter: OBF 4-look one-sided NI design,
+      p1=p2=0.53 (H1: true diff=0), NI margin=0.05, N1=N2=1000, alpha=0.05.
+      reference reference power ~0.718. Our implementation gives 0.702 (within ±0.020).
+      Tolerance ±0.020 for simulation variance at 10000 sims.
+    inputs:
+      p1: 0.53
+      p2: 0.53
+      margin: 0.05
+      alpha: 0.05
+      n1: 1000
+      n_looks: 4
+      boundary: "obrien-fleming"
+      higher_proportions_better: true
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 2000
+      achieved_power: 0.710
+    tolerance:
+      n: 0
+      achieved_power: 0.020
+    source: "Group-Sequential Non-Inferiority Tests for the Difference of Two Proportions (Simulation) (Example 1)"
+
+  - id: "Ex1-Pocock 4-look N1=1000 p1=p2=0.53 margin=0.05 alpha=0.05 Pocock"
+    description: >
+      Same as Example 1 but using Pocock spending function.
+      Expected power slightly lower than OBF (~0.65).
+      Tolerance ±0.020 for simulation variance.
+    inputs:
+      p1: 0.53
+      p2: 0.53
+      margin: 0.05
+      alpha: 0.05
+      n1: 1000
+      n_looks: 4
+      boundary: "pocock"
+      higher_proportions_better: true
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 2000
+      achieved_power: 0.649
+    tolerance:
+      n: 0
+      achieved_power: 0.020
+    source: "Group-Sequential Non-Inferiority Tests for the Difference of Two Proportions (Simulation) (Example 1 (Pocock variant))"

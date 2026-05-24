@@ -1,0 +1,116 @@
+chapter: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Ratios"
+method: "superiority_by_margin_cross_over_ratios"
+
+# Examples from the reference Chapter 513.  Mechanics mirror Chapter 515 with
+# the log-scale rejection region at ln(1 + SM) (better) or ln(1 - SM)
+# (worse).
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 power-at-N rows.  SM = 0.20, R1 = 1.40, CV = 1.50,
+  # alpha = 0.05, higher_means = 'better'.
+  # ------------------------------------------------------------------
+  - id: "Ex1 N=50 - Power"
+    description: >
+      Example 1 Chapter 513: SM = 0.20, R1 = 1.40, CV = 1.50,
+      alpha = 0.05, N = 50.  Reference reports power = 0.1724.
+    inputs:
+      margin: 0.20
+      r1: 1.40
+      cv: 1.50
+      alpha: 0.05
+      n: 50
+      higher_means: "better"
+    expected: {n: 50, achieved_power: 0.1724}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=50)"
+
+  - id: "Ex1 N=150 - Power"
+    description: >
+      Example 1 Chapter 513 (N=150).  Reference reports power = 0.3369.
+    inputs:
+      margin: 0.20
+      r1: 1.40
+      cv: 1.50
+      alpha: 0.05
+      n: 150
+      higher_means: "better"
+    expected: {n: 150, achieved_power: 0.3369}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=150)"
+
+  - id: "Ex1 N=250 - Power"
+    description: >
+      Example 1 Chapter 513 (N=250).  Reference reports power = 0.4754.
+    inputs:
+      margin: 0.20
+      r1: 1.40
+      cv: 1.50
+      alpha: 0.05
+      n: 250
+      higher_means: "better"
+    expected: {n: 250, achieved_power: 0.4754}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=250)"
+
+  - id: "Ex1 N=350 - Power"
+    description: >
+      Example 1 Chapter 513 (N=350).  Reference reports power = 0.5909.
+    inputs:
+      margin: 0.20
+      r1: 1.40
+      cv: 1.50
+      alpha: 0.05
+      n: 350
+      higher_means: "better"
+    expected: {n: 350, achieved_power: 0.5909}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=350)"
+
+  - id: "Ex1 N=450 - Power"
+    description: >
+      Example 1 Chapter 513 (N=450).  Reference reports power = 0.6850.
+    inputs:
+      margin: 0.20
+      r1: 1.40
+      cv: 1.50
+      alpha: 0.05
+      n: 450
+      higher_means: "better"
+    expected: {n: 450, achieved_power: 0.6850}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=450)"
+
+  - id: "Ex1 N=550 - Power"
+    description: >
+      Example 1 Chapter 513 (N=550).  Reference reports power = 0.7602.
+    inputs:
+      margin: 0.20
+      r1: 1.40
+      cv: 1.50
+      alpha: 0.05
+      n: 550
+      higher_means: "better"
+    expected: {n: 550, achieved_power: 0.7602}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row N=550)"
+
+  # ------------------------------------------------------------------
+  # Example 2 - Validation against the sup-by-margin differences
+  # procedure (Chapter 508).  Identical numerics by construction.
+  # ------------------------------------------------------------------
+  - id: "Ex2 Validation diff vs ratio - N=250"
+    description: >
+      Example 2 Chapter 513 validation: power values match the
+      sup-by-margin differences procedure with E = ln(1.2) and
+      Sw = sqrt(ln(1.5^2 + 1)).  Spot-check N = 250.
+    inputs:
+      margin: 0.20
+      r1: 1.40
+      cv: 1.50
+      alpha: 0.05
+      n: 250
+      higher_means: "better"
+    expected: {n: 250, achieved_power: 0.4754}
+    tolerance: {n: 0, achieved_power: 0.0002}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 2 - Validation)"

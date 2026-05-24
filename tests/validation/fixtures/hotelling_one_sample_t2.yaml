@@ -1,0 +1,59 @@
+chapter: "Hotelling's One-Sample T2"
+method: "hotelling_one_sample_t2"
+examples:
+
+  - id: "Ex1 Rencher p.106 N=25 K=1.0"
+    description: >
+      Rencher (1998) p.106 worked example: μ_A - μ_0 = (1.88, 1.88),
+      Σ = [[56.78, 11.98], [11.98, 29.28]], N=25, α=0.05.  Reference reports
+      power 0.3379 (compared to Rencher's interpolated 0.3397).
+    solve_for: "power"
+    inputs:
+      mean_diff: [1.88, 1.88]
+      sigma_matrix: [[56.78, 11.98], [11.98, 29.28]]
+      alpha: 0.05
+      n: 25
+    expected:
+      n: 25
+      achieved_power: 0.3379
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Hotelling's One-Sample T2 (Example 1)"
+
+  - id: "Ex1 Rencher p.106 N=100 K=1.0"
+    description: >
+      Same Rencher (1998) one-sample setup, N=100, α=0.05.  reference
+      reports power 0.9282.
+    solve_for: "power"
+    inputs:
+      mean_diff: [1.88, 1.88]
+      sigma_matrix: [[56.78, 11.98], [11.98, 29.28]]
+      alpha: 0.05
+      n: 100
+    expected:
+      n: 100
+      achieved_power: 0.9282
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Hotelling's One-Sample T2 (Example 1)"
+
+  - id: "Ex1 Rencher p.106 N=25 K=1.5"
+    description: >
+      Same setup with reference means multiplier K=1.5 applied to the mean
+      differences (1.88 -> 2.82).  Reference reports power 0.6635.
+    solve_for: "power"
+    inputs:
+      mean_diff: [1.88, 1.88]
+      sigma_matrix: [[56.78, 11.98], [11.98, 29.28]]
+      K: 1.5
+      alpha: 0.05
+      n: 25
+    expected:
+      n: 25
+      achieved_power: 0.6635
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Hotelling's One-Sample T2 (Example 1)"

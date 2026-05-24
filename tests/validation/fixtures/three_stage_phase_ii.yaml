@@ -1,0 +1,43 @@
+chapter: "Three-Stage Phase II Clinical Trials"
+method: "three_stage_phase_ii"
+examples:
+
+  - id: "Ex1 Chen 1997 p0=0.05 p1=0.25 alpha=0.05 beta=0.20 optimal"
+    description: >
+      Chapter 130 Example 1 (Chen 1997): p0=0.05, p1=0.25, alpha=0.05, beta=0.20.
+      Optimal design: 0/8, 1/13, 2/19 (notation r/n cumulative), EN=10.41.
+      Alpha_actual=0.049, beta_actual=0.195.
+    solve_for: "n"
+    inputs:
+      p0: 0.05
+      p1: 0.25
+      alpha: 0.05
+      beta: 0.20
+      design_type: "optimal"
+    expected:
+      n: 19
+      achieved_power: 0.805
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: "Three-Stage Phase II Clinical Trials (Example 1)"
+
+  - id: "Ex1 Chen 1997 p0=0.05 p1=0.25 alpha=0.05 beta=0.20 minimax"
+    description: >
+      Chapter 130 Example 1 (Chen 1997): p0=0.05, p1=0.25, alpha=0.05, beta=0.20.
+      Minimax design: 0/12, 1/15, 2/16 (notation r/n cumulative), EN=13.55.
+      Alpha_actual=0.043, beta_actual=0.199.
+    solve_for: "n"
+    inputs:
+      p0: 0.05
+      p1: 0.25
+      alpha: 0.05
+      beta: 0.20
+      design_type: "minimax"
+    expected:
+      n: 16
+      achieved_power: 0.801
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: "Three-Stage Phase II Clinical Trials (Example 1)"

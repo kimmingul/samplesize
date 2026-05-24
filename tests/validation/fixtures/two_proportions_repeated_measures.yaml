@@ -1,0 +1,42 @@
+chapter: "Tests for Two Proportions in a Repeated Measures Design"
+method: "two_proportions_repeated_measures"
+examples:
+  - id: "Ex2 solve-n CS M=7 P1=0.4285714 P2=0.6 rho=0.5 alpha=0.05 2-sided power=0.80"
+    description: "Find N1=N2 for 80% power; compound symmetry, OR=0.5, 7 time points"
+    solve_for: "n"
+    inputs:
+      p1: 0.4285714
+      p2: 0.6
+      m: 7
+      rho: 0.5
+      cov_type: "cs"
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected:
+      n: 152
+      achieved_power: 0.80297
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: "Tests for Two Proportions in a Repeated Measures Design (Example 2)"
+
+  - id: "Ex7 Brown-Prescott solve-n CS M=4 OR=2.0 rho=0.5 alpha=0.05 2-sided power=0.80"
+    description: "Validate against Brown & Prescott (2006) p.270; CS, OR=2, 4 time points"
+    solve_for: "n"
+    inputs:
+      p1: 0.482255312124
+      p2: 0.317744687876
+      m: 4
+      rho: 0.5
+      cov_type: "cs"
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected:
+      n: 172
+      achieved_power: 0.80080
+    tolerance:
+      n: 2
+      achieved_power: 0.005
+    source: "Tests for Two Proportions in a Repeated Measures Design (Example 7)"

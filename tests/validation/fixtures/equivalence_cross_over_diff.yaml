@@ -1,0 +1,174 @@
+chapter: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences"
+method: "equivalence_cross_over_diff"
+
+# Examples from the reference Chapter 520 ("Equivalence Tests for Two Means in
+# a 2x2 Cross-Over Design using Differences").  Mechanics: exact
+# Phillips (1990) / Owen's-Q TOST on the difference scale with
+# df = N - 2 and SE = Sw * sqrt(2/N).
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 3 - Validation using Phillips (1990) page 142.  Standard
+  # deviation, treatment mean, and limits are all expressed as
+  # percentages of the reference mean.  Limits = ±20%, Sw = 20%,
+  # alpha = 0.05, target power 0.70.  Phillips/reference report:
+  #   D=0  -> N=16 (power 0.7031)
+  #   D=-5 -> N=20 (power 0.7221)
+  #   D=-10-> N=40 (power 0.7092)
+  #   D=-15-> N=152 (power 0.7001)
+  # ------------------------------------------------------------------
+  - id: "Ex3 Phillips 1990 - D=0 N=16"
+    description: >
+      Phillips (1990) Table p.142 / Example 3 Chapter 520:
+      limits = ±20, D = 0, Sw = 20, alpha = 0.05, target power 0.70.
+      Reference reports N = 16, achieved power = 0.7031.
+    inputs:
+      lower_limit: -20.0
+      upper_limit: 20.0
+      diff: 0.0
+      sd_w: 20.0
+      alpha: 0.05
+      power: 0.70
+    expected: {n: 16, achieved_power: 0.7031}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 3 row D=0)"
+
+  - id: "Ex3 Phillips 1990 - D=-5 N=20"
+    description: >
+      Phillips (1990) / Example 3 Chapter 520: limits = ±20,
+      D = -5, Sw = 20, alpha = 0.05, target power 0.70.  Reference reports
+      N = 20, achieved power = 0.7221.
+    inputs:
+      lower_limit: -20.0
+      upper_limit: 20.0
+      diff: -5.0
+      sd_w: 20.0
+      alpha: 0.05
+      power: 0.70
+    expected: {n: 20, achieved_power: 0.7221}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 3 row D=-5)"
+
+  - id: "Ex3 Phillips 1990 - D=-10 N=40"
+    description: >
+      Phillips (1990) / Example 3 Chapter 520: limits = ±20,
+      D = -10, Sw = 20, alpha = 0.05, target power 0.70.  reference
+      reports N = 40, achieved power = 0.7092.
+    inputs:
+      lower_limit: -20.0
+      upper_limit: 20.0
+      diff: -10.0
+      sd_w: 20.0
+      alpha: 0.05
+      power: 0.70
+    expected: {n: 40, achieved_power: 0.7092}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 3 row D=-10)"
+
+  - id: "Ex3 Phillips 1990 - D=-15 N=152"
+    description: >
+      Phillips (1990) / Example 3 Chapter 520: limits = ±20,
+      D = -15, Sw = 20, alpha = 0.05, target power 0.70.  reference
+      reports N = 152, achieved power = 0.7001.
+    inputs:
+      lower_limit: -20.0
+      upper_limit: 20.0
+      diff: -15.0
+      sd_w: 20.0
+      alpha: 0.05
+      power: 0.70
+    expected: {n: 152, achieved_power: 0.7001}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 3 row D=-15)"
+
+  # ------------------------------------------------------------------
+  # Example 6 - Validation using Senn (1993) page 217.
+  # D = 0, limits = ±30, Sw = 45, alpha = 0.05, power = 0.80.
+  # Senn / reference report N = 40, achieved power 0.8004.
+  # ------------------------------------------------------------------
+  - id: "Ex6 Senn 1993 - N=40"
+    description: >
+      Senn (1993) p.217 / Example 6 Chapter 520: D = 0,
+      limits = ±30, Sw = 45, alpha = 0.05, target power 0.80.
+      Reference reports N = 40, achieved power = 0.8004.
+    inputs:
+      lower_limit: -30.0
+      upper_limit: 30.0
+      diff: 0.0
+      sd_w: 45.0
+      alpha: 0.05
+      power: 0.80
+    expected: {n: 40, achieved_power: 0.8004}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 6 - Validation using Senn)"
+
+  # ------------------------------------------------------------------
+  # Example 4 - Validation using Machin et al. (1997) page 107.
+  # Limits = ±20 (% of reference), D = 0, Sw = 40 (% of reference),
+  # alpha = 0.10, power = 0.80. Machin/reference: N = 54, power 0.8050.
+  # ------------------------------------------------------------------
+  - id: "Ex4 Machin 1997 - N=54"
+    description: >
+      Machin et al. (1997) p.107 / Example 4 Chapter 520:
+      limits = ±20 (% of reference), D = 0, Sw = 40 (% of reference),
+      alpha = 0.10, target power 0.80.  Reference reports N = 54,
+      achieved power = 0.8050.
+    inputs:
+      lower_limit: -20.0
+      upper_limit: 20.0
+      diff: 0.0
+      sd_w: 40.0
+      alpha: 0.10
+      power: 0.80
+    expected: {n: 54, achieved_power: 0.8050}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 4 - Validation using Machin)"
+
+  # ------------------------------------------------------------------
+  # Example 1 power-at-N rows: D = -4, limits = ±19.2, Sw = 18,
+  # alpha = 0.05.
+  # ------------------------------------------------------------------
+  - id: "Ex1 N=6 - Power"
+    description: >
+      Example 1 Chapter 520 (N = 6, D = -4, limits = ±19.2,
+      Sw = 18, alpha = 0.05).  Reference reports power = 0.1470.
+    inputs:
+      lower_limit: -19.2
+      upper_limit: 19.2
+      diff: -4.0
+      sd_w: 18.0
+      alpha: 0.05
+      n: 6
+    expected: {n: 6, achieved_power: 0.1470}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=6)"
+
+  - id: "Ex1 N=20 - Power"
+    description: >
+      Example 1 Chapter 520 (N = 20, D = -4, limits = ±19.2,
+      Sw = 18, alpha = 0.05).  Reference reports power = 0.8104.
+    inputs:
+      lower_limit: -19.2
+      upper_limit: 19.2
+      diff: -4.0
+      sd_w: 18.0
+      alpha: 0.05
+      n: 20
+    expected: {n: 20, achieved_power: 0.8104}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=20)"
+
+  - id: "Ex1 N=40 - Power"
+    description: >
+      Example 1 Chapter 520 (N = 40, D = -4, limits = ±19.2,
+      Sw = 18, alpha = 0.05).  Reference reports power = 0.9804.
+    inputs:
+      lower_limit: -19.2
+      upper_limit: 19.2
+      diff: -4.0
+      sd_w: 18.0
+      alpha: 0.05
+      n: 40
+    expected: {n: 40, achieved_power: 0.9804}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=40)"

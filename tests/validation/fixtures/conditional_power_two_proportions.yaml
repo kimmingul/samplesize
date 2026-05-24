@@ -1,0 +1,46 @@
+chapter: "Conditional Power of Two Proportions Tests"
+method: "conditional_power_two_proportions"
+examples:
+  - id: "Ex1 Zk=1.0 one-sided alpha=0.025 N1=N2=60 n1k=n2k=30 P1=0.6 P2=0.7"
+    description: "One-sided CP for two-proportion z-test; interim z=1.0 at halfway point (validated by hand in Ex2)"
+    solve_for: "conditional_power"
+    inputs:
+      p1: 0.6
+      p2: 0.7
+      n1: 60
+      n2: 60
+      n1_t: 30
+      n2_t: 30
+      z_observed: 1.0
+      alpha: 0.025
+      sides: 1
+      direction: "upper"
+    expected:
+      conditional_power: 0.16858
+      achieved_power: 0.16858
+    tolerance:
+      conditional_power: 0.005
+      achieved_power: 0.005
+    source: "Conditional Power of Two Proportions Tests (Example 1 row 3 and §Example 2 (validation))"
+
+  - id: "Ex1 Zk=2.5 one-sided alpha=0.025 N1=N2=60 n1k=n2k=30 P1=0.6 P2=0.7"
+    description: "One-sided CP for two-proportion z-test; interim z=2.5 at halfway point"
+    solve_for: "conditional_power"
+    inputs:
+      p1: 0.6
+      p2: 0.7
+      n1: 60
+      n2: 60
+      n1_t: 30
+      n2_t: 30
+      z_observed: 2.5
+      alpha: 0.025
+      sides: 1
+      direction: "upper"
+    expected:
+      conditional_power: 0.70547
+      achieved_power: 0.70547
+    tolerance:
+      conditional_power: 0.005
+      achieved_power: 0.005
+    source: "Conditional Power of Two Proportions Tests (Example 1 row 6)"

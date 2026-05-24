@@ -1,0 +1,74 @@
+chapter: "Tests for One-Sample Sensitivity and Specificity"
+method: "sensitivity_specificity_one_sample"
+examples:
+
+  - id: "Ex1 row1 (power, n=300, se1=0.792)"
+    description: >
+      Ch.270 Example 1.  Se0=0.71, Se1=0.792, P=0.06, two-sided
+      binomial test, alpha=0.05.  N=300 gives n1=18 diseased.
+      Reference reports sensitivity power=0.0874.
+    inputs:
+      se0: 0.71
+      se1: 0.792
+      prevalence: 0.06
+      n: 300
+      alpha: 0.05
+      sides: 2
+      solve_for: "power"
+    expected:
+      achieved_power: 0.0874
+    tolerance:
+      achieved_power: 0.0001
+    source: "Tests for One-Sample Sensitivity and Specificity (Example 1, row 1)"
+
+  - id: "Ex1 row2 (power, n=600, se1=0.792)"
+    description: >
+      Same as Ex1 row1 but N=600 (n1=36 diseased).
+      Reference reports sensitivity power=0.1051.
+    inputs:
+      se0: 0.71
+      se1: 0.792
+      prevalence: 0.06
+      n: 600
+      alpha: 0.05
+      sides: 2
+      solve_for: "power"
+    expected:
+      achieved_power: 0.1051
+    tolerance:
+      achieved_power: 0.0001
+    source: "Tests for One-Sample Sensitivity and Specificity (Example 1, row 2)"
+
+  - id: "Ex1 row3 (power, n=900, se1=0.792)"
+    description: >
+      N=900 (n1=54 diseased).  Reference reports sensitivity power=0.1813.
+    inputs:
+      se0: 0.71
+      se1: 0.792
+      prevalence: 0.06
+      n: 900
+      alpha: 0.05
+      sides: 2
+      solve_for: "power"
+    expected:
+      achieved_power: 0.1813
+    tolerance:
+      achieved_power: 0.0001
+    source: "Tests for One-Sample Sensitivity and Specificity (Example 1, row 3)"
+
+  - id: "Ex1 row4 (power, n=1200, se1=0.792)"
+    description: >
+      N=1200 (n1=72 diseased).  Reference reports sensitivity power=0.3429.
+    inputs:
+      se0: 0.71
+      se1: 0.792
+      prevalence: 0.06
+      n: 1200
+      alpha: 0.05
+      sides: 2
+      solve_for: "power"
+    expected:
+      achieved_power: 0.3429
+    tolerance:
+      achieved_power: 0.0001
+    source: "Tests for One-Sample Sensitivity and Specificity (Example 1, row 4)"

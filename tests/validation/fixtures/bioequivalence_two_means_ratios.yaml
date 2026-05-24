@@ -1,0 +1,160 @@
+chapter: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios"
+method: "bioequivalence_two_means_ratios"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 2 - Validation using Julious (2004).  Reference reports
+  # achieved power = 0.9023 / 0.9060 / 0.9012 / 0.9121 at N = 28 / 52
+  # / 120 / 18 for the four ratio limits 0.80 / 0.85 / 0.90 / 0.75
+  # with CV = 0.25, true ratio = 1.0, alpha = 0.05, target power 0.90.
+  # ------------------------------------------------------------------
+
+  - id: "Ex2 Julious 2004 - RL=0.80 (FDA 80/125)"
+    description: >
+      Julious (2004) p.1963 / Example 2: RL = 0.80, RU = 1.25,
+      ratio = 1.00, CV = 0.25, alpha = 0.05, target power 0.90.
+      Reference reports N = 28, achieved power = 0.9023.
+    inputs:
+      ratio: 1.00
+      lower_limit: 0.80
+      upper_limit: 1.25
+      cv: 0.25
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 28, achieved_power: 0.9023}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 2 row 2)"
+
+  - id: "Ex2 Julious 2004 - RL=0.85"
+    description: >
+      Julious (2004) p.1963 / Example 2: RL = 0.85, RU = 1/0.85,
+      ratio = 1.00, CV = 0.25, alpha = 0.05, target power 0.90.
+      Reference reports N = 52, achieved power = 0.9060.
+    inputs:
+      ratio: 1.00
+      lower_limit: 0.85
+      upper_limit: 1.1764705882352942   # 1/0.85
+      cv: 0.25
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 52, achieved_power: 0.9060}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 2 row 3)"
+
+  - id: "Ex2 Julious 2004 - RL=0.90"
+    description: >
+      Julious (2004) p.1963 / Example 2: RL = 0.90, RU = 1/0.90,
+      ratio = 1.00, CV = 0.25, alpha = 0.05, target power 0.90.
+      Reference reports N = 120, achieved power = 0.9012.
+    inputs:
+      ratio: 1.00
+      lower_limit: 0.90
+      upper_limit: 1.1111111111111112   # 1/0.90
+      cv: 0.25
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 120, achieved_power: 0.9012}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 2 row 4)"
+
+  - id: "Ex2 Julious 2004 - RL=0.75"
+    description: >
+      Julious (2004) p.1963 / Example 2: RL = 0.75, RU = 1/0.75,
+      ratio = 1.00, CV = 0.25, alpha = 0.05, target power 0.90.
+      Reference reports N = 18, achieved power = 0.9121.
+    inputs:
+      ratio: 1.00
+      lower_limit: 0.75
+      upper_limit: 1.3333333333333333   # 1/0.75
+      cv: 0.25
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 18, achieved_power: 0.9121}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 2 row 1)"
+
+  # ------------------------------------------------------------------
+  # Example 1 - Power at fixed N.  Reference reports the following power
+  # values for RL = 0.90, RU = 1/0.90, ratio = 1.0, CV = 0.50,
+  # alpha = 0.05.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=150 - Power"
+    description: >
+      Example 1: power at N = 150 with RL = 0.90, RU = 1/0.90,
+      ratio = 1.0, CV = 0.50, alpha = 0.05.  Reference reports
+      power = 0.2190.
+    inputs:
+      ratio: 1.00
+      lower_limit: 0.90
+      upper_limit: 1.1111111111111112
+      cv: 0.50
+      alpha: 0.05
+      n: 150
+    expected: {n: 150, achieved_power: 0.2190}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 N=150)"
+
+  - id: "Ex1 N=250 - Power"
+    description: >
+      Example 1: power at N = 250 with RL = 0.90, RU = 1/0.90,
+      ratio = 1.0, CV = 0.50, alpha = 0.05.  Reference reports
+      power = 0.6002.
+    inputs:
+      ratio: 1.00
+      lower_limit: 0.90
+      upper_limit: 1.1111111111111112
+      cv: 0.50
+      alpha: 0.05
+      n: 250
+    expected: {n: 250, achieved_power: 0.6002}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 N=250)"
+
+  - id: "Ex1 N=350 - Power"
+    description: >
+      Example 1: power at N = 350 with RL = 0.90, RU = 1/0.90,
+      ratio = 1.0, CV = 0.50, alpha = 0.05.  Reference reports
+      power = 0.8064.
+    inputs:
+      ratio: 1.00
+      lower_limit: 0.90
+      upper_limit: 1.1111111111111112
+      cv: 0.50
+      alpha: 0.05
+      n: 350
+    expected: {n: 350, achieved_power: 0.8064}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 N=350)"
+
+  - id: "Ex1 N=450 - Power"
+    description: >
+      Example 1: power at N = 450 with RL = 0.90, RU = 1/0.90,
+      ratio = 1.0, CV = 0.50, alpha = 0.05.  Reference reports
+      power = 0.9101.
+    inputs:
+      ratio: 1.00
+      lower_limit: 0.90
+      upper_limit: 1.1111111111111112
+      cv: 0.50
+      alpha: 0.05
+      n: 450
+    expected: {n: 450, achieved_power: 0.9101}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 N=450)"
+
+  - id: "Ex1 N=550 - Power"
+    description: >
+      Example 1: power at N = 550 with RL = 0.90, RU = 1/0.90,
+      ratio = 1.0, CV = 0.50, alpha = 0.05.  Reference reports
+      power = 0.9596.
+    inputs:
+      ratio: 1.00
+      lower_limit: 0.90
+      upper_limit: 1.1111111111111112
+      cv: 0.50
+      alpha: 0.05
+      n: 550
+    expected: {n: 550, achieved_power: 0.9596}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 N=550)"

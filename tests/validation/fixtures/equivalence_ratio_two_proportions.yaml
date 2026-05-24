@@ -1,0 +1,86 @@
+chapter: "Equivalence Tests for the Ratio of Two Proportions"
+method: "equivalence_ratio_two_proportions"
+examples:
+
+  - id: "Ex1 the reference N=100 R0L=0.75 R0U=1.333 R1=1.0 P2=0.65"
+    description: >
+      the reference Example 1 Numeric Results: P2=0.65, R0.L=0.75,
+      R0.U=1.333, R1=1.0, alpha=0.05, N1=N2=100.  Farrington-Manning
+      TOST, normal approximation.  Reported power 0.7120.
+    inputs:
+      p2: 0.65
+      lower_limit: 0.75
+      upper_limit: 1.333
+      r1: 1.0
+      alpha: 0.05
+      n1: 100
+      n2: 100
+    expected: {n1: 100, n2: 100, achieved_power: 0.7120}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Ratio of Two Proportions (Example 1 Numeric Results row 2)"
+
+  - id: "Ex1 the reference N=150"
+    inputs:
+      p2: 0.65
+      lower_limit: 0.75
+      upper_limit: 1.333
+      r1: 1.0
+      alpha: 0.05
+      n1: 150
+      n2: 150
+    expected: {n1: 150, n2: 150, achieved_power: 0.9060}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Ratio of Two Proportions (Example 1 Numeric Results row 3)"
+
+  - id: "Ex1 the reference N=200"
+    inputs:
+      p2: 0.65
+      lower_limit: 0.75
+      upper_limit: 1.333
+      r1: 1.0
+      alpha: 0.05
+      n1: 200
+      n2: 200
+    expected: {n1: 200, n2: 200, achieved_power: 0.9715}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Ratio of Two Proportions (Example 1 Numeric Results row 4)"
+
+  - id: "Ex2 the reference target=0.80 R1=1.0 → n=117"
+    description: >
+      the reference Example 2: Solve for n at target_power=0.80,
+      R0.L=0.75, R0.U=1.333, R1=1.0, P2=0.65, alpha=0.05.  Reports
+      N1=N2=117, achieved 0.8012.
+    inputs:
+      p2: 0.65
+      lower_limit: 0.75
+      upper_limit: 1.333
+      r1: 1.0
+      alpha: 0.05
+      power: 0.80
+    expected: {n1: 117, n2: 117, achieved_power: 0.8012}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Ratio of Two Proportions (Example 2 Numeric Results row 1)"
+
+  - id: "Ex2 the reference R1=1.1 → n=166"
+    inputs:
+      p2: 0.65
+      lower_limit: 0.75
+      upper_limit: 1.333
+      r1: 1.1
+      alpha: 0.05
+      power: 0.80
+    expected: {n1: 166, n2: 166, achieved_power: 0.8003}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Ratio of Two Proportions (Example 2 Numeric Results row 2)"
+
+  - id: "Ex2 the reference R1=1.2 → n=481"
+    inputs:
+      p2: 0.65
+      lower_limit: 0.75
+      upper_limit: 1.333
+      r1: 1.2
+      alpha: 0.05
+      power: 0.80
+    expected: {n1: 481, n2: 481, achieved_power: 0.8004}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Ratio of Two Proportions (Example 2 Numeric Results row 3)"

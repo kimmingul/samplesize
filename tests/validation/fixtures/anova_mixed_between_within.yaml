@@ -1,0 +1,39 @@
+chapter: "Repeated Measures Analysis"
+method: "anova_mixed_between_within"
+examples:
+
+  - id: "Ex1 mixed 2-group x 3-time between effect solve-n"
+    description: >
+      Ch.570: mixed design, k=2 groups, M=3 time points.
+      Group 1 means=[10,14,12], Group 2 means=[13,17,15].
+      sigma_w=4, rho=0.5, alpha=0.05, target power=0.80 for
+      the between-group main effect.
+      Solved N=57 per group, achieved power=0.8015.
+    inputs:
+      group_means: [[10.0, 14.0, 12.0], [13.0, 17.0, 15.0]]
+      sigma_w: 4.0
+      rho: 0.5
+      epsilon: 1.0
+      alpha: 0.05
+      power: 0.80
+      test: "between"
+    expected: {n_per_group: 57, achieved_power: 0.8015}
+    tolerance: {n_per_group: 1, achieved_power: 0.01}
+    source: "Repeated Measures Analysis (Technical Details)"
+
+  - id: "Ex2 mixed 2-group x 3-time within effect power"
+    description: >
+      Ch.570: same mixed design (k=2, M=3), testing the within-
+      subject time main effect at n_per_group=10, sigma_w=4, rho=0.5,
+      alpha=0.05. Achieved power=0.9774.
+    inputs:
+      group_means: [[10.0, 14.0, 12.0], [13.0, 17.0, 15.0]]
+      sigma_w: 4.0
+      rho: 0.5
+      epsilon: 1.0
+      n_per_group: 10
+      alpha: 0.05
+      test: "within"
+    expected: {n_per_group: 10, achieved_power: 0.9774}
+    tolerance: {n_per_group: 0, achieved_power: 0.01}
+    source: "Repeated Measures Analysis (Technical Details)"

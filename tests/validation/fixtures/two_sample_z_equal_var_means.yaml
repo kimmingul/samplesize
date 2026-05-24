@@ -1,0 +1,90 @@
+chapter: "Two-Sample Z-Tests Assuming Equal Variance (Enter Means)"
+method: "two_sample_z_equal_var_means"
+notes: |
+  Power formula uses the standard normal distribution because the
+  variances are assumed known (no t / Welch-Satterthwaite df).
+  Cross-checked exactly against the Chow, Shao & Wang (2008) worked
+  example (n=63 per group, achieved=0.80130) and the reference chapter
+  worked examples (achieved_power matches reference to 5 decimal places).
+
+examples:
+
+  - id: "Ex1 row1 anesthesia (find N, two-sided, alpha=0.01)"
+    description: >
+      Julious-style worked example.  mu1=9, mu2=11, sigma=4.5,
+      alpha=0.01, target power=0.90.  Reference reports N1=N2=151,
+      achieved_power=0.90078.
+    inputs:
+      mean1: 9.0
+      mean2: 11.0
+      sd: 4.5
+      alpha: 0.01
+      power: 0.90
+      sides: 2
+    expected: {n1: 151, n2: 151, achieved_power: 0.90078}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Assuming Equal Variance (Enter Means) (Example 1 (row 1))"
+
+  - id: "Ex1 row2 anesthesia (find N, two-sided, alpha=0.05)"
+    description: >
+      Same scenario as row 1 but alpha=0.05.  Reference reports
+      N1=N2=107, achieved_power=0.90163.
+    inputs:
+      mean1: 9.0
+      mean2: 11.0
+      sd: 4.5
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n1: 107, n2: 107, achieved_power: 0.90163}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Assuming Equal Variance (Enter Means) (Example 1 (row 2))"
+
+  - id: "Ex2 row1 fertilizer (find power, one-sided, n=10)"
+    description: >
+      One-sided Ha: mu1 < mu2.  mu1=74, mu2=84, sigma=25,
+      alpha=0.05, n1=n2=10.  Reference reports power=0.22650.
+    inputs:
+      mean1: 74.0
+      mean2: 84.0
+      sd: 25.0
+      alpha: 0.05
+      n1: 10
+      n2: 10
+      sides: 1
+    expected: {n1: 10, n2: 10, achieved_power: 0.22650}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Assuming Equal Variance (Enter Means) (Example 2 (n=10))"
+
+  - id: "Ex2 row10 fertilizer (find power, one-sided, n=100)"
+    description: >
+      Same one-sided scenario as Ex2 row1 but at n1=n2=100.
+      Reference reports power=0.88171.
+    inputs:
+      mean1: 74.0
+      mean2: 84.0
+      sd: 25.0
+      alpha: 0.05
+      n1: 100
+      n2: 100
+      sides: 1
+    expected: {n1: 100, n2: 100, achieved_power: 0.88171}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Assuming Equal Variance (Enter Means) (Example 2 (n=100))"
+
+  - id: "Ex4 Chow Shao Wang 2008 (validation, find N)"
+    description: >
+      Chow, Shao & Wang (2008) pp.63-64 worked example for the
+      two-sided two-sample z-test: mean difference 0.05, common
+      sigma=0.10, power=0.80, alpha=0.05.  Reference reports N1=N2=63,
+      achieved_power=0.80130, matching Chow exactly.
+    inputs:
+      mean1: 0.0
+      mean2: 0.05
+      sd: 0.1
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected: {n1: 63, n2: 63, achieved_power: 0.80130}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Assuming Equal Variance (Enter Means) (Example 4)"

@@ -1,0 +1,32 @@
+# Local-only reference material (user-supplied; not bundled with the repo)
+reference/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Audit logs from local runs
+.samplesize/
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Plugin-host caches & local agent state
+.claude/
+.omc/

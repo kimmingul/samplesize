@@ -1,0 +1,43 @@
+chapter: "Mendelian Randomization with a Continuous Outcome"
+method: "mendelian_randomization_continuous"
+examples:
+
+  # Example 1 – Finding the Sample Size (Ch.852 Example 1)
+  # beta_yx=1.05, beta_ols=1.40, rho2_xg=0.01, sigma_x=1, sigma_y=10
+  # alpha=0.05 two-sided, power=0.80 → N=69817
+  - id: "Ex1 beta_yx=1.05 rho2=0.01 sigma_x=1 sigma_y=10 solve-n"
+    description: >
+      Chapter 852, Example 1 first row — β1(2SLS)=1.05, β0(OLS)=1.40,
+      ρ²(XG)=0.01, σ(X)=1, σ(Y)=10, alpha=0.05 two-sided, target power=0.80.
+      Reference reports N=69817.
+    inputs:
+      beta_yx: 1.05
+      beta_ols: 1.40
+      rho2_xg: 0.01
+      sigma_x: 1.0
+      sigma_y: 10.0
+      alpha: 0.05
+      sides: 2
+      power: 0.80
+    expected: {n: 69817, achieved_power: 0.80}
+    tolerance: {n: 200, achieved_power: 0.005}
+    source: "Mendelian Randomization with a Continuous Outcome (Example 1)"
+
+  # Example 1 second row: rho2_xg=0.02 → N=34908
+  - id: "Ex1 beta_yx=1.05 rho2=0.02 sigma_x=1 sigma_y=10 solve-n"
+    description: >
+      Chapter 852, Example 1 second row — β1(2SLS)=1.05, β0(OLS)=1.40,
+      ρ²(XG)=0.02, σ(X)=1, σ(Y)=10, alpha=0.05 two-sided, target power=0.80.
+      Reference reports N=34908.
+    inputs:
+      beta_yx: 1.05
+      beta_ols: 1.40
+      rho2_xg: 0.02
+      sigma_x: 1.0
+      sigma_y: 10.0
+      alpha: 0.05
+      sides: 2
+      power: 0.80
+    expected: {n: 34908, achieved_power: 0.80}
+    tolerance: {n: 200, achieved_power: 0.005}
+    source: "Mendelian Randomization with a Continuous Outcome (Example 1)"

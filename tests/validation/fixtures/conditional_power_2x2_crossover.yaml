@@ -1,0 +1,62 @@
+chapter: "Conditional Power of 2x2 Cross-Over Designs"
+method: "conditional_power_2x2_crossover"
+examples:
+
+  # Example 1 / manual validation scenario delta=0.6
+  # N=52, nk=26, delta0=0, delta1=0.6, sigma=1.8, Zk=2.12, alpha=0.025, 1-sided
+  # Expected CP=0.85265, PP=0.85040
+  - id: "Ex1 N=52 nk=26 delta1=0.6 - conditional power"
+    description: >
+      Chapter 401, Example 1 (delta1=0.6 row) and manual validation.
+      N=52, nk=26, delta0=0, delta1=0.6, sigma_d=1.8, Zk=2.12,
+      alpha=0.025 one-sided.  Expected CP=0.85265, PP=0.85040.
+    inputs:
+      n_total: 52
+      n_k: 26
+      delta0: 0.0
+      delta1: 0.6
+      sigma_d: 1.8
+      z_k: 2.12
+      alpha: 0.025
+      sides: 1
+    expected: {n: 52, achieved_power: 0.85265}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Conditional Power of 2x2 Cross-Over Designs (Example 1 and §Example 2)"
+
+  # Example 1 delta=0.2: CP=0.46603
+  - id: "Ex1 N=52 nk=26 delta1=0.2 - conditional power"
+    description: >
+      Chapter 401, Example 1 (delta1=0.2 row).
+      N=52, nk=26, delta0=0, delta1=0.2, sigma_d=1.8, Zk=2.12,
+      alpha=0.025 one-sided.  Expected CP=0.46603.
+    inputs:
+      n_total: 52
+      n_k: 26
+      delta0: 0.0
+      delta1: 0.2
+      sigma_d: 1.8
+      z_k: 2.12
+      alpha: 0.025
+      sides: 1
+    expected: {n: 52, achieved_power: 0.46603}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Conditional Power of 2x2 Cross-Over Designs (Example 1)"
+
+  # Example 1 delta=1.0: CP=0.98541
+  - id: "Ex1 N=52 nk=26 delta1=1.0 - conditional power"
+    description: >
+      Chapter 401, Example 1 (delta1=1.0 row).
+      N=52, nk=26, delta0=0, delta1=1.0, sigma_d=1.8, Zk=2.12,
+      alpha=0.025 one-sided.  Expected CP=0.98541.
+    inputs:
+      n_total: 52
+      n_k: 26
+      delta0: 0.0
+      delta1: 1.0
+      sigma_d: 1.8
+      z_k: 2.12
+      alpha: 0.025
+      sides: 1
+    expected: {n: 52, achieved_power: 0.98541}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Conditional Power of 2x2 Cross-Over Designs (Example 1)"

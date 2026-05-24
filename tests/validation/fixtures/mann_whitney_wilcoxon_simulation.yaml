@@ -1,0 +1,57 @@
+chapter: "Mann-Whitney-Wilcoxon Tests (Simulation)"
+method: "mann_whitney_wilcoxon_simulation"
+examples:
+
+  - id: "Ex1 Normal n1=n2=21 sigma=3 mu_diff=3 alpha=0.05 two-sided"
+    description: >
+      Two normal groups, n1=n2=21, mu1=0, mu2=3, sigma=3, alpha=0.05,
+      two-sided. Seed=42, n_sims=10000. Matches Ch.430 S=3 normal
+      scenario (reference N1=21 two-sided at 0.05).
+    solve_for: "power"
+    inputs:
+      n1: 21
+      n2: 21
+      mu1: 0.0
+      mu2: 3.0
+      sigma1: 3.0
+      sigma2: 3.0
+      distribution1: "normal"
+      distribution2: "normal"
+      alpha: 0.05
+      sides: 2
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 42
+      achieved_power: 0.869
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: "Mann-Whitney-Wilcoxon Tests (Simulation) (Example 1)"
+
+  - id: "Ex1 Normal n1=n2=11 sigma=2 mu_diff=3 alpha=0.05 two-sided"
+    description: >
+      Two normal groups, n1=n2=11, mu1=0, mu2=3, sigma=2, alpha=0.05,
+      two-sided. Seed=42, n_sims=10000. Matches Ch.430 S=2 normal
+      scenario (reference N1=11 two-sided at 0.05).
+    solve_for: "power"
+    inputs:
+      n1: 11
+      n2: 11
+      mu1: 0.0
+      mu2: 3.0
+      sigma1: 2.0
+      sigma2: 2.0
+      distribution1: "normal"
+      distribution2: "normal"
+      alpha: 0.05
+      sides: 2
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 22
+      achieved_power: 0.893
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: "Mann-Whitney-Wilcoxon Tests (Simulation) (Example 1)"

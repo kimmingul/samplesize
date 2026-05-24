@@ -1,0 +1,39 @@
+chapter: "One-Way Repeated Measures"
+method: "anova_repeated_measures_within"
+examples:
+
+  - id: "Ex1 Ch.569 heart-rate M=4 rho=0.6 sigma=7 power=0.90"
+    description: >
+      Ch.569 Example 1: researchers plan a heart-rate study with
+      M=4 time points, means=[0,-4,-3,0], sigma=7, rho=0.6 (compound
+      symmetry), alpha=0.05, target power=0.90.
+      Using univariate F with compound-symmetry ε=1 gives N=24 subjects
+      with achieved power 0.9121. (Reference Wilks lambda gives N=26 for the
+      same target; the univariate F requires fewer subjects due to the
+      stronger sphericity assumption.)
+    inputs:
+      means: [0.0, -4.0, -3.0, 0.0]
+      sigma_w: 7.0
+      rho: 0.6
+      epsilon: 1.0
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 24, achieved_power: 0.9121}
+    tolerance: {n: 1, achieved_power: 0.01}
+    source: "One-Way Repeated Measures (Example 1)"
+
+  - id: "Ex2 M=4 increasing means rho=0.5 sigma=5 power=0.80"
+    description: >
+      Within-subject design with M=4 time points, means=[10,14,12,16],
+      sigma_w=5, rho=0.5 (compound symmetry), alpha=0.05, target
+      power=0.80. Solved N=9 subjects with achieved power 0.8473.
+    inputs:
+      means: [10.0, 14.0, 12.0, 16.0]
+      sigma_w: 5.0
+      rho: 0.5
+      epsilon: 1.0
+      alpha: 0.05
+      power: 0.80
+    expected: {n: 9, achieved_power: 0.8473}
+    tolerance: {n: 1, achieved_power: 0.01}
+    source: "One-Way Repeated Measures (Example 1)"

@@ -1,0 +1,105 @@
+chapter: "Multiple Comparisons"
+method: "multiple_comparisons"
+examples:
+
+  - id: "Ex1 Tukey-Kramer k=4 n=10"
+    description: >
+      Example 1: 4-group ANOVA followed by Tukey-Kramer pairwise
+      MC.  Minimum detectable difference ω=15.85, σ=5.3, α=0.05, n=10
+      per group.  Reference reports power 0.9301.
+    solve_for: "power"
+    inputs:
+      procedure: "tukey_kramer"
+      k: 4
+      omega: 15.85
+      sigma: 5.3
+      alpha: 0.05
+      n: 10
+    expected:
+      n: 10
+      achieved_power: 0.9301
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Multiple Comparisons (Example 1)"
+
+  - id: "Ex1 Tukey-Kramer k=4 n=8"
+    description: >
+      Same Example 1 with smaller n=8 per group.  Reference reports
+      power 0.7371.
+    solve_for: "power"
+    inputs:
+      procedure: "tukey_kramer"
+      k: 4
+      omega: 15.85
+      sigma: 5.3
+      alpha: 0.05
+      n: 8
+    expected:
+      n: 8
+      achieved_power: 0.7371
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Multiple Comparisons (Example 1)"
+
+  - id: "Ex4 Hsu validation Tukey-Kramer k=8 n=10"
+    description: >
+      Hsu (1996) p.241 validation: 8-group experiment, ω=10000 psi,
+      σ=3000 psi, α=0.05, power=0.90 -> n=10 per group.  reference
+      reports achieved power 0.9397.
+    solve_for: "power"
+    inputs:
+      procedure: "tukey_kramer"
+      k: 8
+      omega: 10000
+      sigma: 3000
+      alpha: 0.05
+      n: 10
+    expected:
+      n: 10
+      achieved_power: 0.9397
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Multiple Comparisons (Example 4)"
+
+  - id: "Ex4 Hsu validation Dunnett k=8 n=8"
+    description: >
+      Same Hsu validation under Dunnett (two-sided MCC).  reference
+      reports n=8 per group with achieved power 0.9434.
+    solve_for: "power"
+    inputs:
+      procedure: "dunnett"
+      k: 8
+      omega: 10000
+      sigma: 3000
+      alpha: 0.05
+      n: 8
+    expected:
+      n: 8
+      achieved_power: 0.9434
+    tolerance:
+      n: 0
+      achieved_power: 0.002
+    source: "Multiple Comparisons (Example 4)"
+
+  - id: "Ex4 Hsu validation MCB k=8 n=6"
+    description: >
+      Same Hsu validation under Hsu's MCB (with-the-best).  reference
+      reports n=6 per group with achieved power 0.9087.
+    solve_for: "power"
+    inputs:
+      procedure: "hsu_mcb"
+      k: 8
+      omega: 10000
+      sigma: 3000
+      alpha: 0.05
+      n: 6
+    expected:
+      n: 6
+      achieved_power: 0.9087
+    tolerance:
+      n: 0
+      achieved_power: 0.002
+    source: "Multiple Comparisons (Example 4)"

@@ -1,0 +1,40 @@
+chapter: "Two-Stage Phase II Clinical Trials"
+method: "simon_minimax_two_stage"
+examples:
+
+  - id: "Ex1 reference p0=0.05 p1=0.25 alpha=0.05 beta=0.20 minimax"
+    description: >
+      Chapter 125 Example 1: minimax design minimising max N.
+      p0=0.05, p1=0.25, alpha=0.05, beta=0.20.
+      reference: n1=12, r1=0, n=16, r=2, EN=13.84, alpha_actual=0.043, beta_actual=0.199.
+    solve_for: "n"
+    inputs:
+      p0: 0.05
+      p1: 0.25
+      alpha: 0.05
+      beta: 0.20
+    expected:
+      n: 16
+      achieved_power: 0.801
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: "Two-Stage Phase II Clinical Trials (Example 1)"
+
+  - id: "Ex2 Simon 1989 p0=0.05 p1=0.25 alpha=0.10 beta=0.10 minimax"
+    description: >
+      Simon (1989) Table 1: p0=0.05, p1=0.25, alpha=0.10, beta=0.10.
+      Simon minimax: n1=13, r1=0, n=20, r=2. reference matches.
+    solve_for: "n"
+    inputs:
+      p0: 0.05
+      p1: 0.25
+      alpha: 0.10
+      beta: 0.10
+    expected:
+      n: 20
+      achieved_power: 0.903
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: "Two-Stage Phase II Clinical Trials (Example 2)"

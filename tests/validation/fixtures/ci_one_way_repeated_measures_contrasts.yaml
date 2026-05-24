@@ -1,0 +1,42 @@
+chapter: "Confidence Intervals for One-Way Repeated Measures Contrasts"
+method: "ci_one_way_repeated_measures_contrasts"
+examples:
+  - id: "Ex1 quadratic-M4-sigma7-rho0.6-D3"
+    description: "Two-sided 95% CI; M=4, quadratic contrast {1,-1,-1,1}, sigma=7, AR(1) rho=0.6, distance=3 -> N=40"
+    solve_for: "n"
+    inputs:
+      m: 4
+      contrast: [1, -1, -1, 1]
+      sigma: 7.0
+      rho: 0.6
+      alpha: 0.05
+      distance: 3.0
+      sides: 2
+      cov_type: "ar1"
+    expected:
+      n: 40
+      achieved_distance: 2.9969
+    tolerance:
+      n: 0
+      achieved_distance: 0.001
+    source: "Confidence Intervals for One-Way Repeated Measures Contrasts (Example 1)"
+
+  - id: "Ex2 hand-calc-M3-CS"
+    description: "Validation by hand calculation; M=3, C=[-1,0.5,0.5], sigma=2, all-rho-equal rho=0.2, N=20 -> D=1.0254"
+    solve_for: "distance"
+    inputs:
+      m: 3
+      contrast: [-1, 0.5, 0.5]
+      sigma: 2.0
+      rho: 0.2
+      alpha: 0.05
+      n: 20
+      sides: 2
+      cov_type: "cs"
+    expected:
+      n: 20
+      achieved_distance: 1.0254
+    tolerance:
+      n: 0
+      achieved_distance: 0.001
+    source: "Confidence Intervals for One-Way Repeated Measures Contrasts (Example 2)"

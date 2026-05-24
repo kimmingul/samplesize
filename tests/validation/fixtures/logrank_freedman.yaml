@@ -1,0 +1,26 @@
+chapter: "Logrank Tests (Freedman)"
+method: "logrank_freedman"
+examples:
+
+  - id: "Ex3 Machin 1997 (two-group survival)"
+    description: >
+      Machin et al. (1997) p.180: S1=0.25, S2=0.50, one-sided α=0.05,
+      power=0.90, equal allocation, no loss-to-followup.  Reports
+      total N=124; reference achieved=0.9014.
+    inputs:
+      s1: 0.25
+      s2: 0.50
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+      p1: 0.5
+      loss_to_followup: 0.0
+    expected:
+      n: 124
+      achieved_power: 0.9014
+      hazard_ratio: 0.5
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+      hazard_ratio: 0.001
+    source: "Logrank Tests (Freedman) (Example 3)"

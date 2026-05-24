@@ -1,0 +1,133 @@
+chapter: "Multiple Contrasts (Simulation)"
+method: "multiple_contrasts_sim"
+
+# Monte-Carlo Dunn-Bonferroni power fixtures vs the reference Chapter 590.
+# All results are stochastic; we use seed=42 and n_sims=10000 to make
+# them deterministic for CI.
+#
+# Tolerance: +/-0.015 absolute on achieved_power.  Example 1
+# values are 2000-sim estimates (precision ~+/-0.022); Example 3
+# explicitly compares to the analytic ANOVA-contrast values
+# 0.3085, 0.7274, 0.9131, 0.9758 which our simulations recover within
+# MC noise.
+
+examples:
+
+  - id: "Ex1 row 1 (Dunn-Bonferroni, k=5, n=10, any-cont)"
+    description: >
+      Example 1 row 1: 5-group threshold design, means=[0,0,2,2,2],
+      sd=3.0, contrasts = each-with-next (4 contrasts; only Con2
+      μ3-μ2=2 is non-zero), FWER=0.05, Dunn-Bonferroni.
+      reference any-contrast power=0.136 (2000 sims).
+    inputs:
+      k_groups: 5
+      means: [0.0, 0.0, 2.0, 2.0, 2.0]
+      sd: 3.0
+      contrasts:
+        - [-1.0,  1.0,  0.0,  0.0,  0.0]
+        - [ 0.0, -1.0,  1.0,  0.0,  0.0]
+        - [ 0.0,  0.0, -1.0,  1.0,  0.0]
+        - [ 0.0,  0.0,  0.0, -1.0,  1.0]
+      n_per_group: 10
+      alpha: 0.05
+      adjustment: "bonferroni"
+      power_definition: "any"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 10
+      n_total: 50
+      achieved_power: 0.136
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.142."
+    source: "Multiple Contrasts (Simulation) (Example 1 Summary row 1)"
+
+  - id: "Ex1 row 3 (Dunn-Bonferroni, k=5, n=50, any-cont)"
+    description: >
+      Example 1 row 3: same as row 1 with n=50/group.
+      reference any-contrast power=0.796 (2000 sims).
+    inputs:
+      k_groups: 5
+      means: [0.0, 0.0, 2.0, 2.0, 2.0]
+      sd: 3.0
+      contrasts:
+        - [-1.0,  1.0,  0.0,  0.0,  0.0]
+        - [ 0.0, -1.0,  1.0,  0.0,  0.0]
+        - [ 0.0,  0.0, -1.0,  1.0,  0.0]
+        - [ 0.0,  0.0,  0.0, -1.0,  1.0]
+      n_per_group: 50
+      alpha: 0.05
+      adjustment: "bonferroni"
+      power_definition: "any"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 50
+      n_total: 250
+      achieved_power: 0.796
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.796."
+    source: "Multiple Contrasts (Simulation) (Example 1 Summary row 3)"
+
+  - id: "Ex3 single-contrast validation n=30"
+    description: >
+      Example 3 — single-contrast validation against the analytic
+      ANOVA contrast test.  Contrast 0,-1,1,0,0 with means=[0,0,2,2,2],
+      sd=3, n=30/group, alpha=0.05.  Reported analytic power=0.7274;
+      reference 2000-sim run reports 0.741 (CI 0.721, 0.760).
+    inputs:
+      k_groups: 5
+      means: [0.0, 0.0, 2.0, 2.0, 2.0]
+      sd: 3.0
+      contrasts:
+        - [0.0, -1.0, 1.0, 0.0, 0.0]
+      n_per_group: 30
+      alpha: 0.05
+      adjustment: "bonferroni"
+      power_definition: "any"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 30
+      n_total: 150
+      achieved_power: 0.7274
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.7326. Analytic ANOVA value 0.7274 from the chapter."
+    source: "Multiple Contrasts (Simulation) (Example 3 Numeric Results row 2)"
+
+  - id: "Ex3 single-contrast validation n=70"
+    description: >
+      Example 3 row 4: same as previous example with n=70/group.
+      Analytic power=0.9758; reference 2000-sim run reports 0.974
+      (CI 0.967, 0.981).
+    inputs:
+      k_groups: 5
+      means: [0.0, 0.0, 2.0, 2.0, 2.0]
+      sd: 3.0
+      contrasts:
+        - [0.0, -1.0, 1.0, 0.0, 0.0]
+      n_per_group: 70
+      alpha: 0.05
+      adjustment: "bonferroni"
+      power_definition: "any"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 70
+      n_total: 350
+      achieved_power: 0.9758
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.9748. Analytic ANOVA value 0.9758."
+    source: "Multiple Contrasts (Simulation) (Example 3 Numeric Results row 4)"

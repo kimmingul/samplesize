@@ -1,0 +1,51 @@
+chapter: "Equivalence Tests for Two Survival Curves Using Cox's Proportional Hazards Model"
+method: "equivalence_cox_regression"
+examples:
+
+  - id: "Ex1 Eq Cox HR=1.0 HReq=1.35"
+    description: >
+      Ch.733 Ex1: HR=1.0, HReq=1.35, Pev1=0.7, Pev2=0.4, power=0.90,
+      alpha=0.05, two-sided TOST, equal allocation. Reference reports N=874 (n1=437, n2=437).
+    inputs:
+      hr: 1.0
+      hr_eq: 1.35
+      pev1: 0.7
+      pev2: 0.4
+      alpha: 0.05
+      power: 0.90
+      p1: 0.5
+    expected:
+      n: 874
+      n1: 437
+      n2: 437
+      achieved_power: 0.9000
+    tolerance:
+      n: 0
+      n1: 0
+      n2: 0
+      achieved_power: 0.0005
+    source: "Equivalence Tests for Two Survival Curves Using Cox's Proportional Hazards Model (Example 1)"
+
+  - id: "Ex2 Eq Cox Chow validation HR=1.0 HReq=exp(0.5)"
+    description: >
+      Ch.733 Ex2 (Chow et al. 2008 validation): HR=1.0, HReq=exp(0.5)=1.6487,
+      Pev1=Pev2=0.8, power=0.80, alpha=0.05. Reference reports N=172 (n1=86, n2=86).
+    inputs:
+      hr: 1.0
+      hr_eq: 1.6487212707001282
+      pev1: 0.8
+      pev2: 0.8
+      alpha: 0.05
+      power: 0.80
+      p1: 0.5
+    expected:
+      n: 172
+      n1: 86
+      n2: 86
+      achieved_power: 0.8021
+    tolerance:
+      n: 0
+      n1: 0
+      n2: 0
+      achieved_power: 0.0005
+    source: "Equivalence Tests for Two Survival Curves Using Cox's Proportional Hazards Model (Example 2)"

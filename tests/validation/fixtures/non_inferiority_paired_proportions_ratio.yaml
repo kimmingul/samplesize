@@ -1,0 +1,53 @@
+chapter: "Non-Inferiority Tests for the Ratio of Two Correlated Proportions"
+method: "non_inferiority_paired_proportions_ratio"
+examples:
+
+  - id: "Ex3 Nam Blackwelder 2002 N=34"
+    description: >
+      Nam & Blackwelder (2002) Table III: Ps=0.80, P10=0.05, Ra=1.00,
+      Rni=0.80, alpha=0.05, power=80%. Expected N=34.
+    solve_for: "n"
+    inputs:
+      ps: 0.80
+      ra: 1.0
+      r_ni: 0.80
+      nuisance_type: "p10"
+      nuisance_value: 0.05
+      alpha: 0.05
+      power: 0.80
+      sides: 1
+    expected:
+      n: 34
+      achieved_power: 0.80050
+    tolerance:
+      n: 1
+      achieved_power: 0.015
+    source: >
+      reference/md/Non-Inferiority Tests for the Ratio of Two Correlated
+      Proportions/hybrid_auto/Non-Inferiority Tests for the Ratio of Two
+      Correlated Proportions.md, §Example 3.
+
+  - id: "Ex2 Sensitivity=0.90 N=1035"
+    description: >
+      Ch.161 Example 2: Ps=0.65, Ra=1.00, Rni=0.95, alpha=0.05,
+      power=90%, P11/Ps (sensitivity)=0.90. Expected N=1035.
+    solve_for: "n"
+    inputs:
+      ps: 0.65
+      ra: 1.0
+      r_ni: 0.95
+      nuisance_type: "sensitivity"
+      nuisance_value: 0.90
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+    expected:
+      n: 1035
+      achieved_power: 0.90016
+    tolerance:
+      n: 5
+      achieved_power: 0.015
+    source: >
+      reference/md/Non-Inferiority Tests for the Ratio of Two Correlated
+      Proportions/hybrid_auto/Non-Inferiority Tests for the Ratio of Two
+      Correlated Proportions.md, §Example 2.

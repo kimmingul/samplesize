@@ -1,0 +1,51 @@
+chapter: "Tests for Paired Means"
+method: "paired_t"
+examples:
+
+  - id: "Ex1 row1 (sigma=10, alpha=0.01)"
+    description: >
+      Exercise-weight study: alternative mean diff = -5, sd of diff=10,
+      alpha=0.01, target power=0.80, two-sided. Reference reports N=51,
+      achieved=0.80939.
+    inputs:
+      mean_diff: -5.0
+      sd_diff: 10.0
+      alpha: 0.01
+      power: 0.80
+      sides: 2
+    expected: {n: 51, achieved_power: 0.80939}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Paired Means (Example 1 row 1)"
+
+  - id: "Ex1 row2 (sigma=10, alpha=0.05)"
+    inputs:
+      mean_diff: -5.0
+      sd_diff: 10.0
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected: {n: 34, achieved_power: 0.80778}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Paired Means (Example 1 row 2)"
+
+  - id: "Ex1 row4 (sigma=12.5, alpha=0.05)"
+    inputs:
+      mean_diff: -5.0
+      sd_diff: 12.5
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected: {n: 52, achieved_power: 0.80779}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Paired Means (Example 1 row 4)"
+
+  - id: "Ex1 row6 (sigma=15, alpha=0.05)"
+    inputs:
+      mean_diff: -5.0
+      sd_diff: 15.0
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected: {n: 73, achieved_power: 0.80230}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Paired Means (Example 1 row 6)"

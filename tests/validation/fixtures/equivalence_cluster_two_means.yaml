@@ -1,0 +1,84 @@
+chapter: "Equivalence Tests for Two Means in a Cluster-Randomized Design"
+method: "equivalence_cluster_two_means"
+examples:
+  - id: "Ex1 K=10 M=10"
+    description: >
+      TOST equivalence test for two means in cluster RCT. EU=1, EL=-1, delta=0,
+      sigma=2, rho=0.02, M=10, COV=0.65, alpha=0.05, K1=K2=10.
+      T-test with DF based on number of subjects.
+    inputs:
+      delta: 0.0
+      eu: 1.0
+      el: -1.0
+      sd: 2.0
+      m: 10.0
+      icc: 0.02
+      cov: 0.65
+      alpha: 0.05
+      k_clusters: 10
+      test_type: "t_subjects"
+    expected:
+      n: 200
+      n_clusters: 20
+      m_per_cluster: 10
+      achieved_power: 0.8666
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Equivalence Tests for Two Means in a Cluster-Randomized Design (Example 1)"
+
+  - id: "Ex1 K=5 M=10"
+    description: >
+      TOST equivalence test for two means in cluster RCT. EU=1, EL=-1, delta=0,
+      sigma=2, rho=0.02, M=10, COV=0.65, alpha=0.05, K1=K2=5.
+    inputs:
+      delta: 0.0
+      eu: 1.0
+      el: -1.0
+      sd: 2.0
+      m: 10.0
+      icc: 0.02
+      cov: 0.65
+      alpha: 0.05
+      k_clusters: 5
+      test_type: "t_subjects"
+    expected:
+      n: 100
+      n_clusters: 10
+      m_per_cluster: 10
+      achieved_power: 0.4324
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Equivalence Tests for Two Means in a Cluster-Randomized Design (Example 1)"
+
+  - id: "Ex1 K=15 M=10"
+    description: >
+      TOST equivalence test for two means in cluster RCT. EU=1, EL=-1, delta=0,
+      sigma=2, rho=0.02, M=10, COV=0.65, alpha=0.05, K1=K2=15.
+    inputs:
+      delta: 0.0
+      eu: 1.0
+      el: -1.0
+      sd: 2.0
+      m: 10.0
+      icc: 0.02
+      cov: 0.65
+      alpha: 0.05
+      k_clusters: 15
+      test_type: "t_subjects"
+    expected:
+      n: 300
+      n_clusters: 30
+      m_per_cluster: 10
+      achieved_power: 0.9730
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Equivalence Tests for Two Means in a Cluster-Randomized Design (Example 1)"

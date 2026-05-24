@@ -1,0 +1,97 @@
+chapter: "Pearson's Correlation Tests (Simulation)"
+method: "pearson_correlation_simulation"
+
+# These fixtures pin a Monte-Carlo Pearson correlation power calculator
+# against the reference worked examples (Chapter 802).  All results are
+# stochastic; we use seed=42 and the default n_sims=10000 so they are
+# deterministic for the test harness.
+#
+# Tolerance: ±0.015 absolute on achieved_power.  Rationale:
+#   * the reference's own runs use 5000 sims; the binomial 95% CI half-width on
+#     a true power of 0.5 is ~0.014 (the reference's own precision table).
+#   * Our 10k-sim half-width is ~0.010.
+#   * Total spread between two independent MC runs at the same seed is
+#     bounded above by ~0.020-0.025; we use 0.015 as a balance.
+#
+# Test statistic: under rho0=0, exact t(n-2); under rho0!=0, Fisher
+# z-transform with SE = 1/sqrt(n-3) (matches reference for Example 4).
+
+examples:
+
+  - id: "Ex1 row 1 (n=20, rho=0.2)"
+    description: >
+      Example 1 row 1: bivariate normal, n=20, rho0=0, rho1=0.2,
+      alpha=0.05, two-sided, 5000 sims.  Reference reports power=0.119.
+    inputs:
+      r: 0.2
+      n: 20
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 20
+      achieved_power: 0.119
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    notes: "Sim at seed=42 yields 0.132; reference 0.119 (5k sims, half-width ~0.009)."
+    source: "Pearson's Correlation Tests (Simulation) (Example 1 Numeric Results row 1)"
+
+  - id: "Ex3 Zar n=12 rho=0.866"
+    description: >
+      Example 3: n=12, alpha=0.05, rho0=0, rho1=0.866, two-sided.
+      Reference reports power=0.984; matches Zar (1984) analytic 0.98.
+    inputs:
+      r: 0.866
+      n: 12
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 12
+      achieved_power: 0.984
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    notes: "Sim at seed=42 yields 0.986; reference 0.984; Zar analytic 0.98."
+    source: "Pearson's Correlation Tests (Simulation) (Example 3 Output)"
+
+  - id: "Ex1 row 6 (n=100, rho=0.3)"
+    description: >
+      Example 1 row 6: n=100, rho0=0, rho1=0.3, alpha=0.05,
+      two-sided, 5000 sims.  Reference reports power=0.862.
+    inputs:
+      r: 0.3
+      n: 100
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 100
+      achieved_power: 0.862
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    notes: "Sim at seed=42 yields 0.871; reference 0.862 (5k sims, half-width ~0.010)."
+    source: "Pearson's Correlation Tests (Simulation) (Example 1 Numeric Results row 6)"
+
+  - id: "Ex4 Graybill (rho0=0.5, rho1=0.2, n=24)"
+    description: >
+      Example 4 (Graybill 1961 validation): n=24, alpha=0.05,
+      rho0=0.5, rho1=0.2, two-sided.  Reference reports power=0.360 (Graybill
+      analytic 0.363); exercises the Fisher-z branch for non-zero rho0.
+    inputs:
+      r: 0.2
+      rho0: 0.5
+      n: 24
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 24
+      achieved_power: 0.360
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    notes: "Sim at seed=42 yields 0.347; reference 0.360; Graybill 0.363."
+    source: "Pearson's Correlation Tests (Simulation) (Example 4 Numeric Results row 1)"

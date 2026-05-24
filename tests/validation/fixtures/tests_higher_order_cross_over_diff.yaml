@@ -1,0 +1,112 @@
+chapter: "Tests for the Difference of Two Means in a Higher-Order Cross-Over Design"
+method: "tests_higher_order_cross_over_diff"
+examples:
+
+  # Example 1: 3x2 Two-Sequence Dual (ABB|BAA), Power table.
+  # V = 4n - 4, b = 3/4, S = 2.  Sw = 25, alpha = 0.05, two-sided.
+  - id: "Ex1 N=6 |D|=14 (3x2 dual) - power"
+    description: >
+      Chapter 527, Example 1 - power table row.  N = 6, |mu1-mu2| = 14,
+      sigma_w = 25, alpha = 0.05, two-sided, Three-Period Two-Sequence Dual
+      design (ABB|BAA).  Expected power = 0.1348.
+    inputs:
+      mean1: 14.0
+      mean2: 0.0
+      sd_w: 25.0
+      design: "two_sequence_dual"
+      alpha: 0.05
+      n: 6
+      sides: 2
+    expected: {n: 6, achieved_power: 0.1348}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  - id: "Ex1 N=16 |D|=16 (3x2 dual) - power"
+    description: >
+      Chapter 527, Example 1.  N = 16, |mu1-mu2| = 16, sigma_w = 25,
+      alpha = 0.05, two-sided, 3x2 dual.  Expected power = 0.5165.
+    inputs:
+      mean1: 16.0
+      mean2: 0.0
+      sd_w: 25.0
+      design: "two_sequence_dual"
+      alpha: 0.05
+      n: 16
+      sides: 2
+    expected: {n: 16, achieved_power: 0.5165}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  - id: "Ex1 N=46 |D|=16 (3x2 dual) - power"
+    description: >
+      Chapter 527, Example 1.  N = 46, |mu1-mu2| = 16, sigma_w = 25,
+      alpha = 0.05, two-sided, 3x2 dual.  Expected power = 0.9385.
+    inputs:
+      mean1: 16.0
+      mean2: 0.0
+      sd_w: 25.0
+      design: "two_sequence_dual"
+      alpha: 0.05
+      n: 46
+      sides: 2
+    expected: {n: 46, achieved_power: 0.9385}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  # Example 2: Sample Size (Exact) at 90% power.
+  - id: "Ex2 |D|=14 power=0.90 (3x2 dual exact) - N"
+    description: >
+      Chapter 527, Example 2.  Sample Size (Exact): 3x2 dual,
+      |mu1-mu2| = 14, sigma_w = 25, alpha = 0.05, power = 0.90, two-sided.
+      Expected N = 52, achieved power = 0.9039.
+    inputs:
+      mean1: 14.0
+      mean2: 0.0
+      sd_w: 25.0
+      design: "two_sequence_dual"
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      equal_per_sequence: false
+    expected: {n: 52, achieved_power: 0.9039}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 2)"
+
+  - id: "Ex2 |D|=16 power=0.90 (3x2 dual exact) - N"
+    description: >
+      Chapter 527, Example 2.  Sample Size (Exact): 3x2 dual,
+      |mu1-mu2| = 16, sigma_w = 25, alpha = 0.05, power = 0.90, two-sided.
+      Expected N = 40, achieved power = 0.9035.
+    inputs:
+      mean1: 16.0
+      mean2: 0.0
+      sd_w: 25.0
+      design: "two_sequence_dual"
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      equal_per_sequence: false
+    expected: {n: 40, achieved_power: 0.9035}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 2)"
+
+  # Example 3: Validation against Chapter 528 with SM = 0.  4x2 design
+  # (Four-Period Two-Sequence, ABBA|BAAB), N=50, |D|=1.5, sigma_w=4,
+  # alpha=0.05, one-sided.  Expected 0.8079.
+  - id: "Ex3 4x2 N=50 |D|=1.5 one-sided - power"
+    description: >
+      Chapter 527, Example 3 - validation cross-check.  4x2
+      Four-Period Two-Sequence design (ABBA|BAAB), N = 50,
+      |mu1-mu2| = 1.5, sigma_w = 4, alpha = 0.05, one-sided.
+      Expected power = 0.8079.
+    inputs:
+      mean1: 1.5
+      mean2: 0.0
+      sd_w: 4.0
+      design: "four_period_two_sequence"
+      alpha: 0.05
+      n: 50
+      sides: 1
+    expected: {n: 50, achieved_power: 0.8079}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 3)"

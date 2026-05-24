@@ -1,0 +1,107 @@
+chapter: "Tests for One ROC Curve"
+method: "roc_auc_one_sample"
+examples:
+
+  - id: "Ex1 row1 (power, AUC1=0.825, N+=20, R=2)"
+    description: >
+      Ch.260 Example 1.  Rating-scale data, AUC0=0.80, AUC1=0.825,
+      B=1, R=2, two-sided alpha=0.05.  Reference reports power=0.04806 at N+=20.
+    inputs:
+      auc0: 0.80
+      auc1: 0.825
+      n_diseased: 20
+      R: 2.0
+      alpha: 0.05
+      sides: 2
+      data_type: "discrete"
+      B: 1.0
+      solve_for: "power"
+    expected:
+      n_diseased: 20
+      achieved_power: 0.04806
+    tolerance:
+      achieved_power: 0.0001
+    source: "Tests for One ROC Curve (Example 1, row 1)"
+
+  - id: "Ex1 row2 (power, AUC1=0.825, N+=50, R=2)"
+    description: >
+      Ch.260 Example 1.  Same setup, N+=50.  Reference reports power=0.07393.
+    inputs:
+      auc0: 0.80
+      auc1: 0.825
+      n_diseased: 50
+      R: 2.0
+      alpha: 0.05
+      sides: 2
+      data_type: "discrete"
+      B: 1.0
+      solve_for: "power"
+    expected:
+      n_diseased: 50
+      achieved_power: 0.07393
+    tolerance:
+      achieved_power: 0.0001
+    source: "Tests for One ROC Curve (Example 1, row 2)"
+
+  - id: "Ex2 row1 (sample size, AUC1=0.825, power=0.90, R=2)"
+    description: >
+      Ch.260 Example 2.  Solve for N+ with target power=0.90, AUC1=0.825.
+      Reference reports N+=1582, N-=3164, achieved power=0.90010.
+    inputs:
+      auc0: 0.80
+      auc1: 0.825
+      R: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      data_type: "discrete"
+      B: 1.0
+    expected:
+      n_diseased: 1582
+      achieved_power: 0.90010
+    tolerance:
+      n_diseased: 1
+      achieved_power: 0.005
+    source: "Tests for One ROC Curve (Example 2, row 1)"
+
+  - id: "Ex2 row2 (sample size, AUC1=0.85, power=0.90, R=2)"
+    description: >
+      Ch.260 Example 2.  Solve for N+ with AUC1=0.85.
+      Reference reports N+=381, N-=762, achieved power=0.90069.
+    inputs:
+      auc0: 0.80
+      auc1: 0.85
+      R: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      data_type: "discrete"
+      B: 1.0
+    expected:
+      n_diseased: 381
+      achieved_power: 0.90069
+    tolerance:
+      n_diseased: 1
+      achieved_power: 0.005
+    source: "Tests for One ROC Curve (Example 2, row 2)"
+
+  - id: "Ex2 row3 (sample size, AUC1=0.90, power=0.90, R=2)"
+    description: >
+      Ch.260 Example 2.  Solve for N+ with AUC1=0.90.
+      Reference reports N+=85, N-=170, achieved power=0.90243.
+    inputs:
+      auc0: 0.80
+      auc1: 0.90
+      R: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      data_type: "discrete"
+      B: 1.0
+    expected:
+      n_diseased: 85
+      achieved_power: 0.90243
+    tolerance:
+      n_diseased: 1
+      achieved_power: 0.005
+    source: "Tests for One ROC Curve (Example 2, row 3)"

@@ -1,0 +1,95 @@
+chapter: "Non-Inferiority Tests for the Ratio of Two Proportions"
+method: "non_inferiority_ratio_two_proportions"
+examples:
+
+  - id: "Ex1 the reference N=200 R1=1.0 P2=0.06 R0=2.0 (Higher worse)"
+    description: >
+      the reference Example 1, Numeric Results: P2=0.06, R0=2.0 ("Higher worse"),
+      R1=1.0, alpha=0.025, N1=N2=200.  Farrington-Manning, normal
+      approximation.  Reported power 0.43819.
+    inputs:
+      p2: 0.06
+      margin: 2.0
+      r1: 1.0
+      alpha: 0.025
+      n1: 200
+      n2: 200
+      higher_is_better: false
+    expected: {n1: 200, n2: 200, achieved_power: 0.43819}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Non-Inferiority Tests for the Ratio of Two Proportions (Example 1 Numeric Results)"
+
+  - id: "Ex2 the reference R1=1.0 P2=0.06 R0=2.0 target=0.80 → n=528"
+    description: >
+      the reference Example 2: Solve for n at target_power=0.80, R0=2.0,
+      R1=1.0, P2=0.06, alpha=0.025.  Reports N1=N2=528, achieved
+      power 0.80033.
+    inputs:
+      p2: 0.06
+      margin: 2.0
+      r1: 1.0
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: false
+    expected: {n1: 528, n2: 528, achieved_power: 0.80033}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Non-Inferiority Tests for the Ratio of Two Proportions (Example 2 Numeric Results row 1)"
+
+  - id: "Ex2 the reference R1=1.25 P2=0.06 R0=2.0 → n=1027"
+    inputs:
+      p2: 0.06
+      margin: 2.0
+      r1: 1.25
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: false
+    expected: {n1: 1027, n2: 1027, achieved_power: 0.80003}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Non-Inferiority Tests for the Ratio of Two Proportions (Example 2 Numeric Results row 2)"
+
+  - id: "Ex2 the reference R1=1.5 P2=0.06 R0=2.0 → n=2508"
+    inputs:
+      p2: 0.06
+      margin: 2.0
+      r1: 1.5
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: false
+    expected: {n1: 2508, n2: 2508, achieved_power: 0.80015}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Non-Inferiority Tests for the Ratio of Two Proportions (Example 2 Numeric Results row 3)"
+
+  - id: "Ex4 the reference N=1000 R1=1.25 (normal approx)"
+    description: >
+      the reference Example 4 normal-approximation column at N=1000, R0=2.0,
+      R1=1.25, P2=0.06, alpha=0.025.  Reports power 0.79005.
+    inputs:
+      p2: 0.06
+      margin: 2.0
+      r1: 1.25
+      alpha: 0.025
+      n1: 1000
+      n2: 1000
+      higher_is_better: false
+    expected: {n1: 1000, n2: 1000, achieved_power: 0.79005}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Non-Inferiority Tests for the Ratio of Two Proportions (Example 4 normal approx row 1)"
+
+  - id: "Ex5 the reference Blackwelder validation (normal approx)"
+    description: >
+      the reference Example 5 — asymptotic / normal-approximation branch of
+      the Blackwelder (1993) validation row: P2=0.04, R0=0.3, R1=0.1,
+      N1=N2=1044, alpha=0.05.  Reports approximate power 0.79373.
+      Here higher_is_better=False per the Example 5 setup
+      ("Higher Proportions Are Worse").
+    inputs:
+      p2: 0.04
+      margin: 0.3
+      r1: 0.1
+      alpha: 0.05
+      n1: 1044
+      n2: 1044
+      higher_is_better: false
+    expected: {n1: 1044, n2: 1044, achieved_power: 0.79373}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Non-Inferiority Tests for the Ratio of Two Proportions (Example 5 normal-approximation table)"

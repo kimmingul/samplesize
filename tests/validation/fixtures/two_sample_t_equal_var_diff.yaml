@@ -1,0 +1,87 @@
+chapter: "Two-Sample T-Tests Assuming Equal Variance (Enter Difference)"
+method: "two_sample_t_equal_var_diff"
+examples:
+
+  - id: "Ex1 row 1 (find N, σ=1, α=0.01)"
+    description: >
+      the reference Example 1 row 1: δ=2.0, σ=1.0, two-sided α=0.01,
+      target power=0.90.  Reference reports N1=N2=10 with achieved
+      power=0.92949.
+    inputs:
+      delta: 2.0
+      sd: 1.0
+      alpha: 0.01
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+    expected:
+      n1: 10
+      n2: 10
+      achieved_power: 0.92949
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Assuming Equal Variance (Enter Difference) (Example 1, row 1)"
+
+  - id: "Ex4 Machin (find N)"
+    description: >
+      Machin, Campbell, Fayers & Pinol (1997) p.35 / the reference Example 4:
+      δ=5, σ=10, two-sided α=0.05, target power=0.90.  Machin reports
+      per-group N=86; Reference reports achieved power=0.90323.
+    inputs:
+      delta: 5.0
+      sd: 10.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+    expected:
+      n1: 86
+      n2: 86
+      achieved_power: 0.90323
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Assuming Equal Variance (Enter Difference) (Example 4)"
+
+  - id: "Ex5 Zar (find power)"
+    description: >
+      Zar (1984) p.136 / the reference Example 5: δ=1, σ=0.7206, n1=n2=15,
+      two-sided α=0.05.  Zar reports power=0.96; Reference reports
+      power=0.95611.
+    inputs:
+      delta: 1.0
+      sd: 0.7206
+      n1: 15
+      n2: 15
+      alpha: 0.05
+      sides: 2
+    expected:
+      achieved_power: 0.95611
+    tolerance:
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Assuming Equal Variance (Enter Difference) (Example 5)"
+
+  - id: "Ex6 Julious (find very large N)"
+    description: >
+      Julious (2010) p.49 / the reference Example 6: δ=0.05, σ=1, two-sided
+      α=0.05, target power=0.90.  Julious reports per-group N=8407;
+      Reference reports achieved power=0.90003.
+    inputs:
+      delta: 0.05
+      sd: 1.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+    expected:
+      n1: 8407
+      n2: 8407
+      achieved_power: 0.90003
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Assuming Equal Variance (Enter Difference) (Example 6)"

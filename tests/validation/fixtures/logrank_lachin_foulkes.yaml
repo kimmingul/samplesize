@@ -1,0 +1,132 @@
+chapter: "Logrank Tests (Lachin and Foulkes)"
+method: "logrank_lachin_foulkes"
+examples:
+
+  - id: "Ex3 Lachin & Foulkes 1986 (validation, page 509)"
+    description: >
+      Lachin & Foulkes (1986) p. 509 worked example: λ1=0.30, λ2=0.20,
+      N=378, α=0.05 one-sided, accrual R=3, follow-up T-R=2, no loss to
+      follow-up, uniform patient entry, equal allocation.  Published
+      power=0.90; Reference reports achieved=0.90123.
+    solve_for: "power"
+    inputs:
+      lambda1: 0.30
+      lambda2: 0.20
+      t_accrual: 3.0
+      t_followup: 2.0
+      t0: 1.0
+      n: 378
+      alpha: 0.05
+      power: null
+      sides: 1
+      p1: 0.5
+      loss_to_followup: 0.0
+    expected:
+      n: 378
+      achieved_power: 0.90123
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Logrank Tests (Lachin and Foulkes) (Example 3)"
+
+  - id: "Ex2 reference S2=0.75 power=0.90"
+    description: >
+      Sample-size search: S1=0.50, S2=0.75 at T0=1, accrual R=1,
+      follow-up T-R=2, α=0.05 two-sided, equal allocation, 15% loss to
+      follow-up in both arms.  Reference reports N=106 with achieved
+      power=0.90107.
+    solve_for: "n"
+    inputs:
+      s1: 0.50
+      s2: 0.75
+      t_accrual: 1.0
+      t_followup: 2.0
+      t0: 1.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      p1: 0.5
+      loss_to_followup: 0.15
+    expected:
+      n: 106
+      achieved_power: 0.90107
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Logrank Tests (Lachin and Foulkes) (Example 2)"
+
+  - id: "Ex2 reference S2=0.75 power=0.80"
+    description: >
+      Sample-size search: S1=0.50, S2=0.75 at T0=1, accrual R=1,
+      follow-up T-R=2, α=0.05 two-sided, equal allocation, 15% loss to
+      follow-up in both arms.  Reference reports N=79 with achieved
+      power=0.80357.
+    solve_for: "n"
+    inputs:
+      s1: 0.50
+      s2: 0.75
+      t_accrual: 1.0
+      t_followup: 2.0
+      t0: 1.0
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+      p1: 0.5
+      loss_to_followup: 0.15
+    expected:
+      n: 79
+      achieved_power: 0.80357
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Logrank Tests (Lachin and Foulkes) (Example 2)"
+
+  - id: "Ex4 reference non-inferiority power=0.90"
+    description: >
+      Median-survival non-inferiority example.  S1=0.25,
+      S2=0.329876977693224 at T0=24, accrual R=18, follow-up T-R=6,
+      α=0.05 one-sided, equal allocation, no loss to follow-up.  reference
+      reports N=1326 with achieved power=0.90018.
+    solve_for: "n"
+    inputs:
+      s1: 0.25
+      s2: 0.329876977693224
+      t_accrual: 18.0
+      t_followup: 6.0
+      t0: 24.0
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+      p1: 0.5
+      loss_to_followup: 0.0
+    expected:
+      n: 1326
+      achieved_power: 0.90018
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Logrank Tests (Lachin and Foulkes) (Example 4)"
+
+  - id: "Ex4 reference non-inferiority power=0.80"
+    description: >
+      Same non-inferiority setup as the power=0.90 row but targeting
+      80% power: Reference reports N=957 with achieved power=0.80030.
+    solve_for: "n"
+    inputs:
+      s1: 0.25
+      s2: 0.329876977693224
+      t_accrual: 18.0
+      t_followup: 6.0
+      t0: 24.0
+      alpha: 0.05
+      power: 0.80
+      sides: 1
+      p1: 0.5
+      loss_to_followup: 0.0
+    expected:
+      n: 957
+      achieved_power: 0.80030
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Logrank Tests (Lachin and Foulkes) (Example 4)"

@@ -1,0 +1,110 @@
+chapter: "Confidence Intervals for Cpk"
+method: "ci_cpk"
+examples:
+
+  - id: "Ex1 row 1 (CL=0.95, Cpk=1.0, target W=0.10)"
+    description: >
+      Two-sided 95% CI for Cpk with target width 0.10 and planning Cpk=1.0.
+      Reference reports N=940 with actual width 0.100 and limits 0.950, 1.050,
+      using the Bissell / Kushler-Hurley large-sample normal approximation.
+    inputs:
+      cpk: 1.0
+      alpha: 0.05
+      sides: 2
+      width: 0.10
+    expected:
+      n: 940
+      achieved_width: 0.100
+      lower_limit: 0.950
+      upper_limit: 1.050
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Cpk (Example 1, row 1)"
+
+  - id: "Ex1 row 2 (CL=0.95, Cpk=1.5, target W=0.10)"
+    description: >
+      Two-sided 95% CI for Cpk with target width 0.10 and planning Cpk=1.5.
+      Reference reports N=1900 with actual width 0.100 and limits 1.450, 1.550.
+    inputs:
+      cpk: 1.5
+      alpha: 0.05
+      sides: 2
+      width: 0.10
+    expected:
+      n: 1900
+      achieved_width: 0.100
+      lower_limit: 1.450
+      upper_limit: 1.550
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Cpk (Example 1, row 2)"
+
+  - id: "Ex1 row 3 (CL=0.95, Cpk=2.0, target W=0.10)"
+    description: >
+      Two-sided 95% CI for Cpk with target width 0.10 and planning Cpk=2.0.
+      Reference reports N=3244 with actual width 0.100 and limits 1.950, 2.050.
+    inputs:
+      cpk: 2.0
+      alpha: 0.05
+      sides: 2
+      width: 0.10
+    expected:
+      n: 3244
+      achieved_width: 0.100
+      lower_limit: 1.950
+      upper_limit: 2.050
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Cpk (Example 1, row 3)"
+
+  - id: "Ex1 row 4 (CL=0.95, Cpk=3.0, target W=0.10)"
+    description: >
+      Two-sided 95% CI for Cpk with target width 0.10 and planning Cpk=3.0.
+      Reference reports N=7086 with actual width 0.100 and limits 2.950, 3.050.
+    inputs:
+      cpk: 3.0
+      alpha: 0.05
+      sides: 2
+      width: 0.10
+    expected:
+      n: 7086
+      achieved_width: 0.100
+      lower_limit: 2.950
+      upper_limit: 3.050
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Cpk (Example 1, row 4)"
+
+  - id: "Ex2 Mathews (CL=0.90, Cpk=1.0, target W=0.10)"
+    description: >
+      Two-sided 90% CI for Cpk with target width 0.10 and planning Cpk=1.0.
+      reference and Mathews (2010, p.230) both report N=662 with actual width
+      0.100 and limits 0.950, 1.050.
+    inputs:
+      cpk: 1.0
+      alpha: 0.10
+      sides: 2
+      width: 0.10
+    expected:
+      n: 662
+      achieved_width: 0.100
+      lower_limit: 0.950
+      upper_limit: 1.050
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Cpk (Example 2)"

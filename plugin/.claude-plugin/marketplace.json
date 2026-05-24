@@ -1,0 +1,25 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "samplesize-local",
+  "description": "Local development marketplace for the samplesize plugin (research-grade power & sample-size calculator).",
+  "owner": {
+    "name": "Mingul Kim",
+    "email": "kimmingul@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "samplesize",
+      "description": "Sample-size and power calculator validated against established statistical references. Recommends the right test, runs validated Python calculations, generates power curves and protocol text.",
+      "author": {
+        "name": "Mingul Kim",
+        "email": "kimmingul@gmail.com"
+      },
+      "category": "research",
+      "source": {
+        "source": "file",
+        "path": "."
+      },
+      "homepage": "https://github.com/kimmingul/SampleSize"
+    }
+  ]
+}

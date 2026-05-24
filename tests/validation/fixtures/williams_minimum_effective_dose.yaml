@@ -1,0 +1,63 @@
+chapter: "Williams' Test for the Minimum Effective Dose"
+method: "williams_minimum_effective_dose"
+examples:
+
+  - id: "Ex2 Chow validation G=4 Δ=11 σ=22"
+    description: >
+      Chow, Shao & Wang (2008) p.288 worked example reproduced in
+      Example 2: G=4 (1 control + 3 doses), Δ=11, σ=22,
+      α=0.05, target power 0.80.  Chow's formula yields n=53.7
+      which Reference rounds up to n=54 (achieved power 0.8025).
+    solve_for: "n"
+    inputs:
+      G: 4
+      delta: 11
+      sigma: 22
+      alpha: 0.05
+      power: 0.80
+    expected:
+      n: 54
+      achieved_power: 0.8025
+    tolerance:
+      n: 0
+      achieved_power: 0.002
+    source: "Williams' Test for the Minimum Effective Dose (Example 2)"
+
+  - id: "Ex1 power@N=54 G=4 Δ=11"
+    description: >
+      Direct power evaluation for the Example 2 configuration with
+      the reference-reported solution n=54.  Reference reports achieved power
+      0.8025.
+    solve_for: "power"
+    inputs:
+      G: 4
+      delta: 11
+      sigma: 22
+      alpha: 0.05
+      n: 54
+    expected:
+      n: 54
+      achieved_power: 0.8025
+    tolerance:
+      n: 0
+      achieved_power: 0.002
+    source: "Williams' Test for the Minimum Effective Dose (Example 2)"
+
+  - id: "Ex1 G=5 Δ=15 σ=25 power"
+    description: >
+      Example 1 (5-arm asthma trial) row: G=5, Δ=15, σ=25,
+      α=0.05.  Reference reports n=52 with achieved power 0.9036.
+    solve_for: "power"
+    inputs:
+      G: 5
+      delta: 15
+      sigma: 25
+      alpha: 0.05
+      n: 52
+    expected:
+      n: 52
+      achieved_power: 0.9036
+    tolerance:
+      n: 0
+      achieved_power: 0.002
+    source: "Williams' Test for the Minimum Effective Dose (Example 1)"

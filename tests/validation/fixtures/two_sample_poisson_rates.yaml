@@ -1,0 +1,57 @@
+chapter: "Tests for the Ratio of Two Poisson Rates"
+method: "two_sample_poisson_rates"
+examples:
+
+  - id: "Ex1 Ch.437 RRa=2 N1=29737"
+    description: >
+      Ch.437 Example 1: lam1=0.0005, RRa=2, t1=t2=2, alpha=0.05, power=0.90, one-sided.
+      Reference reports N1=N2=29737 (N=59474) with achieved power=0.90001.
+    solve_for: "n"
+    inputs:
+      lam1: 0.0005
+      rra: 2.0
+      rr0: 1.0
+      t1: 2.0
+      t2: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+    expected: {n1: 29737, achieved_power: 0.90001}
+    tolerance: {n1: 1, achieved_power: 0.005}
+    source: "Tests for the Ratio of Two Poisson Rates (Example 1)"
+
+  - id: "Ex1 Ch.437 RRa=4 N1=6364"
+    description: >
+      Ch.437 Example 1: lam1=0.0005, RRa=4, t1=t2=2, alpha=0.05, power=0.90, one-sided.
+      Reference reports N1=N2=6364 (N=12728) with achieved power=0.90001.
+    solve_for: "n"
+    inputs:
+      lam1: 0.0005
+      rra: 4.0
+      rr0: 1.0
+      t1: 2.0
+      t2: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+    expected: {n1: 6364, achieved_power: 0.90001}
+    tolerance: {n1: 1, achieved_power: 0.005}
+    source: "Tests for the Ratio of Two Poisson Rates (Example 1)"
+
+  - id: "Ex1 Ch.437 RRa=6 N1=3514"
+    description: >
+      Ch.437 Example 1: lam1=0.0005, RRa=6, t1=t2=2, alpha=0.05, power=0.90, one-sided.
+      Reference reports N1=N2=3514 (N=7028) with achieved power=0.90001.
+    solve_for: "n"
+    inputs:
+      lam1: 0.0005
+      rra: 6.0
+      rr0: 1.0
+      t1: 2.0
+      t2: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+    expected: {n1: 3514, achieved_power: 0.90001}
+    tolerance: {n1: 1, achieved_power: 0.005}
+    source: "Tests for the Ratio of Two Poisson Rates (Example 1)"

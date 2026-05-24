@@ -1,0 +1,76 @@
+chapter: "Tests for One Exponential Mean"
+method: "tests_one_exponential_mean"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 2 – Validation using Epstein (1960), page 438.
+  # Fixed-failure plan: theta0=5, theta1=2, power=0.95 (beta=0.05).
+  # Reference reports r=21 for alpha=0.01, r=14 for alpha=0.05,
+  # r=11 for alpha=0.10.  Our code reproduces all three exactly.
+  # ------------------------------------------------------------------
+
+  - id: "Ex2 Epstein alpha=0.01"
+    description: >
+      Epstein (1960) p.438 / Example 2: theta0=5, theta1=2,
+      power=0.95 (beta=0.05), alpha=0.01, one-sided.
+      Reference reports r=21, achieved power=0.95841.
+    solve_for: "n"
+    inputs:
+      theta0: 5.0
+      theta1: 2.0
+      alpha: 0.01
+      power: 0.95
+      sides: 1
+      replacement: "without"
+      t0: 1.0
+    expected:
+      r: 21
+      achieved_power: 0.95841
+    tolerance:
+      r: 0
+      achieved_power: 0.0001
+    source: "Tests for One Exponential Mean (Example 2)"
+
+  - id: "Ex2 Epstein alpha=0.05"
+    description: >
+      Epstein (1960) p.438 / Example 2: theta0=5, theta1=2,
+      power=0.95 (beta=0.05), alpha=0.05, one-sided.
+      Reference reports r=14, achieved power=0.95956.
+    solve_for: "n"
+    inputs:
+      theta0: 5.0
+      theta1: 2.0
+      alpha: 0.05
+      power: 0.95
+      sides: 1
+      replacement: "without"
+      t0: 1.0
+    expected:
+      r: 14
+      achieved_power: 0.95956
+    tolerance:
+      r: 0
+      achieved_power: 0.0001
+    source: "Tests for One Exponential Mean (Example 2)"
+
+  - id: "Ex2 Epstein alpha=0.10"
+    description: >
+      Epstein (1960) p.438 / Example 2: theta0=5, theta1=2,
+      power=0.95 (beta=0.05), alpha=0.10, one-sided.
+      Reference reports r=11, achieved power=0.96221.
+    solve_for: "n"
+    inputs:
+      theta0: 5.0
+      theta1: 2.0
+      alpha: 0.10
+      power: 0.95
+      sides: 1
+      replacement: "without"
+      t0: 1.0
+    expected:
+      r: 11
+      achieved_power: 0.96221
+    tolerance:
+      r: 0
+      achieved_power: 0.0001
+    source: "Tests for One Exponential Mean (Example 2)"

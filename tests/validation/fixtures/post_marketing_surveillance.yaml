@@ -1,0 +1,56 @@
+chapter: "Post-Marketing Surveillance"
+method: "post_marketing_surveillance"
+examples:
+
+  # Example 2 – Validation using Machin et al. (1997) p. 147
+  # Design type 1 (cohort, no background incidence)
+  # N=30000, R0=0.0001, A=1 → power=0.95021
+  - id: "Ex2 Machin type1 N=30000 D=0.0001 A=1 power"
+    description: >
+      Chapter 135, Example 2 — Machin et al. (1997) validation.
+      Cohort, no background incidence (type 1); N=30000, R0=0.0001, A=1.
+      Reference reports power=0.95021.
+    inputs:
+      design_type: 1
+      r0: 0.0001
+      a: 1
+      sides: 1
+      n: 30000
+    expected: {n: 30000, achieved_power: 0.95021}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Post-Marketing Surveillance (Example 2)"
+
+  # Example 2 second row: A=2 → power=0.80085
+  - id: "Ex2 Machin type1 N=30000 D=0.0001 A=2 power"
+    description: >
+      Chapter 135, Example 2 second row — type 1; N=30000, R0=0.0001,
+      A=2.  Reference reports power=0.80085.
+    inputs:
+      design_type: 1
+      r0: 0.0001
+      a: 2
+      sides: 1
+      n: 30000
+    expected: {n: 30000, achieved_power: 0.80085}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Post-Marketing Surveillance (Example 2)"
+
+  # Example 3 – Validation using Machin et al. (1997) p. 148
+  # Design type 3 (cohort, unknown background incidence)
+  # N=8500, R0=0.01, D=0.005, M=1, one-sided alpha=0.05 → power=0.90136
+  - id: "Ex3 Machin type3 N=8500 R0=0.01 D=0.005 M=1 power"
+    description: >
+      Chapter 135, Example 3 — Machin et al. (1997) p. 148 validation.
+      Cohort, unknown background incidence (type 3); N=8500, R0=0.01, D=0.005,
+      M=1, one-sided alpha=0.05.  Reference reports power=0.90136.
+    inputs:
+      design_type: 3
+      r0: 0.01
+      d: 0.005
+      m: 1.0
+      alpha: 0.05
+      sides: 1
+      n: 8500
+    expected: {n: 8500, achieved_power: 0.90136}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Post-Marketing Surveillance (Example 3)"

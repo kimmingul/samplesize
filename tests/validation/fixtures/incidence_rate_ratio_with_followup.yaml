@@ -1,0 +1,41 @@
+chapter: "Tests for the Ratio of Two Poisson Rates"
+method: "incidence_rate_ratio_with_followup"
+examples:
+
+  - id: "Ex1 Ch.437 t1=t2=2 RRa=4 N1=6364"
+    description: >
+      Ch.437 Example 1 (equal follow-up t1=t2=2): lam1=0.0005, RRa=4, alpha=0.05,
+      power=0.90, one-sided. Reference reports N1=N2=6364 with achieved power=0.90001.
+    solve_for: "n"
+    inputs:
+      lam1: 0.0005
+      rra: 4.0
+      rr0: 1.0
+      t1: 2.0
+      t2: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+    expected: {n1: 6364, achieved_power: 0.90001}
+    tolerance: {n1: 1, achieved_power: 0.005}
+    source: "Tests for the Ratio of Two Poisson Rates (Example 1)"
+
+  - id: "Ex1 Ch.437 t1=t2=2 RRa=2 N1=29737"
+    description: >
+      Ch.437 Example 1 (equal follow-up t1=t2=2): lam1=0.0005, RRa=2, alpha=0.05,
+      power=0.90, one-sided. Reference reports N1=N2=29737 with achieved power=0.90001.
+      Tests that the W5 formula is consistent when accessed via the
+      incidence_rate_ratio_with_followup entry point.
+    solve_for: "n"
+    inputs:
+      lam1: 0.0005
+      rra: 2.0
+      rr0: 1.0
+      t1: 2.0
+      t2: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+    expected: {n1: 29737, achieved_power: 0.90001}
+    tolerance: {n1: 1, achieved_power: 0.005}
+    source: "Tests for the Ratio of Two Poisson Rates (Example 1)"

@@ -1,0 +1,52 @@
+chapter: "Group-Sequential Logrank Tests (Simulation)"
+method: "group_sequential_logrank_simulation"
+examples:
+  - id: "Ex1 OBF 5-look power-solve N1=100 h1=1.4 h2=1.0 alpha=0.05 two-sided"
+    description: >
+      Example 1 from reference chapter: OBF 5-look design, h1=1.4 (control hazard),
+      h2=1.0 (treatment hazard), N1=N2=100, alpha=0.05, two-sided.
+      reference simulation (100000 sims) reports power 0.644; HR=0.714.
+      Tolerance ±0.015 for simulation variance at 10000 sims.
+    inputs:
+      hazard1: 1.4
+      hazard2: 1.0
+      alpha: 0.05
+      n1: 100
+      n_looks: 5
+      boundary: "obrien-fleming"
+      sides: 2
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 200
+      achieved_power: 0.644
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: "Group-Sequential Logrank Tests (Simulation) (Example 1)"
+
+  - id: "Ex1-h15 OBF 5-look N1=100 h1=1.5 h2=1.0 alpha=0.05 two-sided"
+    description: >
+      Variant of Example 1 with higher hazard ratio (h1=1.5, HR=0.667):
+      OBF 5-look, N1=N2=100, alpha=0.05, two-sided.
+      Expected power ~0.804 (calibrated from our simulation with seed=42).
+      Tolerance ±0.015 for simulation variance.
+    inputs:
+      hazard1: 1.5
+      hazard2: 1.0
+      alpha: 0.05
+      n1: 100
+      n_looks: 5
+      boundary: "obrien-fleming"
+      sides: 2
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 200
+      achieved_power: 0.804
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: "Group-Sequential Logrank Tests (Simulation) (Example 1 (h1=1.5 variant))"

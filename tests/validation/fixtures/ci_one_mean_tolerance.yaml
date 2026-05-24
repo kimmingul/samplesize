@@ -1,0 +1,65 @@
+chapter: "Confidence Intervals for One Mean with Tolerance Probability"
+method: "ci_one_mean_tolerance"
+examples:
+
+  - id: "Ex1 row 1 (TolProb=0.70, S=45.1 from m=14, D=15)"
+    description: >
+      Two-sided 95% CI for one mean. Tolerance probability 0.70 that the
+      future half-width is <= 15, using S=45.1 estimated from a previous
+      sample of size 14. Ch.421 reports N=49, actual distance 14.899.
+    inputs:
+      sigma: 45.1
+      distance: 15.0
+      alpha: 0.05
+      sides: 2
+      tolerance_probability: 0.70
+      sd_source: "previous_sample"
+      prior_n: 14
+    expected:
+      n: 49
+      achieved_width: 14.899
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for One Mean with Tolerance Probability (Example 1, row 1)"
+
+  - id: "Ex1 row 6 (TolProb=0.95, S=45.1 from m=14, D=15)"
+    description: >
+      Two-sided 95% CI for one mean. Tolerance probability 0.95 that the
+      future half-width is <= 15, using S=45.1 estimated from a previous
+      sample of size 14. Ch.421 reports N=82, actual distance 14.943.
+    inputs:
+      sigma: 45.1
+      distance: 15.0
+      alpha: 0.05
+      sides: 2
+      tolerance_probability: 0.95
+      sd_source: "previous_sample"
+      prior_n: 14
+    expected:
+      n: 82
+      achieved_width: 14.943
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for One Mean with Tolerance Probability (Example 1, row 6)"
+
+  - id: "Ex2 (population SD, sigma=2500, D=1500, TolProb=0.90)"
+    description: >
+      Two-sided 95% CI for one mean. Tolerance probability 0.90 that the
+      future half-width is <= 1500 assuming population SD=2500 (Hahn &
+      Meeker 1991, p.139). Ch.421 reports N=19, actual distance 1447.889.
+    inputs:
+      sigma: 2500.0
+      distance: 1500.0
+      alpha: 0.05
+      sides: 2
+      tolerance_probability: 0.90
+      sd_source: "population"
+    expected:
+      n: 19
+      achieved_width: 1447.889
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for One Mean with Tolerance Probability (Example 2)"

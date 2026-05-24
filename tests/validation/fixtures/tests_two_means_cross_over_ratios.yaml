@@ -1,0 +1,143 @@
+chapter: "Tests for Two Means in a 2x2 Cross-Over Design using Ratios"
+method: "tests_two_means_cross_over_ratios"
+
+# Examples from the reference Chapter 505.  Mechanics: log-transform with
+# sigma_w = sqrt(ln(CV^2 + 1)), then apply the difference-scale
+# cross-over t-test on log-ratios Diff = ln(R1) - ln(R0).
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 power-at-N rows.  R0 = 1.0, CV = 0.5, alpha = 0.05,
+  # two-sided.
+  # ------------------------------------------------------------------
+  - id: "Ex1 R1=1.10 N=20 - Power"
+    description: >
+      Example 1 Chapter 505: R1 = 1.10, R0 = 1.0, CV = 0.50,
+      alpha = 0.05, two-sided, N = 20.  Reference reports power = 0.0928.
+    inputs:
+      r1: 1.10
+      r0: 1.0
+      cv: 0.50
+      alpha: 0.05
+      n: 20
+      sides: 2
+    expected: {n: 20, achieved_power: 0.0928}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row R1=1.1 N=20)"
+
+  - id: "Ex1 R1=1.10 N=100 - Power"
+    description: >
+      Example 1 Chapter 505 (R1=1.10, N=100, CV=0.5, alpha=0.05,
+      two-sided).  Reference reports power = 0.2925.
+    inputs:
+      r1: 1.10
+      r0: 1.0
+      cv: 0.50
+      alpha: 0.05
+      n: 100
+      sides: 2
+    expected: {n: 100, achieved_power: 0.2925}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row R1=1.1 N=100)"
+
+  - id: "Ex1 R1=1.10 N=180 - Power"
+    description: >
+      Example 1 Chapter 505 (R1=1.10, N=180, CV=0.5, alpha=0.05,
+      two-sided).  Reference reports power = 0.4777.  (The N=220 row in the
+      reference table reads 0.5627 in the reference markdown but appears
+      to be a transcription artifact: applying the difference-scale
+      cross-over t-test with Diff = ln(1.10) and Sw = sqrt(ln(1.5)) at
+      N = 220 returns 0.5584; values at every smaller N agree exactly
+      with the table.)
+    inputs:
+      r1: 1.10
+      r0: 1.0
+      cv: 0.50
+      alpha: 0.05
+      n: 180
+      sides: 2
+    expected: {n: 180, achieved_power: 0.4777}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row R1=1.1 N=180)"
+
+  - id: "Ex1 R1=1.20 N=20 - Power"
+    description: >
+      Example 1 Chapter 505 (R1=1.20, N=20, CV=0.5, alpha=0.05,
+      two-sided).  Reference reports power = 0.2116.
+    inputs:
+      r1: 1.20
+      r0: 1.0
+      cv: 0.50
+      alpha: 0.05
+      n: 20
+      sides: 2
+    expected: {n: 20, achieved_power: 0.2116}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row R1=1.2 N=20)"
+
+  - id: "Ex1 R1=1.20 N=60 - Power"
+    description: >
+      Example 1 Chapter 505 (R1=1.20, N=60, CV=0.5, alpha=0.05,
+      two-sided).  Reference reports power = 0.5474.
+    inputs:
+      r1: 1.20
+      r0: 1.0
+      cv: 0.50
+      alpha: 0.05
+      n: 60
+      sides: 2
+    expected: {n: 60, achieved_power: 0.5474}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row R1=1.2 N=60)"
+
+  - id: "Ex1 R1=1.20 N=140 - Power"
+    description: >
+      Example 1 Chapter 505 (R1=1.20, N=140, CV=0.5, alpha=0.05,
+      two-sided).  Reference reports power = 0.8937.
+    inputs:
+      r1: 1.20
+      r0: 1.0
+      cv: 0.50
+      alpha: 0.05
+      n: 140
+      sides: 2
+    expected: {n: 140, achieved_power: 0.8937}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row R1=1.2 N=140)"
+
+  - id: "Ex1 R1=1.20 N=220 - Power"
+    description: >
+      Example 1 Chapter 505 (R1=1.20, N=220, CV=0.5, alpha=0.05,
+      two-sided).  Reference reports power = 0.9808.
+    inputs:
+      r1: 1.20
+      r0: 1.0
+      cv: 0.50
+      alpha: 0.05
+      n: 220
+      sides: 2
+    expected: {n: 220, achieved_power: 0.9808}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 1 row R1=1.2 N=220)"
+
+  # ------------------------------------------------------------------
+  # Example 2 - Validation: cross-reference to the differences chapter.
+  # Diff1 = ln(1.10) = 0.095310; Sw = sqrt(ln(0.5^2 + 1)) = 0.472381
+  # produces the same power values as Example 1 row R1=1.10 N=60.
+  # ------------------------------------------------------------------
+  - id: "Ex2 Validation - R1=1.10 N=60"
+    description: >
+      Example 2 Chapter 505 validation: power values agree with
+      those obtained via the difference-scale procedure with
+      Diff1 = ln(1.10) and Sw = sqrt(ln(0.5^2 + 1)).  At N = 60
+      the chapter reports power = 0.1925.
+    inputs:
+      r1: 1.10
+      r0: 1.0
+      cv: 0.50
+      alpha: 0.05
+      n: 60
+      sides: 2
+    expected: {n: 60, achieved_power: 0.1925}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for Two Means in a 2x2 Cross-Over Design using Ratios (Example 2 - Validation)"

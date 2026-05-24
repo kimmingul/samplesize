@@ -1,0 +1,22 @@
+# Template for the reference worked-example fixtures.
+# One file per method; rename to <method_id>.yaml when filled.
+chapter: "<chapter name from reference/md/...>"
+method: "<method_id matching registry/methods.json>"
+examples:
+  - id: "Example 1"
+    description: "<one-line summary from reference chapter>"
+    solve_for: "n"          # one of: n, power, effect
+    inputs:
+      mean0: 5.0
+      mean1: 5.5
+      sd: 1.2
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected:
+      n: 47                  # the integer Reference reports
+      achieved_power: 0.804  # power at the rounded N
+    tolerance:
+      n: 0                   # exact integer
+      achieved_power: 0.001  # absolute
+    source: "<chapter> (Example 1)"

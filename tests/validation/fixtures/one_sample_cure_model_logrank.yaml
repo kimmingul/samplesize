@@ -1,0 +1,53 @@
+chapter: "One-Sample Cure Model Tests"
+method: "one_sample_cure_model_logrank"
+examples:
+
+  - id: "Ex1 Cure model pi0=0.32 M0=1.54 HR=0.70 k=1.67"
+    description: >
+      Ch.713 Ex1: pi0=pi1=0.32, median0=1.54, HR=0.70, k=1.67,
+      accrual=3, followup=1, two-sided, alpha=0.05, power=0.90.
+      Reference reports N=370, events=157, power=0.9006.
+    inputs:
+      pi0: 0.32
+      median0: 1.54
+      hr: 0.7
+      k: 1.67
+      t_accrual: 3.0
+      t_followup: 1.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected:
+      n: 370
+      events: 157
+      achieved_power: 0.9006
+    tolerance:
+      n: 0
+      events: 2
+      achieved_power: 0.001
+    source: "One-Sample Cure Model Tests (Example 1)"
+
+  - id: "Ex2 Cure model Wu2015 validation pi0=0.35 lam0=0.836 HR=0.57143 k=1.018"
+    description: >
+      Ch.713 Ex2 (Wu 2015 validation): pi0=pi1=0.35, lam0=0.836,
+      HR=1/1.75=0.57143, k=1.018, accrual=3, followup=1, one-sided alpha=0.05,
+      power=0.80. reference and Wu both report N=93, events=41, power=0.8022.
+    inputs:
+      pi0: 0.35
+      lam0: 0.836
+      hr: 0.57143
+      k: 1.018
+      t_accrual: 3.0
+      t_followup: 1.0
+      alpha: 0.05
+      power: 0.80
+      sides: 1
+    expected:
+      n: 93
+      events: 41
+      achieved_power: 0.8022
+    tolerance:
+      n: 0
+      events: 1
+      achieved_power: 0.001
+    source: "One-Sample Cure Model Tests (Example 2)"

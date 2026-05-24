@@ -1,0 +1,52 @@
+chapter: "Group-Sequential Superiority by a Margin Tests for the Ratio of Two Proportions (Simulation)"
+method: "group_sequential_sup_two_proportions_ratio_simulation"
+examples:
+  - id: "Ex1 OBF 5-look power-solve N1=1000 p2=0.58 R0=1.09 R1=1.1724 alpha=0.05"
+    description: >
+      Example 1: OBF 5-look one-sided superiority-by-margin design,
+      p2=0.58, R0=1.09 (P1.0=0.63), R1=1.1724 (P1.1=0.68), N1=N2=1000,
+      alpha=0.05. reference reference power ~0.671. Our implementation gives ~0.657
+      (within tolerance ±0.020 for simulation variance at 10000 sims).
+    inputs:
+      p2: 0.58
+      r0: 1.09
+      r1: 1.1724
+      alpha: 0.05
+      n1: 1000
+      n_looks: 5
+      boundary: "obrien-fleming"
+      higher_proportions_better: true
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 2000
+      achieved_power: 0.657
+    tolerance:
+      n: 0
+      achieved_power: 0.020
+    source: "Group-Sequential Superiority by a Margin Tests for the Ratio of Two Proportions (Simulation) (Example 1)"
+
+  - id: "Ex1-Pocock 5-look N1=1000 p2=0.58 R0=1.09 R1=1.1724 alpha=0.05 Pocock"
+    description: >
+      Same as Example 1 but using Pocock spending function.
+      Expected power ~0.587. Tolerance ±0.020 for simulation variance.
+    inputs:
+      p2: 0.58
+      r0: 1.09
+      r1: 1.1724
+      alpha: 0.05
+      n1: 1000
+      n_looks: 5
+      boundary: "pocock"
+      higher_proportions_better: true
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 2000
+      achieved_power: 0.587
+    tolerance:
+      n: 0
+      achieved_power: 0.020
+    source: "Group-Sequential Superiority by a Margin Tests for the Ratio of Two Proportions (Simulation) (Example 1 (Pocock variant))"

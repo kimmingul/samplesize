@@ -1,0 +1,65 @@
+chapter: "Two-Sample T-Tests Assuming Equal Variance (Enter Means)"
+method: "two_sample_t_equal_var"
+examples:
+
+  - id: "Ex4 Machin (find N)"
+    description: >
+      Machin et al. (1997) p.35: mean diff=5, σ=10, power=0.90, α=0.05
+      two-sided.  Per-group N=86; reference achieved power=0.90323.
+    inputs:
+      mean1: 0.0
+      mean2: 5.0
+      sd: 10.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+    expected:
+      n1: 86
+      n2: 86
+      achieved_power: 0.90323
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Assuming Equal Variance (Enter Means) (Example 4)"
+
+  - id: "Ex5 Zar (find power)"
+    description: >
+      Zar (1984) p.136: mean diff=1, σ=0.7206, n1=n2=15, α=0.05 two-sided.
+      Zar reports power=0.96; Reference reports power=0.95611.
+    inputs:
+      mean1: 0.0
+      mean2: 1.0
+      sd: 0.7206
+      n1: 15
+      n2: 15
+      alpha: 0.05
+      sides: 2
+    expected:
+      achieved_power: 0.95611
+    tolerance:
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Assuming Equal Variance (Enter Means) (Example 5)"
+
+  - id: "Ex6 Julious (find very large N)"
+    description: >
+      Julious (2010) p.49: mean diff=0.05, σ=1, power=0.90, α=0.05
+      two-sided.  Per-group N=8407; reference achieved power=0.90003.
+    inputs:
+      mean1: 0.0
+      mean2: 0.05
+      sd: 1.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+    expected:
+      n1: 8407
+      n2: 8407
+      achieved_power: 0.90003
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Assuming Equal Variance (Enter Means) (Example 6)"

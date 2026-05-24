@@ -1,0 +1,52 @@
+chapter: "Group-Sequential Tests for Two Means Assuming Normality (Simulation)"
+method: "group_sequential_two_means_normality_simulation"
+examples:
+  - id: "Ex1 OBF 5-look power-solve N1=500 mean1=108 mean2=113 sd=25 alpha=0.05 sides=2"
+    description: >
+      Example 1: OBF 5-look two-sided test, mean1=108 (control),
+      mean2=113 (treatment), sd=25, N1=N2=500, alpha=0.05, sides=2.
+      reference reference power ~0.887. Our implementation gives ~0.882 using
+      the equal-variance pooled t-statistic (within tolerance ±0.020).
+    inputs:
+      mean1: 108
+      mean2: 113
+      sd: 25
+      alpha: 0.05
+      n1: 500
+      n_looks: 5
+      boundary: "obrien-fleming"
+      sides: 2
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 1000
+      achieved_power: 0.882
+    tolerance:
+      n: 0
+      achieved_power: 0.020
+    source: "Group-Sequential Tests for Two Means Assuming Normality (Simulation) (Example 1)"
+
+  - id: "Ex1-N300 OBF 5-look power-solve N1=300 mean1=108 mean2=113 sd=25 alpha=0.05 sides=2"
+    description: >
+      Same as Example 1 but with N1=300 per group (smaller sample).
+      Expected power ~0.679 (lower due to smaller N). Tolerance ±0.020.
+    inputs:
+      mean1: 108
+      mean2: 113
+      sd: 25
+      alpha: 0.05
+      n1: 300
+      n_looks: 5
+      boundary: "obrien-fleming"
+      sides: 2
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 600
+      achieved_power: 0.679
+    tolerance:
+      n: 0
+      achieved_power: 0.020
+    source: "Group-Sequential Tests for Two Means Assuming Normality (Simulation) (Example 1 (N=300 variant))"

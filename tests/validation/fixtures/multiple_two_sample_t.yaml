@@ -1,0 +1,152 @@
+chapter: "Multiple Two-Sample T-Tests"
+method: "multiple_two_sample_t"
+examples:
+
+  - id: "Ex1 row 7 (FDR power, S=0.6 K=10)"
+    description: >
+      Example 1, row S=0.6 K=10.  Two-sided pooled-variance T-test,
+      N1=N2=16, D=1.0, S1=S2=0.6, m=5000, K=10, fdr=0.05.  Reference reports
+      individual power=0.52073, single-test alpha=0.0000549.
+    inputs:
+      k_tests: 5000
+      mean_diff: 1.0
+      sd1: 0.6
+      n1: 16
+      n2: 16
+      alpha: 0.05
+      sides: 2
+      adjustment: "fdr"
+      K: 10
+    expected:
+      n: 32
+      achieved_power: 0.52073
+      alpha_adj: 0.0000549
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+      alpha_adj: 0.000001
+    source: "Multiple Two-Sample T-Tests (Example 1, row S=0.6 K=10)"
+
+  - id: "Ex1 row 9 (FDR power, S=0.6 K=100)"
+    description: >
+      Example 1, row S=0.6 K=100.  Same setup with K=100.  reference
+      reports individual power=0.83005, single-test alpha=0.0008916.
+    inputs:
+      k_tests: 5000
+      mean_diff: 1.0
+      sd1: 0.6
+      n1: 16
+      n2: 16
+      alpha: 0.05
+      sides: 2
+      adjustment: "fdr"
+      K: 100
+    expected:
+      n: 32
+      achieved_power: 0.83005
+      alpha_adj: 0.0008916
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+      alpha_adj: 0.000001
+    source: "Multiple Two-Sample T-Tests (Example 1, row S=0.6 K=100)"
+
+  - id: "Ex4 (EWER Stekel validation, N=33/group)"
+    description: >
+      Example 4 (Stekel 2003 p.228).  Two-sided pooled-variance T,
+      D=1.0, S1=S2=0.68, m=10000, EWER=1.0, target power=0.95.  reference
+      reports N1=N2=33 with achieved power=0.95785.
+    inputs:
+      k_tests: 10000
+      mean_diff: 1.0
+      sd1: 0.68
+      power: 0.95
+      alpha: 1.0
+      sides: 2
+      adjustment: "bonferroni"
+    expected:
+      n1: 33
+      n2: 33
+      n: 66
+      achieved_power: 0.95785
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_power: 0.001
+    source: "Multiple Two-Sample T-Tests (Example 4)"
+
+  - id: "Ex5 D=1.0 (EWER Lee Z validation, N=23/group)"
+    description: >
+      Example 5 (Lee 2004 Table 14.3 upper-left).  Two-sided
+      two-sample Z, D=1.0, S1=S2=1/sqrt(2)=0.707107, m=1000, EWER=0.5,
+      target power=0.90.  Reference reports N1=N2=23, power=0.90576.
+    inputs:
+      k_tests: 1000
+      mean_diff: 1.0
+      sd1: 0.7071067811865475
+      power: 0.90
+      alpha: 0.5
+      sides: 2
+      adjustment: "bonferroni"
+      sd_known: true
+    expected:
+      n1: 23
+      n2: 23
+      achieved_power: 0.90576
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_power: 0.001
+    source: "Multiple Two-Sample T-Tests (Example 5, D=1.0 row)"
+
+  - id: "Ex5 D=2.5 (EWER Lee Z validation, N=4/group)"
+    description: >
+      Example 5 D=2.5 row.  Reference reports N1=N2=4, power=0.93565.
+    inputs:
+      k_tests: 1000
+      mean_diff: 2.5
+      sd1: 0.7071067811865475
+      power: 0.90
+      alpha: 0.5
+      sides: 2
+      adjustment: "bonferroni"
+      sd_known: true
+    expected:
+      n1: 4
+      n2: 4
+      achieved_power: 0.93565
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_power: 0.001
+    source: "Multiple Two-Sample T-Tests (Example 5, D=2.5 row)"
+
+  - id: "Ex6 (FDR Jung validation, two-sample Z, N=34/group)"
+    description: >
+      Example 6 (Jung 2005 p.3100).  One-sided two-sample Z, D=1.0,
+      S1=S2=1.0, m=4000, K=40, fdr=0.01, target power=0.60.  reference
+      reports N1=N2=34, achieved power=0.61099.
+    inputs:
+      k_tests: 4000
+      mean_diff: 1.0
+      sd1: 1.0
+      power: 0.60
+      alpha: 0.01
+      sides: 1
+      adjustment: "fdr"
+      K: 40
+      sd_known: true
+    expected:
+      n1: 34
+      n2: 34
+      n: 68
+      achieved_power: 0.61099
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      # the reference itself rounds the iterative FDR power for this case to 5 d.p.;
+      # Jung's reference value is 0.60.  We converge to 0.61301.
+      achieved_power: 0.003
+    source: "Multiple Two-Sample T-Tests (Example 6)"

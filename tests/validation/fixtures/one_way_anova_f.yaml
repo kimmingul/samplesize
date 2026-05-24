@@ -1,0 +1,44 @@
+chapter: "One-Way Analysis of Variance F-Tests"
+method: "one_way_anova_f"
+examples:
+
+  - id: "Ex6 Fleiss 1986 (k=4)"
+    description: >
+      Fleiss (1986) p.374: k=4 groups with means 9.775/12/12/14.225,
+      σ=3, α=0.05, power=0.80.  Reports n=11 per group; reference
+      achieved=0.8027.
+    inputs:
+      means: [9.775, 12.0, 12.0, 14.225]
+      sigma: 3.0
+      alpha: 0.05
+      power: 0.80
+    expected: {n_per_group: 11, achieved_power: 0.8027}
+    tolerance: {n_per_group: 0, achieved_power: 0.001}
+    source: "One-Way Analysis of Variance F-Tests (Example 6)"
+
+  - id: "Ex7 Desu 1990 (k=3)"
+    description: >
+      Desu (1990) p.48: k=3 groups, means 0/-0.2553/0.2553, σ=1,
+      α=0.05, power=0.90.  Reports n=99 per group; reference achieved=0.9028.
+    inputs:
+      means: [0.0, -0.2553, 0.2553]
+      sigma: 1.0
+      alpha: 0.05
+      power: 0.90
+    expected: {n_per_group: 99, achieved_power: 0.9028}
+    tolerance: {n_per_group: 0, achieved_power: 0.001}
+    source: "One-Way Analysis of Variance F-Tests (Example 7)"
+
+  - id: "Ex8 Kirk 1982 (k=4 large effect)"
+    description: >
+      Kirk (1982) pp.140-144: k=4 groups, means 2.75/3.5/6.25/9.0,
+      σ=1.20995, α=0.05, power=0.95.  Reports n=3 per group; reference
+      achieved=0.9977.
+    inputs:
+      means: [2.75, 3.5, 6.25, 9.0]
+      sigma: 1.20995
+      alpha: 0.05
+      power: 0.95
+    expected: {n_per_group: 3, achieved_power: 0.9977}
+    tolerance: {n_per_group: 0, achieved_power: 0.001}
+    source: "One-Way Analysis of Variance F-Tests (Example 8)"

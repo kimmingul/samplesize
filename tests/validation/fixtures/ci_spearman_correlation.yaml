@@ -1,0 +1,114 @@
+chapter: "Confidence Intervals for Spearman's Rank Correlation"
+method: "ci_spearman_correlation"
+notes: |
+  the reference chapter 808 (Bonett & Wright 2000). Fisher z-transform back-
+  transformation with variance (1 + r^2/2) / (n - 3). Sample size is
+  the smallest integer N for which the achieved two-sided width is
+  <= target.
+examples:
+
+  - id: "Ex1 r=0 (Spearman, W=0.06, CL=0.95): N=4269"
+    description: >
+      Example 1 central row: planning r=0 gives N=4269, width 0.060,
+      lower=-0.030, upper=0.030.
+    inputs:
+      r: 0.0
+      alpha: 0.05
+      width: 0.06
+      sides: 2
+    expected:
+      n: 4269
+      achieved_width: 0.060
+      lower_limit: -0.030
+      upper_limit: 0.030
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Spearman's Rank Correlation (Example 1 (r=0.000, W=0.060))"
+
+  - id: "Ex1 r=-0.9 (Spearman, W=0.06, CL=0.95): N=225"
+    description: >
+      Example 1: planning r=-0.9, target width 0.06. reference prints N=225
+      with width 0.060, lower=-0.926, upper=-0.866. The extra (1+r^2/2)
+      factor inflates Spearman's N relative to Pearson's at the same r.
+    inputs:
+      r: -0.9
+      alpha: 0.05
+      width: 0.06
+      sides: 2
+    expected:
+      n: 225
+      achieved_width: 0.060
+      lower_limit: -0.926
+      upper_limit: -0.866
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Spearman's Rank Correlation (Example 1 (r=-0.900, W=0.060))"
+
+  - id: "Ex1 r=0.5 (Spearman, W=0.06, CL=0.95): N=2704"
+    description: >
+      Example 1: planning r=0.5. reference prints N=2704, width 0.060,
+      lower=0.469, upper=0.529.
+    inputs:
+      r: 0.5
+      alpha: 0.05
+      width: 0.06
+      sides: 2
+    expected:
+      n: 2704
+      achieved_width: 0.060
+      lower_limit: 0.469
+      upper_limit: 0.529
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Spearman's Rank Correlation (Example 1 (r=0.500, W=0.060))"
+
+  - id: "Ex2 Bonett-Wright r=0.3, W=0.2, CL=0.95: N=334"
+    description: >
+      Example 2 (Bonett & Wright 2000 p.26): r=0.3, W=0.2, 95% CI.
+      reference reproduces Bonett & Wright's N=334 with limits 0.197, 0.397.
+    inputs:
+      r: 0.3
+      alpha: 0.05
+      width: 0.2
+      sides: 2
+    expected:
+      n: 334
+      achieved_width: 0.200
+      lower_limit: 0.197
+      upper_limit: 0.397
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Spearman's Rank Correlation (Example 2 (CL=0.95))"
+
+  - id: "Ex2 Bonett-Wright r=0.3, W=0.2, CL=0.99: N=574"
+    description: >
+      Example 2 at 99% CI: reference / Bonett & Wright report N=574 with
+      limits 0.197, 0.397.
+    inputs:
+      r: 0.3
+      alpha: 0.01
+      width: 0.2
+      sides: 2
+    expected:
+      n: 574
+      achieved_width: 0.200
+      lower_limit: 0.197
+      upper_limit: 0.397
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Spearman's Rank Correlation (Example 2 (CL=0.99))"

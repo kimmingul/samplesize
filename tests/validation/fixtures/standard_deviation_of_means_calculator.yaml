@@ -1,0 +1,68 @@
+chapter: "Standard Deviation of Means Calculator"
+method: "standard_deviation_of_means_calculator"
+examples:
+
+  - id: "1-D heart-rate means (Chapter 905 Example 2)"
+    description: >
+      Heart-rate sample-size planning: hypothesised group means
+      80, 72, 64, 56 produce σ_m = 8.944272 using the population
+      (k = 4) divisor.  Used to drive one-way ANOVA power.
+    solve_for: "estimate"
+    inputs:
+      means: [80, 72, 64, 56]
+    expected:
+      result: 8.944272
+    tolerance:
+      result: 0.0001
+    source: "Standard Deviation Estimator (Example 2 (cross-referenced))"
+
+  - id: "Chapter 912 Sm(A) main effect (k=2)"
+    description: >
+      Two-factor 2x3 table of hypothesised means.  Row-factor main
+      effect of A: row averages 110, 140 against grand mean 125 give
+      effects (-15, +15).  Reference reports Sm(A) = 15.000000.
+    solve_for: "estimate"
+    inputs:
+      means:
+        - [100, 130, 100]
+        - [120, 180, 120]
+      factor: "row"
+    expected:
+      result: 15.000000
+    tolerance:
+      result: 0.0001
+    source: "Standard Deviation of Means Calculator (Technical Details)"
+
+  - id: "Chapter 912 Sm(B) main effect (k=3)"
+    description: >
+      Column-factor main effect for B (time): column means 110, 155,
+      110 against grand mean 125 give effects (-15, 30, -15).  reference
+      reports Sm(B) = 21.213203 (= sqrt(1350/3)).
+    solve_for: "estimate"
+    inputs:
+      means:
+        - [100, 130, 100]
+        - [120, 180, 120]
+      factor: "col"
+    expected:
+      result: 21.213203
+    tolerance:
+      result: 0.0001
+    source: "Standard Deviation of Means Calculator (Technical Details)"
+
+  - id: "Chapter 912 Sm(AB) interaction (k=R·C=6)"
+    description: >
+      Interaction effect AB.  Effects table residuals after removing
+      grand mean and main effects: [[5,-10,5],[-5,10,-5]].  reference
+      reports Sm(AB) = 7.071068 (= sqrt(300/6)).
+    solve_for: "estimate"
+    inputs:
+      means:
+        - [100, 130, 100]
+        - [120, 180, 120]
+      factor: "interaction"
+    expected:
+      result: 7.071068
+    tolerance:
+      result: 0.0001
+    source: "Standard Deviation of Means Calculator (Technical Details)"

@@ -1,0 +1,111 @@
+chapter: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Differences"
+method: "superiority_by_margin_cross_over_diff"
+
+# Examples from the reference Chapter 508.  Mechanics are identical to the
+# non-inferiority procedure with the rejection region shifted by +SM
+# (higher means better) or -SM (worse).  reference chapter notes the same
+# Julious (2004) validation example as the NI chapter.
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 3 - Validation using Julious (2004) page 1953
+  # (cross-referenced from Chapter 510).  Same numerics as the NI
+  # variant with SM = 10 and D taken to be one margin above zero
+  # because the test statistic depends only on (D - SM).
+  # Diff = 15, SM = 10, Sw = 10, alpha = 0.025, power = 0.90 ->
+  # N = 88, achieved power 0.90648 (Example 2 row 2).
+  # ------------------------------------------------------------------
+  - id: "Ex2 row2 - SM=10, D=15, Sw=10, power=0.90"
+    description: >
+      Example 2 Chapter 508 row 2 (= Julious 2004 validation):
+      diff = 15, margin (SM) = 10, Sw = 10, alpha = 0.025, target
+      power = 0.90.  Reference reports N = 88, achieved power 0.90648.
+    inputs:
+      margin: 10.0
+      diff: 15.0
+      sd_w: 10.0
+      alpha: 0.025
+      power: 0.90
+      higher_means: "better"
+    expected: {n: 88, achieved_power: 0.90648}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 2 row 2)"
+
+  - id: "Ex2 row1 - SM=5, D=15, Sw=10, power=0.90"
+    description: >
+      Example 2 Chapter 508 row 1: diff = 15, margin (SM) = 5,
+      Sw = 10, alpha = 0.025, target power = 0.90.  Reference reports
+      N = 24, achieved power 0.91139.
+    inputs:
+      margin: 5.0
+      diff: 15.0
+      sd_w: 10.0
+      alpha: 0.025
+      power: 0.90
+      higher_means: "better"
+    expected: {n: 24, achieved_power: 0.91139}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 2 row 1)"
+
+  # ------------------------------------------------------------------
+  # Example 1 power-at-N rows.  D = 15, Sw = 10, alpha = 0.025.
+  # ------------------------------------------------------------------
+  - id: "Ex1 N=5 SM=5 - Power"
+    description: >
+      Example 1 Chapter 508 (N=5, SM=5, D=15, Sw=10).  reference
+      reports power = 0.20131.
+    inputs:
+      margin: 5.0
+      diff: 15.0
+      sd_w: 10.0
+      alpha: 0.025
+      n: 5
+      higher_means: "better"
+    expected: {n: 5, achieved_power: 0.20131}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=5 SM=5)"
+
+  - id: "Ex1 N=20 SM=5 - Power"
+    description: >
+      Example 1 Chapter 508 (N=20, SM=5, D=15, Sw=10).  reference
+      reports power = 0.84845.
+    inputs:
+      margin: 5.0
+      diff: 15.0
+      sd_w: 10.0
+      alpha: 0.025
+      n: 20
+      higher_means: "better"
+    expected: {n: 20, achieved_power: 0.84845}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=20 SM=5)"
+
+  - id: "Ex1 N=10 SM=10 - Power"
+    description: >
+      Example 1 Chapter 508 (N=10, SM=10, D=15, Sw=10).  reference
+      reports power = 0.16563.
+    inputs:
+      margin: 10.0
+      diff: 15.0
+      sd_w: 10.0
+      alpha: 0.025
+      n: 10
+      higher_means: "better"
+    expected: {n: 10, achieved_power: 0.16563}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=10 SM=10)"
+
+  - id: "Ex1 N=30 SM=10 - Power"
+    description: >
+      Example 1 Chapter 508 (N=30, SM=10, D=15, Sw=10).  reference
+      reports power = 0.46414.
+    inputs:
+      margin: 10.0
+      diff: 15.0
+      sd_w: 10.0
+      alpha: 0.025
+      n: 30
+      higher_means: "better"
+    expected: {n: 30, achieved_power: 0.46414}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=30 SM=10)"

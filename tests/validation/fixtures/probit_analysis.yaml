@@ -1,0 +1,42 @@
+chapter: "Probit Analysis"
+method: "probit_analysis"
+examples:
+
+  # Example 1 – Power for several sample sizes (Ch.720 Example 1)
+  # 5-dose design, doses=11..15, proportions=0.05,0.275,0.5,0.725,0.95
+  # Model=Probit; alpha=0.025 one-sided; n_per_group=5; rho=1.10
+  # Reference reports power=0.45238; slope=23.07
+  - id: "Ex1 n=5 rho=1.10 alpha=0.025 power"
+    description: >
+      Chapter 720, Example 1 — 5-dose probit study, doses 11-15,
+      proportions 0.05/0.275/0.5/0.725/0.95, alpha=0.025 one-sided,
+      n_per_group=5, rho=1.10.  Reference reports power=0.45238, slope≈23.07.
+    inputs:
+      rho: 1.10
+      proportions: [0.05, 0.275, 0.5, 0.725, 0.95]
+      doses: [11.0, 12.0, 13.0, 14.0, 15.0]
+      alpha: 0.025
+      n_per_group: 5
+    expected: {n: 50, achieved_power: 0.45238}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Probit Analysis (Example 1)"
+
+  # Example 2 – Validation using Kodell et al. (2010) Table 2
+  # 5-dose design, slope=23.25, proportions=0.05,0.275,0.5,0.725,0.95
+  # alpha=0.05 one-sided; rho=1.10; power=0.90 → n_per_group=11
+  # Reference reports power=0.90538 at n_per_group=11
+  - id: "Ex2 Kodell-2010 validation rho=1.10 alpha=0.05 solve-n"
+    description: >
+      Chapter 720, Example 2 — Kodell et al. (2010) Table 2 validation.
+      5-dose probit design, slope=23.25, proportions 0.05/0.275/0.5/0.725/0.95,
+      alpha=0.05 one-sided, rho=1.10, target power=0.90.
+      reference (and Kodell) report n_per_group=11, achieved power=0.90538.
+    inputs:
+      rho: 1.10
+      proportions: [0.05, 0.275, 0.5, 0.725, 0.95]
+      beta1: 23.25
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 110, achieved_power: 0.90538}
+    tolerance: {n: 2, achieved_power: 0.005}
+    source: "Probit Analysis (Example 2)"

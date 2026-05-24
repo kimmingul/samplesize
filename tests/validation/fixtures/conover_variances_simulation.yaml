@@ -1,0 +1,116 @@
+chapter: "Conover Test of Variances (Simulation)"
+method: "conover_variances_simulation"
+
+# Monte-Carlo Conover squared-rank test power fixtures vs the reference
+# Chapter 561.  All results are stochastic; we use seed=42 and
+# n_sims=10000 to make them deterministic for CI.
+#
+# Tolerance: +/-0.01 absolute on achieved_power.  At n_sims=10000 the
+# binomial 95% CI half-width is ~0.010 at power=0.5 and ~0.004 at
+# power=0.95.
+#
+# Implementation note: Chapter 561's exact formula -- Z_ki =
+# |Y_ki - mean(Y_k)|, pooled ranks (average ties), then
+#   T = (1/D^2) [ sum_k S_k^2 / n_k - N Sbar^2 ]
+# with D^2 = (sum_{k,i} R_ki^4 - N Sbar^2)/(N-1).  Under H0,
+# T ~ chi^2(g-1).  Mean-centred deviations match the original Conover
+# (1999, Practical Nonparametric Statistics, sec 5.3) and the reference's chapter.
+
+examples:
+
+  - id: "Ex1 row 2 (n=20, S2=7, k=4)"
+    description: >
+      Example 1 row 2: k=4 groups, means=[10,20,10,10],
+      sigmas=[5,7,5,5], n=20/group, alpha=0.05, 5000 sims.
+      Reference reports power=0.234.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 7.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 20
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 20
+      n_total: 80
+      achieved_power: 0.234
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; +/-0.01 power.  Sim at seed=42 -> 0.237."
+    source: "Conover Test of Variances (Simulation) (Example 1 Numeric Results row 2)"
+
+  - id: "Ex1 row 6 (n=10, S2=8, k=4)"
+    description: >
+      Example 1 row 6: k=4, sigmas=[5,8,5,5], n=10/group.
+      Reference reports power=0.228.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 8.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 10
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 10
+      n_total: 40
+      achieved_power: 0.228
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; +/-0.01 power.  Sim at seed=42 -> 0.228 (exact)."
+    source: "Conover Test of Variances (Simulation) (Example 1 Numeric Results row 6)"
+
+  - id: "Ex1 row 14 (n=40, S2=9, k=4)"
+    description: >
+      Example 1 row 14: k=4, sigmas=[5,9,5,5], n=40/group.
+      Reference reports power=0.906.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 9.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 40
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 40
+      n_total: 160
+      achieved_power: 0.906
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; +/-0.01 power.  Sim at seed=42 -> 0.898."
+    source: "Conover Test of Variances (Simulation) (Example 1 Numeric Results row 14)"
+
+  - id: "Ex2 validation (k=2, target power=0.80, sigmas=[1,2])"
+    description: >
+      Example 2 -- Validation: solve for sample size, k=2,
+      sigmas=[1,2], means=[1,1], alpha=0.05, target power=0.80,
+      5000 sims.  Reference reports n=26/group (N=52), actual power=0.816.
+    inputs:
+      k_groups: 2
+      sigmas: [1.0, 2.0]
+      means: [1.0, 1.0]
+      power: 0.80
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 26
+      n_total: 52
+      achieved_power: 0.816
+    tolerance:
+      n_per_group: 2
+      n_total: 4
+      achieved_power: 0.01
+    notes: >
+      Sample-size bisection.  +/-2 on n_per_group reflects MC boundary
+      noise; sim with seed=42 lands on n=25 (one short of the reference's 26),
+      achieved=0.8162, which is essentially identical to the reference's 0.816.
+    source: "Conover Test of Variances (Simulation) (Example 2 Numeric Results row 1)"

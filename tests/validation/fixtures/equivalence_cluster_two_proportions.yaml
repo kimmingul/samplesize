@@ -1,0 +1,54 @@
+chapter: "Equivalence Tests for the Difference of Two Proportions in a Cluster-Randomized Design"
+method: "equivalence_cluster_two_proportions"
+examples:
+  - id: "Ex1 K=4 D1=0"
+    description: >
+      TOST equivalence test for two proportions (difference) in cluster RCT.
+      P2=0.6, D0U=0.15, D0L=-0.15, P1.1=0.6 (D1=0), M=50, ICC=0.002,
+      alpha=0.05, K1=K2=4. Farrington-Manning likelihood score test.
+    inputs:
+      p1: 0.6
+      p2: 0.6
+      d0u: 0.15
+      d0l: -0.15
+      m: 50.0
+      icc: 0.002
+      alpha: 0.05
+      k_clusters: 4
+    expected:
+      n: 400
+      n_clusters: 8
+      m_per_cluster: 50
+      achieved_power: 0.80415
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Equivalence Tests for the Difference of Two Proportions in a Cluster-Randomized Design (Example 1)"
+
+  - id: "Ex1 K=6 D1=0"
+    description: >
+      TOST equivalence test for two proportions (difference) in cluster RCT.
+      P2=0.6, D0U=0.15, D0L=-0.15, P1.1=0.6 (D1=0), M=50, ICC=0.002,
+      alpha=0.05, K1=K2=6.
+    inputs:
+      p1: 0.6
+      p2: 0.6
+      d0u: 0.15
+      d0l: -0.15
+      m: 50.0
+      icc: 0.002
+      alpha: 0.05
+      k_clusters: 6
+    expected:
+      n: 600
+      n_clusters: 12
+      m_per_cluster: 50
+      achieved_power: 0.94885
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Equivalence Tests for the Difference of Two Proportions in a Cluster-Randomized Design (Example 1)"

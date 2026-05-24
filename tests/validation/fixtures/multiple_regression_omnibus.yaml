@@ -1,0 +1,34 @@
+chapter: "Multiple Regression"
+method: "multiple_regression_omnibus"
+examples:
+
+  - id: "Ex1 Ch.865 q=1 R2T=0.05 R2C=0.50 N=50"
+    description: >
+      Ch.865 Example 1: test 1 additional predictor (R2_{T|C}=0.05)
+      after controlling for 4 predictors (R2_C=0.50). Alpha=0.05, N=50.
+      Reference reports power=0.63511.
+    inputs:
+      r2_t_given_c: 0.05
+      n_tested: 1
+      r2_c: 0.50
+      n_controlled: 4
+      n: 50
+      alpha: 0.05
+    expected: {n: 50, achieved_power: 0.63511}
+    tolerance: {n: 0, achieved_power: 0.0005}
+    source: "Multiple Regression (Example 1)"
+
+  - id: "Ex4 Ch.865 validation O'Brien N=15 q=2 R2=0.60"
+    description: >
+      Ch.865 Example 4 (O'Brien validation): alpha=0.05, N=15,
+      n_controlled=0, n_tested=2, R2_{T|C}=0.60. Reference reports power=0.96829.
+    inputs:
+      r2_t_given_c: 0.60
+      n_tested: 2
+      r2_c: 0.0
+      n_controlled: 0
+      n: 15
+      alpha: 0.05
+    expected: {n: 15, achieved_power: 0.96829}
+    tolerance: {n: 0, achieved_power: 0.0005}
+    source: "Multiple Regression (Example 4)"

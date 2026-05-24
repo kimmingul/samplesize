@@ -1,0 +1,52 @@
+chapter: "Group-Sequential Tests for Two Proportions (Simulation)"
+method: "group_sequential_two_proportions_simulation"
+examples:
+  - id: "Ex1 OBF 5-look power-solve N1=1000 p1=0.56 p2=0.63 alpha=0.05 two-sided"
+    description: >
+      Example 1 from reference chapter: OBF 5-look design, P1=0.56 (treatment|H1),
+      P2=0.63 (control), N1=N2=1000, alpha=0.05, two-sided.
+      reference simulation reports power 0.885 (100000 sims).
+      Tolerance ±0.015 for simulation variance at 10000 sims.
+    inputs:
+      p1: 0.56
+      p2: 0.63
+      alpha: 0.05
+      n1: 1000
+      n_looks: 5
+      boundary: "obrien-fleming"
+      sides: 2
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 2000
+      achieved_power: 0.885
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: "Group-Sequential Tests for Two Proportions (Simulation) (Example 1)"
+
+  - id: "Ex2 OBF 5-look one-sided N1=1000 p1=0.53 p2=0.46 alpha=0.05"
+    description: >
+      Example 2 from reference chapter: OBF 5-look one-sided design with futility,
+      P1=0.53 (treatment|H1), P2=0.46 (control), N1=N2=1000, alpha=0.05.
+      reference simulation reports power 0.904 (100000 sims).
+      Tolerance ±0.015 for simulation variance at 10000 sims.
+    inputs:
+      p1: 0.53
+      p2: 0.46
+      alpha: 0.05
+      n1: 1000
+      n_looks: 5
+      boundary: "obrien-fleming"
+      sides: 1
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 2000
+      achieved_power: 0.904
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: "Group-Sequential Tests for Two Proportions (Simulation) (Example 2)"

@@ -1,0 +1,51 @@
+chapter: "Non-Inferiority Tests for the Difference of Two Proportions in a Cluster-Randomized Design"
+method: "non_inferiority_cluster_two_proportions"
+examples:
+  - id: "Ex1 K=4 D1=0"
+    description: >
+      NI test for difference of two proportions in cluster RCT. P2=0.6, D0=-0.05,
+      P1.1=0.6 (D1=0), M=100, ICC=0.002, alpha=0.05, K1=K2=4. Higher proportions better.
+      Farrington-Manning likelihood score test.
+    inputs:
+      p1: 0.6
+      p2: 0.6
+      d0: -0.05
+      m: 100.0
+      icc: 0.002
+      alpha: 0.05
+      k_clusters: 4
+    expected:
+      n: 800
+      n_clusters: 8
+      m_per_cluster: 100
+      achieved_power: 0.37284
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Non-Inferiority Tests for the Difference of Two Proportions in a Cluster-Randomized Design (Example 1)"
+
+  - id: "Ex1 K=8 D1=0"
+    description: >
+      NI test for difference of two proportions in cluster RCT. P2=0.6, D0=-0.05,
+      P1.1=0.6 (D1=0), M=100, ICC=0.002, alpha=0.05, K1=K2=8.
+    inputs:
+      p1: 0.6
+      p2: 0.6
+      d0: -0.05
+      m: 100.0
+      icc: 0.002
+      alpha: 0.05
+      k_clusters: 8
+    expected:
+      n: 1600
+      n_clusters: 16
+      m_per_cluster: 100
+      achieved_power: 0.58780
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Non-Inferiority Tests for the Difference of Two Proportions in a Cluster-Randomized Design (Example 1)"

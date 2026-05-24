@@ -1,0 +1,78 @@
+chapter: "Confidence Intervals for the Ratio of Two Variances using Variances"
+method: "ci_ratio_two_variances_using_variances"
+examples:
+
+  - id: "Ex1 row 4 (CL=0.95, W=0.5, V1=5, V2=10)"
+    description: >
+      Equal-allocation two-sided 95% F-based CI on the variance ratio,
+      target width 0.5.  Reference reports N1=N2=69 with actual width 0.498.
+    solve_for: "n"
+    inputs:
+      variance1: 5.0
+      variance2: 10.0
+      alpha: 0.05
+      width: 0.5
+      allocation_ratio: 1.0
+      sides: 2
+    expected:
+      n1: 69
+      n2: 69
+      achieved_width: 0.498
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_width: 0.001
+    source: >
+      reference/md/Confidence Intervals for the Ratio of Two Variances using Variances/
+      hybrid_auto/Confidence Intervals for the Ratio of Two Variances using Variances.md,
+      §Example 1 (row 4)
+
+  - id: "Ex1 row 1 (CL=0.95, W=0.2)"
+    description: >
+      Same setup, target width 0.2 -> reference N1=N2=392, actual width
+      0.200.
+    solve_for: "n"
+    inputs:
+      variance1: 5.0
+      variance2: 10.0
+      alpha: 0.05
+      width: 0.2
+      allocation_ratio: 1.0
+      sides: 2
+    expected:
+      n1: 392
+      n2: 392
+      achieved_width: 0.200
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_width: 0.001
+    source: >
+      reference/md/Confidence Intervals for the Ratio of Two Variances using Variances/
+      hybrid_auto/Confidence Intervals for the Ratio of Two Variances using Variances.md,
+      §Example 1 (row 1)
+
+  - id: "Ex2 (Sachs 1984 validation)"
+    description: >
+      Sachs (1984, p. 261): CL=0.90, V1=8, V2=3, target width 4.56 ->
+      reference N1=N2=20 with actual width 4.552 and limits [1.23, 5.78].
+    solve_for: "n"
+    inputs:
+      variance1: 8.0
+      variance2: 3.0
+      alpha: 0.10
+      width: 4.56
+      allocation_ratio: 1.0
+      sides: 2
+    expected:
+      n1: 20
+      n2: 20
+      achieved_width: 4.552
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_width: 0.001
+    source: >
+      reference/md/Confidence Intervals for the Ratio of Two Variances using Variances/
+      hybrid_auto/Confidence Intervals for the Ratio of Two Variances using Variances.md,
+      §Example 2

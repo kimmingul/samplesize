@@ -1,0 +1,22 @@
+language: ko
+display_name: Korean (한국어)
+templates:
+  ich_e9_section: |-
+    표본 크기는 {method_name} 절차에 따라 산출하였다.
+    {sides_word} 검정(α = {alpha}) 기준 통계적 검정력은
+    {power:.4f}이며, 이는 {n_phrase}에 해당한다. 계산은
+    검증된 통계적 절차를 따랐다 ({citation}).
+  grant_aims: |-
+    **표본 크기 산정.** {method_name}을(를) 사용하여
+    {sides_word} 유의수준 α = {alpha}, 목표 검정력
+    {target_power}을(를) 기준으로 본 연구에는 {n_phrase}을(를)
+    등록한다. 계산은 `samplesize`로 수행되었으며 검증된
+    통계적 참고문헌의 예제에 대해 검증되었다.
+words:
+  two_sided: "양측"
+  one_sided: "단측"
+n_phrase:
+  with_groups: "총 {total}명 (그룹당 {per_group}명)"
+  two_arm: "총 {total}명 (1군 {n1}명, 2군 {n2}명)"
+  single: "총 {n}명"
+  fallback: "계획된 표본 수"

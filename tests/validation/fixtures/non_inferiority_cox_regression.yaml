@@ -1,0 +1,54 @@
+chapter: "Non-Inferiority Tests for Two Survival Curves Using Cox's Proportional Hazards Model"
+method: "non_inferiority_cox_regression"
+examples:
+
+  - id: "Ex1 NI Cox HR=0.5 HRni=1.2"
+    description: >
+      Ch.731 Ex1: HR=0.5, HRni=1.2, Pev1=0.5, Pev2=0.3, power=0.90,
+      alpha=0.05, one-sided, equal allocation. Reference reports N=112 (n1=56, n2=56).
+    inputs:
+      hr: 0.5
+      hr_ni: 1.2
+      pev1: 0.5
+      pev2: 0.3
+      alpha: 0.05
+      power: 0.90
+      p1: 0.5
+      sides: 1
+    expected:
+      n: 112
+      n1: 56
+      n2: 56
+      achieved_power: 0.9006
+    tolerance:
+      n: 0
+      n1: 0
+      n2: 0
+      achieved_power: 0.0005
+    source: "Non-Inferiority Tests for Two Survival Curves Using Cox's Proportional Hazards Model (Example 1)"
+
+  - id: "Ex2 NI Cox Chow validation HR=1.35 HRni=2.0"
+    description: >
+      Ch.731 Ex2 (Chow et al. 2008 validation): HR=1.35 (=exp(0.3)), HRni=2.0,
+      Pev1=Pev2=0.8, power=0.80, alpha=0.05, one-sided, equal allocation.
+      Reference reports N=201 (n1=100, n2=101).
+    inputs:
+      hr: 1.35
+      hr_ni: 2.0
+      pev1: 0.8
+      pev2: 0.8
+      alpha: 0.05
+      power: 0.80
+      p1: 0.5
+      sides: 1
+    expected:
+      n: 201
+      n1: 100
+      n2: 101
+      achieved_power: 0.8015
+    tolerance:
+      n: 0
+      n1: 1
+      n2: 1
+      achieved_power: 0.0005
+    source: "Non-Inferiority Tests for Two Survival Curves Using Cox's Proportional Hazards Model (Example 2)"

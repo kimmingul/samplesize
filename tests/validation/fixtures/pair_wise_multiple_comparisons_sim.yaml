@@ -1,0 +1,117 @@
+chapter: "Pair-Wise Multiple Comparisons (Simulation)"
+method: "pair_wise_multiple_comparisons_sim"
+
+# Monte-Carlo Tukey-Kramer power fixtures vs the reference Chapter 580.
+# All results are stochastic; we use seed=42 and n_sims=10000 to make
+# them deterministic for CI.
+#
+# Tolerance: +/-0.01 absolute on achieved_power.  At n_sims=10000 the
+# binomial 95% CI half-width is ~0.010 at power=0.5 and ~0.004 at
+# power=0.95 (precision table in the reference chapter).  the reference's own
+# reference values in Example 1 are from 2000-sim runs and Example 3
+# explicitly reports the 10000-sim value as 0.736 with CI (0.727, 0.745).
+
+examples:
+
+  - id: "Ex1 row 1 (Tukey, k=5, n=5, any-pair)"
+    description: >
+      Example 1 row 1: k=5 groups, means=[0,0,0,0,3], sd=3,
+      n=5/group, FWER=0.05, Tukey-Kramer.  Reference reports any-pair
+      power=0.251 (2000 sims).
+    inputs:
+      k_groups: 5
+      means: [0.0, 0.0, 0.0, 0.0, 3.0]
+      sd: 3.0
+      n_per_group: 5
+      alpha: 0.05
+      adjustment: "tukey"
+      power_definition: "any"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 5
+      n_total: 25
+      achieved_power: 0.251
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power (the reference itself used 2000 sims). Sim at seed=42 -> 0.256."
+    source: "Pair-Wise Multiple Comparisons (Simulation) (Example 1 Summary row 1)"
+
+  - id: "Ex1 row 2 (Tukey, k=5, n=10, any-pair)"
+    description: >
+      Example 1 row 2: same design as row 1 with n=10/group.
+      reference any-pair power=0.562 (2000 sims).
+    inputs:
+      k_groups: 5
+      means: [0.0, 0.0, 0.0, 0.0, 3.0]
+      sd: 3.0
+      n_per_group: 10
+      alpha: 0.05
+      adjustment: "tukey"
+      power_definition: "any"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 10
+      n_total: 50
+      achieved_power: 0.562
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.554."
+    source: "Pair-Wise Multiple Comparisons (Simulation) (Example 1 Summary row 2)"
+
+  - id: "Ex1 row 4 (Tukey, k=5, n=20, all-pair)"
+    description: >
+      Example 1 row 4: k=5, means=[0,0,0,0,3], sd=3, n=20/group,
+      Tukey-Kramer. reference all-pair power=0.356 (2000 sims).
+    inputs:
+      k_groups: 5
+      means: [0.0, 0.0, 0.0, 0.0, 3.0]
+      sd: 3.0
+      n_per_group: 20
+      alpha: 0.05
+      adjustment: "tukey"
+      power_definition: "all"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 20
+      n_total: 100
+      achieved_power: 0.356
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.355."
+    source: "Pair-Wise Multiple Comparisons (Simulation) (Example 1 Summary row 4)"
+
+  - id: "Ex3 Ramsey validation (Tukey, k=4, n=16, all-pair)"
+    description: >
+      Example 3 (Ramsey 1978): k=4 with means=[-0.7,-0.7,0.7,0.7],
+      sd=1, n=16/group, FWER=0.05, Tukey-Kramer.  Ramsey reported
+      all-pair power=0.723 (1000 sims, CI 0.703-0.759); the reference's 10000-sim
+      run reports 0.736 (CI 0.727-0.745).
+    inputs:
+      k_groups: 4
+      means: [-0.7, -0.7, 0.7, 0.7]
+      sd: 1.0
+      n_per_group: 16
+      alpha: 0.05
+      adjustment: "tukey"
+      power_definition: "all"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 16
+      n_total: 64
+      achieved_power: 0.736
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; +/-0.015 power. Sim at seed=42 -> 0.727, inside reference 10k CI (0.727, 0.745)."
+    source: "Pair-Wise Multiple Comparisons (Simulation) (Example 3 Numeric Results)"

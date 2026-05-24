@@ -1,0 +1,127 @@
+chapter: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Differences"
+method: "non_inferiority_cross_over_diff"
+
+# All examples below are reproduced from the reference Chapter 510 ("Non-
+# Inferiority Tests for Two Means in a 2x2 Cross-Over Design using
+# Differences").  Mechanics: noncentral-t with df = N - 2 and
+# SE = Sw * sqrt(2/N); rejection region shifted by -|NIM| (higher means
+# better) or +|NIM| (worse).
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 3 - Validation using Julious (2004) p.1953.
+  # Diff = 0, NIM = 10, Sw = 20, alpha = 0.025, power = 0.90.
+  # Julious reports N = 86; Reference reports N = 88 (achieved power
+  # 0.906483) because it searches only even N and N = 86 gives power
+  # 0.899997 (just below 0.90).
+  # ------------------------------------------------------------------
+  - id: "Ex3 Julious 2004 - N=88 (Diff=0, NIM=10, Sw=20)"
+    description: >
+      Julious (2004) page 1953 / Example 3 Chapter 510:
+      diff = 0, margin (NIM) = 10, Sw = 20, alpha = 0.025, target
+      power = 0.90.  Reference reports N = 88, achieved power = 0.906483.
+    inputs:
+      margin: 10.0
+      diff: 0.0
+      sd_w: 20.0
+      alpha: 0.025
+      power: 0.90
+      higher_means: "better"
+    expected: {n: 88, achieved_power: 0.906483}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 3 - Validation using Julious)"
+
+  # ------------------------------------------------------------------
+  # Example 2 - target power 0.90, NIM = 5 and NIM = 10, Sw = 10.
+  # reference: NIM=5 -> N=88 power 0.90648; NIM=10 -> N=24 power 0.91139.
+  # ------------------------------------------------------------------
+  - id: "Ex2 row1 - NIM=5, Sw=10, power=0.90"
+    description: >
+      Example 2 Chapter 510 row 1: diff = 0, margin (NIM) = 5,
+      Sw = 10, alpha = 0.025, target power 0.90 -> N = 88,
+      achieved power 0.90648.
+    inputs:
+      margin: 5.0
+      diff: 0.0
+      sd_w: 10.0
+      alpha: 0.025
+      power: 0.90
+      higher_means: "better"
+    expected: {n: 88, achieved_power: 0.90648}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 2 row 1)"
+
+  - id: "Ex2 row2 - NIM=10, Sw=10, power=0.90"
+    description: >
+      Example 2 Chapter 510 row 2: diff = 0, margin (NIM) = 10,
+      Sw = 10, alpha = 0.025, target power 0.90 -> N = 24,
+      achieved power 0.91139.
+    inputs:
+      margin: 10.0
+      diff: 0.0
+      sd_w: 10.0
+      alpha: 0.025
+      power: 0.90
+      higher_means: "better"
+    expected: {n: 24, achieved_power: 0.91139}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 2 row 2)"
+
+  # ------------------------------------------------------------------
+  # Example 1 power-at-N rows.  Diff = 0, Sw = 10, alpha = 0.025.
+  # ------------------------------------------------------------------
+  - id: "Ex1 N=5 NIM=5 - Power"
+    description: >
+      Example 1 Chapter 510 (N=5, NIM=5, Sw=10): power = 0.08310.
+    inputs:
+      margin: 5.0
+      diff: 0.0
+      sd_w: 10.0
+      alpha: 0.025
+      n: 5
+      higher_means: "better"
+    expected: {n: 5, achieved_power: 0.08310}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=5 NIM=-5)"
+
+  - id: "Ex1 N=20 NIM=5 - Power"
+    description: >
+      Example 1 Chapter 510 (N=20, NIM=5, Sw=10): power = 0.32175.
+    inputs:
+      margin: 5.0
+      diff: 0.0
+      sd_w: 10.0
+      alpha: 0.025
+      n: 20
+      higher_means: "better"
+    expected: {n: 20, achieved_power: 0.32175}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=20 NIM=-5)"
+
+  - id: "Ex1 N=10 NIM=10 - Power"
+    description: >
+      Example 1 Chapter 510 (N=10, NIM=10, Sw=10): power = 0.50245.
+    inputs:
+      margin: 10.0
+      diff: 0.0
+      sd_w: 10.0
+      alpha: 0.025
+      n: 10
+      higher_means: "better"
+    expected: {n: 10, achieved_power: 0.50245}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=10 NIM=-10)"
+
+  - id: "Ex1 N=30 NIM=10 - Power"
+    description: >
+      Example 1 Chapter 510 (N=30, NIM=10, Sw=10): power = 0.96222.
+    inputs:
+      margin: 10.0
+      diff: 0.0
+      sd_w: 10.0
+      alpha: 0.025
+      n: 30
+      higher_means: "better"
+    expected: {n: 30, achieved_power: 0.96222}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Differences (Example 1 row N=30 NIM=-10)"

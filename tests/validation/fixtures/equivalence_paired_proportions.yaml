@@ -1,0 +1,53 @@
+chapter: "Equivalence Tests for the Difference Between Two Correlated Proportions"
+method: "equivalence_paired_proportions"
+examples:
+
+  - id: "Ex2 N=90% power P01=0.05"
+    description: >
+      Ch.165 Example 2: normal approximation, 90% power, alpha=0.05,
+      De=0.05, Da=0.00, Ps=0.80, P01=0.05. Expected N=468.
+    solve_for: "n"
+    inputs:
+      ps: 0.80
+      da: 0.0
+      d_e: 0.05
+      nuisance_type: "p01"
+      nuisance_value: 0.05
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected:
+      n: 468
+      achieved_power: 0.90019
+    tolerance:
+      n: 2
+      achieved_power: 0.015
+    source: >
+      reference/md/Equivalence Tests for the Difference Between Two Correlated
+      Proportions/hybrid_auto/Equivalence Tests for the Difference Between Two
+      Correlated Proportions.md, §Example 2.
+
+  - id: "Ex2 N=90% power P01=0.10"
+    description: >
+      Ch.165 Example 2: normal approximation, 90% power, alpha=0.05,
+      De=0.05, Da=0.00, Ps=0.80, P01=0.10. Expected N=881.
+    solve_for: "n"
+    inputs:
+      ps: 0.80
+      da: 0.0
+      d_e: 0.05
+      nuisance_type: "p01"
+      nuisance_value: 0.10
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected:
+      n: 881
+      achieved_power: 0.90002
+    tolerance:
+      n: 2
+      achieved_power: 0.015
+    source: >
+      reference/md/Equivalence Tests for the Difference Between Two Correlated
+      Proportions/hybrid_auto/Equivalence Tests for the Difference Between Two
+      Correlated Proportions.md, §Example 2.

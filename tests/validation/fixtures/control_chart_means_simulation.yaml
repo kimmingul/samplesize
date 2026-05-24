@@ -1,0 +1,42 @@
+chapter: "Control Charts for Means (Simulation)"
+method: "control_chart_means_simulation"
+examples:
+
+  # Example 1: N=6, mu0=5.2, sigma0=3.1, mu1=6.2, sigma1=3.1, z=3.0
+  # Expected ARL~72.3, MRL~50 (simulation, seed-based)
+  - id: "Ex1 N=6 Xbar shift=1 sigma - ARL"
+    description: >
+      Chapter 290, Example 1.  N=6, in-control mean=5.2, sigma=3.1,
+      out-of-control mean=6.2 (1 sigma shift), Z-multiplier=3.0.
+      Expected ARL≈72.3, MRL≈50.  Simulation tolerance ±15 on ARL.
+    inputs:
+      n: 6
+      mu0: 5.2
+      sigma0: 3.1
+      mu1: 6.2
+      sigma1: 3.1
+      z_multiplier: 3.0
+      n_sim: 50000
+      seed: 42
+    expected: {n: 6, achieved_power: 0.013}
+    tolerance: {n: 0, achieved_power: 0.015}
+    source: "Control Charts for Means (Simulation) (Example 1)"
+
+  # Large shift: N=6, mu1=11.2 (~2 sigma shift), z=3.0 -> ARL~1, power~0.96
+  - id: "Ex1 N=6 Xbar shift=2 sigma - ARL"
+    description: >
+      Chapter 290 scenario.  N=6, in-control mean=5.2, sigma=3.1,
+      out-of-control mean=11.2 (~2 sigma shift), Z-multiplier=3.0.
+      Expected power≈0.96 (detects on first sample).  Simulation tolerance ±0.015.
+    inputs:
+      n: 6
+      mu0: 5.2
+      sigma0: 3.1
+      mu1: 11.2
+      sigma1: 3.1
+      z_multiplier: 3.0
+      n_sim: 50000
+      seed: 42
+    expected: {n: 6, achieved_power: 0.958}
+    tolerance: {n: 0, achieved_power: 0.015}
+    source: "Control Charts for Means (Simulation) (Example 1)"

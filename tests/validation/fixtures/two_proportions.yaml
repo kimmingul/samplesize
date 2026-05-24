@@ -1,0 +1,80 @@
+chapter: "Tests for Two Proportions"
+method: "two_proportions"
+examples:
+
+  - id: "Ex7 Ryan (one-sided z pooled)"
+    description: >
+      Ryan (2013) p.117: pooled z-test, P2=0.55, D1=0.1 (P1=0.65),
+      power=0.80, α=0.05, one-sided. Reports n=296 per group; reference
+      actual power=0.80034.
+    inputs:
+      p1: 0.65
+      p2: 0.55
+      alpha: 0.05
+      power: 0.80
+      sides: 1
+      test_type: "z_pooled"
+    expected: {n1: 296, n2: 296, achieved_power: 0.80034}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Tests for Two Proportions (Example 7)"
+
+  - id: "Ex8 Chow (two-sided z unpooled)"
+    description: >
+      Chow, Shao & Wang (2008) p.92: unpooled z-test, P2=0.65, D1=0.2
+      (P1=0.85), power=0.80, α=0.05, two-sided. Reports n=70 per group;
+      reference actual power=0.80191.
+    inputs:
+      p1: 0.85
+      p2: 0.65
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+      test_type: "z_unpooled"
+    expected: {n1: 70, n2: 70, achieved_power: 0.80191}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Tests for Two Proportions (Example 8)"
+
+  - id: "Ex9a Fleiss (pooled+CC, low power)"
+    description: >
+      Fleiss, Levin & Paik (2003) p.74: pooled+CC z-test, P1=0.7,P2=0.6,
+      power=0.75, α=0.01, two-sided. Reports n=499 (Reference gets 500;
+      actual=0.75066).
+    inputs:
+      p1: 0.70
+      p2: 0.60
+      alpha: 0.01
+      power: 0.75
+      sides: 2
+      test_type: "z_pooled_cc"
+    expected: {n1: 500, n2: 500, achieved_power: 0.75066}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Tests for Two Proportions (Example 9 (power 0.75))"
+
+  - id: "Ex9b Fleiss (pooled+CC, high power)"
+    inputs:
+      p1: 0.70
+      p2: 0.60
+      alpha: 0.01
+      power: 0.95
+      sides: 2
+      test_type: "z_pooled_cc"
+    expected: {n1: 827, n2: 827, achieved_power: 0.95001}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Tests for Two Proportions (Example 9 (power 0.95))"
+
+  - id: "Ex10 Fleiss (pooled+CC, unequal allocation R=0.5)"
+    description: >
+      Fleiss p.76-77: pooled+CC z-test, P1=0.25,P2=0.40, allocation
+      R=N2/N1=0.5, power=0.95, α=0.01, two-sided. Reports N1=530, N2=265
+      (Reference gets 531/266; book's 530 is undersized).
+    inputs:
+      p1: 0.25
+      p2: 0.40
+      alpha: 0.01
+      power: 0.95
+      sides: 2
+      allocation: 0.5
+      test_type: "z_pooled_cc"
+    expected: {n1: 531, n2: 266, achieved_power: 0.95066}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Tests for Two Proportions (Example 10)"

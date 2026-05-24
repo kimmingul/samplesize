@@ -1,0 +1,43 @@
+chapter: "Confidence Intervals for Exponential Reliability"
+method: "ci_exponential_reliability"
+examples:
+
+  - id: "Ex1 t=1 width=0.1 (theta=1, 20% censored)"
+    description: >
+      Two-sided 95% CI for R(t)=exp(-1/1)=0.368 at time t=1. Target width
+      0.1 with theta=1 and 20% censoring. Ch.408 reports E=208 events,
+      expected N=260, actual width 0.0998.
+    inputs:
+      theta: 1.0
+      t: 1.0
+      width: 0.1
+      alpha: 0.05
+      sides: 2
+      pct_censored: 20.0
+    expected:
+      n: 260
+      achieved_width: 0.100
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for Exponential Reliability (Example 1, row 1)"
+
+  - id: "Ex1 t=2 width=0.1 (theta=1, 20% censored)"
+    description: >
+      Two-sided 95% CI for R(t)=exp(-2/1)=0.135 at time t=2. Target width
+      0.1 with theta=1 and 20% censoring. Ch.408 reports E=114 events,
+      expected N=143, actual width 0.0999.
+    inputs:
+      theta: 1.0
+      t: 2.0
+      width: 0.1
+      alpha: 0.05
+      sides: 2
+      pct_censored: 20.0
+    expected:
+      n: 143
+      achieved_width: 0.100
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for Exponential Reliability (Example 1, row 2)"

@@ -1,0 +1,58 @@
+chapter: "Tests for the Ratio of Two Negative Binomial Rates"
+method: "negative_binomial_two_rates"
+examples:
+
+  - id: "Ex1 Ch.438 lam1=0.8 RR=0.85 kappa=0.4 N1=1311"
+    description: >
+      Ch.438 Example 1 (Method 3 MLE null variance): lam1=0.80, lam2=0.68 (RR=0.85),
+      kappa=0.4, mu_t=0.75, alpha=0.05, power=0.80, two-sided.
+      Reference reports N1=N2=1311 with achieved power=0.80008. Matches Table I M3 of
+      Zhu & Lakkis (2014) p.381 exactly.
+    solve_for: "n"
+    inputs:
+      lam1: 0.80
+      lam2: 0.68
+      kappa: 0.4
+      mu_t: 0.75
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected: {n1: 1311, achieved_power: 0.80008}
+    tolerance: {n1: 1, achieved_power: 0.005}
+    source: "Tests for the Ratio of Two Negative Binomial Rates (Example 1)"
+
+  - id: "Ex1 Ch.438 lam1=0.8 RR=0.85 kappa=1.0 N1=1668"
+    description: >
+      Ch.438 Example 1 (Method 3): lam1=0.80, lam2=0.68 (RR=0.85),
+      kappa=1.0, mu_t=0.75, alpha=0.05, power=0.80, two-sided.
+      Reference reports N1=N2=1668 with achieved power=0.80016.
+    solve_for: "n"
+    inputs:
+      lam1: 0.80
+      lam2: 0.68
+      kappa: 1.0
+      mu_t: 0.75
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected: {n1: 1668, achieved_power: 0.80016}
+    tolerance: {n1: 1, achieved_power: 0.005}
+    source: "Tests for the Ratio of Two Negative Binomial Rates (Example 1)"
+
+  - id: "Ex2 Ch.438 asthma exacerbations lam1=0.66 RR=0.8 kappa=0.8 N1=1131"
+    description: >
+      Ch.438 Example 2: asthma exacerbation study. lam1=0.66, lam2=0.528 (RR=0.8),
+      kappa=0.8, mu_t=0.9, alpha=0.05, power=0.90, two-sided.
+      Reference reports N1=N2=1131. Matches Zhu & Lakkis (2014) pp.382-384 exactly.
+    solve_for: "n"
+    inputs:
+      lam1: 0.66
+      lam2: 0.528
+      kappa: 0.8
+      mu_t: 0.9
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n1: 1131, achieved_power: 0.90000}
+    tolerance: {n1: 1, achieved_power: 0.005}
+    source: "Tests for the Ratio of Two Negative Binomial Rates (Example 2)"

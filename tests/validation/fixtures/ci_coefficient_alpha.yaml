@@ -1,0 +1,73 @@
+chapter: "Confidence Intervals for Coefficient Alpha"
+method: "ci_coefficient_alpha"
+examples:
+
+  - id: "Ex1 row 1 (CA=0.5, K=5, W=0.1, CL=0.95)"
+    description: >
+      Two-sided 95% CI for Cronbach's alpha with target width 0.1,
+      planning CA=0.5 and K=5 items.  Reference reports N=963 with limits
+      0.448, 0.548 and width 0.100.
+    inputs:
+      ca: 0.5
+      k: 5
+      alpha: 0.05
+      width: 0.1
+      sides: 2
+    expected:
+      n: 963
+      achieved_width: 0.100
+      lower_limit: 0.448
+      upper_limit: 0.548
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Coefficient Alpha (Example 1, row 1)"
+
+  - id: "Ex1 row 6 (CA=0.5, K=30, W=0.1, CL=0.95)"
+    description: >
+      Two-sided 95% CI for Cronbach's alpha with target width 0.1,
+      planning CA=0.5 and K=30 items.  Reference reports N=796 with limits
+      0.449, 0.549 and width 0.100.
+    inputs:
+      ca: 0.5
+      k: 30
+      alpha: 0.05
+      width: 0.1
+      sides: 2
+    expected:
+      n: 796
+      achieved_width: 0.100
+      lower_limit: 0.449
+      upper_limit: 0.549
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Coefficient Alpha (Example 1, row 6)"
+
+  - id: "Ex2 (Feldt et al. 1987 p.95: CA=0.79, N=41, K=26, CL=0.90)"
+    description: >
+      Two-sided 90% CI from Feldt et al. (1987) p.95: CA=0.79, N=41,
+      K=26.  Feldt reports CAL=0.704, CAU=0.861, width 0.157, and reference
+      reproduces this within rounding.
+    inputs:
+      ca: 0.79
+      k: 26
+      alpha: 0.10
+      n: 41
+      sides: 2
+      solve_for: "width"
+    expected:
+      n: 41
+      achieved_width: 0.157
+      lower_limit: 0.705
+      upper_limit: 0.862
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Coefficient Alpha (Example 2)"

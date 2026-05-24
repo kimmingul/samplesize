@@ -1,0 +1,133 @@
+chapter: "Equivalence Tests for the Difference of Two Means in a Higher-Order Cross-Over Design"
+method: "equivalence_higher_order_cross_over_diff"
+examples:
+
+  # Example 1: 3x2 dual, EU=19.2, EL=-19.2, D=-4, sigma_w=18, alpha=0.05.
+  - id: "Ex1 N=10 (3x2 dual) - power"
+    description: >
+      Chapter 540, Example 1.  3x2 dual, N = 10, EU = 19.2,
+      EL = -19.2, D = -4, sigma_w = 18, alpha = 0.05.
+      Expected power = 0.5985.
+    inputs:
+      lower_limit: -19.2
+      upper_limit: 19.2
+      diff: -4.0
+      sd_w: 18.0
+      design: "two_sequence_dual"
+      alpha: 0.05
+      n: 10
+    expected: {n: 10, achieved_power: 0.5985}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  - id: "Ex1 N=20 (3x2 dual) - power"
+    description: >
+      Chapter 540, Example 1.  3x2 dual, N = 20, EU = 19.2,
+      EL = -19.2, D = -4, sigma_w = 18, alpha = 0.05.
+      Expected power = 0.9119.
+    inputs:
+      lower_limit: -19.2
+      upper_limit: 19.2
+      diff: -4.0
+      sd_w: 18.0
+      design: "two_sequence_dual"
+      alpha: 0.05
+      n: 20
+    expected: {n: 20, achieved_power: 0.9119}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  # Example 2 - Sample Size (Exact)
+  - id: "Ex2 power=0.80 (3x2 dual exact) - N"
+    description: >
+      Chapter 540, Example 2.  3x2 dual, EU = 19.2, EL = -19.2,
+      D = -4, sigma_w = 18, alpha = 0.05, target power 0.80,
+      Sample Size (Exact).  Expected N = 15, achieved power = 0.8155.
+    inputs:
+      lower_limit: -19.2
+      upper_limit: 19.2
+      diff: -4.0
+      sd_w: 18.0
+      design: "two_sequence_dual"
+      alpha: 0.05
+      power: 0.80
+      equal_per_sequence: false
+    expected: {n: 15, achieved_power: 0.8155}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 2)"
+
+  - id: "Ex2 power=0.90 (3x2 dual exact) - N"
+    description: >
+      Chapter 540, Example 2.  3x2 dual, EU = 19.2, EL = -19.2,
+      D = -4, sigma_w = 18, alpha = 0.05, target power 0.90,
+      Sample Size (Exact).  Expected N = 20, achieved power = 0.9119.
+    inputs:
+      lower_limit: -19.2
+      upper_limit: 19.2
+      diff: -4.0
+      sd_w: 18.0
+      design: "two_sequence_dual"
+      alpha: 0.05
+      power: 0.90
+      equal_per_sequence: false
+    expected: {n: 20, achieved_power: 0.9119}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 2)"
+
+  # Example 3 - Chen et al. (1997) p.757, validated Balaam (2x4) sample
+  # sizes for relative parameterisation (sigma_w=10%, EU=20%, EL=-20%).
+  - id: "Ex3 Balaam D=0 power=0.90 - N (Chen 1997)"
+    description: >
+      Chapter 540, Example 3.  Balaam (AA|BB|AB|BA),
+      EU = 0.20, EL = -0.20, D = 0, sigma_w = 0.10, alpha = 0.05,
+      target power = 0.90.  Chen et al. (1997) p.757 reports N = 24;
+      reference computes achieved power 0.9041.
+    inputs:
+      lower_limit: -0.20
+      upper_limit: 0.20
+      diff: 0.0
+      sd_w: 0.10
+      design: "balaam"
+      alpha: 0.05
+      power: 0.90
+      equal_per_sequence: true
+    expected: {n: 24, achieved_power: 0.9041}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 3)"
+
+  - id: "Ex3 Balaam D=0.10 power=0.90 - N (Chen 1997)"
+    description: >
+      Chapter 540, Example 3.  Balaam (AA|BB|AB|BA),
+      EU = 0.20, EL = -0.20, D = 0.10, sigma_w = 0.10, alpha = 0.05,
+      target power = 0.90.  Chen et al. (1997) p.757: N = 72;
+      reference computes achieved power 0.9065.
+    inputs:
+      lower_limit: -0.20
+      upper_limit: 0.20
+      diff: 0.10
+      sd_w: 0.10
+      design: "balaam"
+      alpha: 0.05
+      power: 0.90
+      equal_per_sequence: true
+    expected: {n: 72, achieved_power: 0.9065}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 3)"
+
+  - id: "Ex3 Balaam D=0.15 power=0.90 - N (Chen 1997)"
+    description: >
+      Chapter 540, Example 3.  Balaam, EU = 0.20, EL = -0.20,
+      D = 0.15, sigma_w = 0.10, alpha = 0.05, target power = 0.90.
+      Chen et al. (1997) p.757: N = 276; reference achieved power 0.9003.
+    inputs:
+      lower_limit: -0.20
+      upper_limit: 0.20
+      diff: 0.15
+      sd_w: 0.10
+      design: "balaam"
+      alpha: 0.05
+      power: 0.90
+      equal_per_sequence: true
+    expected: {n: 276, achieved_power: 0.9003}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 3)"

@@ -1,0 +1,71 @@
+chapter: "Superiority by a Margin Tests for One Proportion"
+method: "superiority_by_margin_one_proportion"
+notes: |
+  One-sample superiority-by-margin test on a binomial proportion
+  (Chapter 103).  reference shares the same Z-test power formulas
+  with the NI one-proportion chapter; the only structural difference
+  is that P0 > PB (instead of P0 < PB).  Default test statistic is
+  Z-Test using S(P0); Z-Test using S(Phat) is exercised via the Chow
+  validation example (Ex 7).
+
+examples:
+
+  - id: "Ex1 reference (n=50, P0=0.55, P1=0.62)"
+    description: >
+      Example 1 row 1: PB=0.50, d0=0.05 (P0=0.55), d1=0.12
+      (P1=0.62), alpha=0.05, Z-Test S(P0), higher-is-better.  reference
+      reports power=0.25266.
+    inputs:
+      p: 0.62
+      p0: 0.55
+      alpha: 0.05
+      n: 50
+      higher_is_better: true
+    expected: {n: 50, achieved_power: 0.25266}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for One Proportion (Example 1 row 1)"
+
+  - id: "Ex1 reference (n=500, P0=0.55, P1=0.62)"
+    description: >
+      Example 1 row 9: PB=0.50, d0=0.05 (P0=0.55), d1=0.12
+      (P1=0.62), alpha=0.05, n=500.  Reference reports power=0.93808.
+    inputs:
+      p: 0.62
+      p0: 0.55
+      alpha: 0.05
+      n: 500
+      higher_is_better: true
+    expected: {n: 500, achieved_power: 0.93808}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for One Proportion (Example 1 row 9)"
+
+  - id: "Ex2 reference (find N, P0=0.55, P1=0.62, power=0.90)"
+    description: >
+      Example 2: solve for N with PB=0.50, d0=0.05 (P0=0.55),
+      d1=0.12 (P1=0.62), alpha=0.05, power=0.90, Z-Test S(P0).
+      Reference reports n=424 with achieved=0.90037.
+    inputs:
+      p: 0.62
+      p0: 0.55
+      alpha: 0.05
+      power: 0.90
+      higher_is_better: true
+    expected: {n: 424, achieved_power: 0.90037}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for One Proportion (Example 2)"
+
+  - id: "Ex7 Chow Shao Wang 2008 (S(Phat), P0=0.20, P1=0.50)"
+    description: >
+      Example 7 validates against Chow, Shao & Wang (2008) p.87:
+      Z-Test S(Phat), P0=0.20, P1=0.50, alpha=0.05, power=0.80,
+      higher-is-better.  Reference reports n=18 with achieved=0.81613.
+    inputs:
+      p: 0.50
+      p0: 0.20
+      alpha: 0.05
+      power: 0.80
+      higher_is_better: true
+      se_method: "s_phat"
+    expected: {n: 18, achieved_power: 0.81613}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Superiority by a Margin Tests for One Proportion (Example 7 (Chow, Shao & Wang 2008 p.87))"

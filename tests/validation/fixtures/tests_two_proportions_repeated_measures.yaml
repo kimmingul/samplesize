@@ -1,0 +1,99 @@
+chapter: "Tests for Two Proportions in a Repeated Measures Design"
+method: "tests_two_proportions_repeated_measures"
+examples:
+
+  - id: "Ex1 reference N=10 logit OR=0.5 CS rho=0.5 M=7"
+    description: >
+      Example 1: cold-prophylaxis trial.  Test statistic on the logit
+      link scale, two-sided, alpha=0.05; P2=0.6, OR1=0.5 (P1=0.4285714),
+      M=7 visits, compound-symmetry covariance with rho=0.5.  N1=N2=10:
+      reference power = 0.17843.
+    inputs:
+      p1: 0.4285714
+      p2: 0.6
+      m: 7
+      rho: 0.5
+      cov_type: "compound_symmetry"
+      alpha: 0.05
+      sides: 2
+      scale: "logit"
+      n_per_group: 10
+    expected: {achieved_power: 0.17843}
+    tolerance: {achieved_power: 0.0025}
+    source: "Tests for Two Proportions in a Repeated Measures Design (Example 1 (N=10))"
+
+  - id: "Ex1 reference N=50 logit OR=0.5 CS rho=0.5 M=7"
+    description: >
+      Same setup as Ex1, N1=N2=50.  reference power = 0.62800.
+    inputs:
+      p1: 0.4285714
+      p2: 0.6
+      m: 7
+      rho: 0.5
+      cov_type: "compound_symmetry"
+      alpha: 0.05
+      sides: 2
+      scale: "logit"
+      n_per_group: 50
+    expected: {achieved_power: 0.62800}
+    tolerance: {achieved_power: 0.0005}
+    source: "Tests for Two Proportions in a Repeated Measures Design (Example 1 (N=50))"
+
+  - id: "Ex2 reference solve-for-N logit power=0.8 -> N=76"
+    description: >
+      Example 2: continuing from Example 1, solve for the sample
+      size achieving power >= 0.8.  Reference reports N1=N2=76 with actual
+      power 0.80297.
+    inputs:
+      p1: 0.4285714
+      p2: 0.6
+      m: 7
+      rho: 0.5
+      cov_type: "compound_symmetry"
+      alpha: 0.05
+      sides: 2
+      scale: "logit"
+      power: 0.80
+    expected: {n1: 76, n2: 76, achieved_power: 0.80297}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Tests for Two Proportions in a Repeated Measures Design (Example 2)"
+
+  - id: "Ex6 Diggle(1994) diff P1=0.6 rho=0.2 M=3 one-sided"
+    description: >
+      Example 6 / Diggle, Liang & Zeger (1994).  Difference-scale
+      test, one-sided, alpha=0.05, M=3 visits, compound symmetry,
+      rho=0.2.  P2=0.5, P1=0.6.  reference / Diggle report N1=N2=143 with
+      actual power 0.80164.
+    inputs:
+      p1: 0.6
+      p2: 0.5
+      m: 3
+      rho: 0.2
+      cov_type: "compound_symmetry"
+      alpha: 0.05
+      sides: 1
+      scale: "diff"
+      power: 0.80
+    expected: {n1: 143, n2: 143, achieved_power: 0.80164}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Tests for Two Proportions in a Repeated Measures Design (Example 6 (Diggle P1=0.6 rho=0.2))"
+
+  - id: "Ex7 Brown-Prescott(2006) logit OR=2 rho=0.5 M=4 -> N=86"
+    description: >
+      Example 7 / Brown & Prescott (2006) page 270.  Logit-scale
+      test, two-sided alpha=0.05, M=4 visits, compound symmetry rho=0.5,
+      OR1=2 with (P1+P2)/2 = 0.4 giving P1=0.482255312124,
+      P2=0.317744687876.  Reference reports N1=N2=86, actual power 0.80080.
+    inputs:
+      p1: 0.482255312124
+      p2: 0.317744687876
+      m: 4
+      rho: 0.5
+      cov_type: "compound_symmetry"
+      alpha: 0.05
+      sides: 2
+      scale: "logit"
+      power: 0.80
+    expected: {n1: 86, n2: 86, achieved_power: 0.80080}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Tests for Two Proportions in a Repeated Measures Design (Example 7 (Brown & Prescott))"

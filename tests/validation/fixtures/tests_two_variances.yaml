@@ -1,0 +1,94 @@
+chapter: "Tests for Two Variances"
+method: "tests_two_variances"
+examples:
+
+  - id: "Ex1 N=50 alpha=0.05 (V1=1, V2=0.5, 1-sided V1>V2)"
+    description: >
+      reference chapter 655 Example 1: V1=1.0, V2=0.5, one-sided test
+      (Ha: V1 > V2), alpha=0.05, N1=N2=50.  Reference reports power=0.77651.
+    inputs:
+      v1: 1.0
+      v2: 0.5
+      alpha: 0.05
+      n1: 50
+      n2: 50
+      sides: 1
+    expected:
+      n1: 50
+      n2: 50
+      n: 100
+      achieved_power: 0.77651
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for Two Variances (Example 1, row N=50 alpha=0.05)"
+
+  - id: "Ex1 N=130 alpha=0.01 (V1=1, V2=0.5, 1-sided)"
+    description: >
+      reference chapter 655 Example 1, row N1=N2=130 with alpha=0.01:
+      Reference reports power=0.94426.
+    inputs:
+      v1: 1.0
+      v2: 0.5
+      alpha: 0.01
+      n1: 130
+      n2: 130
+      sides: 1
+    expected:
+      n1: 130
+      n2: 130
+      n: 260
+      achieved_power: 0.94426
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for Two Variances (Example 1, row N=130 alpha=0.01)"
+
+  - id: "Ex2 V2=0.5 alpha=0.05 power=0.90 (solve N)"
+    description: >
+      reference chapter 655 Example 2: V1=1.0, V2=0.5, alpha=0.05, power=0.90.
+      Reference reports N1=N2=74 with achieved power 0.90295.
+    inputs:
+      v1: 1.0
+      v2: 0.5
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+    expected:
+      n1: 74
+      n2: 74
+      n: 148
+      achieved_power: 0.90295
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for Two Variances (Example 2, row V2=0.5 alpha=0.05)"
+
+  - id: "Ex3 Davies validation (V1=4, V2=1, alpha=0.05, power=0.99)"
+    description: >
+      reference chapter 655 Example 3 (Davies 1971 p. 41): V1=4, V2=1,
+      alpha=0.05, power=0.99 -> Reference reports N1=N2=36 with achieved
+      power 0.99142, matching Davies.
+    inputs:
+      v1: 4.0
+      v2: 1.0
+      alpha: 0.05
+      power: 0.99
+      sides: 1
+    expected:
+      n1: 36
+      n2: 36
+      n: 72
+      achieved_power: 0.99142
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for Two Variances (Example 3)"

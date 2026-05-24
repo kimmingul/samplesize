@@ -1,0 +1,94 @@
+chapter: "Superiority by a Margin Tests for Two Means using Ratios"
+method: "superiority_by_margin_two_means_ratios"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 / Example 2 (validation via differences).  Reference reports
+  # the same power values for the ratio chapter (Ex1) and the
+  # difference chapter (Ex2 with SM'=ln(1+SM)=0.182322,
+  # S1=sqrt(ln(CV^2+1))=1.085659, D=ln(R1)).  We use the 5-decimal
+  # values printed in the differences-chapter output table because
+  # the ratio-chapter table is truncated to four/five decimals.
+  # Settings: SM=0.20, COV=1.50, alpha=0.025, equal allocation,
+  # higher_is_better=True.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=100 R1=1.3"
+    description: >
+      Example 1 / 2: N1=N2=100, R1=1.30, CV=1.50, SM=0.20,
+      alpha=0.025, higher_is_better=True.  reference power = 0.07477.
+    inputs:
+      r1: 1.30
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 100
+      n2: 100
+      higher_is_better: true
+    expected: {n1: 100, n2: 100, achieved_power: 0.07477}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for Two Means using Ratios (Example 1 / Example 2 row N=100 R1=1.30)"
+
+  - id: "Ex1 N=200 R1=1.3"
+    description: >
+      Example 1 / 2: N1=N2=200, R1=1.30, CV=1.50, SM=0.20,
+      alpha=0.025.  reference power = 0.11039.
+    inputs:
+      r1: 1.30
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 200
+      n2: 200
+      higher_is_better: true
+    expected: {n1: 200, n2: 200, achieved_power: 0.11039}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for Two Means using Ratios (Example 1 / Example 2 row N=200 R1=1.30)"
+
+  - id: "Ex1 N=500 R1=1.3"
+    description: >
+      Example 1 / 2: N1=N2=500, R1=1.30, CV=1.50, SM=0.20,
+      alpha=0.025.  reference power = 0.21389.
+    inputs:
+      r1: 1.30
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 500
+      n2: 500
+      higher_is_better: true
+    expected: {n1: 500, n2: 500, achieved_power: 0.21389}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for Two Means using Ratios (Example 1 / Example 2 row N=500 R1=1.30)"
+
+  - id: "Ex1 N=200 R1=1.4"
+    description: >
+      Example 1 / 2: N1=N2=200, R1=1.40, CV=1.50, SM=0.20,
+      alpha=0.025.  reference power = 0.29339.
+    inputs:
+      r1: 1.40
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 200
+      n2: 200
+      higher_is_better: true
+    expected: {n1: 200, n2: 200, achieved_power: 0.29339}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for Two Means using Ratios (Example 1 / Example 2 row N=200 R1=1.40)"
+
+  - id: "Ex1 N=1000 R1=1.3"
+    description: >
+      Example 1 / 2: N1=N2=1000, R1=1.30, CV=1.50, SM=0.20,
+      alpha=0.025.  reference power = 0.37791.
+    inputs:
+      r1: 1.30
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 1000
+      n2: 1000
+      higher_is_better: true
+    expected: {n1: 1000, n2: 1000, achieved_power: 0.37791}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for Two Means using Ratios (Example 1 / Example 2 row N=1000 R1=1.30)"

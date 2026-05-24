@@ -1,0 +1,104 @@
+chapter: "Superiority by a Margin Tests for the Ratio of Two Proportions"
+method: "superiority_by_margin_ratio_two_proportions"
+examples:
+
+  - id: "Ex1 the reference N=100 R0=1.1 R1=1.2 P2=0.65"
+    description: >
+      the reference Example 1 Numeric Results: P2=0.65, R0=1.1, R1=1.2,
+      alpha=0.025, N1=N2=100, Higher Proportions Better.
+      Farrington-Manning, normal approximation.  Reported power
+      0.16144.
+    inputs:
+      p2: 0.65
+      margin: 1.1
+      r1: 1.2
+      alpha: 0.025
+      n1: 100
+      n2: 100
+      higher_is_better: true
+    expected: {n1: 100, n2: 100, achieved_power: 0.16144}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Superiority by a Margin Tests for the Ratio of Two Proportions (Example 1 Numeric Results)"
+
+  - id: "Ex1 the reference N=150 R1=1.2"
+    inputs:
+      p2: 0.65
+      margin: 1.1
+      r1: 1.2
+      alpha: 0.025
+      n1: 150
+      n2: 150
+      higher_is_better: true
+    expected: {n1: 150, n2: 150, achieved_power: 0.22064}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Superiority by a Margin Tests for the Ratio of Two Proportions (Example 1 Numeric Results)"
+
+  - id: "Ex1 the reference N=200 R1=1.3"
+    inputs:
+      p2: 0.65
+      margin: 1.1
+      r1: 1.3
+      alpha: 0.025
+      n1: 200
+      n2: 200
+      higher_is_better: true
+    expected: {n1: 200, n2: 200, achieved_power: 0.82128}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Superiority by a Margin Tests for the Ratio of Two Proportions (Example 1 Numeric Results)"
+
+  - id: "Ex2 the reference target=0.80 R1=1.2 → n=831"
+    description: >
+      the reference Example 2: Solve for n at target_power=0.80, R0=1.1,
+      R1=1.2, P2=0.65, alpha=0.025.  Reports N1=N2=831, achieved
+      0.80013.
+    inputs:
+      p2: 0.65
+      margin: 1.1
+      r1: 1.2
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 831, n2: 831, achieved_power: 0.80013}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Superiority by a Margin Tests for the Ratio of Two Proportions (Example 2 Numeric Results row 1)"
+
+  - id: "Ex2 the reference R1=1.3 → n=190"
+    inputs:
+      p2: 0.65
+      margin: 1.1
+      r1: 1.3
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 190, n2: 190, achieved_power: 0.80156}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Superiority by a Margin Tests for the Ratio of Two Proportions (Example 2 Numeric Results row 2)"
+
+  - id: "Ex2 the reference R1=1.4 → n=74"
+    inputs:
+      p2: 0.65
+      margin: 1.1
+      r1: 1.4
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 74, n2: 74, achieved_power: 0.80020}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Superiority by a Margin Tests for the Ratio of Two Proportions (Example 2 Numeric Results row 3)"
+
+  - id: "Ex4 the reference N=900 normal approx"
+    description: >
+      the reference Example 4 normal-approximation row: N=900, R0=1.1,
+      R1=1.2, P2=0.65, alpha=0.025.  Reports approximate power
+      0.83049.
+    inputs:
+      p2: 0.65
+      margin: 1.1
+      r1: 1.2
+      alpha: 0.025
+      n1: 900
+      n2: 900
+      higher_is_better: true
+    expected: {n1: 900, n2: 900, achieved_power: 0.83049}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0005}
+    source: "Superiority by a Margin Tests for the Ratio of Two Proportions (Example 4 normal approx)"

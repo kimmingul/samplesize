@@ -1,0 +1,56 @@
+chapter: "Superiority by a Margin Tests for Two Survival Curves Using Cox's Proportional Hazards Model"
+method: "superiority_by_margin_cox_regression"
+examples:
+
+  - id: "Ex1 Sup Cox HR=0.2 HRsu=0.75 lower-better"
+    description: >
+      Ch.735 Ex1: HR=0.2, HRsu=0.75, Pev1=0.5, Pev2=0.3, power=0.90,
+      alpha=0.05, one-sided (lower hazard better), equal allocation.
+      Reference reports N=50 (n1=25, n2=25).
+    inputs:
+      hr: 0.2
+      hr_su: 0.75
+      pev1: 0.5
+      pev2: 0.3
+      alpha: 0.05
+      power: 0.90
+      p1: 0.5
+      sides: 1
+    expected:
+      n: 50
+      n1: 25
+      n2: 25
+      achieved_power: 0.9050
+    tolerance:
+      n: 0
+      n1: 0
+      n2: 0
+      achieved_power: 0.0005
+    source: "Superiority by a Margin Tests for Two Survival Curves Using Cox's Proportional Hazards Model (Example 1)"
+
+  - id: "Ex2 Sup Cox Chow validation HR=2.0 HRsu=1.35 higher-better"
+    description: >
+      Ch.735 Ex2 (Chow et al. 2008 validation): HR=2.0, HRsu=exp(0.3)=1.35,
+      Pev1=Pev2=0.8, power=0.80, alpha=0.05, one-sided (higher hazard better).
+      Reference reports N=201 (n1=100, n2=101).
+    inputs:
+      hr: 2.0
+      hr_su: 1.3498588075760032
+      pev1: 0.8
+      pev2: 0.8
+      alpha: 0.05
+      power: 0.80
+      p1: 0.5
+      sides: 1
+    expected:
+      n: 201
+      n1: 100
+      n2: 101
+      achieved_power: 0.8015
+    tolerance:
+      n: 1
+      n1: 1
+      n2: 1
+      achieved_power: 0.005
+    notes: "Schoenfeld rounding boundary: ours N=200 power~0.798; reference N=201 power 0.8015. ±1 absorbs round-up."
+    source: "Superiority by a Margin Tests for Two Survival Curves Using Cox's Proportional Hazards Model (Example 2)"

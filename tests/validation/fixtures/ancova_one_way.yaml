@@ -1,0 +1,35 @@
+chapter: "Analysis of Covariance"
+method: "ancova_one_way"
+examples:
+
+  - id: "Ex2 Borm(2007) 2-group n=49"
+    description: >
+      Ch.551 Example 2 (Borm et al. 2007): 2 groups, means=[0, 0.6],
+      sigma=1.2, R2=0.25, alpha=0.05, power=0.80.
+      reference finds N=98 total (49 per group).
+    inputs:
+      means: [0.0, 0.6]
+      sigma: 1.2
+      r_squared: 0.25
+      alpha: 0.05
+      power: 0.80
+      n_covariates: 1
+    expected: {n_per_group: 49, achieved_power: 0.8075}
+    tolerance: {n_per_group: 1, achieved_power: 0.005}
+    source: "Analysis of Covariance (Example 2)"
+
+  - id: "Ex1 k=4 groups n=6 R2=0.40"
+    description: >
+      Ch.551 Example 1: k=4 groups, means=[40,10,10,10], sigma=18,
+      1 covariate, R2=0.40, n=6 per group, alpha=0.05.
+      Reference reports power = 0.94625.
+    inputs:
+      means: [40.0, 10.0, 10.0, 10.0]
+      sigma: 18.0
+      r_squared: 0.40
+      n: 6
+      alpha: 0.05
+      n_covariates: 1
+    expected: {n_per_group: 6, achieved_power: 0.94625}
+    tolerance: {n_per_group: 0, achieved_power: 0.001}
+    source: "Analysis of Covariance (Example 1)"

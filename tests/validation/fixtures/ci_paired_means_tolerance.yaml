@@ -1,0 +1,47 @@
+chapter: "Confidence Intervals for Paired Means with Tolerance Probability"
+method: "ci_paired_means_tolerance"
+examples:
+
+  - id: "Ex1 row 1 (TolProb=0.70, S=16.7 from m=17, D=5)"
+    description: >
+      Two-sided 95% CI for paired-difference mean. Tolerance probability 0.70
+      that the future half-width is <= 5, using S=16.7 estimated from a
+      previous sample of 17 pairs. Ch.497 reports N=58, actual distance
+      4.970.
+    inputs:
+      sigma_diff: 16.7
+      distance: 5.0
+      alpha: 0.05
+      sides: 2
+      tolerance_probability: 0.70
+      sd_source: "previous_sample"
+      prior_n: 17
+    expected:
+      n: 58
+      achieved_width: 4.970
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for Paired Means with Tolerance Probability (Example 1, row 1)"
+
+  - id: "Ex1 row 6 (TolProb=0.95, S=16.7 from m=17, D=5)"
+    description: >
+      Two-sided 95% CI for paired-difference mean. Tolerance probability 0.95
+      that the future half-width is <= 5, using S=16.7 estimated from a
+      previous sample of 17 pairs. Ch.497 reports N=92, actual distance
+      4.981.
+    inputs:
+      sigma_diff: 16.7
+      distance: 5.0
+      alpha: 0.05
+      sides: 2
+      tolerance_probability: 0.95
+      sd_source: "previous_sample"
+      prior_n: 17
+    expected:
+      n: 92
+      achieved_width: 4.981
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for Paired Means with Tolerance Probability (Example 1, row 6)"

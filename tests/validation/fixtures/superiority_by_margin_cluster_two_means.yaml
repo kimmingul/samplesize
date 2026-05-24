@@ -1,0 +1,83 @@
+chapter: "Superiority by a Margin Tests for Two Means in a Cluster-Randomized Design"
+method: "superiority_by_margin_cluster_two_means"
+examples:
+  - id: "Ex1 K=20 rho=0.0"
+    description: >
+      Superiority-by-margin test for two means in cluster RCT. SM=1, delta=2,
+      sigma=4, rho=0.0, M=10, COV=0.65, alpha=0.025, K1=K2=20. Higher means better.
+    inputs:
+      delta: 2.0
+      sm: 1.0
+      sd: 4.0
+      m: 10.0
+      icc: 0.0
+      cov: 0.65
+      alpha: 0.025
+      k_clusters: 20
+      higher_better: true
+      test_type: "t_subjects"
+    expected:
+      n: 400
+      n_clusters: 40
+      m_per_cluster: 10
+      achieved_power: 0.7033
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Superiority by a Margin Tests for Two Means in a Cluster-Randomized Design (Example 1)"
+
+  - id: "Ex1 K=40 rho=0.05"
+    description: >
+      Superiority-by-margin test for two means in cluster RCT. SM=1, delta=2,
+      sigma=4, rho=0.05, M=10, COV=0.65, alpha=0.025, K1=K2=40.
+    inputs:
+      delta: 2.0
+      sm: 1.0
+      sd: 4.0
+      m: 10.0
+      icc: 0.05
+      cov: 0.65
+      alpha: 0.025
+      k_clusters: 40
+      higher_better: true
+      test_type: "t_subjects"
+    expected:
+      n: 800
+      n_clusters: 80
+      m_per_cluster: 10
+      achieved_power: 0.7973
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Superiority by a Margin Tests for Two Means in a Cluster-Randomized Design (Example 1)"
+
+  - id: "Ex1 K=60 rho=0.1"
+    description: >
+      Superiority-by-margin test for two means in cluster RCT. SM=1, delta=2,
+      sigma=4, rho=0.1, M=10, COV=0.65, alpha=0.025, K1=K2=60.
+    inputs:
+      delta: 2.0
+      sm: 1.0
+      sd: 4.0
+      m: 10.0
+      icc: 0.1
+      cov: 0.65
+      alpha: 0.025
+      k_clusters: 60
+      higher_better: true
+      test_type: "t_subjects"
+    expected:
+      n: 1200
+      n_clusters: 120
+      m_per_cluster: 10
+      achieved_power: 0.8440
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Superiority by a Margin Tests for Two Means in a Cluster-Randomized Design (Example 1)"

@@ -1,0 +1,140 @@
+chapter: "Tests for Two Means in a Cluster-Randomized Design"
+method: "cluster_randomized_two_means"
+examples:
+
+  - id: "Ex1a Campbell-Walters K=5 M=5 (subjects DF, find power)"
+    description: >
+      Example 1, scenario K1=K2=5, M1=M2=5, δ=1, σ=2, ρ=0.01,
+      COV=0.65, α=0.05 two-sided.  reference power = 0.3908.
+    inputs:
+      mean1: 1.0
+      mean2: 0.0
+      sd: 2.0
+      m: 5
+      icc: 0.01
+      alpha: 0.05
+      k_clusters: 5
+      sides: 2
+      allocation: 1.0
+      cov: 0.65
+      test_type: "t_subjects"
+    expected: {achieved_power: 0.3908}
+    tolerance: {achieved_power: 0.0001}
+    source: "Tests for Two Means in a Cluster-Randomized Design (Example 1 (K=5,M=5))"
+
+  - id: "Ex1b Campbell-Walters K=10 M=10 (subjects DF, find power)"
+    description: >
+      Example 1, scenario K1=K2=10, M1=M2=10.  reference power = 0.9115.
+    inputs:
+      mean1: 1.0
+      mean2: 0.0
+      sd: 2.0
+      m: 10
+      icc: 0.01
+      alpha: 0.05
+      k_clusters: 10
+      sides: 2
+      allocation: 1.0
+      cov: 0.65
+      test_type: "t_subjects"
+    expected: {achieved_power: 0.9115}
+    tolerance: {achieved_power: 0.0001}
+    source: "Tests for Two Means in a Cluster-Randomized Design (Example 1 (K=10,M=10))"
+
+  - id: "Ex2a Donner-Klar M=100 (clusters DF)"
+    description: >
+      Donner & Klar (1996) p.436: δ=0.2, σ=1, ρ=0.001, K1=K2=3,
+      M1=M2=100, COV=0, α=0.05 two-sided.  Reported power = 0.43;
+      reference = 0.4301.
+    inputs:
+      mean1: 0.2
+      mean2: 0.0
+      sd: 1.0
+      m: 100
+      icc: 0.001
+      alpha: 0.05
+      k_clusters: 3
+      sides: 2
+      allocation: 1.0
+      cov: 0.0
+      test_type: "t_clusters"
+    expected: {achieved_power: 0.4301}
+    tolerance: {achieved_power: 0.0001}
+    source: "Tests for Two Means in a Cluster-Randomized Design (Example 2 (M=100))"
+
+  - id: "Ex2b Donner-Klar M=300 (clusters DF)"
+    description: >
+      Donner & Klar M1=M2=300 scenario: reference power = 0.7924.
+    inputs:
+      mean1: 0.2
+      mean2: 0.0
+      sd: 1.0
+      m: 300
+      icc: 0.001
+      alpha: 0.05
+      k_clusters: 3
+      sides: 2
+      allocation: 1.0
+      cov: 0.0
+      test_type: "t_clusters"
+    expected: {achieved_power: 0.7924}
+    tolerance: {achieved_power: 0.0001}
+    source: "Tests for Two Means in a Cluster-Randomized Design (Example 2 (M=300))"
+
+  - id: "Ex2c Donner-Klar M=500 (clusters DF)"
+    description: >
+      Donner & Klar M1=M2=500 scenario: reference power = 0.9091.
+    inputs:
+      mean1: 0.2
+      mean2: 0.0
+      sd: 1.0
+      m: 500
+      icc: 0.001
+      alpha: 0.05
+      k_clusters: 3
+      sides: 2
+      allocation: 1.0
+      cov: 0.0
+      test_type: "t_clusters"
+    expected: {achieved_power: 0.9091}
+    tolerance: {achieved_power: 0.0001}
+    source: "Tests for Two Means in a Cluster-Randomized Design (Example 2 (M=500))"
+
+  - id: "Ex3a Campbell-Walters K1=29 COV=0 (find K)"
+    description: >
+      Campbell & Walters (2014) p.71: δ=0.3247, σ=1, ρ=0.05, M1=M2=10,
+      COV=0, power=0.90, α=0.05 two-sided.  reference K1 = 29.
+    inputs:
+      mean1: 0.3247
+      mean2: 0.0
+      sd: 1.0
+      m: 10
+      icc: 0.05
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+      cov: 0.0
+      test_type: "t_subjects"
+    expected: {k1: 29, k2: 29, achieved_power: 0.9000}
+    tolerance: {k1: 0, k2: 0, achieved_power: 0.0005}
+    source: "Tests for Two Means in a Cluster-Randomized Design (Example 3 (COV=0))"
+
+  - id: "Ex3b Campbell-Walters K1=33 COV=0.725 (find K)"
+    description: >
+      Campbell & Walters: same as Ex3a but COV=0.725.  reference K1 = 33.
+    inputs:
+      mean1: 0.3247
+      mean2: 0.0
+      sd: 1.0
+      m: 10
+      icc: 0.05
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+      cov: 0.725
+      test_type: "t_subjects"
+    expected: {k1: 33, k2: 33, achieved_power: 0.9000}
+    tolerance: {k1: 0, k2: 0, achieved_power: 0.001}
+    source: "Tests for Two Means in a Cluster-Randomized Design (Example 3 (COV=0.725))"

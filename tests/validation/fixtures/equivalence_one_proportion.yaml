@@ -1,0 +1,72 @@
+chapter: "Equivalence Tests for One Proportion"
+method: "equivalence_one_proportion"
+notes: |
+  One-sample TOST equivalence test on a binomial proportion (reference
+  Chapter 110).  Normal-approximation Z-Test using S(P0).  The
+  equivalence limits are constructed about a baseline (PB) -- we
+  pass it via ``p0=PB`` together with a symmetric ``margin``.  reference
+  Example 1 reports normal-approximation powers in addition to the
+  exact-test "Reject R1|R2" bounds (the exact-test rows with
+  power=0 are degenerate small-N cases and are not used here).
+
+examples:
+
+  - id: "Ex2 reference (find N, PB=0.50, d0=0.05, power=0.90)"
+    description: >
+      Example 2: PB=0.50, equivalence difference d0=0.05
+      (P0L=0.45, P0U=0.55), P1=0.50, alpha=0.05, power=0.90.
+      Normal-approximation Z-Test S(P0) reports n=1077 with
+      achieved=0.90006.
+    inputs:
+      p: 0.50
+      p0: 0.50
+      margin: 0.05
+      alpha: 0.05
+      power: 0.90
+    expected: {n: 1077, achieved_power: 0.90006}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for One Proportion (Example 2)"
+
+  - id: "Ex1 reference (n=300, d0=0.10)"
+    description: >
+      Example 1 row 8: PB=0.50, d0=0.10 (P0L=0.40, P0U=0.60),
+      P1=0.50, alpha=0.05, n=300.  Reference reports normal-approx
+      power=0.93604.
+    inputs:
+      p: 0.50
+      p0: 0.50
+      margin: 0.10
+      alpha: 0.05
+      n: 300
+    expected: {n: 300, achieved_power: 0.93604}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for One Proportion (Example 1 row 8)"
+
+  - id: "Ex1 reference (n=500, d0=0.10)"
+    description: >
+      Example 1 row 10: PB=0.50, d0=0.10, P1=0.50, alpha=0.05,
+      n=500.  Reference reports normal-approx power=0.99577.
+    inputs:
+      p: 0.50
+      p0: 0.50
+      margin: 0.10
+      alpha: 0.05
+      n: 500
+    expected: {n: 500, achieved_power: 0.99577}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for One Proportion (Example 1 row 10)"
+
+  - id: "Ex1 reference (n=800, d0=0.05)"
+    description: >
+      Example 1 row 11: PB=0.50, d0=0.05 (P0L=0.45, P0U=0.55),
+      P1=0.50, alpha=0.05, n=800.  Reference reports normal-approx
+      power=0.76667.
+    inputs:
+      p: 0.50
+      p0: 0.50
+      margin: 0.05
+      alpha: 0.05
+      n: 800
+    expected: {n: 800, achieved_power: 0.76667}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Equivalence Tests for One Proportion (Example 1 row 11)"

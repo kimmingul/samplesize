@@ -1,0 +1,53 @@
+chapter: "Non-Inferiority Tests for the Difference Between Two Correlated Proportions"
+method: "non_inferiority_paired_proportions"
+examples:
+
+  - id: "Ex2 N=90% power P01=0.05"
+    description: >
+      Ch.160 Example 2: normal approximation, 90% power, alpha=0.05,
+      Dni=0.05, Da=0.00, Ps=0.80, P01=0.05. Expected N=374.
+    solve_for: "n"
+    inputs:
+      ps: 0.80
+      da: 0.0
+      d_ni: 0.05
+      nuisance_type: "p01"
+      nuisance_value: 0.05
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+    expected:
+      n: 374
+      achieved_power: 0.90026
+    tolerance:
+      n: 1
+      achieved_power: 0.015
+    source: >
+      reference/md/Non-Inferiority Tests for the Difference Between Two
+      Correlated Proportions/hybrid_auto/Non-Inferiority Tests for the
+      Difference Between Two Correlated Proportions.md, §Example 2.
+
+  - id: "Ex3 Liu 2002 validation N=350"
+    description: >
+      Liu et al. (2002) Table III: P01=0.05, P10=0.05, Da=0.00, Dni=0.05,
+      alpha=0.025, power=80%. Expected N=350.
+    solve_for: "n"
+    inputs:
+      ps: 0.50
+      da: 0.0
+      d_ni: 0.05
+      nuisance_type: "p01"
+      nuisance_value: 0.05
+      alpha: 0.025
+      power: 0.80
+      sides: 1
+    expected:
+      n: 350
+      achieved_power: 0.80046
+    tolerance:
+      n: 1
+      achieved_power: 0.015
+    source: >
+      reference/md/Non-Inferiority Tests for the Difference Between Two
+      Correlated Proportions/hybrid_auto/Non-Inferiority Tests for the
+      Difference Between Two Correlated Proportions.md, §Example 3.

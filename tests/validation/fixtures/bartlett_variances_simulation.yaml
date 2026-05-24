@@ -1,0 +1,111 @@
+chapter: "Bartlett Test of Variances (Simulation)"
+method: "bartlett_variances_simulation"
+
+# Monte-Carlo Bartlett-test power fixtures vs the reference Chapter 552.
+# All results are stochastic; we use seed=42 and n_sims=10000 to make
+# them deterministic for CI.
+#
+# Tolerance: ±0.01 absolute on achieved_power.  At n_sims=10000 the
+# binomial 95% CI half-width is ~0.010 at power=0.5 and ~0.004 at
+# power=0.95 (precision table in the reference chapter).  Combined with the
+# noise in the reference's own 5000-sim reference values, ±0.01 is a deliberately
+# generous, but realistic, tolerance.
+
+examples:
+
+  - id: "Ex1 row 2 (n=20, S2=7, k=4)"
+    description: >
+      Example 1 row 2: k=4 groups, means=[10,20,10,10],
+      sigmas=[5,7,5,5], n=20/group, alpha=0.05, 5000 sims.
+      Reference reports power=0.302.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 7.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 20
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 20
+      n_total: 80
+      achieved_power: 0.302
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; ±0.01 power.  Sim at seed=42 -> 0.297."
+    source: "Bartlett Test of Variances (Simulation) (Example 1 Numeric Results row 2)"
+
+  - id: "Ex1 row 8 (n=30, S2=8, k=4)"
+    description: >
+      Example 1 row 8: k=4, sigmas=[5,8,5,5], n=30/group.
+      Reference reports power=0.758.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 8.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 30
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 30
+      n_total: 120
+      achieved_power: 0.758
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; ±0.01 power.  Sim at seed=42 -> 0.762."
+    source: "Bartlett Test of Variances (Simulation) (Example 1 Numeric Results row 8)"
+
+  - id: "Ex1 row 10 (n=50, S2=8, k=4)"
+    description: >
+      Example 1 row 10: k=4, sigmas=[5,8,5,5], n=50/group.
+      Reference reports power=0.940.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 8.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 50
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 50
+      n_total: 200
+      achieved_power: 0.940
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; ±0.01 power.  Sim at seed=42 -> 0.940."
+    source: "Bartlett Test of Variances (Simulation) (Example 1 Numeric Results row 10)"
+
+  - id: "Ex2 validation (k=2, n=19, sigmas=[1,2])"
+    description: >
+      Example 2 — Validation: k=2, sigmas=[1,2], means=[1,1],
+      n=19/group, alpha=0.05, 5000 sims.  Reference reports power=0.817
+      (very close to the analytic 0.816 produced by Tests for Two
+      Variances with V1=1, V2=2, N1=N2=19).
+    inputs:
+      k_groups: 2
+      sigmas: [1.0, 2.0]
+      means: [1.0, 1.0]
+      n_per_group: 19
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 19
+      n_total: 38
+      achieved_power: 0.817
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: >
+      Stochastic; ±0.01 power.  Sim at seed=42 -> 0.812; the analytic
+      reference is 0.816 so the agreement is well inside MC noise.
+    source: "Bartlett Test of Variances (Simulation) (Example 2 Numeric Results row 1)"

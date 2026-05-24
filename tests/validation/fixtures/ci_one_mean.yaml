@@ -1,0 +1,45 @@
+chapter: "Confidence Intervals for One Mean"
+method: "ci_one_mean"
+examples:
+
+  - id: "Ex2 Moore and McCabe - known sigma"
+    description: >
+      Moore and McCabe (1999) p.443: 95% CI for one mean, known sigma=3,
+      margin of error D=2. Expected n=9, achieved width=1.960.
+    solve_for: "n"
+    inputs:
+      sigma: 3.0
+      distance: 2.0
+      alpha: 0.05
+      sides: 2
+      known_sigma: true
+    expected:
+      n: 9
+      achieved_width: 1.960
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Mean/hybrid_auto/Confidence
+      Intervals for One Mean.md, §Example 2.
+
+  - id: "Ex3 Ostle and Malone - known sigma"
+    description: >
+      Ostle and Malone (1988) p.536: 95% CI, known sigma=7, D=5. Expected
+      n=8, achieved width=4.851.
+    solve_for: "n"
+    inputs:
+      sigma: 7.0
+      distance: 5.0
+      alpha: 0.05
+      sides: 2
+      known_sigma: true
+    expected:
+      n: 8
+      achieved_width: 4.851
+    tolerance:
+      n: 1
+      achieved_width: 0.005
+    source: >
+      reference/md/Confidence Intervals for One Mean/hybrid_auto/Confidence
+      Intervals for One Mean.md, §Example 3.

@@ -1,0 +1,138 @@
+chapter: "Tests for Two Coefficient Alphas"
+method: "tests_two_coefficient_alphas"
+examples:
+
+  - id: "Ex1 N=100 CA21=0.6 (CA1=CA20=0.4, K=10, alpha=0.05, 2-sided)"
+    description: >
+      reference chapter 820 Example 1: CA1=0.4, CA20=0.4, CA21=0.6, K1=K2=10,
+      phi=0, alpha=0.05, two-sided, N1=N2=100.  Reference reports
+      power=0.4775.
+    inputs:
+      ca1: 0.4
+      ca20: 0.4
+      ca21: 0.6
+      k1: 10
+      k2: 10
+      alpha: 0.05
+      n1: 100
+      n2: 100
+      sides: 2
+      phi: 0.0
+    expected:
+      n1: 100
+      n2: 100
+      n: 200
+      achieved_power: 0.4775
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_power: 0.001
+    source: "Tests for Two Coefficient Alphas (Example 1, row N=100 CA21=0.6)"
+
+  - id: "Ex1 N=300 CA21=0.6 (CA1=CA20=0.4, K=10, alpha=0.05, 2-sided)"
+    description: >
+      reference chapter 820 Example 1, row N1=N2=300 CA21=0.6: power=0.9132.
+    inputs:
+      ca1: 0.4
+      ca20: 0.4
+      ca21: 0.6
+      k1: 10
+      k2: 10
+      alpha: 0.05
+      n1: 300
+      n2: 300
+      sides: 2
+      phi: 0.0
+    expected:
+      n1: 300
+      n2: 300
+      n: 600
+      achieved_power: 0.9132
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_power: 0.001
+    source: "Tests for Two Coefficient Alphas (Example 1, row N=300 CA21=0.6)"
+
+  - id: "Ex1 N=100 CA21=0.7 (CA1=CA20=0.4, K=10, alpha=0.05, 2-sided)"
+    description: >
+      reference chapter 820 Example 1, row N1=N2=100 CA21=0.7: power=0.9026.
+    inputs:
+      ca1: 0.4
+      ca20: 0.4
+      ca21: 0.7
+      k1: 10
+      k2: 10
+      alpha: 0.05
+      n1: 100
+      n2: 100
+      sides: 2
+      phi: 0.0
+    expected:
+      n1: 100
+      n2: 100
+      n: 200
+      achieved_power: 0.9026
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_power: 0.001
+    source: "Tests for Two Coefficient Alphas (Example 1, row N=100 CA21=0.7)"
+
+  - id: "Ex2 CA21=0.6 (solve N1, power=0.90)"
+    description: >
+      reference chapter 820 Example 2: CA1=CA20=0.4, CA21=0.6, K=10, alpha=0.05,
+      phi=0, power=0.90.  Reference reports N1=N2=286 with achieved power 0.9000.
+    inputs:
+      ca1: 0.4
+      ca20: 0.4
+      ca21: 0.6
+      k1: 10
+      k2: 10
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      phi: 0.0
+    expected:
+      n1: 286
+      n2: 286
+      n: 572
+      achieved_power: 0.9000
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_power: 0.001
+    source: "Tests for Two Coefficient Alphas (Example 2, row CA21=0.6)"
+
+  - id: "Ex3 Feldt validation (one-sided, CA1=0, CA20=0, CA21=0.5, N=60, K=5)"
+    description: >
+      reference chapter 820 Example 3 (Feldt et al. 1999): CA1=0, CA20=0,
+      CA21=0.5, alpha=0.05, phi=0, N1=N2=60, K1=K2=5, one-sided
+      (Ha: CA1 < CA2).  Reference reports power=0.7655 (Feldt's integer-df
+      version was 0.761; reference uses fractional df).
+    inputs:
+      ca1: 0.0
+      ca20: 0.0
+      ca21: 0.5
+      k1: 5
+      k2: 5
+      alpha: 0.05
+      n1: 60
+      n2: 60
+      sides: 1
+      phi: 0.0
+    expected:
+      n1: 60
+      n2: 60
+      n: 120
+      achieved_power: 0.7655
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_power: 0.0005
+    source: "Tests for Two Coefficient Alphas (Example 3)"

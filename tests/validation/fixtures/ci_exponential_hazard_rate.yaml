@@ -1,0 +1,41 @@
+chapter: "Confidence Intervals for the Exponential Hazard Rate"
+method: "ci_exponential_hazard_rate"
+examples:
+
+  - id: "Ex1 lambda=1.0 width=0.4 (20% censored)"
+    description: >
+      Two-sided 95% CI for exponential hazard rate lambda=1.0. Target width
+      0.4 with 20% censoring. Ch.409 reports E=96 events, expected
+      N=120, actual width 0.400.
+    inputs:
+      lam: 1.0
+      width: 0.4
+      alpha: 0.05
+      sides: 2
+      pct_censored: 20.0
+    expected:
+      n: 120
+      achieved_width: 0.400
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for the Exponential Hazard Rate (Example 1, row 1)"
+
+  - id: "Ex1 lambda=1.5 width=0.4 (20% censored)"
+    description: >
+      Two-sided 95% CI for exponential hazard rate lambda=1.5. Target width
+      0.4 with 20% censoring. Ch.409 reports E=216 events, expected
+      N=270, actual width 0.400.
+    inputs:
+      lam: 1.5
+      width: 0.4
+      alpha: 0.05
+      sides: 2
+      pct_censored: 20.0
+    expected:
+      n: 270
+      achieved_width: 0.400
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for the Exponential Hazard Rate (Example 1, row 2)"

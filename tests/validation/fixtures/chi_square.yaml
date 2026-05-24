@@ -1,0 +1,73 @@
+chapter: "Chi-Square Tests"
+method: "chi_square"
+examples:
+
+  - id: "Ex3 Cohen 1988 p.251 (W=0.3)"
+    description: >
+      Cohen (1988) p.251 validation: W=0.30, N=140, alpha=0.01, DF=2.
+      Reference reports power=0.74841 (Cohen gives 0.75).
+    solve_for: "power"
+    inputs:
+      w: 0.30
+      df: 2
+      n: 140
+      alpha: 0.01
+    expected: {n: 140, achieved_power: 0.74841}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Chi-Square Tests (Example 3)"
+
+  - id: "Ex3 Cohen 1988 p.251 (W=0.4)"
+    description: >
+      Cohen (1988) p.251 validation: W=0.40, N=140, alpha=0.01, DF=2.
+      Reference reports power=0.96641 (Cohen gives 0.97).
+    solve_for: "power"
+    inputs:
+      w: 0.40
+      df: 2
+      n: 140
+      alpha: 0.01
+    expected: {n: 140, achieved_power: 0.96641}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Chi-Square Tests (Example 3)"
+
+  - id: "Ex1 reference contingency N=311 alpha=0.05"
+    description: >
+      Example 1: contingency table W=0.366213, N=311, DF=2,
+      alpha=0.05.  Reference reports power=0.99998.
+    solve_for: "power"
+    inputs:
+      w: 0.366213
+      df: 2
+      n: 311
+      alpha: 0.05
+    expected: {n: 311, achieved_power: 0.99998}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Chi-Square Tests (Example 1)"
+
+  - id: "Ex2 medium effect (3x3 table)"
+    description: >
+      Example 2: DF=4 (3x3 table), W=0.30, alpha=0.05, power=0.80.
+      Reference reports n=133 with achieved power=0.80130.
+    solve_for: "n"
+    inputs:
+      w: 0.30
+      df: 4
+      alpha: 0.05
+      power: 0.80
+    expected: {n: 133, achieved_power: 0.80130}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Chi-Square Tests (Example 2)"
+
+  - id: "Ex4 goodness-of-fit normality"
+    description: >
+      Example 4: normality goodness-of-fit, W=0.20, DF=2,
+      alpha=0.10, power=0.80.  Reference reports n=193, achieved=0.80046.
+    solve_for: "n"
+    inputs:
+      w: 0.20
+      df: 2
+      alpha: 0.10
+      power: 0.80
+    expected: {n: 193, achieved_power: 0.80046}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Chi-Square Tests (Example 4)"

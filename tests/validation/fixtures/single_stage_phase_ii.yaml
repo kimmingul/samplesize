@@ -1,0 +1,57 @@
+chapter: "Single-Stage Phase II Clinical Trials"
+method: "single_stage_phase_ii"
+examples:
+
+  - id: "Ex1 A'Hern 2001 p0=0.05 p1=0.10 alpha=0.05 beta=0.20"
+    description: >
+      A'Hern (2001) Table 1 validation: p0=0.05, p1=0.10, alpha=0.05, beta=0.20.
+      Reference reports n=169, r=13 (Cut-Off R+1=14), actual_alpha=0.045, actual_beta=0.194.
+    solve_for: "n"
+    inputs:
+      p0: 0.05
+      p1: 0.10
+      alpha: 0.05
+      beta: 0.20
+    expected:
+      n: 169
+      achieved_power: 0.806
+    tolerance:
+      n: 0
+      achieved_power: 0.005
+    source: "Single-Stage Phase II Clinical Trials (Example 1)"
+
+  - id: "Ex1 A'Hern 2001 p0=0.05 p1=0.20 alpha=0.05 beta=0.20"
+    description: >
+      A'Hern (2001) Table 1 validation: p0=0.05, p1=0.20, alpha=0.05, beta=0.20.
+      Reference reports n=27, r=3 (Cut-Off R+1=4), actual_alpha=0.044, actual_beta=0.182.
+    solve_for: "n"
+    inputs:
+      p0: 0.05
+      p1: 0.20
+      alpha: 0.05
+      beta: 0.20
+    expected:
+      n: 27
+      achieved_power: 0.818
+    tolerance:
+      n: 0
+      achieved_power: 0.005
+    source: "Single-Stage Phase II Clinical Trials (Example 1)"
+
+  - id: "Ex1 A'Hern 2001 p0=0.05 p1=0.30 alpha=0.05 beta=0.20"
+    description: >
+      A'Hern (2001) Table 1 validation: p0=0.05, p1=0.30, alpha=0.05, beta=0.20.
+      Reference reports n=14, r=2 (Cut-Off R+1=3), actual_alpha=0.030, actual_beta=0.161.
+    solve_for: "n"
+    inputs:
+      p0: 0.05
+      p1: 0.30
+      alpha: 0.05
+      beta: 0.20
+    expected:
+      n: 14
+      achieved_power: 0.839
+    tolerance:
+      n: 0
+      achieved_power: 0.005
+    source: "Single-Stage Phase II Clinical Trials (Example 1)"

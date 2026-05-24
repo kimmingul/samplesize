@@ -1,0 +1,119 @@
+chapter: "M-Period Cross-Over Designs using Contrasts"
+method: "m_period_cross_over_contrasts"
+
+# All examples below are reproduced from the reference Chapter 567.  The reference
+# multivariate Hotelling's T^2 test uses
+#
+#     lambda = N * (C' mu)^2 / (C' Sigma C)
+#
+# with df1 = 1, df2 = N - 1.  For our scalar API we accept ``sd_w`` such
+# that ``sd_w^2 * sum(c_i^2) == C' Sigma C``.  Two equivalent
+# specifications are used in the chapter:
+#
+#   - "All rho's Equal" (compound symmetry): sd_w = sigma * sqrt(1 - rho).
+#     Example 1 uses this.
+#   - AR(1): C' Sigma C must be computed from the AR(1) matrix; for the
+#     hand-calculation example (Example 2) the chapter reports
+#     C' Sigma C = 100 with sum c^2 = 6, giving sd_w = sqrt(100/6).
+#
+examples:
+
+  # ---- Example 2: Validation using Hand Calculations -----------------------
+  - id: "Ex2 Hand-Calc - Power (AR(1), sigma=5, rho=0.5, N=100)"
+    description: >
+      Example 2 (hand-calculation validation): M=3, means=[1,2,3],
+      contrast C=[-2,1,1], AR(1) with sigma=5, rho=0.5, N=100,
+      alpha=0.05, two-sided multivariate T^2.  The chapter gives
+      C'mu = 3, C'Sigma C = 100, NCP = 9, F_{0.95,1,99} = 3.9371169,
+      Power = 0.8439.
+    inputs:
+      contrasts: [-2.0, 1.0, 1.0]
+      means: [1.0, 2.0, 3.0]
+      sd_w: 4.08248290463863    # sqrt(100/6); makes sd_w^2 * sum(c^2) = 100
+      n: 100
+      alpha: 0.05
+      sides: 2
+    expected: {n: 100, achieved_power: 0.8439}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "M-Period Cross-Over Designs using Contrasts (Example 2 - Validation using Hand Calculations)"
+
+  # ---- Example 1 - Determining Sample Size --------------------------------
+  # Means = [80, 80, 72], C = [0.5, 0.5, -1] (PLH design comparing avg(P,L)
+  # to H), All-rho-Equal covariance.  C'mu = 8.
+  # sd_w = sigma * sqrt(1 - rho).
+  - id: "Ex1 Sample Size (sigma=13, rho=0.4)"
+    description: >
+      Example 1 row 1: M=3 cross-over (PLH/PHL/HPL/HLP/LPH/LHP),
+      means=[80,80,72], contrast=[0.5,0.5,-1], sigma=13, rho=0.4
+      (compound symmetry / All-rho's-Equal), alpha=0.05, power=0.90,
+      two-sided multivariate T^2.  Reference reports N=27, power=0.9004.
+    inputs:
+      contrasts: [0.5, 0.5, -1.0]
+      means: [80.0, 80.0, 72.0]
+      sd_w: 10.069757724915955   # 13 * sqrt(1 - 0.4) = 13 * sqrt(0.6)
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 27, achieved_power: 0.9004}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "M-Period Cross-Over Designs using Contrasts (Example 1 row 1)"
+
+  - id: "Ex1 Sample Size (sigma=13, rho=0.5)"
+    description: >
+      Example 1 row 2: sigma=13, rho=0.5 -> sd_w = 13*sqrt(0.5).
+      Target power 0.90; Reference reports N=23, achieved power=0.9025.
+    inputs:
+      contrasts: [0.5, 0.5, -1.0]
+      means: [80.0, 80.0, 72.0]
+      sd_w: 9.192388155425117    # 13 * sqrt(0.5)
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 23, achieved_power: 0.9025}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "M-Period Cross-Over Designs using Contrasts (Example 1 row 2)"
+
+  - id: "Ex1 Sample Size (sigma=13, rho=0.6)"
+    description: >
+      Example 1 row 3: sigma=13, rho=0.6 -> sd_w = 13*sqrt(0.4).
+      Target power 0.90; Reference reports N=19, achieved power=0.9054.
+    inputs:
+      contrasts: [0.5, 0.5, -1.0]
+      means: [80.0, 80.0, 72.0]
+      sd_w: 8.221921916437786    # 13 * sqrt(0.4)
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 19, achieved_power: 0.9054}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "M-Period Cross-Over Designs using Contrasts (Example 1 row 3)"
+
+  - id: "Ex1 Sample Size (sigma=15, rho=0.4)"
+    description: >
+      Example 1 row 4: sigma=15, rho=0.4 -> sd_w = 15*sqrt(0.6).
+      Target power 0.90; Reference reports N=36, achieved power=0.9065.
+    inputs:
+      contrasts: [0.5, 0.5, -1.0]
+      means: [80.0, 80.0, 72.0]
+      sd_w: 11.61895003862225    # 15 * sqrt(0.6)
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 36, achieved_power: 0.9065}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "M-Period Cross-Over Designs using Contrasts (Example 1 row 4)"
+
+  - id: "Ex1 Sample Size (sigma=17, rho=0.4)"
+    description: >
+      Example 1 row 7: sigma=17, rho=0.4 -> sd_w = 17*sqrt(0.6).
+      Target power 0.90; Reference reports N=45, achieved power=0.9022.
+    inputs:
+      contrasts: [0.5, 0.5, -1.0]
+      means: [80.0, 80.0, 72.0]
+      sd_w: 13.16699661528932    # 17 * sqrt(0.6)
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 45, achieved_power: 0.9022}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "M-Period Cross-Over Designs using Contrasts (Example 1 row 7)"

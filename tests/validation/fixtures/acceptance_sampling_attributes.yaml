@@ -1,0 +1,53 @@
+chapter: "Acceptance Sampling for Attributes"
+method: "acceptance_sampling_attributes"
+examples:
+
+  # Example 1: lot_size=5000, p0=0.005, alpha=0.05, p1=0.07, beta=0.05
+  # Expected: n=66, c=1, actual_alpha=0.0424, actual_beta=0.04860
+  - id: "Ex1 lot=5000 p0=0.005 p1=0.07 - solve n"
+    description: >
+      Chapter 285, Example 1.  Lot size=5000, AQL=0.005, producer risk=0.05,
+      LQL=0.07, consumer risk=0.05.
+      Expected sample size n=66, acceptance number c=1,
+      actual producer risk=0.0424, actual consumer risk=0.04860.
+    inputs:
+      p0: 0.005
+      alpha: 0.05
+      p1: 0.07
+      beta: 0.05
+      lot_size: 5000
+    expected: {n: 66, achieved_power: 0.95140}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "Acceptance Sampling for Attributes (Example 1)"
+
+  # Example 2 row: alpha=0.01, p1=0.05, lot=5000 -> n=152, c=3
+  - id: "Ex2 lot=5000 p0=0.005 alpha=0.01 p1=0.05 - solve n"
+    description: >
+      Chapter 285, Example 2.  Lot size=5000, AQL=0.005, producer risk=0.01,
+      LQL=0.05, consumer risk=0.05.
+      Expected sample size n=152, acceptance number c=3.
+    inputs:
+      p0: 0.005
+      alpha: 0.01
+      p1: 0.05
+      beta: 0.05
+      lot_size: 5000
+    expected: {n: 152, achieved_power: 0.95129}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "Acceptance Sampling for Attributes (Example 2)"
+
+  # Example 2 row: alpha=0.05, p1=0.05, lot=5000 -> n=123, c=2
+  - id: "Ex2 lot=5000 p0=0.005 alpha=0.05 p1=0.05 - solve n"
+    description: >
+      Chapter 285, Example 2.  Lot size=5000, AQL=0.005, producer risk=0.05,
+      LQL=0.05, consumer risk=0.05.
+      Expected sample size n=123, acceptance number c=2.
+    inputs:
+      p0: 0.005
+      alpha: 0.05
+      p1: 0.05
+      beta: 0.05
+      lot_size: 5000
+    expected: {n: 123, achieved_power: 0.95055}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "Acceptance Sampling for Attributes (Example 2)"

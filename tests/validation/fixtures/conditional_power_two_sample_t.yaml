@@ -1,0 +1,78 @@
+chapter: "Conditional Power of Two-Sample T-Tests"
+method: "conditional_power_two_sample_t"
+examples:
+
+  - id: "Ex1 row 1 (mu2=0.5, hand-validated by reference)"
+    description: >
+      reference chapter 433, Example 1 row 1 AND Example 2 (hand validation).
+      Balanced design with mu1=0, mu2=0.5, sigma1=sigma2=4, N1=N2=60,
+      n1_t=n2_t=30, Z_k=2.12, alpha=0.05, two-sided.  reference hand-derives
+      0.4334156 from the two-Phi sum.
+    inputs:
+      mean1: 0.0
+      mean2: 0.5
+      sd1: 4.0
+      sd2: 4.0
+      n1: 60
+      n2: 60
+      n1_t: 30
+      n2_t: 30
+      z_observed: 2.12
+      alpha: 0.05
+      sides: 2
+    expected:
+      conditional_power: 0.43342
+      predictive_power: 0.85040
+      achieved_power: 0.43342
+      futility_index: 0.56658
+    tolerance:
+      conditional_power: 0.001
+      predictive_power: 0.001
+      achieved_power: 0.001
+      futility_index: 0.001
+    source: "Conditional Power of Two-Sample T-Tests (Example 2 (validation))"
+
+  - id: "Ex1 row 4 (mu2=2.0, high conditional power)"
+    description: >
+      reference chapter 433, Example 1, row 4.  Same balanced setup with
+      mu2=2.0.  Conditional power = 0.90055.
+    inputs:
+      mean1: 0.0
+      mean2: 2.0
+      sd1: 4.0
+      sd2: 4.0
+      n1: 60
+      n2: 60
+      n1_t: 30
+      n2_t: 30
+      z_observed: 2.12
+      alpha: 0.05
+      sides: 2
+    expected:
+      conditional_power: 0.90055
+      futility_index: 0.09945
+    tolerance:
+      conditional_power: 0.001
+      futility_index: 0.001
+    source: "Conditional Power of Two-Sample T-Tests (Example 1, row 4)"
+
+  - id: "Ex1 row 2 (mu2=1.0, defaulted sd2/n2)"
+    description: >
+      reference chapter 433, Example 1, row 2.  Exercises the "σ2=σ1, N2=N1"
+      defaults by omitting sd2/n2/n2_t.  Two-sided alpha=0.05.
+    inputs:
+      mean1: 0.0
+      mean2: 1.0
+      sd1: 4.0
+      n1: 60
+      n1_t: 30
+      z_observed: 2.12
+      alpha: 0.05
+      sides: 2
+    expected:
+      conditional_power: 0.62417
+      futility_index: 0.37583
+    tolerance:
+      conditional_power: 0.001
+      futility_index: 0.001
+    source: "Conditional Power of Two-Sample T-Tests (Example 1, row 2)"

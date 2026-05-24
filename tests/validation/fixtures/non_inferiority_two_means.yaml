@@ -1,0 +1,42 @@
+chapter: "Non-Inferiority Tests for Two Means using Differences"
+method: "non_inferiority_two_means"
+notes: |
+  Pooled-variance non-central t.  Cross-validated against Chow exactly
+  and against Julious within rounding (the reference itself reports 337 vs
+  Julious's 336; we land on 338 with achieved power=0.9007 vs the reference's
+  0.9004 at N=337 — a ~0.0006 difference in nct CDF precision near the
+  power=0.90 boundary).  Tolerance widened on `n` accordingly.
+examples:
+
+  - id: "Ex3 Chow Shao Wang 2003 (find N)"
+    description: >
+      Chow et al. (2003) p.62: D=0, NIM=0.05, S=0.1, α=0.05, power=0.80,
+      higher-is-better.  Reports n=51 per group; reference achieved=0.80590.
+    inputs:
+      mean1: 0.0
+      mean2: 0.0
+      sd: 0.1
+      margin: 0.05
+      alpha: 0.05
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 51, n2: 51, achieved_power: 0.80590}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for Two Means using Differences (Example 3)"
+
+  - id: "Ex4 Julious 2004 (find large N)"
+    description: >
+      Julious (2004) p.1950: D=0, NIM=10, S=40, α=0.025, power=0.90.
+      Reference reports n=337 per group, achieved=0.90045.  We land on
+      n=338 due to nct CDF precision near power=0.90.
+    inputs:
+      mean1: 0.0
+      mean2: 0.0
+      sd: 40.0
+      margin: 10.0
+      alpha: 0.025
+      power: 0.90
+      higher_is_better: true
+    expected: {n1: 338, n2: 338, achieved_power: 0.9007}
+    tolerance: {n1: 1, n2: 1, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for Two Means using Differences (Example 4)"

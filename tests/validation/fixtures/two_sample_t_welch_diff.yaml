@@ -1,0 +1,91 @@
+chapter: "Two-Sample T-Tests Allowing Unequal Variance (Enter Difference)"
+method: "two_sample_t_welch_diff"
+examples:
+
+  - id: "Ex1 row 1 (find N, α=0.01)"
+    description: >
+      the reference Example 1 row 1: δ=2.0, σ1=1.0, σ2=2.5, two-sided α=0.01,
+      target power=0.90.  Reference reports N1=N2=30 with achieved
+      power=0.90538.
+    inputs:
+      delta: 2.0
+      sd1: 1.0
+      sd2: 2.5
+      alpha: 0.01
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+    expected:
+      n1: 30
+      n2: 30
+      achieved_power: 0.90538
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Allowing Unequal Variance (Enter Difference) (Example 1, row 1)"
+
+  - id: "Ex1 row 9 (find N, α=0.01, σ1=5)"
+    description: >
+      the reference Example 1 row 9: δ=2.0, σ1=5.0, σ2=2.5, two-sided
+      α=0.01, target power=0.90.  Reference reports N1=N2=119 with
+      achieved power=0.90140.
+    inputs:
+      delta: 2.0
+      sd1: 5.0
+      sd2: 2.5
+      alpha: 0.01
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+    expected:
+      n1: 119
+      n2: 119
+      achieved_power: 0.90140
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Allowing Unequal Variance (Enter Difference) (Example 1, row 9)"
+
+  - id: "Ex2 N=80 σ2=25 (find power, one-sided)"
+    description: >
+      the reference Example 2, σ2=25, N=80 per group: δ=10, σ1=24,
+      one-sided (Ha: δ>0), α=0.05.  Reference reports power=0.82251.
+    inputs:
+      delta: 10.0
+      sd1: 24.0
+      sd2: 25.0
+      n1: 80
+      n2: 80
+      alpha: 0.05
+      sides: 1
+    expected:
+      achieved_power: 0.82251
+    tolerance:
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Allowing Unequal Variance (Enter Difference) (Example 2, σ2=25 N=80)"
+
+  - id: "Ex4 simulation cross-check (find N)"
+    description: >
+      the reference Example 4 simulation validation: δ=3.5, σ1=1, σ2=3,
+      two-sided α=0.05, target power=0.90.  Reference reports N1=N2=11
+      with achieved power=0.92066, matching the Tests for Two Means
+      (Simulation) result.
+    inputs:
+      delta: 3.5
+      sd1: 1.0
+      sd2: 3.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+    expected:
+      n1: 11
+      n2: 11
+      achieved_power: 0.92066
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_power: 0.0001
+    source: "Two-Sample T-Tests Allowing Unequal Variance (Enter Difference) (Example 4)"

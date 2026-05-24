@@ -1,0 +1,105 @@
+chapter: "Tests for Two Groups of Pre-Post Scores"
+method: "tests_two_groups_pre_post"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 2 - Validation using Rosner (2011), page 306.
+  # delta=5, sd_t1=sd_t2=15, rho=0.7, N1=N2=75, two-sided z-test,
+  # alpha=0.05.  Reference reports power = 0.75025.
+  # ------------------------------------------------------------------
+
+  - id: "Ex2 Rosner 2011 - z-test"
+    description: >
+      Rosner (2011) p.306 / Example 2: delta = 5,
+      sd_t1 = sd_t2 = 15, rho = 0.7, N1 = N2 = 75, two-sided z-test,
+      alpha = 0.05.  Reference reports achieved power = 0.75025
+      (sigma_diff = 11.619).
+    inputs:
+      delta: 5.0
+      sd_t1: 15.0
+      sd_t2: 15.0
+      rho: 0.7
+      n1: 75
+      alpha: 0.05
+      sides: 2
+      test_type: "z"
+    expected: {n: 150, achieved_power: 0.75025}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Groups of Pre-Post Scores (Example 2)"
+
+  # ------------------------------------------------------------------
+  # Example 1 - Power table (t-test, two-sided, alpha=0.05, delta=4,
+  # sd_t1=16, sd_t2=14, rho in {0.6, 0.8}, N1 in {10, 50, 110, 190}).
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=10 rho=0.6"
+    description: >
+      Example 1: delta = 4, sd_t1 = 16, sd_t2 = 14, rho = 0.6,
+      N1 = N2 = 10, two-sided t-test, alpha = 0.05.  Reference reports
+      power = 0.09599.
+    inputs:
+      delta: 4.0
+      sd_t1: 16.0
+      sd_t2: 14.0
+      rho: 0.6
+      n1: 10
+      alpha: 0.05
+      sides: 2
+      test_type: "t"
+    expected: {n: 20, achieved_power: 0.09599}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Groups of Pre-Post Scores (Example 1 row 1)"
+
+  - id: "Ex1 N=50 rho=0.8"
+    description: >
+      Example 1: delta = 4, sd_t1 = 16, sd_t2 = 14, rho = 0.8,
+      N1 = N2 = 50, two-sided t-test, alpha = 0.05.  Reference reports
+      power = 0.53469.
+    inputs:
+      delta: 4.0
+      sd_t1: 16.0
+      sd_t2: 14.0
+      rho: 0.8
+      n1: 50
+      alpha: 0.05
+      sides: 2
+      test_type: "t"
+    expected: {n: 100, achieved_power: 0.53469}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Groups of Pre-Post Scores (Example 1 row 6)"
+
+  - id: "Ex1 N=110 rho=0.8"
+    description: >
+      Example 1: delta = 4, sd_t1 = 16, sd_t2 = 14, rho = 0.8,
+      N1 = N2 = 110, two-sided t-test, alpha = 0.05.  Reference reports
+      power = 0.86274.
+    inputs:
+      delta: 4.0
+      sd_t1: 16.0
+      sd_t2: 14.0
+      rho: 0.8
+      n1: 110
+      alpha: 0.05
+      sides: 2
+      test_type: "t"
+    expected: {n: 220, achieved_power: 0.86274}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Groups of Pre-Post Scores (Example 1 row 12)"
+
+  - id: "Ex1 N=190 rho=0.6"
+    description: >
+      Example 1: delta = 4, sd_t1 = 16, sd_t2 = 14, rho = 0.6,
+      N1 = N2 = 190, two-sided t-test, alpha = 0.05.  Reference reports
+      power = 0.81942.
+    inputs:
+      delta: 4.0
+      sd_t1: 16.0
+      sd_t2: 14.0
+      rho: 0.6
+      n1: 190
+      alpha: 0.05
+      sides: 2
+      test_type: "t"
+    expected: {n: 380, achieved_power: 0.81942}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Groups of Pre-Post Scores (Example 1 row 19)"

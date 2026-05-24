@@ -1,0 +1,107 @@
+chapter: "Tests for Two Means using Ratios"
+method: "tests_two_means_ratios"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 - power table at R0 = 1.0, COV = 1.2, alpha = 0.025,
+  # one-sided R1 > R0.  Sample sizes 100 to 900 by 200, R1 in
+  # {1.1, 1.2}.  Reference reports power values to four decimals.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=100 R1=1.1"
+    description: >
+      Example 1: R0 = 1.0, R1 = 1.1, COV = 1.2, alpha = 0.025,
+      one-sided, N1 = N2 = 100.  Reference reports power = 0.1057.
+    inputs:
+      r0: 1.0
+      r1: 1.1
+      cov: 1.2
+      alpha: 0.025
+      n1: 100
+      sides: 1
+    expected: {n: 200, achieved_power: 0.1057}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Means using Ratios (Example 1 row 1)"
+
+  - id: "Ex1 N=500 R1=1.1"
+    description: >
+      Example 1: R0 = 1.0, R1 = 1.1, COV = 1.2, alpha = 0.025,
+      one-sided, N1 = N2 = 500.  Reference reports power = 0.3581.
+    inputs:
+      r0: 1.0
+      r1: 1.1
+      cov: 1.2
+      alpha: 0.025
+      n1: 500
+      sides: 1
+    expected: {n: 1000, achieved_power: 0.3581}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Means using Ratios (Example 1 row 3)"
+
+  - id: "Ex1 N=700 R1=1.2"
+    description: >
+      Example 1: R0 = 1.0, R1 = 1.2, COV = 1.2, alpha = 0.025,
+      one-sided, N1 = N2 = 700.  Reference reports power = 0.9506.
+    inputs:
+      r0: 1.0
+      r1: 1.2
+      cov: 1.2
+      alpha: 0.025
+      n1: 700
+      sides: 1
+    expected: {n: 1400, achieved_power: 0.9506}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Means using Ratios (Example 1 row 9)"
+
+  - id: "Ex1 N=900 R1=1.2"
+    description: >
+      Example 1: R0 = 1.0, R1 = 1.2, COV = 1.2, alpha = 0.025,
+      one-sided, N1 = N2 = 900.  Reference reports power = 0.9836.
+    inputs:
+      r0: 1.0
+      r1: 1.2
+      cov: 1.2
+      alpha: 0.025
+      n1: 900
+      sides: 1
+    expected: {n: 1800, achieved_power: 0.9836}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Means using Ratios (Example 1 row 10)"
+
+  # ------------------------------------------------------------------
+  # Example 2 - Validation via the equivalent t-test on differences.
+  # Same parameters as Example 1.  Reference reports five-decimal power
+  # values from the difference-form analysis that match Example 1.
+  # ------------------------------------------------------------------
+
+  - id: "Ex2 N=300 R1=1.1 (diff form)"
+    description: >
+      Example 2 validation: R0 = 1.0, R1 = 1.1, COV = 1.2,
+      alpha = 0.025, one-sided, N1 = N2 = 300.  The equivalent
+      t-test on differences reports power = 0.23392.
+    inputs:
+      r0: 1.0
+      r1: 1.1
+      cov: 1.2
+      alpha: 0.025
+      n1: 300
+      sides: 1
+    expected: {n: 600, achieved_power: 0.23392}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Means using Ratios (Example 2 row 2)"
+
+  - id: "Ex2 N=500 R1=1.2 (diff form)"
+    description: >
+      Example 2 validation: R0 = 1.0, R1 = 1.2, COV = 1.2,
+      alpha = 0.025, one-sided, N1 = N2 = 500.  The equivalent
+      t-test on differences reports power = 0.86253.
+    inputs:
+      r0: 1.0
+      r1: 1.2
+      cov: 1.2
+      alpha: 0.025
+      n1: 500
+      sides: 1
+    expected: {n: 1000, achieved_power: 0.86253}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Means using Ratios (Example 2 row 8)"

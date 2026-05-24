@@ -1,0 +1,61 @@
+chapter: "Chi-Square Effect Size Estimator"
+method: "chi_square_effect_size_estimator"
+examples:
+
+  - id: "Contingency Tab: marital status x gender"
+    description: >
+      Chapter Example (Contingency Tab).  Cell percentages for the
+      eight marital-status x gender cells:
+        male   = (22, 46, 22, 10)
+        female = (32, 33, 24, 11).
+      Default p0 is the independence model from marginals of p1.
+      Reference reports w = 0.143626.  df = (2-1)(4-1) = 3.
+    solve_for: "estimate"
+    inputs:
+      p1:
+        - [22, 46, 22, 10]
+        - [32, 33, 24, 11]
+    expected:
+      result: 0.143626
+      df: 3
+    tolerance:
+      result: 0.0001
+      df: 0
+    source: "Chi-Square Effect Size Estimator (Contingency Table Tab Example)"
+
+  - id: "Multinomial Tab: normal vs exponential goodness-of-fit"
+    description: >
+      Chapter Example (Multinomial Tab).  Five-cell goodness-of-fit
+      with p0 = normal (11, 20, 38, 20, 11)% and p1 = exponential
+      (39, 26, 18, 11, 6)%.  Reference reports w = 0.948271.  df = 5 - 1 = 4.
+    solve_for: "estimate"
+    inputs:
+      p1: [39, 26, 18, 11, 6]
+      p0: [11, 20, 38, 20, 11]
+    expected:
+      result: 0.948271
+      df: 4
+    tolerance:
+      result: 0.0001
+      df: 0
+    source: "Chi-Square Effect Size Estimator (Multinomial Test Tab Example)"
+
+  - id: "Equal nulls reduce to chi-square N=NW^2 identity"
+    description: >
+      Internal consistency check: with p0 set to a uniform multinomial
+      (1/5 each) and p1 set to (0.5, 0.2, 0.1, 0.1, 0.1), w should
+      equal sqrt(sum((p1-p0)^2/p0)).  Computed by hand:
+      ((0.3)^2 + (0)^2 + (-0.1)^2 + (-0.1)^2 + (-0.1)^2) / 0.2
+      = (0.09 + 0 + 0.01 + 0.01 + 0.01) / 0.2 = 0.12 / 0.2 = 0.6.
+      Hence w = sqrt(0.6) = 0.7745967.
+    solve_for: "estimate"
+    inputs:
+      p1: [0.5, 0.2, 0.1, 0.1, 0.1]
+      p0: [0.2, 0.2, 0.2, 0.2, 0.2]
+    expected:
+      result: 0.7745967
+      df: 4
+    tolerance:
+      result: 0.0001
+      df: 0
+    source: "Cohen (1988) p.216 effect-size formula sanity check."

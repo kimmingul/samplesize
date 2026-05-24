@@ -1,0 +1,108 @@
+chapter: "Tests for Two Independent Sensitivities"
+method: "sensitivity_specificity_two_samples"
+examples:
+
+  - id: "Ch275 Ex1 row1 (power, independent, N_per=300)"
+    description: >
+      Ch.275 Example 1.  Se1=0.71, Se2=0.792, P=0.20, equal groups,
+      Z-test (pooled), two-sided alpha=0.05.  N_per_group=300.
+      Reference reports power=0.1840.
+    inputs:
+      se1: 0.71
+      se2: 0.792
+      prevalence: 0.20
+      n: 300
+      alpha: 0.05
+      sides: 2
+      design: "independent"
+      solve_for: "power"
+    expected:
+      achieved_power: 0.1840
+    tolerance:
+      achieved_power: 0.005
+    notes: >
+      The calculator uses a normal approximation; reference uses an exact
+      binomial enumeration for small n.  Tolerance widened to 0.005.
+    source: "Tests for Two Independent Sensitivities (Example 1, row 1)"
+
+  - id: "Ch275 Ex1 row2 (power, independent, N_per=600)"
+    description: >
+      Same setup, N_per_group=600.  Reference reports power=0.3112.
+    inputs:
+      se1: 0.71
+      se2: 0.792
+      prevalence: 0.20
+      n: 600
+      alpha: 0.05
+      sides: 2
+      design: "independent"
+      solve_for: "power"
+    expected:
+      achieved_power: 0.3112
+    tolerance:
+      achieved_power: 0.005
+    source: "Tests for Two Independent Sensitivities (Example 1, row 2)"
+
+  - id: "Ch275 Ex1 row4 (power, independent, N_per=1200)"
+    description: >
+      N_per_group=1200.  Reference reports power=0.5469.
+    inputs:
+      se1: 0.71
+      se2: 0.792
+      prevalence: 0.20
+      n: 1200
+      alpha: 0.05
+      sides: 2
+      design: "independent"
+      solve_for: "power"
+    expected:
+      achieved_power: 0.5469
+    tolerance:
+      achieved_power: 0.005
+    source: "Tests for Two Independent Sensitivities (Example 1, row 4)"
+
+  - id: "Ch276 Ex1 row1 (power, paired, N=300, D=0.30)"
+    description: >
+      Ch.276 Example 1.  Paired design, Se1=0.71, Se2=0.792, P=0.20,
+      D=0.30, two-sided McNemar test, alpha=0.05.  N=300 total subjects.
+      Reference reports power=0.15137.
+    inputs:
+      se1: 0.71
+      se2: 0.792
+      prevalence: 0.20
+      n: 300
+      alpha: 0.05
+      sides: 2
+      design: "paired"
+      D: 0.30
+      solve_for: "power"
+    expected:
+      achieved_power: 0.15137
+    tolerance:
+      achieved_power: 0.05
+    notes: >
+      The paired branch uses a normal approximation (Machin/Schork) rather
+      than the exact Schork-Williams unconditional method used by reference.
+      Tolerance widened to 0.05 due to this algorithmic divergence.
+    source: "Tests for Paired Sensitivities (Example 1, row 1)"
+
+  - id: "Ch276 Ex1 row2 (power, paired, N=600, D=0.30)"
+    description: >
+      Paired design, N=600.  Reference reports power=0.31319.
+    inputs:
+      se1: 0.71
+      se2: 0.792
+      prevalence: 0.20
+      n: 600
+      alpha: 0.05
+      sides: 2
+      design: "paired"
+      D: 0.30
+      solve_for: "power"
+    expected:
+      achieved_power: 0.31319
+    tolerance:
+      achieved_power: 0.05
+    notes: >
+      Normal approximation; tolerance widened to 0.05.
+    source: "Tests for Paired Sensitivities (Example 1, row 2)"

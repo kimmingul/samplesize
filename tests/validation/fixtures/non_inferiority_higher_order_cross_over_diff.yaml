@@ -1,0 +1,114 @@
+chapter: "Non-Inferiority Tests for the Difference of Two Means in a Higher-Order Cross-Over Design"
+method: "non_inferiority_higher_order_cross_over_diff"
+examples:
+
+  # Example 1: 3x2 dual, alpha=0.025, D=0, sigma_w=10, higher better.
+  - id: "Ex1 N=6 |NIM|=10 (3x2 dual) - power"
+    description: >
+      Chapter 530, Example 1.  3x2 dual, N = 6, |NIM| = 10,
+      D = 0, sigma_w = 10, alpha = 0.025, higher means better.
+      Expected power = 0.3837.
+    inputs:
+      margin: 10.0
+      diff: 0.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      n: 6
+    expected: {n: 6, achieved_power: 0.3837}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  - id: "Ex1 N=46 |NIM|=10 (3x2 dual) - power"
+    description: >
+      Chapter 530, Example 1.  3x2 dual, N = 46, |NIM| = 10,
+      D = 0, sigma_w = 10, alpha = 0.025, higher means better.
+      Expected power = 0.9997.
+    inputs:
+      margin: 10.0
+      diff: 0.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      n: 46
+    expected: {n: 46, achieved_power: 0.9997}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  - id: "Ex1 N=66 |NIM|=5 (3x2 dual) - power"
+    description: >
+      Chapter 530, Example 1.  3x2 dual, N = 66, |NIM| = 5,
+      D = 0, sigma_w = 10, alpha = 0.025, higher means better.
+      Expected power = 0.9084.
+    inputs:
+      margin: 5.0
+      diff: 0.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      n: 66
+    expected: {n: 66, achieved_power: 0.9084}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 1)"
+
+  # Example 2: Sample Size (Equal Per Sequence).
+  - id: "Ex2 |NIM|=5 power=0.80 (3x2 dual eqseq) - N"
+    description: >
+      Chapter 530, Example 2.  3x2 dual, |NIM| = 5, D = 0,
+      sigma_w = 10, alpha = 0.025, target power 0.80, Sample Size
+      (Equal Per Sequence).  Expected N = 50, achieved power = 0.8153.
+    inputs:
+      margin: 5.0
+      diff: 0.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      power: 0.80
+      equal_per_sequence: true
+    expected: {n: 50, achieved_power: 0.8153}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 2)"
+
+  - id: "Ex2 |NIM|=10 power=0.80 (3x2 dual eqseq) - N"
+    description: >
+      Chapter 530, Example 2.  3x2 dual, |NIM| = 10, D = 0,
+      sigma_w = 10, alpha = 0.025, target power 0.80, Equal Per Sequence.
+      Expected N = 14, achieved power = 0.8343.
+    inputs:
+      margin: 10.0
+      diff: 0.0
+      sd_w: 10.0
+      design: "two_sequence_dual"
+      higher_means_better: true
+      alpha: 0.025
+      power: 0.80
+      equal_per_sequence: true
+    expected: {n: 14, achieved_power: 0.8343}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 2)"
+
+  # Example 3: Validation against Chapter 540 (TOST upper-limit large).
+  # Balaam design (2x4), |NIM|=0.20, D=0.05, sigma_w=0.10, alpha=0.05,
+  # target power=0.90 => N = 16, achieved power = 0.9495.
+  - id: "Ex3 Balaam |NIM|=0.20 D=0.05 power=0.90 - N"
+    description: >
+      Chapter 530, Example 3 - validation cross-check via Balaam
+      (AA|BB|AB|BA).  |NIM| = 0.20, D = 0.05, sigma_w = 0.10,
+      alpha = 0.05, target power = 0.90, higher means better.
+      Expected N = 16, achieved power = 0.9495.
+    inputs:
+      margin: 0.20
+      diff: 0.05
+      sd_w: 0.10
+      design: "balaam"
+      higher_means_better: true
+      alpha: 0.05
+      power: 0.90
+      equal_per_sequence: true
+    expected: {n: 16, achieved_power: 0.9495}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Difference of Two Means in a Higher-Order Cross-Over Design (Example 3)"

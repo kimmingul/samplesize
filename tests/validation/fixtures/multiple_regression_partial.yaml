@@ -1,0 +1,31 @@
+chapter: "Multiple Regression"
+method: "multiple_regression_partial"
+examples:
+
+  - id: "Ex1 partial correlation rho2=0.10 n_other=4 N=50"
+    description: >
+      Derived from Ch.865 Example 1: testing 1 predictor with
+      rho_partial_squared = R2_{T|C} / (1-R2_C) = 0.05/0.50 = 0.10,
+      controlling for n_other=4 predictors. N=50, alpha=0.05.
+      Expected power=0.63511 (matches omnibus at q=1).
+    inputs:
+      rho_partial_squared: 0.10
+      n_other: 4
+      n: 50
+      alpha: 0.05
+    expected: {n: 50, achieved_power: 0.63511}
+    tolerance: {n: 0, achieved_power: 0.0005}
+    source: "Multiple Regression (Example 1)"
+
+  - id: "Ex2 partial correlation rho2=0.30 n_other=2 solve-n power=0.80"
+    description: >
+      Test 1 predictor with rho_partial_squared=0.30, n_other=2 controls,
+      alpha=0.05, target power=0.80. Solved N=21, achieved power=0.8070.
+    inputs:
+      rho_partial_squared: 0.30
+      n_other: 2
+      alpha: 0.05
+      power: 0.80
+    expected: {n: 21, achieved_power: 0.807}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "Multiple Regression (Technical Details)"

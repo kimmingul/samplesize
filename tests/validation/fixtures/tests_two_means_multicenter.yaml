@@ -1,0 +1,78 @@
+chapter: "Tests for Two Means in a Multicenter Randomized Design"
+method: "tests_two_means_multicenter"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 2 - Validation using Vierron and Giraudeau (2007), Table 2:
+  # N = 302 at power = 0.80, delta = 0.25, sd = 1.0, icc = 0.4,
+  # alpha = 0.05.
+  # ------------------------------------------------------------------
+
+  - id: "Ex2 Vierron-Giraudeau 2007 - N=302"
+    description: >
+      Vierron and Giraudeau (2007) Table 2 p.454 / Example 2:
+      delta = 0.25, sd = 1.0, icc = 0.4, alpha = 0.05, target
+      power = 0.80.  Reference reports N = 302, achieved power = 0.8008.
+    inputs:
+      delta: 0.25
+      sd: 1.0
+      icc: 0.4
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected: {n: 302, achieved_power: 0.8008}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Means in a Multicenter Randomized Design (Example 2)"
+
+  # ------------------------------------------------------------------
+  # Example 1 - sample size for power = 0.90, sd = 1.0, icc = 0.1,
+  # alpha = 0.05.  Solve for N at delta = 0.1, 0.2, 0.3.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 delta=0.1 - N=3783"
+    description: >
+      Example 1: delta = 0.1, sd = 1.0, icc = 0.1, alpha = 0.05,
+      target power = 0.90.  Reference reports N = 3783, achieved
+      power = 0.9000.
+    inputs:
+      delta: 0.1
+      sd: 1.0
+      icc: 0.1
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 3783, achieved_power: 0.9000}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Means in a Multicenter Randomized Design (Example 1 row 1)"
+
+  - id: "Ex1 delta=0.2 - N=946"
+    description: >
+      Example 1: delta = 0.2, sd = 1.0, icc = 0.1, alpha = 0.05,
+      target power = 0.90.  Reference reports N = 946, achieved
+      power = 0.9001.
+    inputs:
+      delta: 0.2
+      sd: 1.0
+      icc: 0.1
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 946, achieved_power: 0.9001}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Means in a Multicenter Randomized Design (Example 1 row 2)"
+
+  - id: "Ex1 delta=0.3 - N=421"
+    description: >
+      Example 1: delta = 0.3, sd = 1.0, icc = 0.1, alpha = 0.05,
+      target power = 0.90.  Reference reports N = 421, achieved
+      power = 0.9005.
+    inputs:
+      delta: 0.3
+      sd: 1.0
+      icc: 0.1
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n: 421, achieved_power: 0.9005}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Means in a Multicenter Randomized Design (Example 1 row 3)"

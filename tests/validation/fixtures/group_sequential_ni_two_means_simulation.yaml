@@ -1,0 +1,57 @@
+chapter: "Group-Sequential Non-Inferiority Tests for Two Means (Simulation)"
+method: "group_sequential_ni_two_means_simulation"
+examples:
+  - id: "Ex1 OBF 5-look power-solve N1=200 mean1=mean2=108 sd=20 NIM=5 alpha=0.05"
+    description: >
+      Example 1 from reference chapter: OBF 5-look one-sided NI design,
+      mean1=mean2=108 (H1: true diff=0), NIM=5, sd=20, N1=N2=200, alpha=0.05.
+      reference simulation reports power 0.7938 (20000 sims).
+      Tolerance ±0.015 for simulation variance at 10000 sims.
+    inputs:
+      mean1: 108
+      mean2: 108
+      sd1: 20
+      sd2: 20
+      margin: 5
+      alpha: 0.05
+      n1: 200
+      n_looks: 5
+      boundary: "obrien-fleming"
+      higher_means_better: true
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 400
+      achieved_power: 0.7938
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: "Group-Sequential Non-Inferiority Tests for Two Means (Simulation) (Example 1)"
+
+  - id: "Ex1-Pocock 5-look N1=200 mean1=mean2=108 sd=20 NIM=5 alpha=0.05 Pocock"
+    description: >
+      Same as Example 1 but using Pocock spending function.
+      Expected power slightly lower than OBF (~0.72) due to Pocock spending pattern.
+      Tolerance ±0.020 for simulation variance.
+    inputs:
+      mean1: 108
+      mean2: 108
+      sd1: 20
+      sd2: 20
+      margin: 5
+      alpha: 0.05
+      n1: 200
+      n_looks: 5
+      boundary: "pocock"
+      higher_means_better: true
+      allocation: 1.0
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 400
+      achieved_power: 0.720
+    tolerance:
+      n: 0
+      achieved_power: 0.020
+    source: "Group-Sequential Non-Inferiority Tests for Two Means (Simulation) (Example 1 (Pocock variant))"

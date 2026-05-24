@@ -1,0 +1,95 @@
+chapter: "Tests for One Variance"
+method: "tests_one_variance"
+examples:
+
+  - id: "Ex1 N=130 (V0=42.5, V1=29.75, alpha=0.05, 1-sided)"
+    description: >
+      reference chapter 650 Example 1: V0=42.5, V1=29.75, one-sided test
+      (Ha: V0 > V1), alpha=0.05.  At N=130 Reference reports power=0.88174.
+    inputs:
+      v0: 42.5
+      v1: 29.75
+      alpha: 0.05
+      n: 130
+      sides: 1
+    expected:
+      n: 130
+      achieved_power: 0.88174
+    tolerance:
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for One Variance (Example 1, row N=130)"
+
+  - id: "Ex1 N=170 (V0=42.5, V1=29.75, alpha=0.05, 1-sided)"
+    description: >
+      reference chapter 650 Example 1, row N=170: power=0.94785.
+    inputs:
+      v0: 42.5
+      v1: 29.75
+      alpha: 0.05
+      n: 170
+      sides: 1
+    expected:
+      n: 170
+      achieved_power: 0.94785
+    tolerance:
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for One Variance (Example 1, row N=170)"
+
+  - id: "Ex2 (V0=1, V1=0.4, alpha=0.05, power=0.90, solve N)"
+    description: >
+      reference chapter 650 Example 2: V0=1.0, V1=0.4, alpha=0.05, power=0.90.
+      Reference reports N=23 with actual power 0.90067.
+    inputs:
+      v0: 1.0
+      v1: 0.4
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+    expected:
+      n: 23
+      achieved_power: 0.90067
+    tolerance:
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for One Variance (Example 2, row V1=0.4 alpha=0.05)"
+
+  - id: "Ex3 Zar validation (V0=1.5, V1=2.6898, N=40, alpha=0.05, 1-sided)"
+    description: >
+      reference chapter 650 Example 3 (Zar 1984 p. 117): V0=1.5, V1=2.6898,
+      N=40, alpha=0.05, Ha: V0 < V1.  Reference reports power 0.83517,
+      matching Zar's 0.84 within rounding.
+    inputs:
+      v0: 1.5
+      v1: 2.6898
+      alpha: 0.05
+      n: 40
+      sides: 1
+    expected:
+      n: 40
+      achieved_power: 0.83517
+    tolerance:
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for One Variance (Example 3)"
+
+  - id: "Ex4 Davies validation (SD scale, V0=0.04, V1=0.10, alpha=0.05, power=0.99)"
+    description: >
+      reference chapter 650 Example 4 (Davies 1971 p. 40): SD scale,
+      V0=0.04, V1=0.10, alpha=0.05, power=0.99, Ha: V0 < V1.  reference
+      reports N=13 with achieved power 0.99238, matching Davies.
+    inputs:
+      v0: 0.04
+      v1: 0.10
+      alpha: 0.05
+      power: 0.99
+      sides: 1
+      scale: "sd"
+    expected:
+      n: 13
+      achieved_power: 0.99238
+    tolerance:
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for One Variance (Example 4)"

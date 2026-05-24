@@ -1,0 +1,5100 @@
+[
+  {
+    "id": "one_sample_t",
+    "name": "Tests for One Mean",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.one_mean:one_sample_t",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare one mean to a known value (one-sample t / z test).",
+    "synonyms": [
+      "one-sample t-test",
+      "single mean test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power",
+      "effect"
+    ]
+  },
+  {
+    "id": "two_sample_t_equal_var",
+    "name": "Two-Sample T-Tests Assuming Equal Variance (Enter Means)",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.two_means:two_sample_t_equal_var",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare two independent means assuming equal variances.",
+    "synonyms": [
+      "Student t-test",
+      "independent t-test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power",
+      "effect"
+    ]
+  },
+  {
+    "id": "paired_t",
+    "name": "Tests for Paired Means",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.paired_means:paired_t",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare two paired means.",
+    "synonyms": [
+      "paired t-test",
+      "matched-pairs t-test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power",
+      "effect"
+    ]
+  },
+  {
+    "id": "one_proportion",
+    "name": "Tests for One Proportion",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.proportions:one_proportion",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare a proportion to a known value.",
+    "synonyms": [
+      "binomial test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power",
+      "effect"
+    ]
+  },
+  {
+    "id": "two_proportions",
+    "name": "Tests for Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.proportions:two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare two independent proportions.",
+    "synonyms": [
+      "chi-square for 2x2",
+      "z-test of two proportions"
+    ],
+    "solve_for_options": [
+      "n",
+      "power",
+      "effect"
+    ]
+  },
+  {
+    "id": "pearson_correlation",
+    "name": "Pearson's Correlation Tests",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlation:pearson",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Test Pearson correlation coefficient against zero.",
+    "synonyms": [
+      "correlation test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "one_way_anova_f",
+    "name": "One-Way Analysis of Variance F-Tests",
+    "category": "ANOVA & Linear Models",
+    "manual_path": "",
+    "callable": "samplesize.tests.anova:one_way_f",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare k group means via one-way ANOVA F-test.",
+    "synonyms": [
+      "one-way ANOVA"
+    ],
+    "solve_for_options": [
+      "n",
+      "power",
+      "effect"
+    ]
+  },
+  {
+    "id": "non_inferiority_two_means",
+    "name": "Non-Inferiority Tests for Two Means using Differences",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.non_inferiority:non_inferiority_two_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "non-inferiority",
+    "purpose": "Test that the new treatment is not worse than the standard by more than a margin (difference scale).",
+    "synonyms": [
+      "non-inferiority t-test",
+      "NI two-sample"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_two_means",
+    "name": "Equivalence Tests for Two Means using Differences",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.equivalence:equivalence_two_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "Test that two treatments are within a margin of each other (TOST on the difference).",
+    "synonyms": [
+      "TOST two-sample",
+      "equivalence t-test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_two_proportions",
+    "name": "Non-Inferiority Tests for the Difference Between Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.non_inferiority:non_inferiority_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "non-inferiority",
+    "purpose": "Test that the new treatment's success rate is not worse than the reference by more than a margin.",
+    "synonyms": [
+      "NI two-proportions"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_two_proportions",
+    "name": "Equivalence Tests for the Difference Between Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.equivalence:equivalence_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "Test that two proportions are within a margin of each other.",
+    "synonyms": [
+      "TOST two-proportions"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_two_means",
+    "name": "Superiority by a Margin Tests for Two Means using Differences",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.superiority:superiority_by_margin_two_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Test that one treatment is superior to another by at least a clinically meaningful margin.",
+    "synonyms": [
+      "super-by-margin t-test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_two_proportions",
+    "name": "Superiority by a Margin Tests for the Difference Between Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.superiority:superiority_by_margin_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Test that one treatment's success rate exceeds another by at least a clinically meaningful margin.",
+    "synonyms": [
+      "super-by-margin z-test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "cox_regression",
+    "name": "Cox Regression",
+    "category": "Survival / Logrank / Cox",
+    "manual_path": "",
+    "callable": "samplesize.tests.cox:cox_regression",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "time-to-event",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Sample size for Cox proportional-hazards regression coefficient test (Hsieh & Lavori 2000).",
+    "synonyms": [
+      "Cox PH",
+      "Hsieh-Lavori"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "mcnemar",
+    "name": "Tests for Two Correlated Proportions (McNemar Test)",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.paired_proportions:mcnemar",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "McNemar test for paired binary outcomes (pre/post or matched-pair design).",
+    "synonyms": [
+      "McNemar",
+      "paired proportions"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "chi_square",
+    "name": "Chi-Square Tests",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.chi_square:chi_square",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "categorical",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Chi-square test for r×c contingency tables (Cohen's w effect size).",
+    "synonyms": [
+      "chi-square test",
+      "Pearson chi-square"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_one_mean",
+    "name": "Non-Inferiority Tests for One Mean",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.non_inferiority:non_inferiority_one_mean",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "non-inferiority",
+    "purpose": "Test that the mean is not below a reference by more than a margin (one-sample NI).",
+    "synonyms": [
+      "NI one-sample t"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_one_mean",
+    "name": "Equivalence Tests for One Mean",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.equivalence:equivalence_one_mean",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "TOST equivalence test for one mean against a reference value.",
+    "synonyms": [
+      "TOST one-sample"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "logrank_freedman",
+    "name": "Logrank Tests (Freedman)",
+    "category": "Survival / Logrank / Cox",
+    "manual_path": "",
+    "callable": "samplesize.tests.survival:logrank_freedman",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "time-to-event",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Sample size for two-group survival comparison via Freedman's method.",
+    "synonyms": [
+      "Freedman logrank"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_one_proportion",
+    "name": "Non-Inferiority Tests for One Proportion",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.non_inferiority:non_inferiority_one_proportion",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "non-inferiority",
+    "purpose": "Test that a proportion is not below a reference by more than a margin.",
+    "synonyms": [
+      "NI one-sample proportion"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_one_proportion",
+    "name": "Equivalence Tests for One Proportion",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.equivalence:equivalence_one_proportion",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "TOST equivalence test for a proportion against a reference value.",
+    "synonyms": [
+      "TOST one-sample proportion"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_one_proportion",
+    "name": "Superiority by a Margin Tests for One Proportion",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.superiority:superiority_by_margin_one_proportion",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Test that a proportion exceeds a reference by at least a margin.",
+    "synonyms": [
+      "sup-by-margin one-sample proportion"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "cluster_randomized_two_means",
+    "name": "Tests for Two Means in a Cluster-Randomized Design",
+    "category": "Cluster-Randomized Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cluster:cluster_randomized_two_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups",
+      "clustered"
+    ],
+    "outcome": "continuous",
+    "design": "cluster-randomized",
+    "hypothesis": "superiority",
+    "purpose": "Compare two means with cluster randomization (Donner & Klar).",
+    "synonyms": [
+      "cluster RCT two means"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "cluster_randomized_two_proportions",
+    "name": "Tests for Two Proportions in a Cluster-Randomized Design",
+    "category": "Cluster-Randomized Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cluster:cluster_randomized_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups",
+      "clustered"
+    ],
+    "outcome": "binary",
+    "design": "cluster-randomized",
+    "hypothesis": "superiority",
+    "purpose": "Compare two proportions with cluster randomization (Donner & Klar).",
+    "synonyms": [
+      "cluster RCT two proportions"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "cross_over_two_means",
+    "name": "Tests for Two Means in a 2x2 Cross-Over Design using Differences",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over:cross_over_two_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "superiority",
+    "purpose": "2x2 cross-over comparison of two treatments (within-subject SD).",
+    "synonyms": [
+      "AB/BA cross-over"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_two_means",
+    "name": "Group-Sequential Tests for Two Means",
+    "category": "Group-Sequential Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential:group_sequential_two_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups",
+      "sequential"
+    ],
+    "outcome": "continuous",
+    "design": "group-sequential",
+    "hypothesis": "superiority",
+    "purpose": "Group-sequential boundaries (O'Brien-Fleming / Pocock / Hwang-Shih-DeCani) for two-mean tests.",
+    "synonyms": [
+      "GSD two means",
+      "O'Brien-Fleming"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "m_period_cross_over_contrasts",
+    "name": "M-Period Cross-Over Designs using Contrasts",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over:m_period_cross_over_contrasts",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "m-period-cross-over",
+    "hypothesis": "superiority",
+    "purpose": "Higher-order (M-period) cross-over with arbitrary contrasts of treatment means.",
+    "synonyms": [
+      "higher-order cross-over"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "logrank_lachin_foulkes",
+    "name": "Logrank Tests (Lachin and Foulkes)",
+    "category": "Survival / Logrank / Cox",
+    "manual_path": "",
+    "callable": "samplesize.tests.survival:logrank_lachin_foulkes",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "time-to-event",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-group survival sample size with accrual + follow-up (Lachin & Foulkes 1986).",
+    "synonyms": [
+      "Lachin-Foulkes logrank"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "one_way_repeated_measures",
+    "name": "One-Way Repeated Measures",
+    "category": "Repeated Measures",
+    "manual_path": "",
+    "callable": "samplesize.tests.repeated_measures:one_way_repeated_measures",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "repeated-measures"
+    ],
+    "outcome": "continuous",
+    "design": "within-subject",
+    "hypothesis": "superiority",
+    "purpose": "Within-subject one-factor repeated measures ANOVA (Greenhouse-Geisser ε).",
+    "synonyms": [
+      "one-way repeated measures ANOVA"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "bioequivalence_two_means_ratios",
+    "name": "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Ratios",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over:bioequivalence_two_means_ratios",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "equivalence",
+    "purpose": "2x2 cross-over bioequivalence on log-transformed ratios (FDA/EMA 80/125% standard).",
+    "synonyms": [
+      "bioequivalence",
+      "ABE",
+      "average bioequivalence"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_one_variance",
+    "name": "Tests for One Variance",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.variances:tests_one_variance",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Test that the population variance equals a target value (chi-square).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_variances",
+    "name": "Tests for Two Variances",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.variances:tests_two_variances",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare two independent variances (F-ratio test).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_one_coefficient_alpha",
+    "name": "Tests for One Coefficient Alpha",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.coefficient_alpha:tests_one_coefficient_alpha",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Test that Cronbach's coefficient alpha equals a target value.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_coefficient_alphas",
+    "name": "Tests for Two Coefficient Alphas",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.coefficient_alpha:tests_two_coefficient_alphas",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare two coefficient alphas (Feldt & Brennan).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_one_variance_using_variance",
+    "name": "Confidence Intervals for One Variance using Variance",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_variance:ci_one_variance_using_variance",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for chi-square-based CI of one variance with desired width.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_one_variance_relative_error",
+    "name": "Confidence Intervals for One Variance using Relative Error",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_variance:ci_one_variance_relative_error",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for variance CI with relative-error specification.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_one_variance_tolerance",
+    "name": "Confidence Intervals for One Variance with Tolerance Probability",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_variance:ci_one_variance_tolerance",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Variance CI with assurance (tolerance) probability.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_ratio_two_variances_using_variances",
+    "name": "Confidence Intervals for the Ratio of Two Variances using Variances",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_variance:ci_ratio_two_variances_using_variances",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "F-based CI on the ratio of two variances.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_ratio_two_variances_relative_error",
+    "name": "Confidence Intervals for the Ratio of Two Variances using Relative Error",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_variance:ci_ratio_two_variances_relative_error",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Ratio-of-variances CI with relative-error specification.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_one_sd_using_sd",
+    "name": "Confidence Intervals for One Standard Deviation using Standard Deviation",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_sd:ci_one_sd_using_sd",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for SD CI specified on the SD scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_one_sd_relative_error",
+    "name": "Confidence Intervals for One Standard Deviation using Relative Error",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_sd:ci_one_sd_relative_error",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "SD CI with relative-error specification.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_one_sd_tolerance",
+    "name": "Confidence Intervals for One Standard Deviation with Tolerance Probability",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_sd:ci_one_sd_tolerance",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "SD CI with assurance probability.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_coefficient_alpha",
+    "name": "Confidence Intervals for Coefficient Alpha",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.coefficient_alpha:ci_coefficient_alpha",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "CI for Cronbach's coefficient alpha (Feldt 1965).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "levene_variances_simulation",
+    "name": "Levene Test of Variances (Simulation)",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.variances_simulation:levene_variances_simulation",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Levene homogeneity-of-variance test power via Monte Carlo simulation.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "bartlett_variances_simulation",
+    "name": "Bartlett Test of Variances (Simulation)",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.variances_simulation:bartlett_variances_simulation",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Bartlett homogeneity-of-variance test power via simulation.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "brown_forsythe_variances_simulation",
+    "name": "Brown-Forsythe Test of Variances (Simulation)",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.variances_simulation:brown_forsythe_variances_simulation",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Brown-Forsythe homogeneity-of-variance test power via simulation.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "conover_variances_simulation",
+    "name": "Conover Test of Variances (Simulation)",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.variances_simulation:conover_variances_simulation",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Conover rank-based test of variances via simulation.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_cp",
+    "name": "Confidence Intervals for Cp",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.capability:ci_cp",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for Cp process-capability CI (chi-square inversion).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_cpk",
+    "name": "Confidence Intervals for Cpk",
+    "category": "Variances / Standard Deviations",
+    "manual_path": "",
+    "callable": "samplesize.tests.capability:ci_cpk",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for Cpk process-capability CI.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "standard_deviation_estimator",
+    "name": "Standard Deviation Estimator",
+    "category": "Estimators & Calculators",
+    "manual_path": "",
+    "callable": "samplesize.tests.estimators:standard_deviation_estimator",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "estimator",
+    "purpose": "Utility: pool SD estimates from prior studies (weighted by df).",
+    "synonyms": [],
+    "solve_for_options": [
+      "estimate"
+    ]
+  },
+  {
+    "id": "standard_deviation_of_means_calculator",
+    "name": "Standard Deviation of Means Calculator",
+    "category": "Estimators & Calculators",
+    "manual_path": "",
+    "callable": "samplesize.tests.estimators:standard_deviation_of_means_calculator",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "estimator",
+    "purpose": "Utility: σ_m from a list of hypothesised means for ANOVA-style power.",
+    "synonyms": [],
+    "solve_for_options": [
+      "estimate"
+    ]
+  },
+  {
+    "id": "chi_square_effect_size_estimator",
+    "name": "Chi-Square Effect Size Estimator",
+    "category": "Estimators & Calculators",
+    "manual_path": "",
+    "callable": "samplesize.tests.estimators:chi_square_effect_size_estimator",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "categorical",
+    "design": "parallel",
+    "hypothesis": "estimator",
+    "purpose": "Utility: Cohen's w from a contingency-table cell probability matrix.",
+    "synonyms": [],
+    "solve_for_options": [
+      "estimate"
+    ]
+  },
+  {
+    "id": "kappa_estimator",
+    "name": "Kappa Estimator",
+    "category": "Estimators & Calculators",
+    "manual_path": "",
+    "callable": "samplesize.tests.estimators:kappa_estimator",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "categorical",
+    "design": "parallel",
+    "hypothesis": "estimator",
+    "purpose": "Utility: expected Cohen's kappa from marginal agreement probabilities.",
+    "synonyms": [],
+    "solve_for_options": [
+      "estimate"
+    ]
+  },
+  {
+    "id": "two_sample_t_welch_means",
+    "name": "Two-Sample T-Tests Allowing Unequal Variance (Enter Means)",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.two_means:two_sample_t_welch_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Welch t-test (unequal variances) — input as group means.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "two_sample_t_welch_diff",
+    "name": "Two-Sample T-Tests Allowing Unequal Variance (Enter Difference)",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.two_means:two_sample_t_welch_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Welch t-test (unequal variances) — input as mean difference.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "two_sample_t_equal_var_diff",
+    "name": "Two-Sample T-Tests Assuming Equal Variance (Enter Difference)",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.two_means:two_sample_t_equal_var_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-sample t (equal var) — input as mean difference.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "two_sample_z_equal_var_means",
+    "name": "Two-Sample Z-Tests Assuming Equal Variance (Enter Means)",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.two_means_z:two_sample_z_equal_var_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-sample z-test (known equal var) — input as group means.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "two_sample_z_equal_var_diff",
+    "name": "Two-Sample Z-Tests Assuming Equal Variance (Enter Difference)",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.two_means_z:two_sample_z_equal_var_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-sample z-test (known equal var) — input as mean difference.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "two_sample_z_unequal_var_means",
+    "name": "Two-Sample Z-Tests Allowing Unequal Variance (Enter Means)",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.two_means_z:two_sample_z_unequal_var_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-sample z-test (unequal known var) — input as group means.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "two_sample_z_unequal_var_diff",
+    "name": "Two-Sample Z-Tests Allowing Unequal Variance (Enter Difference)",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.two_means_z:two_sample_z_unequal_var_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-sample z-test (unequal known var) — input as mean difference.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "conditional_power_one_sample_t",
+    "name": "Conditional Power of One-Sample T-Tests",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.conditional_power:conditional_power_one_sample_t",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Conditional power at interim for a one-sample t-test.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "conditional_power_paired_t",
+    "name": "Conditional Power of Paired T-Tests",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.conditional_power:conditional_power_paired_t",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Conditional power at interim for a paired t-test.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "conditional_power_two_sample_t",
+    "name": "Conditional Power of Two-Sample T-Tests",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.conditional_power:conditional_power_two_sample_t",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Conditional power at interim for a two-sample t-test.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "multiple_one_sample_or_paired_t",
+    "name": "Multiple One-Sample or Paired T-Tests",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.multiple_t:multiple_one_sample_or_paired_t",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Family of one-sample/paired t-tests with multiplicity adjustment.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "multiple_two_sample_t",
+    "name": "Multiple Two-Sample T-Tests",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.multiple_t:multiple_two_sample_t",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Family of two-sample t-tests with multiplicity adjustment.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "hotelling_one_sample_t2",
+    "name": "Hotelling's One-Sample T2",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.hotelling:hotelling_one_sample_t2",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Multivariate Hotelling T² for one sample (multiple endpoints).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "hotelling_two_sample_t2",
+    "name": "Hotelling's Two-Sample T2",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.hotelling:hotelling_two_sample_t2",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Multivariate Hotelling T² for two groups (multiple endpoints).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "williams_minimum_effective_dose",
+    "name": "Williams' Test for the Minimum Effective Dose",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.williams:williams_minimum_effective_dose",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Williams' isotonic-regression test for the minimum effective dose.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "multiple_comparisons",
+    "name": "Multiple Comparisons",
+    "category": "ANOVA & Linear Models",
+    "manual_path": "",
+    "callable": "samplesize.tests.multiple_comparisons:multiple_comparisons",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Sample size for ANOVA followed by multiple comparison procedures.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "pair_wise_multiple_comparisons_sim",
+    "name": "Pair-Wise Multiple Comparisons (Simulation)",
+    "category": "ANOVA & Linear Models",
+    "manual_path": "",
+    "callable": "samplesize.tests.pairwise_comparisons_sim:pair_wise_multiple_comparisons_sim",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Pair-wise comparisons via simulation (Tukey/Bonferroni/Scheffe).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "multiple_contrasts_sim",
+    "name": "Multiple Contrasts (Simulation)",
+    "category": "ANOVA & Linear Models",
+    "manual_path": "",
+    "callable": "samplesize.tests.multiple_contrasts_sim:multiple_contrasts_sim",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Multiple custom contrasts via simulation.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "multiple_comparisons_vs_control_sim",
+    "name": "Multiple Comparisons of Treatments vs a Control (Simulation)",
+    "category": "ANOVA & Linear Models",
+    "manual_path": "",
+    "callable": "samplesize.tests.pairwise_comparisons_sim:multiple_comparisons_vs_control_sim",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Dunnett-style treatments-vs-control comparisons via simulation.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "one_way_anova_contrasts",
+    "name": "One-Way Analysis of Variance Contrasts",
+    "category": "ANOVA & Linear Models",
+    "manual_path": "",
+    "callable": "samplesize.tests.anova:one_way_anova_contrasts",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "One-way ANOVA with single contrast (linear combination of means).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "one_way_anova_f_simulation",
+    "name": "One-Way Analysis of Variance F-Tests (Simulation)",
+    "category": "ANOVA & Linear Models",
+    "manual_path": "",
+    "callable": "samplesize.tests.anova_simulation:one_way_anova_f_simulation",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "One-way ANOVA F via simulation (robust to non-normality).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "power_comparison_means_one_way_sim",
+    "name": "Power Comparison of Tests of Means in One-Way Designs (Simulation)",
+    "category": "ANOVA & Linear Models",
+    "manual_path": "",
+    "callable": "samplesize.tests.anova_simulation:power_comparison_means_one_way_sim",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare power of F vs Kruskal-Wallis vs Welch in one-way design.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_groups_pre_post",
+    "name": "Tests for Two Groups of Pre-Post Scores",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.pre_post:tests_two_groups_pre_post",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Pre-post change comparison between two groups (ANCOVA-style).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_means_multicenter",
+    "name": "Tests for Two Means in a Multicenter Randomized Design",
+    "category": "Multicenter / Stratified",
+    "manual_path": "",
+    "callable": "samplesize.tests.multicenter:tests_two_means_multicenter",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups",
+      "multicenter"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-arm comparison stratified by center (variance components).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_fold_change_two_means",
+    "name": "Tests for Fold Change of Two Means",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.two_means:tests_fold_change_two_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-sample fold-change (log-scale) test (genomics convention).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_means_ratios",
+    "name": "Tests for Two Means using Ratios",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.two_means:tests_two_means_ratios",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-sample geometric-mean ratio test (log-scale t).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_two_means_ratios",
+    "name": "Non-Inferiority Tests for Two Means using Ratios",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.non_inferiority:non_inferiority_two_means_ratios",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "non-inferiority",
+    "purpose": "Non-inferiority on the ratio scale (log-transformed).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_two_means_ratios",
+    "name": "Equivalence Tests for Two Means using Ratios",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.equivalence:equivalence_two_means_ratios",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "Equivalence (TOST) on the ratio scale (log-transformed).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_two_means_ratios",
+    "name": "Superiority by a Margin Tests for Two Means using Ratios",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.superiority:superiority_by_margin_two_means_ratios",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Superiority by margin on the ratio scale (log-transformed).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_cross_over_diff",
+    "name": "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Differences",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over:non_inferiority_cross_over_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "non-inferiority",
+    "purpose": "NI in 2x2 cross-over on difference scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_cross_over_diff",
+    "name": "Equivalence Tests for Two Means in a 2x2 Cross-Over Design using Differences",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over:equivalence_cross_over_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "equivalence",
+    "purpose": "Equivalence (TOST) in 2x2 cross-over on difference scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_cross_over_diff",
+    "name": "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Differences",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over:superiority_by_margin_cross_over_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Sup-by-margin in 2x2 cross-over on difference scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_means_cross_over_ratios",
+    "name": "Tests for Two Means in a 2x2 Cross-Over Design using Ratios",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over:tests_two_means_cross_over_ratios",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "superiority",
+    "purpose": "Test for the ratio of treatments in 2x2 cross-over.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_cross_over_ratios",
+    "name": "Non-Inferiority Tests for Two Means in a 2x2 Cross-Over Design using Ratios",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over:non_inferiority_cross_over_ratios",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "non-inferiority",
+    "purpose": "NI in 2x2 cross-over on ratio scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_cross_over_ratios",
+    "name": "Superiority by a Margin Tests for Two Means in a 2x2 Cross-Over Design using Ratios",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over:superiority_by_margin_cross_over_ratios",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Sup-by-margin in 2x2 cross-over on ratio scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_higher_order_cross_over_diff",
+    "name": "Tests for the Difference of Two Means in a Higher-Order Cross-Over Design",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over_higher_order:tests_higher_order_cross_over_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "superiority",
+    "purpose": "Higher-order cross-over test for the difference of two treatments.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_higher_order_cross_over_diff",
+    "name": "Non-Inferiority Tests for the Difference of Two Means in a Higher-Order Cross-Over Design",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over_higher_order:non_inferiority_higher_order_cross_over_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "non-inferiority",
+    "purpose": "NI in higher-order cross-over on difference scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_higher_order_cross_over_diff",
+    "name": "Equivalence Tests for the Difference of Two Means in a Higher-Order Cross-Over Design",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over_higher_order:equivalence_higher_order_cross_over_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "equivalence",
+    "purpose": "Equivalence in higher-order cross-over on difference scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_higher_order_cross_over_diff",
+    "name": "Superiority by a Margin Tests for the Difference of Two Means in a Higher-Order Cross-Over Design",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over_higher_order:superiority_by_margin_higher_order_cross_over_diff",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "2x2-cross-over",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Sup-by-margin in higher-order cross-over on difference scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_one_proportion",
+    "name": "Confidence Intervals for One Proportion",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_proportions:ci_one_proportion",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for one-proportion CI.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_one_proportion_finite",
+    "name": "Confidence Intervals for One Proportion from a Finite Population",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_proportions:ci_one_proportion_finite",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "One-proportion CI with finite population correction.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_difference_two_proportions",
+    "name": "Confidence Intervals for the Difference Between Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_proportions:ci_difference_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "CI on the difference between two proportions.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_ratio_two_proportions",
+    "name": "Confidence Intervals for the Ratio of Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_proportions:ci_ratio_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "CI on the ratio of two proportions.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_odds_ratio_two_proportions",
+    "name": "Confidence Intervals for the Odds Ratio of Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_proportions:ci_odds_ratio_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "CI on the odds ratio of two proportions.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_ratio_two_proportions",
+    "name": "Non-Inferiority Tests for the Ratio of Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.ratio_proportions:non_inferiority_ratio_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "non-inferiority",
+    "purpose": "Non-inferiority on the ratio (relative risk) scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_ratio_two_proportions",
+    "name": "Equivalence Tests for the Ratio of Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.ratio_proportions:equivalence_ratio_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "Equivalence (TOST) on the ratio scale of proportions.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_ratio_two_proportions",
+    "name": "Superiority by a Margin Tests for the Ratio of Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.ratio_proportions:superiority_by_margin_ratio_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Superiority by margin on the ratio scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_odds_ratio_two_proportions",
+    "name": "Non-Inferiority Tests for the Odds Ratio of Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.odds_ratio_proportions:non_inferiority_odds_ratio_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "non-inferiority",
+    "purpose": "Non-inferiority on the odds-ratio scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_odds_ratio_two_proportions",
+    "name": "Equivalence Tests for the Odds Ratio of Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.odds_ratio_proportions:equivalence_odds_ratio_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "Equivalence on the odds-ratio scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_odds_ratio_two_proportions",
+    "name": "Superiority by a Margin Tests for the Odds Ratio of Two Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.odds_ratio_proportions:superiority_by_margin_odds_ratio_two_proportions",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Superiority by margin on the odds-ratio scale.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_proportions_stratified",
+    "name": "Tests for Two Proportions in a Stratified Design (Cochran-Mantel-Haenszel Test)",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.proportions_specialty:tests_two_proportions_stratified",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Cochran-Mantel-Haenszel test in stratified 2x2 tables.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_proportions_repeated_measures",
+    "name": "Tests for Two Proportions in a Repeated Measures Design",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.proportions_specialty:tests_two_proportions_repeated_measures",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "repeated-measures"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-proportion comparison in a repeated-measures design.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_correlated_proportions_matched",
+    "name": "Tests for Two Correlated Proportions in a Matched Case-Control Design",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.proportions_specialty:tests_two_correlated_proportions_matched",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Matched case-control McNemar variant.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_ordered_categorical",
+    "name": "Tests for Two Ordered Categorical Variables",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.proportions_specialty:tests_two_ordered_categorical",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "categorical",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Wilcoxon-Mann-Whitney for two ordered categorical variables.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "cochran_armitage_trend",
+    "name": "Cochran-Armitage Test for Trend in Proportions",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.proportions_specialty:cochran_armitage_trend",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Linear-trend test for proportions across ordered groups.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_pearson_correlation",
+    "name": "Confidence Interval for Pearson's Correlation",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_correlation:ci_pearson_correlation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for Pearson correlation CI (Fisher z).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_spearman_correlation",
+    "name": "Confidence Intervals for Spearman's Rank Correlation",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_correlation:ci_spearman_correlation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for Spearman rho CI.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_kendall_tau_b",
+    "name": "Confidence Intervals for Kendall's Tau-b Correlation",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_correlation:ci_kendall_tau_b",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for Kendall's tau-b CI.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_intraclass_correlation",
+    "name": "Confidence Intervals for Intraclass Correlation",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_correlation:ci_intraclass_correlation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for ICC confidence interval.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_point_biserial_correlation",
+    "name": "Confidence Intervals for Point Biserial Correlation",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_correlation:ci_point_biserial_correlation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for point-biserial correlation CI.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_correlations",
+    "name": "Tests for Two Correlations",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlation_specialty:tests_two_correlations",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare two independent correlation coefficients (Fisher z).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "lin_concordance_correlation",
+    "name": "Lin's Concordance Correlation Coefficient",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlation_specialty:lin_concordance_correlation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Lin's concordance correlation coefficient (CCC) for agreement studies.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_intraclass_correlation",
+    "name": "Tests for Intraclass Correlation",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlation_specialty:tests_intraclass_correlation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "repeated-measures"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Test ICC against a null value (Shrout-Fleiss).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "point_biserial_correlation",
+    "name": "Point Biserial Correlation Tests",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlation_specialty:point_biserial_correlation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Test point-biserial correlation against zero.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "spearman_correlation_simulation",
+    "name": "Spearman's Rank Correlation Tests (Simulation)",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlation_simulation:spearman_correlation_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Power for Spearman rank correlation test via simulation.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "kendall_tau_b_simulation",
+    "name": "Kendall's Tau-b Correlation Tests (Simulation)",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlation_simulation:kendall_tau_b_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Power for Kendall's tau-b test via simulation.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "pearson_correlation_simulation",
+    "name": "Pearson's Correlation Tests (Simulation)",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlation_simulation:pearson_correlation_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Power for Pearson correlation test via simulation.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "power_comparison_correlation_simulation",
+    "name": "Power Comparison of Correlation Tests (Simulation)",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlation_simulation:power_comparison_correlation_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Compare power of Pearson vs Spearman vs Kendall correlation tests.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_linear_regression_slope",
+    "name": "Confidence Intervals for Linear Regression Slope",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_regression:ci_linear_regression_slope",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for linear regression slope CI.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_michaelis_menten",
+    "name": "Confidence Intervals for Michaelis-Menten Parameters",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_regression:ci_michaelis_menten",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "CI for Michaelis-Menten Vmax/Km nonlinear regression.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_kappa",
+    "name": "Confidence Intervals for Kappa",
+    "category": "Correlation",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_correlation:ci_kappa",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "categorical",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for Cohen's kappa CI.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_one_way_repeated_measures_contrasts",
+    "name": "Confidence Intervals for One-Way Repeated Measures Contrasts",
+    "category": "Repeated Measures",
+    "manual_path": "",
+    "callable": "samplesize.tests.repeated_measures:ci_one_way_repeated_measures_contrasts",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "repeated-measures"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "CI for contrasts in one-way repeated-measures design.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_cox_regression",
+    "name": "Non-Inferiority Tests for Two Survival Curves Using Cox PH",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.cox:non_inferiority_cox_regression",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "survival",
+    "design": "parallel",
+    "hypothesis": "non-inferiority",
+    "purpose": "Non-inferiority test for hazard ratio using Cox PH (Schoenfeld).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_cox_regression",
+    "name": "Equivalence Tests for Two Survival Curves Using Cox PH",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.cox:equivalence_cox_regression",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "survival",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "Equivalence test (TOST) for hazard ratio using Cox PH.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_cox_regression",
+    "name": "Superiority by a Margin Tests for Two Survival Curves Using Cox PH",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.cox:superiority_by_margin_cox_regression",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "survival",
+    "design": "parallel",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Superiority-by-margin test for hazard ratio using Cox PH (Schoenfeld).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_two_hazard_rates",
+    "name": "Non-Inferiority Tests for the Difference of Two Hazard Rates",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.survival:non_inferiority_two_hazard_rates",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "survival",
+    "design": "parallel",
+    "hypothesis": "non-inferiority",
+    "purpose": "Non-inferiority test for difference of two exponential hazard rates (Lachin-Foulkes).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_two_hazard_rates",
+    "name": "Equivalence Tests for the Difference of Two Hazard Rates",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.survival:equivalence_two_hazard_rates",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "survival",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "Equivalence test (TOST) for difference of two exponential hazard rates.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_logrank",
+    "name": "Group-Sequential Logrank Tests",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_survival:group_sequential_logrank",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "survival",
+    "design": "group-sequential",
+    "hypothesis": "superiority",
+    "purpose": "Group-sequential logrank test with OBF or Pocock alpha spending.",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "one_sample_cure_model_logrank",
+    "name": "One-Sample Cure Model Tests",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.cure_model:one_sample_cure_model_logrank",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "survival",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "One-sample cure model logrank test (Wu 2015, Weibull mixture).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "competing_risks_subdistribution_hazard",
+    "name": "Logrank Tests Accounting for Competing Risks",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.survival:competing_risks_logrank",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "survival",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Logrank test accounting for competing risks (Pintilie 2002/2006).",
+    "synonyms": [],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "factorial_anova_two_way",
+    "name": "Two-Way Analysis of Variance",
+    "category": "ANOVA - Factorial",
+    "manual_path": "",
+    "callable": "samplesize.tests.anova:factorial_anova_two_way",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample",
+      "multi-sample"
+    ],
+    "outcome": "continuous",
+    "design": "factorial",
+    "hypothesis": "superiority",
+    "purpose": "Two-way fixed-effects ANOVA F-test for main effects A, B, or interaction AB.",
+    "synonyms": [
+      "2x2 ANOVA",
+      "two-factor ANOVA",
+      "factorial ANOVA"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "anova_repeated_measures_within",
+    "name": "Repeated Measures Analysis - Within-Subject",
+    "category": "ANOVA - Repeated Measures",
+    "manual_path": "",
+    "callable": "samplesize.tests.anova_rm:anova_repeated_measures_within",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "repeated-measures",
+    "hypothesis": "superiority",
+    "purpose": "Within-subject F-test for repeated measures with Greenhouse-Geisser epsilon correction.",
+    "synonyms": [
+      "one-way repeated measures ANOVA",
+      "within-subject ANOVA"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "anova_mixed_between_within",
+    "name": "Repeated Measures Analysis - Mixed Between/Within",
+    "category": "ANOVA - Repeated Measures",
+    "manual_path": "",
+    "callable": "samplesize.tests.anova_rm:anova_mixed_between_within",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample",
+      "multi-sample"
+    ],
+    "outcome": "continuous",
+    "design": "mixed",
+    "hypothesis": "superiority",
+    "purpose": "Split-plot mixed ANOVA: between-group or within-subject F-test with compound symmetry.",
+    "synonyms": [
+      "split-plot ANOVA",
+      "mixed ANOVA",
+      "between-within ANOVA"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "manova_pillai",
+    "name": "Multivariate Analysis of Variance (MANOVA) - Pillai",
+    "category": "MANOVA",
+    "manual_path": "",
+    "callable": "samplesize.tests.manova:manova_pillai",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample",
+      "multi-sample"
+    ],
+    "outcome": "multivariate-continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "MANOVA power via Pillai trace F approximation across multiple response variables.",
+    "synonyms": [
+      "MANOVA",
+      "Pillai trace",
+      "multivariate ANOVA"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ancova_one_way",
+    "name": "One-Way Analysis of Covariance (ANCOVA)",
+    "category": "ANOVA - ANCOVA",
+    "manual_path": "",
+    "callable": "samplesize.tests.anova:ancova_one_way",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample",
+      "multi-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "One-way ANCOVA: covariate R² reduces residual variance, improving power over plain ANOVA.",
+    "synonyms": [
+      "ANCOVA",
+      "analysis of covariance",
+      "covariate adjustment ANOVA"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "multiple_regression_omnibus",
+    "name": "Multiple Regression - Omnibus F Test",
+    "category": "Regression",
+    "manual_path": "",
+    "callable": "samplesize.tests.regression:multiple_regression_omnibus",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "regression",
+    "hypothesis": "superiority",
+    "purpose": "Omnibus F-test for incremental R² (delta-R²) in multiple regression; tests q predictors after controlling for others.",
+    "synonyms": [
+      "multiple regression power",
+      "R-squared F test",
+      "delta R-squared test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "multiple_regression_partial",
+    "name": "Multiple Regression - Partial Correlation t Test",
+    "category": "Regression",
+    "manual_path": "",
+    "callable": "samplesize.tests.regression:multiple_regression_partial",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "regression",
+    "hypothesis": "superiority",
+    "purpose": "t-test (F, df1=1) for a single partial correlation in multiple regression.",
+    "synonyms": [
+      "partial correlation power",
+      "semi-partial R2 test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "multivariate_regression_wilks",
+    "name": "Multiple Regression - Multivariate Wilks Lambda",
+    "category": "Regression",
+    "manual_path": "",
+    "callable": "samplesize.tests.regression:multivariate_regression_wilks",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "multivariate-continuous",
+    "design": "regression",
+    "hypothesis": "superiority",
+    "purpose": "Rao's F approximation to Wilks' Lambda for multivariate regression with p response variables.",
+    "synonyms": [
+      "multivariate regression power",
+      "Wilks lambda regression",
+      "MANOVA regression"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "one_sample_poisson_rate",
+    "name": "Tests for One Poisson Rate",
+    "category": "Counts/Rates - Poisson",
+    "manual_path": "",
+    "callable": "samplesize.tests.poisson:one_sample_poisson_rate",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "count",
+    "design": "one-sample",
+    "hypothesis": "superiority",
+    "purpose": "Test whether a Poisson rate λ equals a specified value λ0 (exact Poisson enumeration).",
+    "synonyms": [
+      "one-sample Poisson test",
+      "Poisson rate test",
+      "test for a Poisson mean"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "two_sample_poisson_rates",
+    "name": "Tests for the Ratio of Two Poisson Rates",
+    "category": "Counts/Rates - Poisson",
+    "manual_path": "",
+    "callable": "samplesize.tests.poisson:two_sample_poisson_rates",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "count",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Test the ratio RR=λ2/λ1 of two Poisson event rates using the W5 variance-stabilised statistic (Gu 2008). Equal N allocation.",
+    "synonyms": [
+      "two-sample Poisson test",
+      "Poisson rate ratio test",
+      "log-rate Wald test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "negative_binomial_two_rates",
+    "name": "Tests for the Ratio of Two Negative Binomial Rates",
+    "category": "Counts/Rates - Negative Binomial",
+    "manual_path": "",
+    "callable": "samplesize.tests.negative_binomial:negative_binomial_two_rates",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "count",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Wald/LR test for the ratio RR=λ2/λ1 of two negative binomial event rates with over-dispersion parameter κ (Zhu & Lakkis 2014).",
+    "synonyms": [
+      "negative binomial rate ratio test",
+      "NB two-sample test",
+      "overdispersed count data test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "incidence_rate_ratio_with_followup",
+    "name": "Tests for the Ratio of Two Poisson Rates (Variable Follow-Up)",
+    "category": "Counts/Rates - Poisson",
+    "manual_path": "",
+    "callable": "samplesize.tests.poisson:incidence_rate_ratio_with_followup",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "count",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Person-time incidence rate ratio test with explicit (possibly unequal) follow-up times t1/t2 per arm using W5 variance-stabilised statistic.",
+    "synonyms": [
+      "person-time incidence rate ratio",
+      "incidence density ratio",
+      "IRR with variable follow-up",
+      "Poisson rates different follow-up"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "roc_auc_one_sample",
+    "name": "Tests for One ROC Curve",
+    "category": "Diagnostic - ROC/Sensitivity/Kappa",
+    "manual_path": "",
+    "callable": "samplesize.tests.roc:roc_auc_one_sample",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "diagnostic accuracy",
+    "design": "single-sample",
+    "hypothesis": "superiority",
+    "purpose": "Power/N for a one-sample AUC test comparing observed ROC area against a null hypothesis value.",
+    "synonyms": [
+      "one-sample ROC",
+      "single ROC curve",
+      "AUC vs null",
+      "Hanley-McNeil one-sample"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "roc_auc_two_independent_samples",
+    "name": "Tests for Two ROC Curves (Independent)",
+    "category": "Diagnostic - ROC/Sensitivity/Kappa",
+    "manual_path": "",
+    "callable": "samplesize.tests.roc:roc_auc_two_independent_samples",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "diagnostic accuracy",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Power/N to compare two ROC AUC values from independent diagnostic studies (r=0 variant).",
+    "synonyms": [
+      "two-sample ROC independent",
+      "compare two AUCs independent",
+      "independent ROC curves"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "roc_auc_two_correlated_samples",
+    "name": "Tests for Two ROC Curves (Correlated)",
+    "category": "Diagnostic - ROC/Sensitivity/Kappa",
+    "manual_path": "",
+    "callable": "samplesize.tests.roc:roc_auc_two_correlated_samples",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "diagnostic accuracy",
+    "design": "paired",
+    "hypothesis": "superiority",
+    "purpose": "Power/N to compare two correlated ROC AUC values from the same subjects evaluated by two diagnostic tests (, Obuchowski-McClish).",
+    "synonyms": [
+      "two-sample ROC correlated",
+      "paired ROC curves",
+      "compare two AUCs paired",
+      "Obuchowski-McClish"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "sensitivity_specificity_one_sample",
+    "name": "Tests for One-Sample Sensitivity and Specificity",
+    "category": "Diagnostic - ROC/Sensitivity/Kappa",
+    "manual_path": "",
+    "callable": "samplesize.tests.diagnostic:sensitivity_specificity_one_sample",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "diagnostic accuracy",
+    "design": "single-sample",
+    "hypothesis": "superiority",
+    "purpose": "Power/N for a one-sample exact binomial test of sensitivity (or specificity) against a null hypothesis value given prevalence.",
+    "synonyms": [
+      "one-sample sensitivity",
+      "one-sample specificity",
+      "sensitivity vs null",
+      "Li-Fine binomial test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "sensitivity_specificity_two_samples",
+    "name": "Tests for Two Independent Sensitivities",
+    "category": "Diagnostic - ROC/Sensitivity/Kappa",
+    "manual_path": "",
+    "callable": "samplesize.tests.diagnostic:sensitivity_specificity_two_samples",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "diagnostic accuracy",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Power/N to compare sensitivity (or specificity) between two groups; supports independent Z-test and paired McNemar test.",
+    "synonyms": [
+      "two-sample sensitivity",
+      "compare two sensitivities",
+      "independent sensitivity test",
+      "paired sensitivity McNemar"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "kappa_two_raters_binary",
+    "name": "Kappa Test for Agreement Between Two Raters",
+    "category": "Diagnostic - ROC/Sensitivity/Kappa",
+    "manual_path": "",
+    "callable": "samplesize.tests.diagnostic:kappa_two_raters_binary",
+    "implemented": false,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "agreement",
+    "design": "single-sample",
+    "hypothesis": "superiority",
+    "purpose": "Power/N for a Z-test of kappa (Cohen's) against a null hypothesis kappa value, for nominal or binary ratings by two raters (, Flack 1988).",
+    "synonyms": [
+      "kappa test",
+      "Cohen kappa sample size",
+      "inter-rater agreement",
+      "Flack kappa"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "mann_whitney_wilcoxon_simulation",
+    "name": "Mann-Whitney-Wilcoxon Tests (Simulation)",
+    "category": "Nonparametric",
+    "manual_path": "",
+    "callable": "samplesize.tests.nonparametric_simulation:mann_whitney_wilcoxon_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Monte-Carlo simulation power for the Mann-Whitney-Wilcoxon (Wilcoxon rank-sum) test under user-specified group distributions.",
+    "synonyms": [
+      "Mann-Whitney U test",
+      "Wilcoxon rank-sum test",
+      "MWW test",
+      "nonparametric two-sample test"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "kruskal_wallis_simulation",
+    "name": "Kruskal-Wallis Tests (Simulation)",
+    "category": "Nonparametric",
+    "manual_path": "",
+    "callable": "samplesize.tests.nonparametric_simulation:kruskal_wallis_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Monte-Carlo simulation power for the Kruskal-Wallis H-test under user-specified group distributions.",
+    "synonyms": [
+      "Kruskal-Wallis test",
+      "KW test",
+      "nonparametric one-way ANOVA",
+      "rank-based one-way test"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "simon_two_stage",
+    "name": "Two-Stage Phase II Clinical Trials",
+    "category": "Phase II Clinical Trials",
+    "manual_path": "",
+    "callable": "samplesize.tests.phase_ii:simon_two_stage",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "single-arm"
+    ],
+    "outcome": "binary",
+    "design": "multi-stage",
+    "hypothesis": "superiority",
+    "purpose": "Simon (1989) two-stage Phase II design; search for optimal (min EN) or minimax (min N) design meeting exact binomial alpha and power constraints.",
+    "synonyms": [
+      "Simon two-stage",
+      "two-stage phase II",
+      "Simon design"
+    ],
+    "solve_for_options": [
+      "n"
+    ]
+  },
+  {
+    "id": "simon_optimal_two_stage",
+    "name": "Two-Stage Phase II Clinical Trials (Simon Optimal)",
+    "category": "Phase II Clinical Trials",
+    "manual_path": "",
+    "callable": "samplesize.tests.phase_ii:simon_optimal_two_stage",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "single-arm"
+    ],
+    "outcome": "binary",
+    "design": "multi-stage",
+    "hypothesis": "superiority",
+    "purpose": "Simon (1989) optimal two-stage Phase II design minimising expected sample size E(N) under H0.",
+    "synonyms": [
+      "Simon optimal",
+      "optimal two-stage phase II"
+    ],
+    "solve_for_options": [
+      "n"
+    ]
+  },
+  {
+    "id": "simon_minimax_two_stage",
+    "name": "Two-Stage Phase II Clinical Trials (Simon Minimax)",
+    "category": "Phase II Clinical Trials",
+    "manual_path": "",
+    "callable": "samplesize.tests.phase_ii:simon_minimax_two_stage",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "single-arm"
+    ],
+    "outcome": "binary",
+    "design": "multi-stage",
+    "hypothesis": "superiority",
+    "purpose": "Simon (1989) minimax two-stage Phase II design minimising maximum total sample size N.",
+    "synonyms": [
+      "Simon minimax",
+      "minimax two-stage phase II"
+    ],
+    "solve_for_options": [
+      "n"
+    ]
+  },
+  {
+    "id": "single_stage_phase_ii",
+    "name": "Single-Stage Phase II Clinical Trials",
+    "category": "Phase II Clinical Trials",
+    "manual_path": "",
+    "callable": "samplesize.tests.phase_ii:single_stage_phase_ii",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "single-arm"
+    ],
+    "outcome": "binary",
+    "design": "single-stage",
+    "hypothesis": "superiority",
+    "purpose": "Exact binomial single-stage Phase II design (A'Hern 2001/Fleming 1982); finds minimum N and rejection boundary satisfying alpha and power constraints.",
+    "synonyms": [
+      "single-stage phase II",
+      "Fleming single-stage",
+      "A'Hern design"
+    ],
+    "solve_for_options": [
+      "n"
+    ]
+  },
+  {
+    "id": "three_stage_phase_ii",
+    "name": "Three-Stage Phase II Clinical Trials",
+    "category": "Phase II Clinical Trials",
+    "manual_path": "",
+    "callable": "samplesize.tests.phase_ii:three_stage_phase_ii",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "single-arm"
+    ],
+    "outcome": "binary",
+    "design": "multi-stage",
+    "hypothesis": "superiority",
+    "purpose": "Chen (1997) three-stage Phase II design with two interim futility looks; exhaustive search for optimal (min EN) or minimax (min N3) design.",
+    "synonyms": [
+      "three-stage phase II",
+      "Chen three-stage",
+      "three-stage clinical trial"
+    ],
+    "solve_for_options": [
+      "n"
+    ]
+  },
+  {
+    "id": "non_inferiority_cluster_two_means",
+    "name": "Non-Inferiority Tests for Two Means in a Cluster-Randomized Design",
+    "category": "Cluster-Randomized - Means",
+    "manual_path": "",
+    "callable": "samplesize.tests.cluster:non_inferiority_cluster_two_means",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "clustered"
+    ],
+    "outcome": "continuous",
+    "design": "cluster-randomized",
+    "hypothesis": "non-inferiority",
+    "purpose": "Non-inferiority test for two means with cluster randomization (Campbell & Walters / Ahn-Heo-Zhang).",
+    "synonyms": [
+      "NI cluster two means",
+      "non-inferiority cluster RCT means"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_cluster_two_means",
+    "name": "Equivalence Tests for Two Means in a Cluster-Randomized Design",
+    "category": "Cluster-Randomized - Means",
+    "manual_path": "",
+    "callable": "samplesize.tests.cluster:equivalence_cluster_two_means",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "clustered"
+    ],
+    "outcome": "continuous",
+    "design": "cluster-randomized",
+    "hypothesis": "equivalence",
+    "purpose": "TOST equivalence test for two means with cluster randomization (Schuirmann TOST with cluster design effect).",
+    "synonyms": [
+      "equivalence cluster two means",
+      "TOST cluster RCT means"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_cluster_two_means",
+    "name": "Superiority by a Margin Tests for Two Means in a Cluster-Randomized Design",
+    "category": "Cluster-Randomized - Means",
+    "manual_path": "",
+    "callable": "samplesize.tests.cluster:superiority_by_margin_cluster_two_means",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "clustered"
+    ],
+    "outcome": "continuous",
+    "design": "cluster-randomized",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Superiority-by-margin test for two means with cluster randomization.",
+    "synonyms": [
+      "superiority margin cluster two means"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_cluster_two_proportions",
+    "name": "Non-Inferiority Tests for the Difference of Two Proportions in a Cluster-Randomized Design",
+    "category": "Cluster-Randomized - Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.cluster:non_inferiority_cluster_two_proportions",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "clustered"
+    ],
+    "outcome": "binary",
+    "design": "cluster-randomized",
+    "hypothesis": "non-inferiority",
+    "purpose": "Non-inferiority test for two proportions (difference scale) with cluster randomization (Farrington-Manning score test).",
+    "synonyms": [
+      "NI cluster proportions difference"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_cluster_ratio_two_proportions",
+    "name": "Non-Inferiority Tests for the Ratio of Two Proportions in a Cluster-Randomized Design",
+    "category": "Cluster-Randomized - Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.cluster:non_inferiority_cluster_ratio_two_proportions",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "clustered"
+    ],
+    "outcome": "binary",
+    "design": "cluster-randomized",
+    "hypothesis": "non-inferiority",
+    "purpose": "Non-inferiority test for two proportions (ratio scale) with cluster randomization (Farrington-Manning score test).",
+    "synonyms": [
+      "NI cluster proportions ratio",
+      "NI cluster relative risk"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_cluster_two_proportions",
+    "name": "Equivalence Tests for the Difference of Two Proportions in a Cluster-Randomized Design",
+    "category": "Cluster-Randomized - Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.cluster:equivalence_cluster_two_proportions",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "clustered"
+    ],
+    "outcome": "binary",
+    "design": "cluster-randomized",
+    "hypothesis": "equivalence",
+    "purpose": "TOST equivalence test for two proportions (difference scale) with cluster randomization (Farrington-Manning score test).",
+    "synonyms": [
+      "equivalence cluster proportions difference"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "cluster_two_poisson_rates",
+    "name": "Tests for the Difference Between Two Poisson Rates in a Cluster-Randomized Design",
+    "category": "Cluster-Randomized - Rates",
+    "manual_path": "",
+    "callable": "samplesize.tests.cluster:cluster_two_poisson_rates",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "clustered"
+    ],
+    "outcome": "count",
+    "design": "cluster-randomized",
+    "hypothesis": "superiority",
+    "purpose": "Two-arm cluster-randomized Poisson rate comparison (Hayes & Bennett 1999).",
+    "synonyms": [
+      "cluster Poisson rates",
+      "cluster incidence rates"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "cluster_logrank",
+    "name": "Logrank Tests in a Cluster-Randomized Design",
+    "category": "Cluster-Randomized - Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.cluster_survival:cluster_logrank",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "clustered",
+      "survival"
+    ],
+    "outcome": "time-to-event",
+    "design": "cluster-randomized",
+    "hypothesis": "superiority",
+    "purpose": "Logrank test power/sample-size with intracluster correlation (Xie & Waksman 2003 / Freedman 1982).",
+    "synonyms": [
+      "cluster logrank",
+      "cluster survival logrank"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_two_proportions",
+    "name": "Group-Sequential Tests for Two Proportions",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential:group_sequential_two_proportions",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential"
+    ],
+    "outcome": "binary",
+    "design": "group-sequential",
+    "hypothesis": "superiority",
+    "purpose": "Group-sequential design for two-proportion superiority tests (OBF + Pocock + Lan-DeMets spending).",
+    "synonyms": [
+      "group sequential proportions",
+      "interim analysis proportions"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_two_means_simulation",
+    "name": "Group-Sequential Tests for Two Means (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_two_means_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "simulation"
+    ],
+    "outcome": "continuous",
+    "design": "group-sequential",
+    "hypothesis": "superiority",
+    "purpose": "Monte-Carlo group-sequential power for two means (simulation-based).",
+    "synonyms": [
+      "group sequential means simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_two_proportions_simulation",
+    "name": "Group-Sequential Tests for Two Proportions (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_two_proportions_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "simulation"
+    ],
+    "outcome": "binary",
+    "design": "group-sequential",
+    "hypothesis": "superiority",
+    "purpose": "Monte-Carlo group-sequential power for two proportions (simulation-based).",
+    "synonyms": [
+      "group sequential proportions simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_logrank_simulation",
+    "name": "Group-Sequential Logrank Tests (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_logrank_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "survival",
+      "simulation"
+    ],
+    "outcome": "time-to-event",
+    "design": "group-sequential",
+    "hypothesis": "superiority",
+    "purpose": "Monte-Carlo group-sequential logrank power (simulation-based).",
+    "synonyms": [
+      "group sequential logrank simulation",
+      "group sequential survival simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_ni_two_means_simulation",
+    "name": "Group-Sequential Non-Inferiority Tests for Two Means (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_ni_two_means_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "simulation"
+    ],
+    "outcome": "continuous",
+    "design": "group-sequential",
+    "hypothesis": "non-inferiority",
+    "purpose": "Monte-Carlo group-sequential NI power for two means (simulation-based).",
+    "synonyms": [
+      "group sequential NI means simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_ni_two_proportions_difference_simulation",
+    "name": "Group-Sequential Non-Inferiority Tests for the Difference of Two Proportions (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_ni_two_proportions_difference_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "simulation"
+    ],
+    "outcome": "binary",
+    "design": "group-sequential",
+    "hypothesis": "non-inferiority",
+    "purpose": "Monte-Carlo group-sequential NI power for two proportions difference (simulation-based).",
+    "synonyms": [
+      "group sequential NI proportions difference simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "higher_order_crossover_ni_ratio",
+    "name": "Non-Inferiority Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design",
+    "category": "Cross-Over",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over_higher_order:non_inferiority_higher_order_cross_over_ratio",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "higher-order-cross-over",
+    "hypothesis": "non-inferiority",
+    "purpose": "NI test for ratio of two means in a higher-order cross-over design (multiplicative model).",
+    "synonyms": [
+      "higher order crossover NI ratio",
+      "bioequivalence NI higher order"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "higher_order_crossover_eq_ratio",
+    "name": "Equivalence Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design",
+    "category": "Cross-Over",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over_higher_order:equivalence_higher_order_cross_over_ratio",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "higher-order-cross-over",
+    "hypothesis": "equivalence",
+    "purpose": "TOST equivalence test for ratio of two means in a higher-order cross-over design (multiplicative model).",
+    "synonyms": [
+      "higher order crossover equivalence ratio",
+      "bioequivalence TOST higher order"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "conditional_power_one_proportion",
+    "name": "Conditional Power of One Proportion Tests",
+    "category": "Conditional Power",
+    "manual_path": "",
+    "callable": "samplesize.tests.conditional_power:conditional_power_one_proportion",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Conditional power at interim for a one-proportion z-test.",
+    "synonyms": [
+      "conditional power one proportion z-test",
+      "interim analysis one proportion"
+    ],
+    "solve_for_options": [
+      "conditional_power"
+    ]
+  },
+  {
+    "id": "conditional_power_two_proportions",
+    "name": "Conditional Power of Two Proportions Tests",
+    "category": "Conditional Power",
+    "manual_path": "",
+    "callable": "samplesize.tests.conditional_power:conditional_power_two_proportions",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Conditional power at interim for a two-proportion z-test.",
+    "synonyms": [
+      "conditional power two proportions z-test",
+      "interim analysis two proportions"
+    ],
+    "solve_for_options": [
+      "conditional_power"
+    ]
+  },
+  {
+    "id": "conditional_power_logrank",
+    "name": "Conditional Power of Logrank Tests",
+    "category": "Conditional Power",
+    "manual_path": "",
+    "callable": "samplesize.tests.conditional_power:conditional_power_logrank",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "survival"
+    ],
+    "outcome": "time-to-event",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Conditional power at interim for a logrank test (survival analysis).",
+    "synonyms": [
+      "conditional power logrank",
+      "interim analysis survival logrank"
+    ],
+    "solve_for_options": [
+      "conditional_power"
+    ]
+  },
+  {
+    "id": "two_means_repeated_measures",
+    "name": "Tests for Two Means in a Repeated Measures Design",
+    "category": "Repeated Measures",
+    "manual_path": "",
+    "callable": "samplesize.tests.repeated_measures:two_means_repeated_measures",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "repeated-measures"
+    ],
+    "outcome": "continuous",
+    "design": "repeated-measures",
+    "hypothesis": "superiority",
+    "purpose": "Power and sample size for the time-averaged difference between two means in a repeated measures design (TAD, GEE/mixed models).",
+    "synonyms": [
+      "TAD two means repeated measures",
+      "GEE repeated measures means",
+      "mixed model two arm longitudinal means"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "two_proportions_repeated_measures",
+    "name": "Tests for Two Proportions in a Repeated Measures Design",
+    "category": "Repeated Measures",
+    "manual_path": "",
+    "callable": "samplesize.tests.repeated_measures:two_proportions_repeated_measures",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "repeated-measures"
+    ],
+    "outcome": "binary",
+    "design": "repeated-measures",
+    "hypothesis": "superiority",
+    "purpose": "Power and sample size for the time-averaged difference between two proportions in a repeated measures design (logit-scale TAD).",
+    "synonyms": [
+      "TAD two proportions repeated measures",
+      "GEE repeated measures proportions",
+      "mixed model two arm longitudinal binary"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "logistic_regression_simple",
+    "name": "Logistic Regression",
+    "category": "Regression",
+    "manual_path": "",
+    "callable": "samplesize.tests.logistic_regression:logistic_regression_simple",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample",
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Power and sample size for testing the slope in simple logistic regression (Hsieh 1989/1998 approximation). Supports normal and binary covariates.",
+    "synonyms": [
+      "logistic regression power",
+      "logistic regression sample size",
+      "Hsieh logistic regression",
+      "binary outcome regression"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "linear_regression_test_slope",
+    "name": "Linear Regression",
+    "category": "Regression",
+    "manual_path": "",
+    "callable": "samplesize.tests.linear_regression:linear_regression_test_slope",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Power and sample size for testing that the slope in simple linear regression differs from a null value using a noncentral-F approach.",
+    "synonyms": [
+      "linear regression slope test",
+      "regression coefficient test",
+      "simple linear regression power"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "conditional_power_2x2_crossover",
+    "name": "Conditional Power of 2x2 Cross-Over Designs",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.conditional_power_crossover:conditional_power_2x2_crossover",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "cross-over",
+    "hypothesis": "superiority",
+    "purpose": "Conditional and predictive power at an interim look in a 2x2 cross-over design using the Jennison-Turnbull information-based formula.",
+    "synonyms": [
+      "conditional power crossover",
+      "interim analysis crossover",
+      "stochastic curtailment crossover"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "mxm_crossover",
+    "name": "MxM Cross-Over Designs",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over_mxm:mxm_crossover",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "cross-over",
+      "repeated-measures"
+    ],
+    "outcome": "continuous",
+    "design": "cross-over",
+    "hypothesis": "superiority",
+    "purpose": "Power and sample size for an MxM balanced Latin-square cross-over design using the Geisser-Greenhouse corrected F-test under compound symmetry.",
+    "synonyms": [
+      "MxM crossover",
+      "Latin square crossover power",
+      "multi-period crossover ANOVA",
+      "3x3 crossover",
+      "4x4 crossover"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "control_chart_means_simulation",
+    "name": "Control Charts for Means (Simulation)",
+    "category": "Quality Control",
+    "manual_path": "",
+    "callable": "samplesize.tests.control_charts:control_chart_means_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "quality-control"
+    ],
+    "outcome": "continuous",
+    "design": "sequential",
+    "hypothesis": "superiority",
+    "purpose": "Monte Carlo simulation of Average Run Length (ARL) and power for a Shewhart Xbar control chart under a shift in process mean.",
+    "synonyms": [
+      "Xbar chart ARL simulation",
+      "Shewhart chart power",
+      "control chart run length",
+      "SPC means chart simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "control_chart_variability_simulation",
+    "name": "Control Charts for Variability (Simulation)",
+    "category": "Quality Control",
+    "manual_path": "",
+    "callable": "samplesize.tests.control_charts:control_chart_variability_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "quality-control"
+    ],
+    "outcome": "continuous",
+    "design": "sequential",
+    "hypothesis": "superiority",
+    "purpose": "Monte Carlo simulation of ARL and power for Shewhart R or S control charts under a shift in process standard deviation.",
+    "synonyms": [
+      "R chart ARL simulation",
+      "S chart power simulation",
+      "variability control chart run length",
+      "SPC variability chart simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "acceptance_sampling_attributes",
+    "name": "Acceptance Sampling for Attributes",
+    "category": "Quality Control",
+    "manual_path": "",
+    "callable": "samplesize.tests.acceptance_sampling:acceptance_sampling_attributes",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "quality-control"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Sample size and acceptance number for single-sampling lot acceptance plans based on AQL/LQL operating characteristic constraints using binomial (infinite lot) or hypergeometric (finite lot) distributions.",
+    "synonyms": [
+      "acceptance sampling",
+      "lot acceptance plan",
+      "AQL LTPD sampling plan",
+      "OC curve sample size",
+      "single sampling plan"
+    ],
+    "solve_for_options": [
+      "n"
+    ]
+  },
+  {
+    "id": "ci_one_mean",
+    "name": "Confidence Intervals for One Mean",
+    "category": "Means - Confidence Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_means:ci_one_mean",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for a CI on one mean (known or unknown sigma).",
+    "synonyms": [
+      "CI one mean",
+      "confidence interval sample size mean"
+    ],
+    "solve_for_options": [
+      "n",
+      "width"
+    ]
+  },
+  {
+    "id": "ci_paired_means",
+    "name": "Confidence Intervals for Paired Means",
+    "category": "Means - Confidence Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_means:ci_paired_means",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "continuous",
+    "design": "crossover",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for a CI on the paired-difference mean.",
+    "synonyms": [
+      "CI paired means",
+      "paired CI sample size"
+    ],
+    "solve_for_options": [
+      "n",
+      "width"
+    ]
+  },
+  {
+    "id": "ci_difference_two_means",
+    "name": "Confidence Intervals for the Difference Between Two Means",
+    "category": "Means - Confidence Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_means:ci_difference_two_means",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for a CI on the difference of two independent means (Welch or pooled).",
+    "synonyms": [
+      "CI difference two means",
+      "two-sample CI mean"
+    ],
+    "solve_for_options": [
+      "n",
+      "width"
+    ]
+  },
+  {
+    "id": "non_inferiority_paired_proportions",
+    "name": "Non-Inferiority Tests for the Difference Between Two Correlated Proportions",
+    "category": "Proportions - Correlated",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlated_proportions:non_inferiority_paired_proportions",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "binary",
+    "design": "crossover",
+    "hypothesis": "non-inferiority",
+    "purpose": "Sample size/power for NI test of difference between two paired (McNemar) proportions.",
+    "synonyms": [
+      "NI paired proportions difference",
+      "McNemar non-inferiority"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_paired_proportions",
+    "name": "Equivalence Tests for the Difference Between Two Correlated Proportions",
+    "category": "Proportions - Correlated",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlated_proportions:equivalence_paired_proportions",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "binary",
+    "design": "crossover",
+    "hypothesis": "equivalence",
+    "purpose": "Sample size/power for TOST equivalence test of difference between two paired proportions.",
+    "synonyms": [
+      "equivalence paired proportions",
+      "TOST McNemar"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_paired_proportions_ratio",
+    "name": "Non-Inferiority Tests for the Ratio of Two Correlated Proportions",
+    "category": "Proportions - Correlated",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlated_proportions:non_inferiority_paired_proportions_ratio",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "binary",
+    "design": "crossover",
+    "hypothesis": "non-inferiority",
+    "purpose": "Sample size/power for NI test of ratio of two paired proportions (Nam & Blackwelder 2002).",
+    "synonyms": [
+      "NI paired proportions ratio",
+      "McNemar NI ratio"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "non_inferiority_logrank",
+    "name": "Non-Inferiority Logrank Tests",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.survival:non_inferiority_logrank",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "time-to-event",
+    "design": "parallel",
+    "hypothesis": "non-inferiority",
+    "purpose": "Sample size/power for two-sample NI logrank test (Jung et al. 2005 / Lakatos Markov model).",
+    "synonyms": [
+      "NI logrank",
+      "non-inferiority survival logrank"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "one_sample_logrank",
+    "name": "One-Sample Logrank Tests",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.survival:one_sample_logrank",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "time-to-event",
+    "design": "single-arm",
+    "hypothesis": "superiority",
+    "purpose": "Sample size/power for one-sample logrank test vs historical control (Wu 2015, Weibull).",
+    "synonyms": [
+      "one-sample logrank",
+      "single-arm survival logrank",
+      "phase II logrank"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_one_exponential_mean",
+    "name": "Tests for One Exponential Mean",
+    "category": "Means - Exponential",
+    "manual_path": "",
+    "callable": "samplesize.tests.exponential:tests_one_exponential_mean",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "time-to-event",
+    "design": "single-arm",
+    "hypothesis": "superiority",
+    "purpose": "Sample size/power for one-sample exponential mean test using chi-square pivot (Epstein 1960).",
+    "synonyms": [
+      "exponential mean test",
+      "MTTF test",
+      "reliability test"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_exponential_means",
+    "name": "Tests for Two Exponential Means",
+    "category": "Means - Exponential",
+    "manual_path": "",
+    "callable": "samplesize.tests.exponential:tests_two_exponential_means",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "time-to-event",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Sample size/power for two-sample exponential mean ratio test using F distribution.",
+    "synonyms": [
+      "two exponential means",
+      "exponential ratio test",
+      "MTTF comparison"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_one_mean_simulation",
+    "name": "Tests for One Mean (Simulation)",
+    "category": "Means - Simulation",
+    "manual_path": "",
+    "callable": "samplesize.tests.mean_simulation:tests_one_mean_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "single-arm",
+    "hypothesis": "superiority",
+    "purpose": "Monte Carlo power for one-sample t-test under arbitrary distributions.",
+    "synonyms": [
+      "one mean simulation",
+      "one-sample t simulation"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_means_simulation",
+    "name": "Tests for Two Means (Simulation)",
+    "category": "Means - Simulation",
+    "manual_path": "",
+    "callable": "samplesize.tests.mean_simulation:tests_two_means_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Monte Carlo power for two-sample t-test under arbitrary distributions.",
+    "synonyms": [
+      "two means simulation",
+      "two-sample t simulation"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_paired_means_simulation",
+    "name": "Tests for Paired Means (Simulation)",
+    "category": "Means - Simulation",
+    "manual_path": "",
+    "callable": "samplesize.tests.mean_simulation:tests_paired_means_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "continuous",
+    "design": "paired",
+    "hypothesis": "superiority",
+    "purpose": "Monte Carlo power for paired t-test under arbitrary distributions.",
+    "synonyms": [
+      "paired means simulation",
+      "paired t simulation"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_two_means_simulation",
+    "name": "Equivalence Tests for Two Means (Simulation)",
+    "category": "Means - Simulation",
+    "manual_path": "",
+    "callable": "samplesize.tests.mean_simulation:equivalence_two_means_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "Monte Carlo power for two-sample TOST equivalence under arbitrary distributions.",
+    "synonyms": [
+      "equivalence two means simulation",
+      "TOST two means simulation"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_paired_means_simulation",
+    "name": "Equivalence Tests for Paired Means (Simulation)",
+    "category": "Means - Simulation",
+    "manual_path": "",
+    "callable": "samplesize.tests.mean_simulation:equivalence_paired_means_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "continuous",
+    "design": "paired",
+    "hypothesis": "equivalence",
+    "purpose": "Monte Carlo power for paired TOST equivalence under arbitrary distributions.",
+    "synonyms": [
+      "equivalence paired simulation",
+      "TOST paired simulation"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_one_mean",
+    "name": "Superiority by a Margin Tests for One Mean",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.superiority:superiority_by_margin_one_mean",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "single-arm",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Sample size/power for one-sample superiority-by-margin t-test.",
+    "synonyms": [
+      "superiority one mean",
+      "one sample superiority margin"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_ratio_two_means_higher_order_crossover",
+    "name": "Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design",
+    "category": "Cross-Over Designs",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over_higher_order:tests_ratio_two_means_higher_order_crossover",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "higher-order-cross-over",
+    "hypothesis": "superiority",
+    "purpose": "Power/sample size for inequality test of mean ratio in higher-order cross-over designs.",
+    "synonyms": [
+      "ratio HO crossover",
+      "higher order crossover inequality"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_auc_roc",
+    "name": "Confidence Intervals for the Area Under an ROC Curve",
+    "category": "ROC Curves",
+    "manual_path": "",
+    "callable": "samplesize.tests.roc:ci_auc_roc",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "diagnostic"
+    ],
+    "outcome": "diagnostic-accuracy",
+    "design": "cross-sectional",
+    "hypothesis": "estimation",
+    "purpose": "Sample size for a CI on AUC using Hanley-McNeil (1982) variance formula.",
+    "synonyms": [
+      "AUC confidence interval",
+      "ROC AUC CI",
+      "Hanley McNeil AUC"
+    ],
+    "solve_for_options": [
+      "n"
+    ]
+  },
+  {
+    "id": "tests_difference_two_regression_slopes",
+    "name": "Tests for the Difference Between Two Linear Regression Slopes",
+    "category": "ANOVA & Linear Models",
+    "manual_path": "",
+    "callable": "samplesize.tests.linear_regression:tests_difference_two_regression_slopes",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Test H0: β1=β2 across two regression lines (Dupont & Plummer 1998).",
+    "synonyms": [
+      "difference two slopes",
+      "compare regression slopes"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_difference_two_regression_intercepts",
+    "name": "Tests for the Difference Between Two Linear Regression Intercepts",
+    "category": "ANOVA & Linear Models",
+    "manual_path": "",
+    "callable": "samplesize.tests.linear_regression:tests_difference_two_regression_intercepts",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Test H0: α1=α2 across two regression lines (Dupont & Plummer 1998).",
+    "synonyms": [
+      "difference two intercepts",
+      "compare regression intercepts"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "poisson_regression",
+    "name": "Poisson Regression",
+    "category": "Regression – Count / Rate",
+    "manual_path": "",
+    "callable": "samplesize.tests.poisson_regression:poisson_regression",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "count",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Power for testing one Poisson regression coefficient (Signorini 1991).",
+    "synonyms": [
+      "Poisson GLM",
+      "count regression",
+      "Signorini 1991"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "probit_analysis",
+    "name": "Probit Analysis",
+    "category": "Regression – Binary Response",
+    "manual_path": "",
+    "callable": "samplesize.tests.probit:probit_analysis",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "binary",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Power for comparative LD50 study using probit regression (Kodell et al. 2010).",
+    "synonyms": [
+      "probit regression",
+      "LD50 comparison",
+      "relative potency"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "post_marketing_surveillance",
+    "name": "Post-Marketing Surveillance",
+    "category": "Proportions",
+    "manual_path": "",
+    "callable": "samplesize.tests.pms:post_marketing_surveillance",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "cohort",
+      "case-control"
+    ],
+    "outcome": "binary",
+    "design": "observational",
+    "hypothesis": "superiority",
+    "purpose": "PMS sample size for detecting rare adverse events (Machin et al. 1997).",
+    "synonyms": [
+      "adverse event surveillance",
+      "drug safety",
+      "pharmacovigilance"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "mendelian_randomization_continuous",
+    "name": "Mendelian Randomization with a Continuous Outcome",
+    "category": "Mendelian Randomization",
+    "manual_path": "",
+    "callable": "samplesize.tests.mendelian:mendelian_randomization_continuous",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "observational"
+    ],
+    "outcome": "continuous",
+    "design": "mendelian-randomization",
+    "hypothesis": "superiority",
+    "purpose": "MR power with continuous outcome using 2SLS and genetic instrument (Brion et al. 2013).",
+    "synonyms": [
+      "MR continuous",
+      "two-stage least squares",
+      "instrumental variable"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "ci_one_mean_tolerance",
+    "name": "Confidence Intervals for One Mean with Tolerance Probability",
+    "category": "Means - Confidence Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_means:ci_one_mean_tolerance",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for a CI on one mean with tolerance probability adjustment for SD uncertainty.",
+    "synonyms": [
+      "CI one mean tolerance probability",
+      "confidence interval mean assurance",
+      "Bonett 2002 mean CI"
+    ],
+    "solve_for_options": [
+      "n",
+      "width"
+    ]
+  },
+  {
+    "id": "ci_paired_means_tolerance",
+    "name": "Confidence Intervals for Paired Means with Tolerance Probability",
+    "category": "Means - Confidence Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_means:ci_paired_means_tolerance",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "continuous",
+    "design": "paired",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for a CI on paired-difference mean with tolerance probability adjustment.",
+    "synonyms": [
+      "CI paired means tolerance probability",
+      "paired confidence interval assurance",
+      "before-after mean CI tolerance"
+    ],
+    "solve_for_options": [
+      "n",
+      "width"
+    ]
+  },
+  {
+    "id": "ci_difference_two_means_tolerance",
+    "name": "Confidence Intervals for the Difference Between Two Means with Tolerance Probability",
+    "category": "Means - Confidence Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_means:ci_difference_two_means_tolerance",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "confidence-interval",
+    "purpose": "Sample size for a CI on the difference of two means with tolerance probability (pooled SD, equal groups;).",
+    "synonyms": [
+      "CI difference two means tolerance probability",
+      "two-sample mean difference CI assurance"
+    ],
+    "solve_for_options": [
+      "n",
+      "width"
+    ]
+  },
+  {
+    "id": "ci_exponential_lifetime_mean",
+    "name": "Confidence Intervals for the Exponential Lifetime Mean",
+    "category": "Survival - Confidence Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_exponential:ci_exponential_lifetime_mean",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "survival",
+      "reliability"
+    ],
+    "outcome": "time-to-event",
+    "design": "type-ii-censored",
+    "hypothesis": "confidence-interval",
+    "purpose": "Number of events for a CI on the exponential mean lifetime theta (chi-square pivot;).",
+    "synonyms": [
+      "CI exponential mean lifetime",
+      "exponential MTTF confidence interval",
+      "mean failure time CI"
+    ],
+    "solve_for_options": [
+      "n",
+      "width"
+    ]
+  },
+  {
+    "id": "ci_exponential_hazard_rate",
+    "name": "Confidence Intervals for the Exponential Hazard Rate",
+    "category": "Survival - Confidence Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_exponential:ci_exponential_hazard_rate",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "survival",
+      "reliability"
+    ],
+    "outcome": "time-to-event",
+    "design": "type-ii-censored",
+    "hypothesis": "confidence-interval",
+    "purpose": "Number of events for a CI on the exponential hazard rate lambda (chi-square pivot;).",
+    "synonyms": [
+      "CI exponential hazard rate",
+      "failure rate confidence interval",
+      "exponential lambda CI"
+    ],
+    "solve_for_options": [
+      "n",
+      "width"
+    ]
+  },
+  {
+    "id": "ci_exponential_reliability",
+    "name": "Confidence Intervals for Exponential Reliability",
+    "category": "Survival - Confidence Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_exponential:ci_exponential_reliability",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "survival",
+      "reliability"
+    ],
+    "outcome": "time-to-event",
+    "design": "type-ii-censored",
+    "hypothesis": "confidence-interval",
+    "purpose": "Number of events for a CI on exponential survival probability R(t) = exp(-t/theta).",
+    "synonyms": [
+      "CI exponential reliability",
+      "survival probability confidence interval",
+      "R(t) CI exponential"
+    ],
+    "solve_for_options": [
+      "n",
+      "width"
+    ]
+  },
+  {
+    "id": "ci_exponential_lifetime_percentile",
+    "name": "Confidence Intervals for an Exponential Lifetime Percentile",
+    "category": "Survival - Confidence Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.ci_exponential:ci_exponential_lifetime_percentile",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "survival",
+      "reliability"
+    ],
+    "outcome": "time-to-event",
+    "design": "type-ii-censored",
+    "hypothesis": "confidence-interval",
+    "purpose": "Number of events for a CI on the p-th percentile of the exponential distribution.",
+    "synonyms": [
+      "CI exponential lifetime percentile",
+      "exponential quantile confidence interval",
+      "median lifetime CI exponential"
+    ],
+    "solve_for_options": [
+      "n",
+      "width"
+    ]
+  },
+  {
+    "id": "group_sequential_ni_two_proportions_ratio_simulation",
+    "name": "Group-Sequential Non-Inferiority Tests for the Ratio of Two Proportions (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_ni_two_proportions_ratio_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "simulation"
+    ],
+    "outcome": "binary",
+    "design": "group-sequential",
+    "hypothesis": "non-inferiority",
+    "purpose": "Monte-Carlo group-sequential NI power for ratio of two proportions.",
+    "synonyms": [
+      "group sequential NI proportions ratio simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_ni_two_proportions_odds_ratio_simulation",
+    "name": "Group-Sequential Non-Inferiority Tests for the Odds Ratio of Two Proportions (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_ni_two_proportions_odds_ratio_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "simulation"
+    ],
+    "outcome": "binary",
+    "design": "group-sequential",
+    "hypothesis": "non-inferiority",
+    "purpose": "Monte-Carlo group-sequential NI power for odds ratio of two proportions.",
+    "synonyms": [
+      "group sequential NI proportions OR simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_sup_two_proportions_difference_simulation",
+    "name": "Group-Sequential Superiority by a Margin Tests for the Difference of Two Proportions (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_sup_two_proportions_difference_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "simulation"
+    ],
+    "outcome": "binary",
+    "design": "group-sequential",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Monte-Carlo group-sequential superiority-by-margin power for difference of two proportions.",
+    "synonyms": [
+      "group sequential SUP proportions difference simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_sup_two_proportions_ratio_simulation",
+    "name": "Group-Sequential Superiority by a Margin Tests for the Ratio of Two Proportions (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_sup_two_proportions_ratio_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "simulation"
+    ],
+    "outcome": "binary",
+    "design": "group-sequential",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Monte-Carlo group-sequential superiority-by-margin power for ratio of two proportions.",
+    "synonyms": [
+      "group sequential SUP proportions ratio simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_sup_two_proportions_odds_ratio_simulation",
+    "name": "Group-Sequential Superiority by a Margin Tests for the Odds Ratio of Two Proportions (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_sup_two_proportions_odds_ratio_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "simulation"
+    ],
+    "outcome": "binary",
+    "design": "group-sequential",
+    "hypothesis": "superiority-by-margin",
+    "purpose": "Monte-Carlo group-sequential superiority-by-margin power for odds ratio of two proportions.",
+    "synonyms": [
+      "group sequential SUP proportions OR simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "group_sequential_two_means_normality_simulation",
+    "name": "Group-Sequential Tests for Two Means Assuming Normality (Simulation)",
+    "category": "Group-Sequential",
+    "manual_path": "",
+    "callable": "samplesize.tests.group_sequential_simulation:group_sequential_two_means_normality_simulation",
+    "implemented": true,
+    "validated": false,
+    "study_types": [
+      "independent-groups",
+      "group-sequential",
+      "simulation"
+    ],
+    "outcome": "continuous",
+    "design": "group-sequential",
+    "hypothesis": "difference",
+    "purpose": "Monte-Carlo group-sequential two-means test assuming normality.",
+    "synonyms": [
+      "group sequential two means normality simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  }
+]

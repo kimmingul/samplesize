@@ -1,0 +1,79 @@
+chapter: "Tests for Two ROC Curves"
+method: "roc_auc_two_independent_samples"
+examples:
+
+  - id: "Ex2 row1 (sample size, AUC2=0.825, power=0.90, R=2, independent)"
+    description: >
+      Ch.265 Example 2 with r+=r-=0 (independent groups).
+      AUC1=0.80, AUC2=0.825, B1=B2=1, R=2, two-sided alpha=0.05, power=0.90.
+      reference (correlated) gives N+=1937; independent design requires N+=3212.
+    inputs:
+      auc1: 0.80
+      auc2: 0.825
+      R: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      data_type: "discrete"
+      B1: 1.0
+      B2: 1.0
+    expected:
+      n_diseased: 3212
+      achieved_power: 0.90003
+    tolerance:
+      n_diseased: 1
+      achieved_power: 0.005
+    notes: >
+      Ch.265 Example 2 sets r+=r-=0.6 (correlated). The independent
+      version (r=0) is not explicitly tabulated in the chapter but follows
+      directly from the same formula with zero correlations.
+    source: "Tests for Two ROC Curves (Example 2 (r=0 variant))"
+
+  - id: "Ex2 row2 (sample size, AUC2=0.85, power=0.90, R=2, independent)"
+    description: >
+      Independent design, AUC2=0.85, all other parameters as Ex2 row2.
+      Computed: N+=788.
+    inputs:
+      auc1: 0.80
+      auc2: 0.85
+      R: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      data_type: "discrete"
+      B1: 1.0
+      B2: 1.0
+    expected:
+      n_diseased: 788
+      achieved_power: 0.90000
+    tolerance:
+      n_diseased: 1
+      achieved_power: 0.005
+    notes: >
+      Not explicitly in reference chapter; computed from the two-sample formula
+      with r_pos=r_neg=0 (independent groups).
+    source: "Tests for Two ROC Curves (Example 2 (r=0 variant))"
+
+  - id: "Ex2 row3 (sample size, AUC2=0.90, power=0.90, R=2, independent)"
+    description: >
+      Independent design, AUC2=0.90.  Computed: N+=187.
+    inputs:
+      auc1: 0.80
+      auc2: 0.90
+      R: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      data_type: "discrete"
+      B1: 1.0
+      B2: 1.0
+    expected:
+      n_diseased: 187
+      achieved_power: 0.90007
+    tolerance:
+      n_diseased: 1
+      achieved_power: 0.005
+    notes: >
+      Not explicitly in reference chapter; computed from the two-sample formula
+      with r_pos=r_neg=0 (independent groups).
+    source: "Tests for Two ROC Curves (Example 2 (r=0 variant))"

@@ -1,0 +1,42 @@
+chapter: "Conditional Power of One Proportion Tests"
+method: "conditional_power_one_proportion"
+examples:
+  - id: "Ex1 Zk=2.0 one-sided alpha=0.025 N=50 nk=25 P0=0.55 P1=0.65"
+    description: "One-sided CP for one-proportion z-test; interim z=2.0 at halfway point"
+    solve_for: "conditional_power"
+    inputs:
+      p0: 0.55
+      p1: 0.65
+      n: 50
+      n_t: 25
+      z_observed: 2.0
+      alpha: 0.025
+      sides: 1
+      direction: "upper"
+    expected:
+      conditional_power: 0.59825
+      achieved_power: 0.59825
+    tolerance:
+      conditional_power: 0.005
+      achieved_power: 0.005
+    source: "Conditional Power of One Proportion Tests (Example 1 row 3 and §Example 2 (validation))"
+
+  - id: "Ex1 Zk=1.0 one-sided alpha=0.025 N=50 nk=25 P0=0.55 P1=0.65"
+    description: "One-sided CP for one-proportion z-test; interim z=1.0 at halfway point"
+    solve_for: "conditional_power"
+    inputs:
+      p0: 0.55
+      p1: 0.65
+      n: 50
+      n_t: 25
+      z_observed: 1.0
+      alpha: 0.025
+      sides: 1
+      direction: "upper"
+    expected:
+      conditional_power: 0.22627
+      achieved_power: 0.22627
+    tolerance:
+      conditional_power: 0.005
+      achieved_power: 0.005
+    source: "Conditional Power of One Proportion Tests (Example 1 row 1)"

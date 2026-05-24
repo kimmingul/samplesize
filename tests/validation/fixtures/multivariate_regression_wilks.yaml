@@ -1,0 +1,37 @@
+chapter: "Multiple Regression"
+method: "multivariate_regression_wilks"
+examples:
+
+  - id: "Ex1 Ch.605 validation k=3 p=2 N=12 Wilks"
+    description: >
+      Derived from Ch.605 Example 2 (Wilks validation):
+      k=3 groups (a=2 contrast df), p=2 responses, n=4 per group (N=12).
+      Wilks Lambda computed from means/covariance = 0.7929;
+      delta=1-sqrt(0.7929)=0.1095 (partial R2 equivalent).
+      Reference reports Wilks power=0.1371; our approximation gives 0.1370.
+    inputs:
+      r2_t_given_c: 0.1095
+      n_responses: 2
+      n_tested: 2
+      n_controlled: 0
+      n: 12
+      alpha: 0.05
+    expected: {n: 12, achieved_power: 0.1371}
+    tolerance: {n: 0, achieved_power: 0.002}
+    source: "Multivariate Analysis of Variance (MANOVA) (Example 2)"
+
+  - id: "Ex2 multivariate regression p=2 q=2 delta=0.30 solve-n"
+    description: >
+      Multivariate regression: p=2 response variables, q=2 predictors
+      tested, no controls. R2_{T|C}=0.30, alpha=0.05, target power=0.80.
+      Solved N=21, achieved power=0.8266.
+    inputs:
+      r2_t_given_c: 0.30
+      n_responses: 2
+      n_tested: 2
+      n_controlled: 0
+      alpha: 0.05
+      power: 0.80
+    expected: {n: 21, achieved_power: 0.8266}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "Multiple Regression (Technical Details)"

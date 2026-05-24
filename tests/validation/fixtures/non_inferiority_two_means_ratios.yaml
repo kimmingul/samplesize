@@ -1,0 +1,110 @@
+chapter: "Non-Inferiority Tests for Two Means using Ratios"
+method: "non_inferiority_two_means_ratios"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 / Example 2 (validation via differences).  Reference reports
+  # the same power values for the ratio chapter (Ex1) and the
+  # difference chapter (Ex2 with NIM'=ln(1-NIM)=0.223144,
+  # S1=sqrt(ln(CV^2+1))=1.085659, D=ln(R1)).  We use the 5-decimal
+  # values printed in the differences-chapter output table because
+  # the ratio-chapter table is truncated to four decimals.
+  # Settings: NIM=0.20, COV=1.50, alpha=0.025, equal allocation,
+  # higher_is_better=True.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=100 R1=0.95"
+    description: >
+      Example 1 / 2: N1=N2=100, R1=0.95, CV=1.50, NIM=0.20,
+      alpha=0.025.  reference power = 0.19875.
+    inputs:
+      r1: 0.95
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 100
+      n2: 100
+      higher_is_better: true
+    expected: {n1: 100, n2: 100, achieved_power: 0.19875}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for Two Means using Ratios (Example 1 / Example 2 row N=100 R1=0.95)"
+
+  - id: "Ex1 N=200 R1=0.95"
+    description: >
+      Example 1 / 2: N1=N2=200, R1=0.95, CV=1.50, NIM=0.20,
+      alpha=0.025.  reference power = 0.35165.
+    inputs:
+      r1: 0.95
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 200
+      n2: 200
+      higher_is_better: true
+    expected: {n1: 200, n2: 200, achieved_power: 0.35165}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for Two Means using Ratios (Example 1 / Example 2 row N=200 R1=0.95)"
+
+  - id: "Ex1 N=300 R1=0.95"
+    description: >
+      Example 1 / 2: N1=N2=300, R1=0.95, CV=1.50, NIM=0.20,
+      alpha=0.025.  reference power = 0.49026.
+    inputs:
+      r1: 0.95
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 300
+      n2: 300
+      higher_is_better: true
+    expected: {n1: 300, n2: 300, achieved_power: 0.49026}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for Two Means using Ratios (Example 1 / Example 2 row N=300 R1=0.95)"
+
+  - id: "Ex1 N=100 R1=1.00"
+    description: >
+      Example 1 / 2: N1=N2=100, R1=1.00, CV=1.50, NIM=0.20,
+      alpha=0.025.  reference power = 0.30375.
+    inputs:
+      r1: 1.00
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 100
+      n2: 100
+      higher_is_better: true
+    expected: {n1: 100, n2: 100, achieved_power: 0.30375}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for Two Means using Ratios (Example 1 / Example 2 row N=100 R1=1.00)"
+
+  - id: "Ex1 N=200 R1=1.00"
+    description: >
+      Example 1 / 2: N1=N2=200, R1=1.00, CV=1.50, NIM=0.20,
+      alpha=0.025.  reference power = 0.53604.
+    inputs:
+      r1: 1.00
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 200
+      n2: 200
+      higher_is_better: true
+    expected: {n1: 200, n2: 200, achieved_power: 0.53604}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for Two Means using Ratios (Example 1 / Example 2 row N=200 R1=1.00)"
+
+  - id: "Ex1 N=300 R1=1.00"
+    description: >
+      Example 1 / 2: N1=N2=300, R1=1.00, CV=1.50, NIM=0.20,
+      alpha=0.025.  reference power = 0.70997.
+    inputs:
+      r1: 1.00
+      margin: 0.20
+      cv: 1.50
+      alpha: 0.025
+      n1: 300
+      n2: 300
+      higher_is_better: true
+    expected: {n1: 300, n2: 300, achieved_power: 0.70997}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for Two Means using Ratios (Example 1 / Example 2 row N=300 R1=1.00)"

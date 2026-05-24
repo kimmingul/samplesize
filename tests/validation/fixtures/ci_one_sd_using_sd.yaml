@@ -1,0 +1,67 @@
+chapter: "Confidence Intervals for One Standard Deviation using Standard Deviation"
+method: "ci_one_sd_using_sd"
+examples:
+
+  - id: "Ex1 row 1 (CL=0.95, S=34, target W=16)"
+    description: >
+      Two-sided 95% CI for the SD with target width 16, planning SD 34.
+      Reference reports N=40 with actual width 15.806 and limits 27.851, 43.657.
+    inputs:
+      sd: 34.0
+      alpha: 0.05
+      sides: 2
+      width: 16.0
+    expected:
+      n: 40
+      achieved_width: 15.806
+      lower_limit: 27.851
+      upper_limit: 43.657
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for One Standard Deviation using Standard Deviation (Example 1, row 1)"
+
+  - id: "Ex1 row 2 (CL=0.99, S=34, target W=16)"
+    description: >
+      Two-sided 99% CI for the SD with target width 16, planning SD 34.
+      Reference reports N=67 with actual width 15.873 and limits 27.715, 43.588.
+    inputs:
+      sd: 34.0
+      alpha: 0.01
+      sides: 2
+      width: 16.0
+    expected:
+      n: 67
+      achieved_width: 15.873
+      lower_limit: 27.715
+      upper_limit: 43.588
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for One Standard Deviation using Standard Deviation (Example 1, row 2)"
+
+  - id: "Ex2 (Hahn & Meeker 1991 p.56)"
+    description: >
+      Two-sided 95% CI for the SD, planning SD 1.31, target width 2.9795.
+      Hahn and Meeker (1991) and reference report N=5 with actual width 2.979
+      and limits 0.785, 3.764.
+    inputs:
+      sd: 1.31
+      alpha: 0.05
+      sides: 2
+      width: 2.9795
+    expected:
+      n: 5
+      achieved_width: 2.979
+      lower_limit: 0.785
+      upper_limit: 3.764
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for One Standard Deviation using Standard Deviation (Example 2)"

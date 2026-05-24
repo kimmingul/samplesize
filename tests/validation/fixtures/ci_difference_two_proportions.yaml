@@ -1,0 +1,125 @@
+chapter: "Confidence Intervals for the Difference Between Two Proportions"
+method: "ci_difference_two_proportions"
+examples:
+
+  - id: "Ex3a Newcombe Chi-Square (Pearson)"
+    description: >
+      Newcombe (1998b) p.877: two-sided 95% CI for p1-p2 with
+      p1=0.9, p2=0.3, n1=n2=10.  The simple-asymptotic (Pearson) method
+      gives an interval width of 0.6790.  Reference reports n=10 per group.
+    solve_for: "n"
+    inputs:
+      p1: 0.9
+      p2: 0.3
+      alpha: 0.05
+      width: 0.6790
+      sides: 2
+      method: "pearson"
+    expected:
+      n1: 10
+      n2: 10
+      n: 20
+      achieved_width: 0.6790
+      lower_limit: 0.2605
+      upper_limit: 0.9395
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.01
+      upper_limit: 0.01
+    source: >
+      reference/md/Confidence Intervals for the Difference Between Two
+      Proportions/hybrid_auto/Confidence Intervals for the Difference
+      Between Two Proportions.md, §Example 3(a).
+
+  - id: "Ex3b Newcombe Chi-Square C.C. (Yates)"
+    description: >
+      Same Newcombe (1998b) p.877 example, Yates' continuity-corrected
+      chi-square method: width 0.8395 at n=10 per group (the upper
+      limit is clipped at 1).
+    solve_for: "n"
+    inputs:
+      p1: 0.9
+      p2: 0.3
+      alpha: 0.05
+      width: 0.8395
+      sides: 2
+      method: "yates"
+    expected:
+      n1: 10
+      n2: 10
+      n: 20
+      achieved_width: 0.8395
+      lower_limit: 0.1605
+      upper_limit: 1.0000
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.01
+      upper_limit: 0.01
+    source: >
+      reference/md/Confidence Intervals for the Difference Between Two
+      Proportions/hybrid_auto/Confidence Intervals for the Difference
+      Between Two Proportions.md, §Example 3(b).
+
+  - id: "Ex3d Newcombe Score (Wilson)"
+    description: >
+      Same Newcombe (1998b) p.877 example, Wilson score (no CC)
+      method: width 0.6385 at n=10 per group.
+    solve_for: "n"
+    inputs:
+      p1: 0.9
+      p2: 0.3
+      alpha: 0.05
+      width: 0.6385
+      sides: 2
+      method: "wilson"
+    expected:
+      n1: 10
+      n2: 10
+      achieved_width: 0.6385
+      lower_limit: 0.1705
+      upper_limit: 0.8090
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_width: 0.001
+      lower_limit: 0.01
+      upper_limit: 0.01
+    source: >
+      reference/md/Confidence Intervals for the Difference Between Two
+      Proportions/hybrid_auto/Confidence Intervals for the Difference
+      Between Two Proportions.md, §Example 3(d).
+
+  - id: "Ex3e Newcombe Score C.C. (Wilson)"
+    description: >
+      Same Newcombe (1998b) p.877 example, Wilson score WITH continuity
+      correction: width 0.7374 at n=10 per group.
+    solve_for: "n"
+    inputs:
+      p1: 0.9
+      p2: 0.3
+      alpha: 0.05
+      width: 0.7374
+      sides: 2
+      method: "wilson_cc"
+    expected:
+      n1: 10
+      n2: 10
+      achieved_width: 0.7374
+      lower_limit: 0.1013
+      upper_limit: 0.8387
+    tolerance:
+      n1: 0
+      n2: 0
+      achieved_width: 0.001
+      lower_limit: 0.01
+      upper_limit: 0.01
+    source: >
+      reference/md/Confidence Intervals for the Difference Between Two
+      Proportions/hybrid_auto/Confidence Intervals for the Difference
+      Between Two Proportions.md, §Example 3(e).

@@ -1,0 +1,52 @@
+chapter: "Tests for the Difference Between Two Poisson Rates in a Cluster-Randomized Design"
+method: "cluster_two_poisson_rates"
+examples:
+  - id: "Ex1 Ki=40 M=20"
+    description: >
+      Two-arm cluster-randomized Poisson rate comparison. lambda1=0.5, lambda2=0.6,
+      CV1=CV2=0.25, M=20, Ki=40 per group, alpha=0.05, two-sided test.
+    inputs:
+      lambda1: 0.5
+      lambda2: 0.6
+      ki: 40
+      m: 20.0
+      cv1: 0.25
+      cv2: 0.25
+      alpha: 0.05
+      sides: 2
+    expected:
+      n: 1600
+      n_clusters: 80
+      m_per_cluster: 20
+      achieved_power: 0.5345
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Tests for the Difference Between Two Poisson Rates in a Cluster-Randomized Design (Example 1)"
+
+  - id: "Ex2 validation Ki=28 M=424"
+    description: >
+      Validation from Hayes and Moulton (2009) p.109. lambda1=0.0148, lambda2=0.0104,
+      CV1=CV2=0.29, M=424, Ki=28 per group, alpha=0.05, two-sided. Expected power=0.69.
+    inputs:
+      lambda1: 0.0148
+      lambda2: 0.0104
+      ki: 28
+      m: 424.0
+      cv1: 0.29
+      cv2: 0.29
+      alpha: 0.05
+      sides: 2
+    expected:
+      n: 23744
+      n_clusters: 56
+      m_per_cluster: 424
+      achieved_power: 0.69
+    tolerance:
+      n: 4
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.01
+    source: "Tests for the Difference Between Two Poisson Rates in a Cluster-Randomized Design (Example 2)"

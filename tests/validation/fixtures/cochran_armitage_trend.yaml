@@ -1,0 +1,109 @@
+chapter: "Cochran-Armitage Test for Trend in Proportions"
+method: "cochran_armitage_trend"
+examples:
+
+  - id: "Ex1 reference n=30 p=(.05,.15,.25) cc two-sided"
+    description: >
+      Example 1: three equally-spaced doses, p=(0.05,0.15,0.25),
+      two-sided continuity-corrected z test at alpha=0.05.  Equal
+      per-group n_mult=30.  reference power = 0.51187.
+    inputs:
+      p: [0.05, 0.15, 0.25]
+      n_mult: 30
+      alpha: 0.05
+      sides: 2
+      continuity: true
+    expected: {achieved_power: 0.51187}
+    tolerance: {achieved_power: 0.0005}
+    source: "Cochran-Armitage Test for Trend in Proportions (Example 1 (n=30))"
+
+  - id: "Ex1 reference n=70 p=(.05,.15,.25) cc two-sided"
+    description: >
+      Same setup, n_mult=70.  reference power = 0.90093.
+    inputs:
+      p: [0.05, 0.15, 0.25]
+      n_mult: 70
+      alpha: 0.05
+      sides: 2
+      continuity: true
+    expected: {achieved_power: 0.90093}
+    tolerance: {achieved_power: 0.0005}
+    source: "Cochran-Armitage Test for Trend in Proportions (Example 1 (n=70))"
+
+  - id: "Ex2 reference solve-for-n cc two-sided power=0.95 -> n=85"
+    description: >
+      Example 2: target power 0.95, p=(0.05,0.15,0.25), two-sided
+      cc Cochran-Armitage at alpha=0.05.  Reference reports n_mult=85
+      (total N=255) with achieved power 0.95054.
+    inputs:
+      p: [0.05, 0.15, 0.25]
+      alpha: 0.05
+      sides: 2
+      continuity: true
+      power: 0.95
+    expected: {n_mult: 85, n: 255, achieved_power: 0.95054}
+    tolerance: {n_mult: 0, n: 0, achieved_power: 0.001}
+    source: "Cochran-Armitage Test for Trend in Proportions (Example 2)"
+
+  - id: "Ex3 reference unequal n=(120,60,60)"
+    description: >
+      Example 3: unequal allocation n=(120, 60, 60),
+      p=(0.05, 0.15, 0.25), two-sided cc trend test at alpha=0.05.
+      reference power = 0.95196.
+    inputs:
+      p: [0.05, 0.15, 0.25]
+      n: [120, 60, 60]
+      alpha: 0.05
+      sides: 2
+      continuity: true
+    expected: {achieved_power: 0.95196}
+    tolerance: {achieved_power: 0.0005}
+    source: "Cochran-Armitage Test for Trend in Proportions (Example 3)"
+
+  - id: "Ex4 reference unequal-X uncorrected z test"
+    description: >
+      Example 4: unequally-spaced X=(0, 2, 5) with p=(0.05, 0.15,
+      0.25), two-sided uncorrected z test, alpha=0.05, n_mult=50.
+      reference power = 0.79514.
+    inputs:
+      p: [0.05, 0.15, 0.25]
+      x: [0, 2, 5]
+      n_mult: 50
+      alpha: 0.05
+      sides: 2
+      continuity: false
+    expected: {achieved_power: 0.79514}
+    tolerance: {achieved_power: 0.0005}
+    source: "Cochran-Armitage Test for Trend in Proportions (Example 4 (n=50))"
+
+  - id: "Ex5 Nam(1987) one-sided cc power=0.9 a=0.05 p=(.05,.15,.25) -> n=58"
+    description: >
+      Example 5 / Nam (1987) page 703 validation.  One-sided
+      continuity-corrected increasing-trend test, alpha=0.05, target
+      power 0.9, p=(0.05,0.15,0.25).  Nam / reference report n_mult=58 with
+      actual power 0.90203.
+    inputs:
+      p: [0.05, 0.15, 0.25]
+      alpha: 0.05
+      sides: 1
+      continuity: true
+      direction: 1
+      power: 0.9
+    expected: {n_mult: 58, achieved_power: 0.90203}
+    tolerance: {n_mult: 0, achieved_power: 0.001}
+    source: "Cochran-Armitage Test for Trend in Proportions (Example 5 (p=(.05,.15,.25), a=0.05, pwr=0.9))"
+
+  - id: "Ex5 Nam(1987) one-sided cc power=0.5 a=0.025 p=(.05,.10,.15) -> n=79"
+    description: >
+      Example 5: one-sided cc, target power 0.5, alpha=0.025,
+      p=(0.05, 0.10, 0.15).  n_mult=79, actual power 0.50098.
+    inputs:
+      p: [0.05, 0.10, 0.15]
+      alpha: 0.025
+      sides: 1
+      continuity: true
+      direction: 1
+      power: 0.5
+    expected: {n_mult: 79, achieved_power: 0.50098}
+    tolerance: {n_mult: 0, achieved_power: 0.001}
+    source: "Cochran-Armitage Test for Trend in Proportions (Example 5 (p=(.05,.10,.15), a=0.025, pwr=0.5))"

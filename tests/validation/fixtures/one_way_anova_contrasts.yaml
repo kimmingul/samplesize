@@ -1,0 +1,105 @@
+chapter: "One-Way Analysis of Variance Contrasts"
+method: "one_way_anova_contrasts"
+
+# the reference Chapter 549 — analytic, single-contrast one-way ANOVA.  These
+# fixtures pin the closed-form noncentral-F(1, N-G, λ_C) computation
+# against the reference's published worked examples to four decimal places.
+#
+#   σ_C = |Σ cᵢ μᵢ| / √( N · Σ cᵢ² / nᵢ )
+#   λ_C = N · σ_C² / σ²
+#   F_crit = F_{α, 1, N-G}
+#   Power  = 1 − F'(F_crit; 1, N-G, λ_C)
+#
+# Tolerances:
+#   - n_per_group is exact when solving for sample size.
+#   - achieved_power tolerated to ±0.0001 since the calculation is
+#     entirely analytic (reference prints 4 decimals).
+
+examples:
+
+  - id: "Ex2 hand-calc (k=3, c=[-2,1,1])"
+    description: >
+      Chapter 549 Example 2 — Validation using Hand Calculations:
+      means=[1,2,3], contrast=[-2,1,1], σ=5, n=5/group, α=0.05.  Hand
+      calc gives σ_C²=0.5, λ_C=0.3, F_{0.95,1,12}=4.7472, Power=0.0797.
+      Reference reports power=0.0797.
+    inputs:
+      means: [1.0, 2.0, 3.0]
+      contrast: [-2.0, 1.0, 1.0]
+      sigma: 5.0
+      n: 5
+      alpha: 0.05
+    expected:
+      n_per_group: 5
+      n_total: 15
+      achieved_power: 0.0797
+      sigma_c: 0.7071
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.0001
+      sigma_c: 0.001
+    source: "One-Way Analysis of Variance Contrasts (Example 2 Output)"
+
+  - id: "Ex1 row 1 (k=4, c=[-3,1,1,1], n=2, σ=18)"
+    description: >
+      Example 1 row 1: 4 groups, control-vs-treatment contrast
+      [-3,1,1,1], means=[40,10,10,10], σ=18, n=2/group, α=0.05.  reference
+      reports power=0.3471, σ_C=12.99.
+    inputs:
+      means: [40.0, 10.0, 10.0, 10.0]
+      contrast: [-3.0, 1.0, 1.0, 1.0]
+      sigma: 18.0
+      n: 2
+      alpha: 0.05
+    expected:
+      n_per_group: 2
+      n_total: 8
+      achieved_power: 0.3471
+      sigma_c: 12.99
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.0001
+      sigma_c: 0.01
+    source: "One-Way Analysis of Variance Contrasts (Example 1 Numeric Results row 1)"
+
+  - id: "Ex1 row 10 (k=4, c=[-3,1,1,1], n=8, σ=18)"
+    description: >
+      Example 1 row 10: same setup as row 1 but n=8/group.  reference
+      reports power=0.9761.
+    inputs:
+      means: [40.0, 10.0, 10.0, 10.0]
+      contrast: [-3.0, 1.0, 1.0, 1.0]
+      sigma: 18.0
+      n: 8
+      alpha: 0.05
+    expected:
+      n_per_group: 8
+      n_total: 32
+      achieved_power: 0.9761
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.0001
+    source: "One-Way Analysis of Variance Contrasts (Example 1 Numeric Results row 10)"
+
+  - id: "Ex1 row 4 (k=4, c=[-3,1,1,1], n=4, σ=18)"
+    description: >
+      Example 1 row 4: contrast power at n=4/group, σ=18.  reference
+      reports power=0.7550.
+    inputs:
+      means: [40.0, 10.0, 10.0, 10.0]
+      contrast: [-3.0, 1.0, 1.0, 1.0]
+      sigma: 18.0
+      n: 4
+      alpha: 0.05
+    expected:
+      n_per_group: 4
+      n_total: 16
+      achieved_power: 0.7550
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.0001
+    source: "One-Way Analysis of Variance Contrasts (Example 1 Numeric Results row 4)"

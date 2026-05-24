@@ -1,0 +1,83 @@
+chapter: "Two-Sample Z-Tests Assuming Equal Variance (Enter Difference)"
+method: "two_sample_z_equal_var_diff"
+notes: |
+  Same power formula as the (Enter Means) sibling -- the only
+  difference is the input parameterisation (delta = mu1 - mu2 is
+  entered directly instead of being derived from mu1 and mu2).
+  Validated against the Chow, Shao & Wang (2008) worked example
+  (n=63, achieved=0.80130) and reference chapter Examples 1 and 2.
+
+examples:
+
+  - id: "Ex1 row1 anesthesia (find N, delta=2, two-sided, alpha=0.01)"
+    description: >
+      Reference reports N1=N2=151, achieved_power=0.90078 for
+      delta=2, sigma=4.5, target power=0.90, alpha=0.01.
+    inputs:
+      delta: 2.0
+      sd: 4.5
+      alpha: 0.01
+      power: 0.90
+      sides: 2
+    expected: {n1: 151, n2: 151, achieved_power: 0.90078}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Assuming Equal Variance (Enter Difference) (Example 1 (row 1))"
+
+  - id: "Ex1 row2 anesthesia (find N, delta=2, two-sided, alpha=0.05)"
+    description: >
+      Same delta as row 1 but alpha=0.05.  Reference reports
+      N1=N2=107, achieved_power=0.90163.
+    inputs:
+      delta: 2.0
+      sd: 4.5
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected: {n1: 107, n2: 107, achieved_power: 0.90163}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Assuming Equal Variance (Enter Difference) (Example 1 (row 2))"
+
+  - id: "Ex2 row1 fertilizer (find power, delta=10, one-sided, n=10)"
+    description: >
+      One-sided Ha: delta > 0.  delta=10, sigma=25, alpha=0.05,
+      n1=n2=10.  Reference reports power=0.22650.
+    inputs:
+      delta: 10.0
+      sd: 25.0
+      alpha: 0.05
+      n1: 10
+      n2: 10
+      sides: 1
+    expected: {n1: 10, n2: 10, achieved_power: 0.22650}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Assuming Equal Variance (Enter Difference) (Example 2 (n=10))"
+
+  - id: "Ex2 row5 fertilizer (find power, delta=10, one-sided, n=50)"
+    description: >
+      Same one-sided scenario at n1=n2=50.  Reference reports
+      power=0.63876.
+    inputs:
+      delta: 10.0
+      sd: 25.0
+      alpha: 0.05
+      n1: 50
+      n2: 50
+      sides: 1
+    expected: {n1: 50, n2: 50, achieved_power: 0.63876}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Assuming Equal Variance (Enter Difference) (Example 2 (n=50))"
+
+  - id: "Ex4 Chow Shao Wang 2008 (validation, find N, delta=0.05)"
+    description: >
+      Chow, Shao & Wang (2008) pp.63-64.  delta=0.05, sigma=0.10,
+      power=0.80, alpha=0.05.  Reference reports N1=N2=63,
+      achieved_power=0.80130.
+    inputs:
+      delta: 0.05
+      sd: 0.1
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected: {n1: 63, n2: 63, achieved_power: 0.80130}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Two-Sample Z-Tests Assuming Equal Variance (Enter Difference) (Example 4)"

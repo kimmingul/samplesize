@@ -1,0 +1,92 @@
+chapter: "Tests for Two Proportions in a Stratified Design (Cochran-Mantel-Haenszel Test)"
+method: "tests_two_proportions_stratified"
+examples:
+
+  - id: "Ex1 reference Nam(1992) M=100 OR=2 cc one-sided"
+    description: >
+      Example 1 (Nam 1992 colon cancer / chlorinated water).
+      Four age strata with weights (10, 40, 35, 15)%, equal allocation
+      (R1=R2 per stratum), control proportions (0.75, 0.70, 0.65, 0.60).
+      Continuity-corrected CMH one-sided z test at alpha=0.05.
+      M=100 (i.e. N=100) with OR1=2.  reference power = 0.3505.
+    inputs:
+      p2: [0.75, 0.70, 0.65, 0.60]
+      r1: [0.05, 0.20, 0.175, 0.075]
+      r2: [0.05, 0.20, 0.175, 0.075]
+      or1: 2.0
+      or0: 1.0
+      alpha: 0.05
+      m: 100
+      sides: 1
+      continuity: true
+    expected: {achieved_power: 0.3505}
+    tolerance: {achieved_power: 0.0005}
+    source: "Tests for Two Proportions in a Stratified Design (Cochran-Mantel-Haenszel Test) (Example 1 (M=100, OR1=2))"
+
+  - id: "Ex1 reference M=500 OR=2 cc one-sided"
+    description: >
+      Same setup as Ex1; M=500 with OR1=2.  reference power = 0.9464.
+    inputs:
+      p2: [0.75, 0.70, 0.65, 0.60]
+      r1: [0.05, 0.20, 0.175, 0.075]
+      r2: [0.05, 0.20, 0.175, 0.075]
+      or1: 2.0
+      alpha: 0.05
+      m: 500
+      sides: 1
+      continuity: true
+    expected: {achieved_power: 0.9464}
+    tolerance: {achieved_power: 0.0005}
+    source: "Tests for Two Proportions in a Stratified Design (Cochran-Mantel-Haenszel Test) (Example 1 (M=500, OR1=2))"
+
+  - id: "Ex1 reference M=100 OR=3 cc one-sided"
+    description: >
+      Same setup as Ex1; M=100 with OR1=3.  reference power = 0.6337.
+    inputs:
+      p2: [0.75, 0.70, 0.65, 0.60]
+      r1: [0.05, 0.20, 0.175, 0.075]
+      or1: 3.0
+      alpha: 0.05
+      m: 100
+      sides: 1
+      continuity: true
+    expected: {achieved_power: 0.6337}
+    tolerance: {achieved_power: 0.0005}
+    source: "Tests for Two Proportions in a Stratified Design (Cochran-Mantel-Haenszel Test) (Example 1 (M=100, OR1=3))"
+
+  - id: "Ex2 Nam(1992) validation cc one-sided power=0.9 OR=3 -> N=192"
+    description: >
+      Example 2: Nam (1992) page 392 validation example.  Continuity-
+      corrected CMH one-sided test, power=0.90, OR1=3, alpha=0.05.  Nam
+      (1992) reports N=192, matching reference.
+    inputs:
+      p2: [0.75, 0.70, 0.65, 0.60]
+      r1: [0.05, 0.20, 0.175, 0.075]
+      or1: 3.0
+      alpha: 0.05
+      power: 0.9
+      sides: 1
+      continuity: true
+    expected: {n: 192, achieved_power: 0.9}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Proportions in a Stratified Design (Cochran-Mantel-Haenszel Test) (Example 2 (continuity corrected))"
+
+  - id: "Ex3 reference completed-experiment unequal R1/R2"
+    description: >
+      Example 3: 3 strata, group sample sizes given directly through
+      R1=(102,113,97) and R2=(98,110,114) with M=1; success
+      probabilities (0.72, 0.66, 0.69); continuity-corrected CMH one-
+      sided test for OR1=1.5 vs OR0=1 at alpha=0.05.  Reference reports power
+      0.6980 with total N=634.
+    inputs:
+      p2: [0.72, 0.66, 0.69]
+      r1: [102, 113, 97]
+      r2: [98, 110, 114]
+      or1: 1.5
+      alpha: 0.05
+      m: 1
+      sides: 1
+      continuity: true
+    expected: {n: 634, achieved_power: 0.6980}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Proportions in a Stratified Design (Cochran-Mantel-Haenszel Test) (Example 3)"

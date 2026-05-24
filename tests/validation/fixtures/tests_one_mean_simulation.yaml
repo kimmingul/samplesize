@@ -1,0 +1,66 @@
+chapter: "Tests for One Mean (Simulation)"
+method: "tests_one_mean_simulation"
+# NOTE: Simulation-based method (seed=42, n_sims=10000).
+# reference uses a different RNG and simulation count (1000/2000); results
+# will differ from reference tables.  Fixtures are calibrated against our
+# deterministic implementation.  Ex1 analytic reference power at
+# N=40 is ~0.872 (t-test, mean=1, sd=2, alpha=0.05, two-sided).
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 – Power at N=40 (Ch.410 reference scenario).
+  # mean0=0, mean1=1, sd=2, alpha=0.05, two-sided, normal distribution.
+  # Our implementation (seed=42, 10000 sims) gives 0.8737.
+  # reference analytic (Ch 400) gives ~0.872; our sim is within ±0.004.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=40 power"
+    description: >
+      Example 1 reference scenario: mean0=0, mean1=1, sd=2,
+      alpha=0.05, two-sided t-test, N=40, normal distribution.
+      Our simulation (seed=42, 10000 sims) gives power=0.8737.
+    solve_for: "power"
+    inputs:
+      mean0: 0.0
+      mean1: 1.0
+      sd: 2.0
+      alpha: 0.05
+      n: 40
+      sides: 2
+      dist: "normal"
+      n_sims: 10000
+      seed: 42
+    expected:
+      achieved_power: 0.8737
+    tolerance:
+      achieved_power: 0.015
+    source: "Tests for One Mean (Simulation) (Example 1 N=40)"
+
+  # ------------------------------------------------------------------
+  # Solve for n: target power=0.80, same scenario.
+  # Our implementation finds n=33.
+  # ------------------------------------------------------------------
+
+  - id: "Solve n power=0.80"
+    description: >
+      Solve for sample size: mean0=0, mean1=1, sd=2, alpha=0.05,
+      two-sided, power=0.80, normal distribution.
+      Our simulation (seed=42, 10000 sims) finds n=33, power=0.8008.
+    solve_for: "n"
+    inputs:
+      mean0: 0.0
+      mean1: 1.0
+      sd: 2.0
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+      dist: "normal"
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 33
+      achieved_power: 0.8008
+    tolerance:
+      n: 1
+      achieved_power: 0.015
+    source: "Tests for One Mean (Simulation) (Example 1)"

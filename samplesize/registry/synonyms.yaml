@@ -1,0 +1,50 @@
+# Free-form phrase → method_id. Used for fast keyword routing before
+# walking the decision tree. Be conservative: only add phrases that
+# unambiguously map to a single method.
+
+one_sample_t:
+  - "one-sample t-test"
+  - "one sample t test"
+  - "single mean test"
+  - "test for one mean"
+
+two_sample_t_equal_var:
+  - "two-sample t-test"
+  - "two sample t test"
+  - "independent t-test"
+  - "student t-test"
+  - "comparing two means"
+
+paired_t:
+  - "paired t-test"
+  - "paired t test"
+  - "matched-pairs t-test"
+  - "pre-post t-test"
+
+one_proportion:
+  - "one-sample proportion test"
+  - "binomial test"
+  - "test for one proportion"
+
+two_proportions:
+  - "two-sample proportion test"
+  - "chi-square 2x2"
+  - "z-test of proportions"
+  - "comparing two proportions"
+
+pearson_correlation:
+  - "correlation test"
+  - "pearson correlation"
+  - "test for correlation"
+
+one_way_anova_f:
+  - "one-way anova"
+  - "anova"
+  - "compare three groups"
+  - "k-group comparison"
+
+logrank_freedman:
+  - "logrank test"
+  - "log-rank test"
+  - "survival comparison"
+  - "freedman logrank"

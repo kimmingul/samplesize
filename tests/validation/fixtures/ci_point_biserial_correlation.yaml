@@ -1,0 +1,121 @@
+chapter: "Confidence Intervals for Point Biserial Correlation"
+method: "ci_point_biserial_correlation"
+notes: |
+  the reference chapter 816 (Tate 1954, 1955). Closed-form normal approximation
+  with variance sigma_r^2 = [r^2 + 2 P (1-P)(2 - 3 r^2)] / [4 n P (1-P)]
+  * (1 - r^2)^2; symmetric two-sided limits r ± z_{1 - alpha/2} sigma_r.
+  Sample size is the smallest integer N for which the achieved two-sided
+  width is <= target.
+examples:
+
+  - id: "Ex1 r=0.0, P=0.5, W=0.08, CL=0.95: N=2401"
+    description: >
+      Example 1 first row: r=0, P=0.5, target width 0.08. reference prints
+      N=2401 with width 0.080, lower=-0.040, upper=0.040.
+    inputs:
+      r: 0.0
+      p: 0.5
+      alpha: 0.05
+      width: 0.08
+      sides: 2
+    expected:
+      n: 2401
+      achieved_width: 0.080
+      lower_limit: -0.040
+      upper_limit: 0.040
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Point Biserial Correlation (Example 1 (r=0.0, P=0.5))"
+
+  - id: "Ex1 r=0.1, P=0.5, W=0.08, CL=0.95: N=2342"
+    description: >
+      Example 1: r=0.1, P=0.5. reference prints N=2342 with width 0.080,
+      lower 0.060, upper 0.140.
+    inputs:
+      r: 0.1
+      p: 0.5
+      alpha: 0.05
+      width: 0.08
+      sides: 2
+    expected:
+      n: 2342
+      achieved_width: 0.080
+      lower_limit: 0.060
+      upper_limit: 0.140
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Point Biserial Correlation (Example 1 (r=0.1, P=0.5))"
+
+  - id: "Ex1 r=0.3, P=0.2, W=0.08, CL=0.95: N=2000"
+    description: >
+      Example 1: r=0.3, P=0.2. reference prints N=2000 with width 0.080,
+      lower 0.260, upper 0.340. P=0.2 inflates the variance relative to
+      P=0.5, so N is larger than the matching P=0.5 row.
+    inputs:
+      r: 0.3
+      p: 0.2
+      alpha: 0.05
+      width: 0.08
+      sides: 2
+    expected:
+      n: 2000
+      achieved_width: 0.080
+      lower_limit: 0.260
+      upper_limit: 0.340
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Point Biserial Correlation (Example 1 (r=0.3, P=0.2))"
+
+  - id: "Ex1 r=0.3, P=0.5, W=0.08, CL=0.95: N=1899"
+    description: >
+      Example 1: r=0.3, P=0.5. reference prints N=1899 with width 0.080,
+      lower 0.260, upper 0.340.
+    inputs:
+      r: 0.3
+      p: 0.5
+      alpha: 0.05
+      width: 0.08
+      sides: 2
+    expected:
+      n: 1899
+      achieved_width: 0.080
+      lower_limit: 0.260
+      upper_limit: 0.340
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Point Biserial Correlation (Example 1 (r=0.3, P=0.5))"
+
+  - id: "Ex2 Tate r=0.4, P=0.65, W=0.42, CL=0.99: N=100"
+    description: >
+      Example 2 (Tate 1955 p.1085): r=0.4, P=0.65, 99% CI, target width
+      0.42. Reference reports N=100 with actual width 0.419, lower 0.191,
+      upper 0.609.
+    inputs:
+      r: 0.4
+      p: 0.65
+      alpha: 0.01
+      width: 0.42
+      sides: 2
+    expected:
+      n: 100
+      achieved_width: 0.419
+      lower_limit: 0.191
+      upper_limit: 0.609
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Point Biserial Correlation (Example 2)"

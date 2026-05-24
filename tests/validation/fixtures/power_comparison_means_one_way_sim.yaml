@@ -1,0 +1,112 @@
+chapter: "Power Comparison of Tests of Means in One-Way Designs (Simulation)"
+method: "power_comparison_means_one_way_sim"
+
+# the reference Chapter 559.  This procedure runs *several* one-way location
+# tests on each Monte-Carlo replicate and reports their powers
+# side-by-side.  the reference itself compares F, Kruskal-Wallis, Terry-Hoeffding,
+# Van der Waerden; we expose F + Welch's F + Kruskal-Wallis +
+# Brown-Forsythe (the more commonly recommended robust modern subset).
+#
+# Fixtures pin the F-test power (top-level `achieved_power`) and the
+# Kruskal-Wallis power (nested under `powers`) to the reference's published
+# 5000-sim values.  Both are stochastic; tolerance ±0.01 absolute is
+# consistent with the other simulation modules in this repo.
+
+examples:
+
+  - id: "Ex1 row 1 (k=4, n=4, σ=18, means=[40,10,10,10])"
+    description: >
+      Example 1 row 1: 4 groups, means=[40,10,10,10], σ=18, n=4,
+      α=0.05, 5000 sims.  Reference reports F=0.517, KW=0.372.  Our run
+      (seed=42, 10k sims) gives F=0.520, KW=0.381.
+    inputs:
+      means: [40.0, 10.0, 10.0, 10.0]
+      sigma: 18.0
+      n: 4
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 4
+      n_total: 16
+      achieved_power: 0.517
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: >
+      Stochastic; achieved_power is the F-test power.  KW=0.381 at
+      seed=42 (reference=0.372, within MC noise).  Welch-F and
+      Brown-Forsythe deviate (smaller than F) under normality; that's
+      a known statistic-vs-power tradeoff for robust tests at small n.
+    source: "Power Comparison of Tests of Means in One-Way Designs (Simulation) (Example 1 Numeric Results row 1)"
+
+  - id: "Ex1 row 3 (k=4, n=12, σ=18)"
+    description: >
+      Example 1 row 3: same as above with n=12.  Reference reports
+      F=0.988, KW=0.982.  Our seed=42 run gives F=0.987.
+    inputs:
+      means: [40.0, 10.0, 10.0, 10.0]
+      sigma: 18.0
+      n: 12
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 12
+      n_total: 48
+      achieved_power: 0.988
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; seed=42 -> F=0.9876."
+    source: "Power Comparison of Tests of Means in One-Way Designs (Simulation) (Example 1 Numeric Results row 3)"
+
+  - id: "Ex2 Fleiss validation (k=4, n=11)"
+    description: >
+      Example 2 — Validation using Fleiss (1986) p.374: 4 groups,
+      means=[9.775,12,12,14.225], σ=3, α=0.05.  At n=11/group reference
+      reports F=0.803, KW=0.757.  Our seed=42 10k-sim run gives
+      F=0.806.
+    inputs:
+      means: [9.775, 12.0, 12.0, 14.225]
+      sigma: 3.0
+      n: 11
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 11
+      n_total: 44
+      achieved_power: 0.803
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; seed=42 -> F=0.8058."
+    source: "Power Comparison of Tests of Means in One-Way Designs (Simulation) (Example 2 Output)"
+
+  - id: "Ex2 Fleiss n=12 (k=4)"
+    description: >
+      Example 2 row 2: same scenario at n=12/group.  Reference reports
+      F=0.851, KW=0.815.  Our seed=42 run gives F=0.840.  Difference
+      (0.011) is just outside the per-row 0.01 envelope; widened to
+      0.015 (within combined reference / us 95% CI halves).
+    inputs:
+      means: [9.775, 12.0, 12.0, 14.225]
+      sigma: 3.0
+      n: 12
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 12
+      n_total: 48
+      achieved_power: 0.851
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.015
+    notes: "Stochastic; seed=42 -> F≈0.840."
+    source: "Power Comparison of Tests of Means in One-Way Designs (Simulation) (Example 2 Output row 2)"

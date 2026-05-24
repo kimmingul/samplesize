@@ -1,0 +1,75 @@
+chapter: "Equivalence Tests for One Mean"
+method: "equivalence_one_mean"
+notes: |
+  One-sample TOST using the σ-known + central-t critical value
+  approximation (same convention as the two-sample equivalence
+  module in this package).  reference evaluates the TOST power with the
+  bivariate noncentral-t distribution; at small N our σ-known
+  approximation is slightly more optimistic, so power matches reference
+  within ~0.001 only for the larger-N rows of Example 1 and for the
+  Phillips (1990) validation rows with the larger sample sizes.
+examples:
+
+  - id: "Ex2 Phillips 1990 (μ=85)"
+    description: >
+      Phillips (1990) p.142, row 1: σ=28.284, EL=80, EU=120, μ=85,
+      α=0.05, power=0.70.  Reference reports N=152, achieved=0.7002.
+    inputs:
+      mean: 85.0
+      reference: 0.0
+      sd: 28.284
+      lower_margin: 80.0
+      upper_margin: 120.0
+      alpha: 0.05
+      power: 0.70
+    expected: {n: 152, achieved_power: 0.7002}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for One Mean (Example 2 row 1)"
+
+  - id: "Ex2 Phillips 1990 (μ=90)"
+    description: >
+      Phillips (1990) p.142, row 2: σ=28.284, EL=80, EU=120, μ=90,
+      α=0.05, power=0.70.  Reference reports N=40, achieved=0.7096.
+    inputs:
+      mean: 90.0
+      reference: 0.0
+      sd: 28.284
+      lower_margin: 80.0
+      upper_margin: 120.0
+      alpha: 0.05
+      power: 0.70
+    expected: {n: 40, achieved_power: 0.7096}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for One Mean (Example 2 row 2)"
+
+  - id: "Ex1 (power at N=40, μ=92)"
+    description: >
+      Example 1 row 6: σ=25, EL=76.8, EU=115.2, μ=92, α=0.05,
+      N=40.  Reference reports achieved power=0.9835.
+    inputs:
+      mean: 92.0
+      reference: 0.0
+      sd: 25.0
+      lower_margin: 76.8
+      upper_margin: 115.2
+      alpha: 0.05
+      n: 40
+    expected: {achieved_power: 0.9835}
+    tolerance: {achieved_power: 0.002}
+    source: "Equivalence Tests for One Mean (Example 1 row 6)"
+
+  - id: "Ex1 (power at N=50, μ=92)"
+    description: >
+      Example 1 row 7: σ=25, EL=76.8, EU=115.2, μ=92, α=0.05,
+      N=50.  Reference reports achieved power=0.9953.
+    inputs:
+      mean: 92.0
+      reference: 0.0
+      sd: 25.0
+      lower_margin: 76.8
+      upper_margin: 115.2
+      alpha: 0.05
+      n: 50
+    expected: {achieved_power: 0.9953}
+    tolerance: {achieved_power: 0.001}
+    source: "Equivalence Tests for One Mean (Example 1 row 7)"

@@ -1,0 +1,114 @@
+chapter: "Tests for Two Proportions in a Cluster-Randomized Design"
+method: "cluster_randomized_two_proportions"
+examples:
+
+  - id: "Ex1a reference K=10 M=10 (unpooled, find power)"
+    description: >
+      Example 1, K1=K2=10, M1=M2=10, P1=0.51, P2=0.44, ICC=0.02,
+      α=0.05 two-sided, Z-Test (Unpooled).  reference power = 0.14998.
+    inputs:
+      p1: 0.51
+      p2: 0.44
+      m: 10
+      icc: 0.02
+      alpha: 0.05
+      k_clusters: 10
+      sides: 2
+      allocation: 1.0
+      test_type: "z_unpooled"
+    expected: {achieved_power: 0.14998}
+    tolerance: {achieved_power: 0.0001}
+    source: "Tests for Two Proportions in a Cluster-Randomized Design (Example 1 (10/10))"
+
+  - id: "Ex1b reference K=25 M=50 (unpooled, find power)"
+    description: >
+      Example 1, K1=K2=25, M1=M2=50.  reference power = 0.70424.
+    inputs:
+      p1: 0.51
+      p2: 0.44
+      m: 50
+      icc: 0.02
+      alpha: 0.05
+      k_clusters: 25
+      sides: 2
+      allocation: 1.0
+      test_type: "z_unpooled"
+    expected: {achieved_power: 0.70424}
+    tolerance: {achieved_power: 0.0001}
+    source: "Tests for Two Proportions in a Cluster-Randomized Design (Example 1 (25/50))"
+
+  - id: "Ex2 reference K=25 solve M for power=0.90 (unpooled, find power at M=281)"
+    description: >
+      Example 2: K1=K2=25, target power=0.90, P1=0.51, P2=0.44,
+      ICC=0.02, α=0.05 two-sided, unpooled.  Reference reports M1=281 with
+      achieved power=0.90004.  Implementation solves for clusters
+      (not M), so we verify the achieved power at the reference-reported
+      M=281.
+    inputs:
+      p1: 0.51
+      p2: 0.44
+      m: 281
+      icc: 0.02
+      alpha: 0.05
+      k_clusters: 25
+      sides: 2
+      allocation: 1.0
+      test_type: "z_unpooled"
+    expected: {achieved_power: 0.90004}
+    tolerance: {achieved_power: 0.0001}
+    source: "Tests for Two Proportions in a Cluster-Randomized Design (Example 2)"
+
+  - id: "Ex4 Donner-Klar 2000 (pooled, find K)"
+    description: >
+      Example 4 / Donner & Klar (2000) p.63: P2=0.06, D1=-0.02
+      (P1=0.04), ICC=0.01, M=100, target power=0.80, α=0.05 two-sided,
+      Z-Test (Pooled).  Donner & Klar and reference report K1=K2=38;
+      reference achieved power=0.80962.
+    inputs:
+      p1: 0.04
+      p2: 0.06
+      m: 100
+      icc: 0.01
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+      allocation: 1.0
+      test_type: "z_pooled"
+    expected: {k1: 38, k2: 38, achieved_power: 0.80962}
+    tolerance: {k1: 0, k2: 0, achieved_power: 0.0001}
+    source: "Tests for Two Proportions in a Cluster-Randomized Design (Example 4)"
+
+  - id: "Ex3a reference ICC=0.01 (unpooled, find K for power=0.90)"
+    description: >
+      Example 3: M=300, target power=0.90, ICC=0.01, P1=0.51,
+      P2=0.44, α=0.05 two-sided, unpooled.  reference K1=15, achieved=0.91574.
+    inputs:
+      p1: 0.51
+      p2: 0.44
+      m: 300
+      icc: 0.01
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+      test_type: "z_unpooled"
+    expected: {k1: 15, k2: 15, achieved_power: 0.91574}
+    tolerance: {k1: 0, k2: 0, achieved_power: 0.0001}
+    source: "Tests for Two Proportions in a Cluster-Randomized Design (Example 3 (ICC=0.01))"
+
+  - id: "Ex3b reference ICC=0.03 (unpooled, find K for power=0.90)"
+    description: >
+      Example 3: M=300, ICC=0.03.  reference K1=36, achieved=0.90496.
+    inputs:
+      p1: 0.51
+      p2: 0.44
+      m: 300
+      icc: 0.03
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      allocation: 1.0
+      test_type: "z_unpooled"
+    expected: {k1: 36, k2: 36, achieved_power: 0.90496}
+    tolerance: {k1: 0, k2: 0, achieved_power: 0.0001}
+    source: "Tests for Two Proportions in a Cluster-Randomized Design (Example 3 (ICC=0.03))"

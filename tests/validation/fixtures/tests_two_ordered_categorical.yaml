@@ -1,0 +1,61 @@
+chapter: "Tests for Two Ordered Categorical Variables"
+method: "tests_two_ordered_categorical"
+examples:
+
+  - id: "Ex1 reference Whitehead N=30 theta=0.5 p_c=(0.2,0.5,0.2,0.1)"
+    description: >
+      Example 1: clinical-response ordered categories (Very Good,
+      Good, Moderate, Poor) with control proportions (0.2, 0.5, 0.2,
+      0.1).  Two-sided alpha=0.05.  N1=N2=30, theta=0.5: reference power
+      = 0.1726.
+    inputs:
+      p_c: [0.2, 0.5, 0.2, 0.1]
+      theta: 0.5
+      alpha: 0.05
+      sides: 2
+      n_per_group: 30
+    expected: {achieved_power: 0.1726}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Two Ordered Categorical Variables (Example 1 (N=30 theta=0.5))"
+
+  - id: "Ex1 reference Whitehead N=40 theta=1.5"
+    description: >
+      Same setup as Ex1, N1=N2=40, theta=1.5: reference power = 0.9444.
+    inputs:
+      p_c: [0.2, 0.5, 0.2, 0.1]
+      theta: 1.5
+      alpha: 0.05
+      sides: 2
+      n_per_group: 40
+    expected: {achieved_power: 0.9444}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Two Ordered Categorical Variables (Example 1 (N=40 theta=1.5))"
+
+  - id: "Ex2 reference Whitehead solve-for-N theta=0.9 power=0.9 -> N=92"
+    description: >
+      Example 2: solve for sample size at power 0.9 with theta=0.9.
+      Reference reports N1=N2=92 with actual power 0.9000 (target).
+    inputs:
+      p_c: [0.2, 0.5, 0.2, 0.1]
+      theta: 0.9
+      alpha: 0.05
+      sides: 2
+      power: 0.9
+    expected: {n1: 92, n2: 92, achieved_power: 0.9}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.005}
+    source: "Tests for Two Ordered Categorical Variables (Example 2)"
+
+  - id: "Ex3 Whitehead(1993) validation theta=0.887 power=0.9 -> N=94"
+    description: >
+      Example 3 / Whitehead (1993): theta=0.887, alpha=0.05 two-
+      sided, target power 0.9, p_c=(0.2,0.5,0.2,0.1).  Whitehead
+      reports N=94 per group.
+    inputs:
+      p_c: [0.2, 0.5, 0.2, 0.1]
+      theta: 0.887
+      alpha: 0.05
+      sides: 2
+      power: 0.9
+    expected: {n1: 94, n2: 94, achieved_power: 0.9}
+    tolerance: {n1: 1, n2: 1, achieved_power: 0.005}
+    source: "Tests for Two Ordered Categorical Variables (Example 3)"

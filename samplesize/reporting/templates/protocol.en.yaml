@@ -1,0 +1,22 @@
+language: en
+display_name: English
+templates:
+  ich_e9_section: |-
+    The sample size was determined for {method_name}. With {sides_word}
+    α = {alpha} the design achieves an actual power of {power:.4f} at
+    {n_phrase}. Calculations follow the validated procedure for
+    {method_name} ({citation}).
+  grant_aims: |-
+    **Sample size justification.** Using {method_name} with a
+    {sides_word} significance level of α = {alpha} and a target power
+    of {target_power}, the study will enroll {n_phrase}. The
+    calculation was generated and audited by `samplesize` (validated
+    against established statistical reference examples for this procedure).
+words:
+  two_sided: "two-sided"
+  one_sided: "one-sided"
+n_phrase:
+  with_groups: "a total of {total} subjects ({per_group} per group)"
+  two_arm: "a total of {total} subjects (group 1: {n1}, group 2: {n2})"
+  single: "a sample size of {n} subjects"
+  fallback: "the planned sample size"

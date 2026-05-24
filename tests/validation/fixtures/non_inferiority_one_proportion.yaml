@@ -1,0 +1,67 @@
+chapter: "Non-Inferiority Tests for One Proportion"
+method: "non_inferiority_one_proportion"
+notes: |
+  One-sample non-inferiority test on a binomial proportion (reference
+  Chapter 105).  Normal-approximation Z-Test using S(P0) by default;
+  S(Phat) variant available via ``se_method="s_phat"``.  reference uses
+  the convention P1=PB (actual proportion equals baseline) for power
+  examples, so we supply P0 directly as the NI cutoff.
+examples:
+
+  - id: "Ex1 reference (n=50, P0=0.40, P1=0.50)"
+    description: >
+      Example 1 row 1: PB=0.50, d0=-0.10 (P0=0.40), P1=0.50,
+      alpha=0.05, Z-Test S(P0), higher-is-better.  Reference reports
+      power=0.42175.
+    inputs:
+      p: 0.50
+      p0: 0.40
+      alpha: 0.05
+      n: 50
+      higher_is_better: true
+    expected: {n: 50, achieved_power: 0.42175}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for One Proportion (Example 1 row 1)"
+
+  - id: "Ex1 reference (n=500, P0=0.40, P1=0.50)"
+    description: >
+      Example 1 row 9: PB=0.50, d0=-0.10, P1=0.50, alpha=0.05,
+      n=500.  Reference reports power=0.99789.
+    inputs:
+      p: 0.50
+      p0: 0.40
+      alpha: 0.05
+      n: 500
+      higher_is_better: true
+    expected: {n: 500, achieved_power: 0.99789}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for One Proportion (Example 1 row 9)"
+
+  - id: "Ex1 reference (n=800, P0=0.45, P1=0.50)"
+    description: >
+      Example 1 row 12: PB=0.50, d0=-0.05 (P0=0.45), P1=0.50,
+      alpha=0.05, n=800.  Reference reports power=0.88333.
+    inputs:
+      p: 0.50
+      p0: 0.45
+      alpha: 0.05
+      n: 800
+      higher_is_better: true
+    expected: {n: 800, achieved_power: 0.88333}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for One Proportion (Example 1 row 12)"
+
+  - id: "Ex2 reference (find N, P0=0.45, P1=0.50, power=0.90)"
+    description: >
+      Example 2: solve for N with PB=0.50, d0=-0.05, P1=0.50,
+      alpha=0.05, power=0.90, Z-Test S(P0).  Reference reports n=852
+      with achieved=0.90013.
+    inputs:
+      p: 0.50
+      p0: 0.45
+      alpha: 0.05
+      power: 0.90
+      higher_is_better: true
+    expected: {n: 852, achieved_power: 0.90013}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for One Proportion (Example 2)"

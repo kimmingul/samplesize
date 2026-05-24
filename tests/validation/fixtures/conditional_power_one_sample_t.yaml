@@ -1,0 +1,76 @@
+chapter: "Conditional Power of One-Sample T-Tests"
+method: "conditional_power_one_sample_t"
+examples:
+
+  - id: "Ex1 row 1 (mu1=0, futile interim)"
+    description: >
+      reference chapter 402, Example 1, row 1.  Interim after 25 of 50
+      subjects, one-sided alpha=0.05, sigma=1.8, Z_k=2.12.  The
+      alternative mean is set to 0 (null-equivalent θ) so conditional
+      power should be only ~0.42.
+    inputs:
+      mean0: 0.0
+      mean1: 0.0
+      sd: 1.8
+      n: 50
+      n_t: 25
+      z_observed: 2.12
+      alpha: 0.05
+      sides: 1
+      direction: "upper"
+    expected:
+      conditional_power: 0.41833
+      predictive_power: 0.91202
+      achieved_power: 0.41833
+    tolerance:
+      conditional_power: 0.001
+      predictive_power: 0.001
+      achieved_power: 0.001
+    source: "Conditional Power of One-Sample T-Tests (Example 1, row 1)"
+
+  - id: "Ex1 row 3 (mu1=1, hand-validated by reference)"
+    description: >
+      reference chapter 402, Example 1 row 3 AND Example 2 (hand validation).
+      mu0=0, mu1=1, sigma=1.8, N=50, n_t=25, Z_k=2.12, alpha=0.05,
+      one-sided.  reference hand-derives 0.9949386 step by step.
+    inputs:
+      mean0: 0.0
+      mean1: 1.0
+      sd: 1.8
+      n: 50
+      n_t: 25
+      z_observed: 2.12
+      alpha: 0.05
+      sides: 1
+      direction: "upper"
+    expected:
+      conditional_power: 0.99494
+      predictive_power: 0.91202
+      achieved_power: 0.99494
+    tolerance:
+      conditional_power: 0.001
+      predictive_power: 0.001
+      achieved_power: 0.001
+    source: "Conditional Power of One-Sample T-Tests (Example 2 (validation))"
+
+  - id: "Ex1 row 2 (mu1=0.5)"
+    description: >
+      reference chapter 402, Example 1, row 2.  Same setup as row 1 with
+      mu1=0.5.
+    inputs:
+      mean0: 0.0
+      mean1: 0.5
+      sd: 1.8
+      n: 50
+      n_t: 25
+      z_observed: 2.12
+      alpha: 0.05
+      sides: 1
+      direction: "upper"
+    expected:
+      conditional_power: 0.88154
+      futility_index: 0.11846
+    tolerance:
+      conditional_power: 0.001
+      futility_index: 0.001
+    source: "Conditional Power of One-Sample T-Tests (Example 1, row 2)"

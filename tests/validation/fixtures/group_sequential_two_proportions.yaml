@@ -1,0 +1,48 @@
+chapter: "Group-Sequential Tests for Two Proportions"
+method: "group_sequential_two_proportions"
+examples:
+  - id: "Ex1 OBF 4-look N-solve p1=0.53 p2=0.63 alpha=0.05 power=0.90"
+    description: >
+      Example 1 from reference chapter: OBF 4-look design, p1=0.53, p2=0.63,
+      alpha=0.05, power=0.90. Reference reports N1=542 per arm with
+      achieved power 0.900930 (continuity correction applied in reference;
+      our analytic implementation does not apply continuity correction,
+      so N1 may differ by a small amount).
+    inputs:
+      p1: 0.53
+      p2: 0.63
+      alpha: 0.05
+      power: 0.90
+      n_looks: 4
+      boundary: "obrien-fleming"
+      sides: 2
+      allocation: 1.0
+    expected:
+      n: 1084
+      achieved_power: 0.9009
+    tolerance:
+      n: 50
+      achieved_power: 0.010
+    source: "Group-Sequential Tests for Two Proportions (Example 1)"
+
+  - id: "Ex3 OBF 4-look power-solve N1=500 p1=0.53 p2=0.63 alpha=0.05"
+    description: >
+      Example 3 from reference chapter (no continuity correction): OBF, 4 looks,
+      N1=N2=500, p1=0.53, p2=0.63, alpha=0.05.
+      Reference reports power 0.887691.
+    inputs:
+      p1: 0.53
+      p2: 0.63
+      alpha: 0.05
+      n1: 500
+      n_looks: 4
+      boundary: "obrien-fleming"
+      sides: 2
+      allocation: 1.0
+    expected:
+      n: 1000
+      achieved_power: 0.8877
+    tolerance:
+      n: 0
+      achieved_power: 0.010
+    source: "Group-Sequential Tests for Two Proportions (Example 3)"

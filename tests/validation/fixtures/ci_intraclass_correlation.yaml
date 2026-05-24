@@ -1,0 +1,127 @@
+chapter: "Confidence Intervals for Intraclass Correlation"
+method: "ci_intraclass_correlation"
+notes: |
+  the reference chapter 817 (Shrout & Fleiss 1979; Bonett 2002). F-distribution
+  CI for the ICC: F0 = (1 + r(K-1)) / (1 - r); FL = F0 / F_{1-a/2, V2, V1};
+  FU = F0 * F_{1-a/2, V1, V2}; rL = (FL-1)/(FL+K-1); rU = (FU-1)/(FU+K-1);
+  with V1 = (N-b)(K-1), V2 = N-1, b=0 for the one-way model and b=1 for
+  the two-way (random or mixed) models. Both Example 1 and Example 2
+  use the two-way mixed-effects model (b=1).
+examples:
+
+  - id: "Ex1 K=2 (ICC=0.5, W=0.10, CL=0.95, two-way): N=866"
+    description: >
+      Example 1 row 1: two-way mixed-effects, K=2, ICC=0.5, target width
+      0.1, 95% CI. Reference reports N=866, width 0.100, lower 0.448, upper
+      0.548.
+    inputs:
+      r: 0.5
+      k: 2
+      alpha: 0.05
+      width: 0.1
+      sides: 2
+      model: "two_way_mixed"
+    expected:
+      n: 866
+      achieved_width: 0.100
+      lower_limit: 0.448
+      upper_limit: 0.548
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Intraclass Correlation (Example 1 (K=2))"
+
+  - id: "Ex1 K=5 (ICC=0.5, W=0.10, CL=0.95, two-way): N=346"
+    description: >
+      Example 1 row 4: K=5, ICC=0.5, width 0.1. Reference reports N=346 with
+      lower 0.450, upper 0.550, width 0.100.
+    inputs:
+      r: 0.5
+      k: 5
+      alpha: 0.05
+      width: 0.1
+      sides: 2
+      model: "two_way_mixed"
+    expected:
+      n: 346
+      achieved_width: 0.100
+      lower_limit: 0.450
+      upper_limit: 0.550
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Intraclass Correlation (Example 1 (K=5))"
+
+  - id: "Ex2 Bonett K=2 (ICC=0.3, W=0.2, CL=0.95, two-way): N=319"
+    description: >
+      Example 2 (Bonett 2002 p.1334): two-way, ICC=0.3, K=2, target width
+      0.2 at 95% CI. reference reproduces Bonett's N=319 with lower 0.197,
+      upper 0.397.
+    inputs:
+      r: 0.3
+      k: 2
+      alpha: 0.05
+      width: 0.2
+      sides: 2
+      model: "two_way_mixed"
+    expected:
+      n: 319
+      achieved_width: 0.200
+      lower_limit: 0.197
+      upper_limit: 0.397
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Intraclass Correlation (Example 2 (K=2))"
+
+  - id: "Ex2 Bonett K=3 (ICC=0.3, W=0.2, CL=0.95, two-way): N=161"
+    description: >
+      Example 2 row K=3: reference / Bonett report N=161 with lower 0.202,
+      upper 0.401.
+    inputs:
+      r: 0.3
+      k: 3
+      alpha: 0.05
+      width: 0.2
+      sides: 2
+      model: "two_way_mixed"
+    expected:
+      n: 161
+      achieved_width: 0.200
+      lower_limit: 0.202
+      upper_limit: 0.401
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Intraclass Correlation (Example 2 (K=3))"
+
+  - id: "Ex2 Bonett K=10 (ICC=0.3, W=0.2, CL=0.95, two-way): N=59"
+    description: >
+      Example 2 row K=10: reference / Bonett report N=59 with lower 0.213,
+      upper 0.412.
+    inputs:
+      r: 0.3
+      k: 10
+      alpha: 0.05
+      width: 0.2
+      sides: 2
+      model: "two_way_mixed"
+    expected:
+      n: 59
+      achieved_width: 0.200
+      lower_limit: 0.213
+      upper_limit: 0.412
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Intraclass Correlation (Example 2 (K=10))"

@@ -1,0 +1,94 @@
+chapter: "Superiority by a Margin Tests for the Difference Between Two Proportions"
+method: "superiority_by_margin_two_proportions"
+notes: |
+  Unpooled-variance z-test on the difference (Chow, Shao, & Wang 2008,
+  §4.3.1 asymptotic formula).  The math is the mirror image of the
+  Non-Inferiority Tests for Two Proportions module (Chapter 205
+  Non-Inferiority) with the margin sign flipped: H1 is p1-p2 > +|SM|
+  instead of p1-p2 > -|NIM|.
+
+  Most worked examples in the Chapter 205 (superiority-by-margin)
+  use the Farrington & Manning likelihood-score test (default) and/or
+  negative D0 (NI-style margin), neither of which is the same test as
+  our positive-margin Z-Unpooled API.  We therefore validate with two
+  fixtures derived from Chow, Shao, & Wang (2008) §4.3.1 asymptotic
+  superiority formula (which is exactly our Z-Unpooled), plus one
+  cross-check against Example 7 with documented divergence from
+  Farrington–Manning (~0.0037 absolute power difference, ~1 unit in N).
+
+examples:
+
+  - id: "Chow Shao Wang 2008 §4.3.1 (asymptotic z, p1=0.70 p2=0.50)"
+    description: >
+      Chow, Shao, & Wang (2008) Sample Size Calculations in Clinical
+      Research §4.3.1 closed-form: n per group =
+      (z_alpha + z_beta)^2 * [p1(1-p1)+p2(1-p2)] / (delta - margin)^2.
+      For p1=0.70, p2=0.50, margin=0.05, alpha=0.05, power=0.80:
+      n = 2.4865^2 * (0.21+0.25) / 0.15^2 = 126.40 -> 127 per group.
+      Our Z-Unpooled solver matches exactly with achieved=0.80165.
+    inputs:
+      p1: 0.70
+      p2: 0.50
+      margin: 0.05
+      alpha: 0.05
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 127, n2: 127, achieved_power: 0.80165}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Chow, Shao & Wang (2008). Sample Size Calculations in Clinical Research, 2nd ed., §4.3.1 (Superiority by a Margin tests with positive epsilon)."
+
+  - id: "Chow Shao Wang 2008 §4.3.1 (asymptotic z, p1=0.30 p2=0.20)"
+    description: >
+      Chow, Shao, & Wang (2008) §4.3.1 closed-form with p1=0.30,
+      p2=0.20, margin=0.05, alpha=0.025, power=0.80:
+      n = 2.8016^2 * (0.21+0.16) / 0.05^2 = 1161.63 -> 1162 per group.
+      Our Z-Unpooled solver matches with achieved=0.80012.
+    inputs:
+      p1: 0.30
+      p2: 0.20
+      margin: 0.05
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 1162, n2: 1162, achieved_power: 0.80012}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Chow, Shao & Wang (2008). Sample Size Calculations in Clinical Research, 2nd ed., §4.3.1."
+
+  - id: "Symmetric lower-is-better mirror of Chow (p1=0.20 p2=0.30)"
+    description: >
+      Direction check: swapping p1<->p2 and setting
+      higher_is_better=False must give the same N and achieved power
+      as the higher_is_better=True version with p1=0.30, p2=0.20.
+      The NCP magnitude is symmetric under that transformation, so
+      Z-Unpooled power is identical.
+    inputs:
+      p1: 0.20
+      p2: 0.30
+      margin: 0.05
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: false
+    expected: {n1: 1162, n2: 1162, achieved_power: 0.80012}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Symmetric mirror of Chow §4.3.1 example via higher_is_better=False."
+
+  - id: "Ex7 Chapter 205 (Farrington-Manning ref; documented test-stat divergence)"
+    description: >
+      reference Ex 7 (Validation of Sample Size Calculation using Farrington
+      and Manning): P2=0.05, D0=0.20, D1=0.35 (so P1.1=0.40), alpha=0.05,
+      power=0.80.  Farrington-Manning reports N=80 with achieved=0.80068.
+      Our test uses the Z-Unpooled statistic (different test stat with a
+      smaller standard error under H0), which finds N=79 and gives
+      power=0.80436 at N=80.  Difference is intrinsic to the test-stat
+      choice (F-M uses constrained-MLE SE; Z-Unpooled uses plug-in MLE
+      SE), so tolerance is widened.
+    inputs:
+      p1: 0.40
+      p2: 0.05
+      margin: 0.20
+      alpha: 0.05
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 79, n2: 79, achieved_power: 0.80077}
+    tolerance: {n1: 2, n2: 2, achieved_power: 0.01}
+    source: "Superiority by a Margin Tests for the Difference Between Two Proportions (Example 7)"

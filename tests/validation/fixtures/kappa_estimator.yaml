@@ -1,0 +1,72 @@
+chapter: "Kappa Estimator"
+method: "kappa_estimator"
+examples:
+
+  - id: "Chapter Technical Details 3x3 example"
+    description: >
+      3x3 agreement table from the chapter's Technical Details:
+        Rater A vs Rater B
+        A1: 103, 24, 31
+        A2:  21, 187, 19
+        A3:  32, 25, 96   (total N = 538)
+      Reference reports kappa = 0.567062, PO = 0.717472, PE = 0.347418.
+    solve_for: "estimate"
+    inputs:
+      table:
+        - [103, 24, 31]
+        - [21, 187, 19]
+        - [32, 25, 96]
+    expected:
+      result: 0.567062
+      kappa: 0.567062
+      po: 0.717472
+      pe: 0.347418
+    tolerance:
+      result: 0.0001
+      kappa: 0.0001
+      po: 0.0001
+      pe: 0.0001
+    source: "Kappa Estimator (Technical Details)"
+
+  - id: "Perfect agreement diagonal (kappa = 1)"
+    description: >
+      Pure-diagonal table — raters agree perfectly.  Then
+      P_O = 1, P_E = sum of squared marginals < 1, and kappa = 1.
+    solve_for: "estimate"
+    inputs:
+      table:
+        - [50,  0,  0]
+        - [ 0, 30,  0]
+        - [ 0,  0, 20]
+    expected:
+      result: 1.0
+      kappa: 1.0
+      po: 1.0
+    tolerance:
+      result: 0.0001
+      kappa: 0.0001
+      po: 0.0001
+    source: "Cohen (1960) kappa definition — diagonal-only check."
+
+  - id: "2x2 chance-only table (kappa = 0)"
+    description: >
+      2x2 table whose joint frequencies equal the product of marginals
+      so observed agreement equals chance agreement.  Marginals are
+      (0.6, 0.4) on each axis, so cells are 0.36, 0.24, 0.24, 0.16.
+      P_O = 0.36 + 0.16 = 0.52, P_E = 0.36 + 0.16 = 0.52, kappa = 0.
+    solve_for: "estimate"
+    inputs:
+      table:
+        - [0.36, 0.24]
+        - [0.24, 0.16]
+    expected:
+      result: 0.0
+      kappa: 0.0
+      po: 0.52
+      pe: 0.52
+    tolerance:
+      result: 0.0001
+      kappa: 0.0001
+      po: 0.0001
+      pe: 0.0001
+    source: "Cohen (1960) kappa definition — independence-of-raters check."

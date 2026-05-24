@@ -1,0 +1,117 @@
+chapter: "Levene Test of Variances (Simulation)"
+method: "levene_variances_simulation"
+
+# These fixtures pin a Monte-Carlo Levene implementation against the reference
+# worked examples.  All results are stochastic; we use seed=42 and the
+# default n_sims=10000 so they are deterministic for the test harness.
+#
+# Tolerance: ±0.01 absolute on achieved_power (matches the binomial 95%
+# CI half-width at 10k sims around power=0.5; see precision table in
+# reference chapter).  For sample-size mode we allow ±2 on n_per_group.
+#
+# Why "mean-centred" Levene: §"Levene's Test" of the reference chapter shows
+# Z_ki = |Y_ki - Ȳ_k| (group mean, not median); the Brown-Forsythe
+# median-centred variant under-shoots reference by 5-10 power percentage
+# points on Example 1.  See implementation note in
+# samplesize/tests/variances_simulation.py.
+
+examples:
+
+  - id: "Ex1 row 1 (n=10, S2=7, k=4)"
+    description: >
+      Example 1 row 1: k=4 groups, means=[10,20,10,10], sigmas=[5,7,5,5],
+      n=10/group, alpha=0.05, 5000 sims.  Reference reports power=0.174.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 7.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 10
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 10
+      n_total: 40
+      achieved_power: 0.174
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: >
+      Stochastic; tolerance widened to ±0.01 power.  Sim gives 0.170 at seed=42,
+      well within the ±0.022 binomial 95% CI half-width the reference itself
+      reports for its 5000-sim run.
+    source: "Levene Test of Variances (Simulation) (Example 1 Numeric Results row 1)"
+
+  - id: "Ex1 row 2 (n=20, S2=7, k=4)"
+    description: >
+      Example 1 row 2: k=4, means=[10,20,10,10], sigmas=[5,7,5,5],
+      n=20/group.  Reference reports power=0.288.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 7.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 20
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 20
+      n_total: 80
+      achieved_power: 0.288
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; ±0.01 power."
+    source: "Levene Test of Variances (Simulation) (Example 1 Numeric Results row 2)"
+
+  - id: "Ex1 row 14 (n=40, S2=9, k=4)"
+    description: >
+      Example 1 row 14: k=4, sigmas=[5,9,5,5], n=40/group.
+      Reference reports power=0.953.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 9.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 40
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 40
+      n_total: 160
+      achieved_power: 0.953
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; ±0.01 power."
+    source: "Levene Test of Variances (Simulation) (Example 1 Numeric Results row 14)"
+
+  - id: "Ex2 sample-size (k=2, target power=0.80, sigmas=[1,2])"
+    description: >
+      Example 2 — Validation: Solve for sample size, k=2,
+      sigmas=[1,2], means=[1,1], alpha=0.05, target power=0.80, 5000 sims.
+      Reference reports n=22/group (N=44), actual power=0.801.
+    inputs:
+      k_groups: 2
+      sigmas: [1.0, 2.0]
+      means: [1.0, 1.0]
+      power: 0.80
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 22
+      n_total: 44
+      achieved_power: 0.801
+    tolerance:
+      n_per_group: 2
+      n_total: 4
+      achieved_power: 0.01
+    notes: >
+      Sample-size bisection.  ±2 on n_per_group reflects MC noise at
+      the boundary; ±0.01 on power as elsewhere.  Sim with seed=42
+      lands on n=22 exactly, achieved=0.8019.
+    source: "Levene Test of Variances (Simulation) (Example 2 Numeric Results row 1)"

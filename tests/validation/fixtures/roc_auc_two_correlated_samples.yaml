@@ -1,0 +1,100 @@
+chapter: "Tests for Two ROC Curves"
+method: "roc_auc_two_correlated_samples"
+examples:
+
+  - id: "Ex1 row1 (power, AUC2=0.825, N+=20, R=2, r=0.6)"
+    description: >
+      Ch.265 Example 1.  Correlated design, rating-scale data.
+      AUC1=0.80, AUC2=0.825, B1=B2=1, R=2, r+=r-=0.6, two-sided alpha=0.05.
+      Reference reports power=0.0501 at N+=20.
+    inputs:
+      auc1: 0.80
+      auc2: 0.825
+      n_diseased: 20
+      R: 2.0
+      alpha: 0.05
+      sides: 2
+      data_type: "discrete"
+      B1: 1.0
+      B2: 1.0
+      r_pos: 0.6
+      r_neg: 0.6
+      solve_for: "power"
+    expected:
+      n_diseased: 20
+      achieved_power: 0.0501
+    tolerance:
+      achieved_power: 0.0005
+    source: "Tests for Two ROC Curves (Example 1, row 1)"
+
+  - id: "Ex2 row1 (sample size, AUC2=0.825, power=0.90, R=2, r=0.6)"
+    description: >
+      Ch.265 Example 2.  Solve for N+ with target power=0.90, AUC2=0.825.
+      Reference reports N+=1937, N-=3874, achieved power=0.9001.
+    inputs:
+      auc1: 0.80
+      auc2: 0.825
+      R: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      data_type: "discrete"
+      B1: 1.0
+      B2: 1.0
+      r_pos: 0.6
+      r_neg: 0.6
+    expected:
+      n_diseased: 1937
+      achieved_power: 0.9001
+    tolerance:
+      n_diseased: 1
+      achieved_power: 0.005
+    source: "Tests for Two ROC Curves (Example 2, row 1)"
+
+  - id: "Ex2 row2 (sample size, AUC2=0.85, power=0.90, R=2, r=0.6)"
+    description: >
+      Ch.265 Example 2.  AUC2=0.85.
+      Reference reports N+=480, N-=960, achieved power=0.9002.
+    inputs:
+      auc1: 0.80
+      auc2: 0.85
+      R: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      data_type: "discrete"
+      B1: 1.0
+      B2: 1.0
+      r_pos: 0.6
+      r_neg: 0.6
+    expected:
+      n_diseased: 480
+      achieved_power: 0.9002
+    tolerance:
+      n_diseased: 1
+      achieved_power: 0.005
+    source: "Tests for Two ROC Curves (Example 2, row 2)"
+
+  - id: "Ex2 row3 (sample size, AUC2=0.90, power=0.90, R=2, r=0.6)"
+    description: >
+      Ch.265 Example 2.  AUC2=0.90.
+      Reference reports N+=117, N-=234, achieved power=0.9012.
+    inputs:
+      auc1: 0.80
+      auc2: 0.90
+      R: 2.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+      data_type: "discrete"
+      B1: 1.0
+      B2: 1.0
+      r_pos: 0.6
+      r_neg: 0.6
+    expected:
+      n_diseased: 117
+      achieved_power: 0.9012
+    tolerance:
+      n_diseased: 1
+      achieved_power: 0.005
+    source: "Tests for Two ROC Curves (Example 2, row 3)"

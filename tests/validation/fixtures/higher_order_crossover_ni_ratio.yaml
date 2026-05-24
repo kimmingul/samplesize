@@ -1,0 +1,46 @@
+chapter: "Non-Inferiority Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design"
+method: "higher_order_crossover_ni_ratio"
+examples:
+  - id: "Ex2 Balaam N-solve power=0.80 NIM=0.20 COV=0.40 r1=1.0 alpha=0.05"
+    description: >
+      Example 2 from reference chapter: Balaam design, NIM=0.20, COV=0.40,
+      R1=1.0, alpha=0.05, solving for N to achieve 80% power (exact, not
+      equal-per-sequence). Reference reports N=149 with achieved power 0.8001.
+    inputs:
+      design: "Balaam"
+      r1: 1.0
+      nim: 0.20
+      cov: 0.40
+      alpha: 0.05
+      power: 0.80
+      higher_means_better: true
+      equal_per_sequence: false
+    expected:
+      n: 149
+      achieved_power: 0.8001
+    tolerance:
+      n: 0
+      achieved_power: 0.005
+    source: "Non-Inferiority Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design (Example 2)"
+
+  - id: "Ex2 Balaam N-solve power=0.90 NIM=0.20 COV=0.40 r1=1.0 alpha=0.05"
+    description: >
+      Example 2 from reference chapter (90% power arm): Balaam design, NIM=0.20,
+      COV=0.40, R1=1.0, alpha=0.05, solving for N to achieve 90% power (exact).
+      Reference reports N=206 with achieved power 0.9002.
+    inputs:
+      design: "Balaam"
+      r1: 1.0
+      nim: 0.20
+      cov: 0.40
+      alpha: 0.05
+      power: 0.90
+      higher_means_better: true
+      equal_per_sequence: false
+    expected:
+      n: 206
+      achieved_power: 0.9002
+    tolerance:
+      n: 0
+      achieved_power: 0.005
+    source: "Non-Inferiority Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design (Example 2)"

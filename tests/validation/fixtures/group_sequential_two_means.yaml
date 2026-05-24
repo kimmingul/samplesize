@@ -1,0 +1,72 @@
+chapter: "Group-Sequential Tests for Two Means"
+method: "group_sequential_two_means"
+# Per-look z boundaries are documented in each description; the validation
+# harness compares scalar keys only (math.isclose).  Boundary agreement is
+# verified by smoke tests (see implementation notes).
+examples:
+
+  - id: "Ex5 Reboussin OBF (find N)"
+    description: >
+      Reboussin (1992) presents an example for normally distributed data
+      with two-sided O'Brien-Fleming boundaries, looks=5, alpha=0.05,
+      power=0.90, Mean1=220, Mean2=200, SD=30.  Reboussin's drift is 3.28
+      with N=48.41 per group; Reference rounds to N1=N2=49 with achieved
+      power=0.90362 and drift=3.29983.  Upper boundaries (reference):
+      4.87688, 3.35695, 2.68026, 2.28979, 2.03100; this implementation
+      reproduces them to 4-5 decimal places via SciPy multivariate-normal.
+    inputs:
+      mean1: 220.0
+      mean2: 200.0
+      sd: 30.0
+      alpha: 0.05
+      power: 0.90
+      n_looks: 5
+      boundary: "obrien-fleming"
+      sides: 2
+      allocation: 1.0
+    expected:
+      n1: 49
+      n2: 49
+      n_max: 98
+      achieved_power: 0.90362
+      drift: 3.29983
+    tolerance:
+      n1: 0
+      n2: 0
+      n_max: 0
+      achieved_power: 0.001
+      drift: 0.001
+    source: "Group-Sequential Tests for Two Means (Example 5 (Validation using O'Brien-Fleming Boundaries))"
+
+  - id: "Ex6 Reboussin Pocock (find N)"
+    description: >
+      Reboussin (1992) presents an example for normally distributed data
+      with two-sided Pocock boundaries, looks=5, alpha=0.05, power=0.90,
+      Mean1=220, Mean2=200, SD=30.  Reboussin's drift is 3.55 with
+      N=56.71 per group; Reference rounds to N1=N2=57 with achieved
+      power=0.90326 and drift=3.55903.  Upper boundaries (reference):
+      2.43798, 2.42677, 2.41014, 2.39658, 2.38591; this implementation
+      reproduces them to 4 decimal places via SciPy multivariate-normal.
+    inputs:
+      mean1: 220.0
+      mean2: 200.0
+      sd: 30.0
+      alpha: 0.05
+      power: 0.90
+      n_looks: 5
+      boundary: "pocock"
+      sides: 2
+      allocation: 1.0
+    expected:
+      n1: 57
+      n2: 57
+      n_max: 114
+      achieved_power: 0.90326
+      drift: 3.55903
+    tolerance:
+      n1: 0
+      n2: 0
+      n_max: 0
+      achieved_power: 0.001
+      drift: 0.001
+    source: "Group-Sequential Tests for Two Means (Example 6 (Validation with Pocock Boundaries))"

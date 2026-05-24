@@ -1,0 +1,62 @@
+chapter: "Tests for the Difference Between Two Linear Regression Slopes"
+method: "tests_difference_two_regression_slopes"
+examples:
+
+  # Example 1 – Finding Sample Size (Ch.854 Example 1)
+  # alpha=0.05 two-sided, power=0.90, equal groups, delta=1, sigma=2, sx1=sx2=2
+  # Reference reports N1=23, N2=23, total=46, achieved power=0.91149
+  - id: "Ex1 delta=1 sigma=2 sx=2 equal-n solve-n"
+    description: >
+      Chapter 854, Example 1 — equal group allocation, delta=1, sigma=2,
+      sx1=sx2=2, alpha=0.05 two-sided, target power=0.90.
+      Reference reports N1=23, N2=23 (total 46), achieved power 0.91149.
+    inputs:
+      slope_diff: 1.0
+      sigma: 2.0
+      sx1: 2.0
+      sx2: 2.0
+      alpha: 0.05
+      sides: 2
+      power: 0.90
+    expected: {n: 46, achieved_power: 0.91149}
+    tolerance: {n: 2, achieved_power: 0.005}
+    source: "Tests for the Difference Between Two Linear Regression Slopes (Example 1)"
+
+  # Example 1 second row: sigma=3 → N1=49, N2=49, total=98, power=0.90403
+  - id: "Ex1 delta=1 sigma=3 sx=2 equal-n solve-n"
+    description: >
+      Chapter 854, Example 1 second row — delta=1, sigma=3, sx1=sx2=2,
+      alpha=0.05 two-sided, target power=0.90.
+      Reference reports N1=49, N2=49 (total 98), achieved power 0.90403.
+    inputs:
+      slope_diff: 1.0
+      sigma: 3.0
+      sx1: 2.0
+      sx2: 2.0
+      alpha: 0.05
+      sides: 2
+      power: 0.90
+    expected: {n: 98, achieved_power: 0.90403}
+    tolerance: {n: 2, achieved_power: 0.005}
+    source: "Tests for the Difference Between Two Linear Regression Slopes (Example 1)"
+
+  # Example 2 – Validation using Dupont & Plummer (1998), p. 594-595
+  # N1=263, N2=167, delta=-0.0159, sigma=0.574, sx1=12, sx2=9.19
+  # alpha=0.05 two-sided, target power=0.80, reference achieved power=0.80003
+  - id: "Ex2 Dupont-Plummer validation power-check"
+    description: >
+      Chapter 854, Example 2 — Dupont & Plummer (1998) validation.
+      N1=263, N2=167, delta=-0.0159, sigma=0.574, sx1=12.0, sx2=9.19,
+      alpha=0.05 two-sided.  Reference reports achieved power=0.80003.
+    inputs:
+      slope_diff: -0.0159
+      sigma: 0.574
+      sx1: 12.0
+      sx2: 9.19
+      alpha: 0.05
+      sides: 2
+      n1: 263
+      n2: 167
+    expected: {n: 430, achieved_power: 0.80003}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Tests for the Difference Between Two Linear Regression Slopes (Example 2)"

@@ -1,0 +1,64 @@
+chapter: "Tests for One Poisson Rate"
+method: "one_sample_poisson_rate"
+examples:
+
+  - id: "Ex1 Ch.412 n=12 lam1=1.8 power"
+    description: >
+      Ch.412 Example 1: power for n=12, lam0=1.0, lam1=1.8, alpha=0.025, one-sided upper.
+      Reference reports power=0.6638.
+    solve_for: "power"
+    inputs:
+      lam0: 1.0
+      lam1: 1.8
+      n: 12
+      alpha: 0.025
+      sides: 1
+    expected: {n: 12, achieved_power: 0.6638}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Tests for One Poisson Rate (Example 1)"
+
+  - id: "Ex1 Ch.412 n=24 lam1=1.8 power"
+    description: >
+      Ch.412 Example 1: power for n=24, lam0=1.0, lam1=1.8, alpha=0.025, one-sided upper.
+      Reference reports power=0.9108.
+    solve_for: "power"
+    inputs:
+      lam0: 1.0
+      lam1: 1.8
+      n: 24
+      alpha: 0.025
+      sides: 1
+    expected: {n: 24, achieved_power: 0.9108}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Tests for One Poisson Rate (Example 1)"
+
+  - id: "Ex2 Ch.412 n for power=0.90 lam1=1.8"
+    description: >
+      Ch.412 Example 2: find n for power=0.90, lam0=1.0, lam1=1.8, alpha=0.025, one-sided.
+      Reference reports n=24 with achieved power=0.9108.
+    solve_for: "n"
+    inputs:
+      lam0: 1.0
+      lam1: 1.8
+      power: 0.90
+      alpha: 0.025
+      sides: 1
+    expected: {n: 24, achieved_power: 0.9108}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "Tests for One Poisson Rate (Example 2)"
+
+  - id: "Ex4 Ch.412 Guenther 1977 validation n=47"
+    description: >
+      Ch.412 Example 4: Guenther (1977) p.27 validation.
+      lam0=0.05, lam1=0.20, alpha=0.05, power=0.90, one-sided upper.
+      Reference reports n=47 with achieved power=0.9065.
+    solve_for: "n"
+    inputs:
+      lam0: 0.05
+      lam1: 0.20
+      power: 0.90
+      alpha: 0.05
+      sides: 1
+    expected: {n: 47, achieved_power: 0.9065}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "Tests for One Poisson Rate (Example 4)"

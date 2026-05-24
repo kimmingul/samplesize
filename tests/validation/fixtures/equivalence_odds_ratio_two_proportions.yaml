@@ -1,0 +1,83 @@
+chapter: "Equivalence Tests for the Odds Ratio of Two Proportions"
+method: "equivalence_odds_ratio_two_proportions"
+examples:
+
+  - id: "Ex1 row 1 (n=50)"
+    description: >
+      Example 1: P2=0.65, OR0.L=0.5, OR0.U=2.0, OR1=1.0,
+      alpha=0.05, Farrington & Manning Likelihood Score test, Normal
+      Approximation.  Reports power=0.0153 at N1=N2=50.
+    inputs:
+      p2: 0.65
+      or0_lower: 0.5
+      or0_upper: 2.0
+      or1: 1.0
+      alpha: 0.05
+      n1: 50
+      n2: 50
+    expected: {n1: 50, n2: 50, achieved_power: 0.0153}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Odds Ratio of Two Proportions (Example 1 row 1)"
+
+  - id: "Ex1 row 3 (n=150)"
+    description: >
+      Example 1 row 3: P2=0.65, OR0.L=0.5, OR0.U=2.0, OR1=1.0,
+      alpha=0.05, N1=N2=150.  Reports power=0.7926.
+    inputs:
+      p2: 0.65
+      or0_lower: 0.5
+      or0_upper: 2.0
+      or1: 1.0
+      alpha: 0.05
+      n1: 150
+      n2: 150
+    expected: {n1: 150, n2: 150, achieved_power: 0.7926}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Odds Ratio of Two Proportions (Example 1 row 3)"
+
+  - id: "Ex2 (solve for N, OR1=1.0)"
+    description: >
+      Example 2: P2=0.65, OR0.L=0.5, OR0.U=2.0, OR1=1.0, alpha=0.05,
+      power=0.80.  Reports N1=N2=153 with actual power 0.8029.
+    inputs:
+      p2: 0.65
+      or0_lower: 0.5
+      or0_upper: 2.0
+      or1: 1.0
+      alpha: 0.05
+      power: 0.80
+    expected: {n1: 153, n2: 153, achieved_power: 0.8029}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Odds Ratio of Two Proportions (Example 2 row 1)"
+
+  - id: "Ex2 (solve for N, OR1=1.25)"
+    description: >
+      Example 2 row 2: P2=0.65, OR0.L=0.5, OR0.U=2.0, OR1=1.25,
+      alpha=0.05, power=0.80.  Reports N1=N2=252 with actual power
+      0.8005.
+    inputs:
+      p2: 0.65
+      or0_lower: 0.5
+      or0_upper: 2.0
+      or1: 1.25
+      alpha: 0.05
+      power: 0.80
+    expected: {n1: 252, n2: 252, achieved_power: 0.8005}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Odds Ratio of Two Proportions (Example 2 row 2)"
+
+  - id: "Ex2 (solve for N, OR1=1.5)"
+    description: >
+      Example 2 row 3: P2=0.65, OR0.L=0.5, OR0.U=2.0, OR1=1.5,
+      alpha=0.05, power=0.80.  Reports N1=N2=705 with actual power
+      0.8005.
+    inputs:
+      p2: 0.65
+      or0_lower: 0.5
+      or0_upper: 2.0
+      or1: 1.5
+      alpha: 0.05
+      power: 0.80
+    expected: {n1: 705, n2: 705, achieved_power: 0.8005}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for the Odds Ratio of Two Proportions (Example 2 row 3)"

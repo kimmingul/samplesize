@@ -1,0 +1,95 @@
+chapter: "Superiority by a Margin Tests for One Mean"
+method: "superiority_by_margin_one_mean"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 – Power at several N (Ch.515).
+  # SM=0.575, D=1.725, S=3, alpha=0.025.
+  # Reference reports power=0.36990/0.65705 for N=20/40.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=20 SM=0.575"
+    description: >
+      Example 1: SM=0.575, D=1.725, S=3, alpha=0.025,
+      higher-is-better, N=20.  Reference reports power=0.36990.
+    solve_for: "power"
+    inputs:
+      mean: 1.725
+      ref: 0.0
+      margin: 0.575
+      sd: 3.0
+      alpha: 0.025
+      n: 20
+      higher_is_better: true
+    expected:
+      achieved_power: 0.36990
+    tolerance:
+      achieved_power: 0.0001
+    source: "Superiority by a Margin Tests for One Mean (Example 1 N=20)"
+
+  - id: "Ex1 N=40 SM=0.575"
+    description: >
+      Example 1: SM=0.575, D=1.725, S=3, alpha=0.025,
+      higher-is-better, N=40.  Reference reports power=0.65705.
+    solve_for: "power"
+    inputs:
+      mean: 1.725
+      ref: 0.0
+      margin: 0.575
+      sd: 3.0
+      alpha: 0.025
+      n: 40
+      higher_is_better: true
+    expected:
+      achieved_power: 0.65705
+    tolerance:
+      achieved_power: 0.0001
+    source: "Superiority by a Margin Tests for One Mean (Example 1 N=40)"
+
+  # ------------------------------------------------------------------
+  # Example 2 – Find sample size for 90% power (Ch.515).
+  # Reference reports N=74/achieved=0.90215 for SM=0.575,
+  # and N=288/achieved=0.90005 for SM=1.15.
+  # ------------------------------------------------------------------
+
+  - id: "Ex2 SM=0.575 solve n"
+    description: >
+      Example 2: SM=0.575, D=1.725, S=3, alpha=0.025,
+      higher-is-better, power=0.90.  Reference reports N=74, power=0.90215.
+    solve_for: "n"
+    inputs:
+      mean: 1.725
+      ref: 0.0
+      margin: 0.575
+      sd: 3.0
+      alpha: 0.025
+      power: 0.90
+      higher_is_better: true
+    expected:
+      n: 74
+      achieved_power: 0.90215
+    tolerance:
+      n: 0
+      achieved_power: 0.0001
+    source: "Superiority by a Margin Tests for One Mean (Example 2 SM=0.575)"
+
+  - id: "Ex2 SM=1.15 solve n"
+    description: >
+      Example 2: SM=1.15, D=1.725, S=3, alpha=0.025,
+      higher-is-better, power=0.90.  Reference reports N=288, power=0.90005.
+    solve_for: "n"
+    inputs:
+      mean: 1.725
+      ref: 0.0
+      margin: 1.15
+      sd: 3.0
+      alpha: 0.025
+      power: 0.90
+      higher_is_better: true
+    expected:
+      n: 288
+      achieved_power: 0.90005
+    tolerance:
+      n: 0
+      achieved_power: 0.0001
+    source: "Superiority by a Margin Tests for One Mean (Example 2 SM=1.15)"

@@ -1,0 +1,57 @@
+chapter: "Confidence Intervals for the Difference Between Two Means"
+method: "ci_difference_two_means"
+examples:
+
+  - id: "Ex2 Ostle and Malone unequal var"
+    description: >
+      Ostle and Malone (1988) p.150: two-sided 90% CI for difference in means,
+      s1=6.2185, s2=16.06767, n2=6 fixed, solve for n1. Expected n1=7,
+      achieved D=13.433.
+    solve_for: "n"
+    inputs:
+      s1: 6.2185
+      s2: 16.06767
+      distance: 13.433
+      n2: 6
+      alpha: 0.10
+      sides: 2
+      equal_var: false
+    expected:
+      n1: 7
+      n2: 6
+      n: 13
+      achieved_width: 13.433
+    tolerance:
+      n1: 1
+      n2: 0
+      n: 1
+      achieved_width: 0.05
+    source: >
+      reference/md/Confidence Intervals for the Difference Between Two
+      Means/hybrid_auto/Confidence Intervals for the Difference Between Two
+      Means.md, §Example 2.
+
+  - id: "Ex3 Zar pooled equal var"
+    description: >
+      Zar (1984) p.132: two-sided 95% CI, pooled sd=0.7206, n1=6, n2=7.
+      Solve for width. Expected D=0.882.
+    solve_for: "width"
+    inputs:
+      s1: 0.7206
+      s2: 0.7206
+      n1: 6
+      n2: 7
+      alpha: 0.05
+      sides: 2
+      equal_var: true
+    expected:
+      n1: 6
+      n2: 7
+      n: 13
+      achieved_width: 0.882
+    tolerance:
+      achieved_width: 0.005
+    source: >
+      reference/md/Confidence Intervals for the Difference Between Two
+      Means/hybrid_auto/Confidence Intervals for the Difference Between Two
+      Means.md, §Example 3.

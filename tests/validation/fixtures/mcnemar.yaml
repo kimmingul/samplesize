@@ -1,0 +1,63 @@
+chapter: "Tests for Two Correlated Proportions (McNemar Test)"
+method: "mcnemar"
+examples:
+
+  - id: "Ex2 Schork-Williams (one-sided exact)"
+    description: >
+      Schork & Williams (1980) p.354: McNemar exact binomial-enumeration
+      power for N=144 pairs, difference D=P10-P01=0.2 (P10=0.45,
+      P01=0.25), proportion discordant PD=0.7, one-sided alpha=0.025.
+      Reference reports actual power=0.80092.
+    inputs:
+      p10: 0.45
+      p01: 0.25
+      n: 144
+      alpha: 0.025
+      sides: 1
+    expected: {n: 144, achieved_power: 0.80092}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Correlated Proportions (McNemar Test) (Example 2)"
+
+  - id: "Ex1 reference (two-sided exact, OR=2.5, N=200)"
+    description: >
+      the reference Example 1: matched case-control, odds ratio OR=2.5,
+      proportion discordant PD=0.3 (P10=0.21429, P01=0.08571),
+      two-sided alpha=0.05, N=200 pairs.  Reference reports power=0.90751.
+    inputs:
+      proportion_discordant: 0.3
+      odds_ratio: 2.5
+      n: 200
+      alpha: 0.05
+      sides: 2
+    expected: {n: 200, achieved_power: 0.90751}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Correlated Proportions (McNemar Test) (Example 1 (OR=2.5, N=200))"
+
+  - id: "Ex1 reference (two-sided exact, OR=2.0, N=150)"
+    description: >
+      the reference Example 1: matched case-control, odds ratio OR=2.0,
+      proportion discordant PD=0.3 (P10=0.2, P01=0.1), two-sided
+      alpha=0.05, N=150 pairs.  Reference reports power=0.56457.
+    inputs:
+      proportion_discordant: 0.3
+      odds_ratio: 2.0
+      n: 150
+      alpha: 0.05
+      sides: 2
+    expected: {n: 150, achieved_power: 0.56457}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Correlated Proportions (McNemar Test) (Example 1 (OR=2.0, N=150))"
+
+  - id: "Ex1 reference (two-sided exact, OR=2.5, N=150)"
+    description: >
+      the reference Example 1: OR=2.5, PD=0.3, two-sided alpha=0.05, N=150.
+      Reference reports power=0.80105 (near the canonical 80% threshold).
+    inputs:
+      proportion_discordant: 0.3
+      odds_ratio: 2.5
+      n: 150
+      alpha: 0.05
+      sides: 2
+    expected: {n: 150, achieved_power: 0.80105}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Two Correlated Proportions (McNemar Test) (Example 1 (OR=2.5, N=150))"

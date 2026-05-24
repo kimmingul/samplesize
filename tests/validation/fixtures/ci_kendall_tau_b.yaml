@@ -1,0 +1,114 @@
+chapter: "Confidence Intervals for Kendall's Tau-b Correlation"
+method: "ci_kendall_tau_b"
+notes: |
+  the reference chapter 809 (Bonett & Wright 2000). Fisher z-transform back-
+  transformation with variance 0.437 / (n - 4). Sample size is the
+  smallest integer N for which the achieved two-sided width is <= target.
+examples:
+
+  - id: "Ex1 r=0 (Kendall, W=0.06, CL=0.95): N=1869"
+    description: >
+      Example 1, central row: planning r=0 gives N=1869, width 0.060,
+      lower=-0.030, upper=0.030.
+    inputs:
+      r: 0.0
+      alpha: 0.05
+      width: 0.06
+      sides: 2
+    expected:
+      n: 1869
+      achieved_width: 0.060
+      lower_limit: -0.030
+      upper_limit: 0.030
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Kendall's Tau-b Correlation (Example 1 (r=0.000, W=0.060))"
+
+  - id: "Ex1 r=-0.9 (Kendall, W=0.06, CL=0.95): N=73"
+    description: >
+      Example 1: planning r=-0.9, target width 0.06. reference prints N=73 with
+      width 0.060, lower=-0.926, upper=-0.866.
+    inputs:
+      r: -0.9
+      alpha: 0.05
+      width: 0.06
+      sides: 2
+    expected:
+      n: 73
+      achieved_width: 0.060
+      lower_limit: -0.926
+      upper_limit: -0.866
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Kendall's Tau-b Correlation (Example 1 (r=-0.900, W=0.060))"
+
+  - id: "Ex1 r=-0.9 (Kendall, W=0.08, CL=0.95): N=44 actual W=0.079"
+    description: >
+      Example 1, W=0.08 family: planning r=-0.9, reference prints N=44 with
+      actual width 0.079 and limits -0.932, -0.853. The actual-width row
+      stresses our search returning the smallest N with width <= target.
+    inputs:
+      r: -0.9
+      alpha: 0.05
+      width: 0.08
+      sides: 2
+    expected:
+      n: 44
+      achieved_width: 0.079
+      lower_limit: -0.932
+      upper_limit: -0.853
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Kendall's Tau-b Correlation (Example 1 (r=-0.900, W=0.080))"
+
+  - id: "Ex2 Bonett-Wright r=0.3, W=0.2, CL=0.95: N=143 actual W=0.199"
+    description: >
+      Example 2 (Bonett & Wright 2000 p.26): r=0.3, W=0.2, 95% CI.
+      reference reproduces Bonett & Wright's N=143 with actual width 0.199
+      and limits 0.197, 0.396.
+    inputs:
+      r: 0.3
+      alpha: 0.05
+      width: 0.2
+      sides: 2
+    expected:
+      n: 143
+      achieved_width: 0.199
+      lower_limit: 0.197
+      upper_limit: 0.396
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Kendall's Tau-b Correlation (Example 2 (CL=0.95))"
+
+  - id: "Ex2 Bonett-Wright r=0.3, W=0.2, CL=0.99: N=243"
+    description: >
+      Example 2 at 99% CI: reference / Bonett & Wright report N=243 with
+      width 0.200 and limits 0.197, 0.397.
+    inputs:
+      r: 0.3
+      alpha: 0.01
+      width: 0.2
+      sides: 2
+    expected:
+      n: 243
+      achieved_width: 0.200
+      lower_limit: 0.197
+      upper_limit: 0.397
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Kendall's Tau-b Correlation (Example 2 (CL=0.99))"

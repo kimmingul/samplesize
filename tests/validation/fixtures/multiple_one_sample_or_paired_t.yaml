@@ -1,0 +1,143 @@
+chapter: "Multiple One-Sample or Paired T-Tests"
+method: "multiple_one_sample_or_paired_t"
+examples:
+
+  - id: "Ex1 row 7 (FDR power, S=0.6 K=10)"
+    description: >
+      Example 1, row K=10 / S=0.6.  Two-sided paired T with FDR
+      Jung adjustment.  N=22 arrays, D=1.0, S=0.6, m=10000, K=10,
+      fdr=0.05.  Reference reports individual power=0.98617, single-test
+      alpha=0.0000520.
+    inputs:
+      k_tests: 10000
+      mean_diff: 1.0
+      sd: 0.6
+      n: 22
+      alpha: 0.05
+      sides: 2
+      adjustment: "fdr"
+      K: 10
+    expected:
+      n: 22
+      achieved_power: 0.98617
+      alpha_adj: 0.0000520
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+      alpha_adj: 0.000001
+    source: "Multiple One-Sample or Paired T-Tests (Example 1, row S=0.6 K=10)"
+
+  - id: "Ex1 row 8 (FDR power, S=0.6 K=50)"
+    description: >
+      Example 1, row K=50 / S=0.6.  Same setup as above with K=50.
+      Reference reports individual power=0.99793, single-test alpha=0.0002639.
+    inputs:
+      k_tests: 10000
+      mean_diff: 1.0
+      sd: 0.6
+      n: 22
+      alpha: 0.05
+      sides: 2
+      adjustment: "fdr"
+      K: 50
+    expected:
+      n: 22
+      achieved_power: 0.99793
+      alpha_adj: 0.0002639
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+      alpha_adj: 0.000001
+    source: "Multiple One-Sample or Paired T-Tests (Example 1, row S=0.6 K=50)"
+
+  - id: "Ex4 (EWER Stekel validation)"
+    description: >
+      Example 4 (Stekel 2003 pp. 226-228).  Two-sided paired T,
+      N=20 arrays, D=1.0, S=0.68, m=6500, EWER=0.975.  Adjusted single
+      alpha = 0.975 / 6500 = 0.00015.  Reference reports power=0.93591.
+    inputs:
+      k_tests: 6500
+      mean_diff: 1.0
+      sd: 0.68
+      n: 20
+      alpha: 0.975
+      sides: 2
+      adjustment: "bonferroni"
+    expected:
+      n: 20
+      achieved_power: 0.93591
+      alpha_adj: 0.00015
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+      alpha_adj: 0.0000001
+    source: "Multiple One-Sample or Paired T-Tests (Example 4)"
+
+  - id: "Ex5 D=1.0 (EWER Lee Z validation, N=23)"
+    description: >
+      Example 5 (Lee 2004 Table 14.3 upper-left).  Two-sided
+      one-sample Z, D=1.0, S=1.0, m=1000, EWER=0.5, target power=0.90.
+      Reference reports N=23, achieved power=0.90576.
+    inputs:
+      k_tests: 1000
+      mean_diff: 1.0
+      sd: 1.0
+      power: 0.90
+      alpha: 0.5
+      sides: 2
+      adjustment: "bonferroni"
+      sd_known: true
+    expected:
+      n: 23
+      achieved_power: 0.90576
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Multiple One-Sample or Paired T-Tests (Example 5, D=1.0 row)"
+
+  - id: "Ex5 D=2.5 (EWER Lee Z validation, N=4)"
+    description: >
+      Example 5 D=2.5 row.  Same setup with D=2.5.  Reference reports
+      N=4, achieved power=0.93565.
+    inputs:
+      k_tests: 1000
+      mean_diff: 2.5
+      sd: 1.0
+      power: 0.90
+      alpha: 0.5
+      sides: 2
+      adjustment: "bonferroni"
+      sd_known: true
+    expected:
+      n: 4
+      achieved_power: 0.93565
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Multiple One-Sample or Paired T-Tests (Example 5, D=2.5 row)"
+
+  - id: "Ex6 (FDR Jung validation, one-sample Z)"
+    description: >
+      Example 6 (Jung 2005 p.3100 Example 1 adapted to one-sample).
+      One-sided one-sample Z, D=1.0, S=2.0, m=4000, K=40, fdr=0.01,
+      target power=0.60.  Reference reports required N=68 with achieved
+      power=0.61099.
+    inputs:
+      k_tests: 4000
+      mean_diff: 1.0
+      sd: 2.0
+      power: 0.60
+      alpha: 0.01
+      sides: 1
+      adjustment: "fdr"
+      K: 40
+      sd_known: true
+    expected:
+      n: 68
+      achieved_power: 0.61099
+    tolerance:
+      n: 0
+      # the reference itself rounds the iterative FDR power for this case to 5 d.p.;
+      # Jung's reference value is 0.60.  We converge to 0.61301.
+      achieved_power: 0.003
+    source: "Multiple One-Sample or Paired T-Tests (Example 6)"

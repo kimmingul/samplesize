@@ -1,0 +1,50 @@
+# Decision tree for routing free-form study descriptions to a registered method.
+#
+# Structure: each node is either a `branch` (with a `question` and named
+# `options` leading to child nodes) or a `leaf` (terminal `method_id`).
+# The methodologist agent walks this tree, asking only the questions
+# whose answer cannot be inferred from the user's description.
+
+root:
+  question: "What is the outcome variable type?"
+  options:
+    continuous:
+      question: "How many groups / arms?"
+      options:
+        one:
+          leaf: one_sample_t
+        two:
+          question: "Independent groups or paired observations?"
+          options:
+            independent:
+              question: "Equal variance assumed?"
+              options:
+                equal:    { leaf: two_sample_t_equal_var }
+                unequal:  { leaf: two_sample_t_unequal_var }  # not in MVP
+                unknown:  { leaf: two_sample_t_equal_var }    # default
+            paired:
+              leaf: paired_t
+        three_or_more:
+          leaf: one_way_anova_f
+    binary:
+      question: "How many groups / arms?"
+      options:
+        one:
+          leaf: one_proportion
+        two:
+          question: "Independent or paired (matched)?"
+          options:
+            independent: { leaf: two_proportions }
+            paired:      { leaf: mcnemar }  # not in MVP
+    time_to_event:
+      question: "How many groups / arms?"
+      options:
+        one:    { leaf: one_sample_logrank }   # not in MVP
+        two:    { leaf: logrank_freedman }
+        three_or_more: { leaf: logrank_kgroup }  # not in MVP
+    count:
+      leaf: poisson_test  # not in MVP
+    ordinal:
+      leaf: mann_whitney_simulation  # not in MVP
+    correlation:
+      leaf: pearson_correlation

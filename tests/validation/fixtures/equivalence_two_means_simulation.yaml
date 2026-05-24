@@ -1,0 +1,62 @@
+chapter: "Equivalence Tests for Two Means (Simulation)"
+method: "equivalence_two_means_simulation"
+# NOTE: Simulation-based method (seed=42, n_sims=10000).
+# reference uses 2000 simulations and a different RNG.  Fixtures are
+# calibrated against our deterministic implementation.
+# Ex1: N1=30 -> ~0.477, N1=50 -> ~0.816, N1=70 -> ~0.944.
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 – Power at N1=30, 50, 70 (Ch.490 reference).
+  # mean1=mean2=63 (true equiv), eq=(-3,3), sd=5, alpha=0.05.
+  # Our sim (seed=42, 10000 sims) gives 0.4853 / 0.8277 / 0.9444.
+  # reference (2000 sims) reports 0.477 / 0.816 / 0.944 — within ±0.015.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N1=30 power"
+    description: >
+      Example 1: mean1=mean2=63 (true equiv), eq=(-3,3), sd=5,
+      alpha=0.05, N1=N2=30.  reference (2000 sims) reports ~0.477; our
+      (10000, seed=42) gives 0.4853.
+    solve_for: "power"
+    inputs:
+      mean1: 63.0
+      mean2: 63.0
+      sd: 5.0
+      eq_lower: -3.0
+      eq_upper: 3.0
+      alpha: 0.05
+      n1: 30
+      n2: 30
+      dist: "normal"
+      n_sims: 10000
+      seed: 42
+    expected:
+      achieved_power: 0.4853
+    tolerance:
+      achieved_power: 0.015
+    source: "Equivalence Tests for Two Means (Simulation) (Example 1 N1=30)"
+
+  - id: "Ex1 N1=70 power"
+    description: >
+      Example 1: mean1=mean2=63 (true equiv), eq=(-3,3), sd=5,
+      alpha=0.05, N1=N2=70.  reference (2000 sims) reports ~0.944; our
+      (10000, seed=42) gives 0.9444.
+    solve_for: "power"
+    inputs:
+      mean1: 63.0
+      mean2: 63.0
+      sd: 5.0
+      eq_lower: -3.0
+      eq_upper: 3.0
+      alpha: 0.05
+      n1: 70
+      n2: 70
+      dist: "normal"
+      n_sims: 10000
+      seed: 42
+    expected:
+      achieved_power: 0.9444
+    tolerance:
+      achieved_power: 0.015
+    source: "Equivalence Tests for Two Means (Simulation) (Example 1 N1=70)"

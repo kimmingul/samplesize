@@ -1,0 +1,111 @@
+chapter: "Confidence Intervals for Cp"
+method: "ci_cp"
+examples:
+
+  - id: "Ex1 row 1 (CL=0.95, Cp=1.0, target W=0.10)"
+    description: >
+      Two-sided 95% CI for Cp with target width 0.10 and planning Cp=1.0.
+      Reference reports N=769 with actual width 0.100 and limits 0.950, 1.050.
+    inputs:
+      cp: 1.0
+      alpha: 0.05
+      sides: 2
+      width: 0.10
+    expected:
+      n: 769
+      achieved_width: 0.100
+      lower_limit: 0.950
+      upper_limit: 1.050
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Cp (Example 1, row 1)"
+
+  - id: "Ex1 row 2 (CL=0.95, Cp=1.5, target W=0.10)"
+    description: >
+      Two-sided 95% CI for Cp with target width 0.10 and planning Cp=1.5.
+      Reference reports N=1730 with actual width 0.100 and limits 1.450, 1.550.
+    inputs:
+      cp: 1.5
+      alpha: 0.05
+      sides: 2
+      width: 0.10
+    expected:
+      n: 1730
+      achieved_width: 0.100
+      lower_limit: 1.450
+      upper_limit: 1.550
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Cp (Example 1, row 2)"
+
+  - id: "Ex1 row 3 (CL=0.95, Cp=2.0, target W=0.10)"
+    description: >
+      Two-sided 95% CI for Cp with target width 0.10 and planning Cp=2.0.
+      Reference reports N=3074 with actual width 0.100 and limits 1.950, 2.050.
+    inputs:
+      cp: 2.0
+      alpha: 0.05
+      sides: 2
+      width: 0.10
+    expected:
+      n: 3074
+      achieved_width: 0.100
+      lower_limit: 1.950
+      upper_limit: 2.050
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Cp (Example 1, row 3)"
+
+  - id: "Ex1 row 4 (CL=0.95, Cp=3.0, target W=0.10)"
+    description: >
+      Two-sided 95% CI for Cp with target width 0.10 and planning Cp=3.0.
+      Reference reports N=6916 with actual width 0.100 and limits 2.950, 3.050.
+    inputs:
+      cp: 3.0
+      alpha: 0.05
+      sides: 2
+      width: 0.10
+    expected:
+      n: 6916
+      achieved_width: 0.100
+      lower_limit: 2.950
+      upper_limit: 3.050
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Cp (Example 1, row 4)"
+
+  - id: "Ex2 Mathews (CL=0.90, Cp=1.0, target W=0.20)"
+    description: >
+      Two-sided 90% CI for Cp with target width 0.20 and planning Cp=1.0.
+      Reference reports N=137 with actual width 0.199 and limits 0.900, 1.099.
+      Mathews (2010 p.230) reports N=136 via a normal approximation to the
+      chi-square; reference (and this implementation) use exact chi-square
+      inversion.
+    inputs:
+      cp: 1.0
+      alpha: 0.10
+      sides: 2
+      width: 0.20
+    expected:
+      n: 137
+      achieved_width: 0.199
+      lower_limit: 0.900
+      upper_limit: 1.099
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.001
+      upper_limit: 0.001
+    source: "Confidence Intervals for Cp (Example 2)"

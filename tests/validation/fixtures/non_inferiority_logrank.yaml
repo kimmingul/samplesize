@@ -1,0 +1,58 @@
+chapter: "Non-Inferiority Logrank Tests"
+method: "non_inferiority_logrank"
+examples:
+
+  - id: "Ex2 80% power Jung settings"
+    description: >
+      Ch.706 Example 2: two-year accrual, 5-year total, h1=0.04,
+      HR0=1.3, HR=1.0, 5% loss/year in both groups. 80% power.
+      Expected N=2689 (N1=1344, N2=1345).
+    solve_for: "n"
+    inputs:
+      h1: 0.04
+      hr0: 1.3
+      hr: 1.0
+      t_accrual: 2
+      t_total: 5
+      omega1: 0.05
+      omega2: 0.05
+      alpha: 0.05
+      power: 0.80
+      q1: 0.5
+      sides: 1
+    expected:
+      n: 2689
+      achieved_power: 0.80
+    tolerance:
+      n: 30
+      achieved_power: 0.015
+    source: >
+      reference/md/Non-Inferiority Logrank Tests/hybrid_auto/Non-Inferiority
+      Logrank Tests.md, §Example 2.
+
+  - id: "Ex3 Jung 2005 N=1866"
+    description: >
+      Jung et al. (2005) validation: 4-year accrual, 9-year total, h1=0.0446,
+      HR0=1.3, HR=1.0, no loss. 90% power. Expected N=1866 (events~499).
+    solve_for: "n"
+    inputs:
+      h1: 0.0446
+      hr0: 1.3
+      hr: 1.0
+      t_accrual: 4
+      t_total: 9
+      omega1: 0.0
+      omega2: 0.0
+      alpha: 0.05
+      power: 0.90
+      q1: 0.5
+      sides: 1
+    expected:
+      n: 1866
+      achieved_power: 0.90
+    tolerance:
+      n: 30
+      achieved_power: 0.015
+    source: >
+      reference/md/Non-Inferiority Logrank Tests/hybrid_auto/Non-Inferiority
+      Logrank Tests.md, §Example 3.

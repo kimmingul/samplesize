@@ -1,0 +1,54 @@
+chapter: "Logrank Tests Accounting for Competing Risks"
+method: "competing_risks_subdistribution_hazard"
+examples:
+
+  - id: "Ex1 CompRisk N=900 power"
+    description: >
+      Ch.715 Ex1: Fev1=0.10, Fev2=0.05, Fcr1=Fcr2=0.65, t0=3,
+      R=4, T-R=3, loss=0.1, alpha=0.05, two-sided, N=900.
+      Reference reports power=0.90261.
+    inputs:
+      fev1: 0.10
+      fev2: 0.05
+      fcr1: 0.65
+      fcr2: 0.65
+      t0: 3.0
+      t_accrual: 4.0
+      t_followup: 3.0
+      loss: 0.1
+      alpha: 0.05
+      n: 900
+      p1: 0.5
+      sides: 2
+    expected:
+      n: 900
+      achieved_power: 0.90261
+    tolerance:
+      n: 0
+      achieved_power: 0.0005
+    source: "Logrank Tests Accounting for Competing Risks (Example 1)"
+
+  - id: "Ex2 CompRisk solve N HR=0.4 T-R=3"
+    description: >
+      Ch.715 Ex2: Fev1=0.10, HR=0.4, Fcr1=0.65, t0=3, R=4, T-R=3,
+      loss=0.1, alpha=0.05, two-sided, power=0.90.
+      Reference reports N=662 (n1=331, n2=331), power=0.90010.
+    inputs:
+      fev1: 0.10
+      hr: 0.4
+      fcr1: 0.65
+      t0: 3.0
+      t_accrual: 4.0
+      t_followup: 3.0
+      loss: 0.1
+      alpha: 0.05
+      power: 0.90
+      p1: 0.5
+      sides: 2
+    expected:
+      n: 662
+      achieved_power: 0.9001
+    tolerance:
+      n: 2
+      achieved_power: 0.0005
+    source: "Logrank Tests Accounting for Competing Risks (Example 2)"

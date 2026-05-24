@@ -1,0 +1,49 @@
+chapter: "Equivalence Tests for the Difference of Two Hazard Rates Assuming an Exponential Model"
+method: "equivalence_two_hazard_rates"
+examples:
+
+  - id: "Ex1 Eq Hz h1=2 D=0 delta=0.2 power=0.90"
+    description: >
+      Ch.709 Ex1 row 1: h1=2, D=0 (h2=2), delta=0.2, R=2.0, T-R=2.0,
+      omega1=omega2=0.165, alpha=0.05, power=0.90, equal allocation.
+      Reference reports N=4701 (n1=2350, n2=2351), power=0.9001.
+    inputs:
+      h1: 2.0
+      diff: 0.0
+      delta: 0.2
+      t_accrual: 2.0
+      t_followup: 2.0
+      omega1: 0.165
+      alpha: 0.05
+      power: 0.90
+      p1: 0.5
+    expected:
+      n: 4701
+      achieved_power: 0.9001
+    tolerance:
+      n: 1
+      achieved_power: 0.0005
+    source: "Equivalence Tests for the Difference of Two Hazard Rates Assuming an Exponential Model (Example 1)"
+
+  - id: "Ex2 Eq Hz Chow validation h1=1 D=0 delta=0.5 power=0.80"
+    description: >
+      Ch.709 Ex2 (Chow et al. 2008 validation): h1=1, D=0 (h2=1), delta=0.5,
+      R=1.0, T-R=2.0, no loss, alpha=0.05, power=0.80, equal allocation.
+      Reference reports N=150 (n1=75, n2=75), power=0.8005.
+    inputs:
+      h1: 1.0
+      diff: 0.0
+      delta: 0.5
+      t_accrual: 1.0
+      t_followup: 2.0
+      omega1: 0.0
+      alpha: 0.05
+      power: 0.80
+      p1: 0.5
+    expected:
+      n: 150
+      achieved_power: 0.8005
+    tolerance:
+      n: 0
+      achieved_power: 0.0005
+    source: "Equivalence Tests for the Difference of Two Hazard Rates Assuming an Exponential Model (Example 2)"

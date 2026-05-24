@@ -1,0 +1,45 @@
+chapter: "Confidence Intervals for the Difference Between Two Means with Tolerance Probability"
+method: "ci_difference_two_means_tolerance"
+examples:
+
+  - id: "Ex1 row 1 (TolProb=0.70, S=25.6 population, D=10, equal groups)"
+    description: >
+      Two-sided 95% CI for difference of two means. Tolerance probability 0.70
+      that the future half-width is <= 10, assuming pooled population SD=25.6.
+      Ch.472 reports N1=N2=55 (N=110), actual distance 9.994.
+    inputs:
+      sigma: 25.6
+      distance: 10.0
+      alpha: 0.05
+      sides: 2
+      tolerance_probability: 0.70
+      sd_source: "population"
+    expected:
+      n: 110
+      achieved_width: 9.994
+    tolerance:
+      n: 2
+      achieved_width: 0.001
+    source: "Confidence Intervals for the Difference Between Two Means with Tolerance Probability (Example 1, row 1)"
+
+  - id: "Ex2 (TolProb=0.90, S=0.720625 from m=13, D=0.5, Zar validation)"
+    description: >
+      Two-sided 95% CI for difference of two means. Tolerance probability 0.90
+      that the future half-width is <= 0.5, using pooled SD=0.720625 estimated
+      from a total previous sample of 13. Zar (1984) pp.133-134 and Ch.472
+      report N1=N2=34 (N=68), actual distance 0.496.
+    inputs:
+      sigma: 0.720625
+      distance: 0.5
+      alpha: 0.05
+      sides: 2
+      tolerance_probability: 0.90
+      sd_source: "previous_sample"
+      prior_n_total: 13
+    expected:
+      n: 68
+      achieved_width: 0.496
+    tolerance:
+      n: 2
+      achieved_width: 0.001
+    source: "Confidence Intervals for the Difference Between Two Means with Tolerance Probability (Example 2)"

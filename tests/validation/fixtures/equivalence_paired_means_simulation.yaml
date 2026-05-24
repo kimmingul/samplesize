@@ -1,0 +1,61 @@
+chapter: "Equivalence Tests for Paired Means (Simulation)"
+method: "equivalence_paired_means_simulation"
+# NOTE: Simulation-based method (seed=42, n_sims=10000).
+# reference uses 2000 simulations and a different RNG.  Fixtures are
+# calibrated against our deterministic implementation.
+# Ex1: N=30, corr=0.1 -> ~0.560, corr=0.2 -> ~0.620.
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 – Power at N=30 (Ch.495 reference).
+  # mean_diff=0 (true equiv), eq=(-3,3), sd=5, alpha=0.05, corr=0.1/0.2.
+  # Our sim (seed=42, 10000 sims):
+  #   corr=0.1: 0.5438  corr=0.2: 0.6315
+  # reference (2000 sims): corr=0.1: ~0.560  corr=0.2: ~varies
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=30 corr=0.1"
+    description: >
+      Example 1: mean_diff=0 (true equiv), eq=(-3,3), sd=5,
+      alpha=0.05, N=30, corr=0.1.  reference (2000 sims) reports ~0.560;
+      our (10000, seed=42) gives 0.5438.
+    solve_for: "power"
+    inputs:
+      mean_diff: 0.0
+      sd: 5.0
+      eq_lower: -3.0
+      eq_upper: 3.0
+      corr: 0.1
+      alpha: 0.05
+      n: 30
+      dist: "normal"
+      n_sims: 10000
+      seed: 42
+    expected:
+      achieved_power: 0.5438
+    tolerance:
+      achieved_power: 0.015
+    source: "Equivalence Tests for Paired Means (Simulation) (Example 1 N=30 corr=0.1)"
+
+  - id: "Ex1 N=50 corr=0.1"
+    description: >
+      Example 1: mean_diff=0 (true equiv), eq=(-3,3), sd=5,
+      alpha=0.05, N=50, corr=0.1.  Our (10000, seed=42) gives 0.8636.
+      reference (2000 sims) chart shows ~0.85 at N=50.
+    solve_for: "power"
+    inputs:
+      mean_diff: 0.0
+      sd: 5.0
+      eq_lower: -3.0
+      eq_upper: 3.0
+      corr: 0.1
+      alpha: 0.05
+      n: 50
+      dist: "normal"
+      n_sims: 10000
+      seed: 42
+    expected:
+      achieved_power: 0.8636
+    tolerance:
+      achieved_power: 0.015
+    source: "Equivalence Tests for Paired Means (Simulation) (Example 1 N=50 corr=0.1)"

@@ -1,0 +1,36 @@
+chapter: "Confidence Intervals for Kappa"
+method: "ci_kappa"
+examples:
+  - id: "Ex1 kappa-0.6-po-0.70"
+    description: "Two-sided 95% CI for kappa=0.6, PO=0.70, width=0.1 -> N=574"
+    solve_for: "n"
+    inputs:
+      kappa: 0.6
+      po: 0.70
+      alpha: 0.05
+      width: 0.1
+      sides: 2
+    expected:
+      n: 574
+      achieved_width: 0.1
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+    source: "Confidence Intervals for Kappa (Example 1)"
+
+  - id: "Ex2 Cohen-validation-kappa-0.492"
+    description: "Validation from Cohen (1960) pp.44-45; kappa=0.492, PO=0.70, width=0.216 -> N=199"
+    solve_for: "n"
+    inputs:
+      kappa: 0.492
+      po: 0.70
+      alpha: 0.05
+      width: 0.216
+      sides: 2
+    expected:
+      n: 199
+      achieved_width: 0.216
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+    source: "Confidence Intervals for Kappa (Example 2)"

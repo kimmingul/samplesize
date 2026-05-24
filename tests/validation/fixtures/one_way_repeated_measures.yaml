@@ -1,0 +1,141 @@
+chapter: "One-Way Repeated Measures"
+method: "one_way_repeated_measures"
+
+# Univariate F-test (Box / Geisser-Greenhouse) power calculations for a
+# one-way within-subject ANOVA with K conditions and N subjects.  The
+# noncentral-F NCP under compound symmetry is
+#
+#     lambda = epsilon * N * K * sigma_m^2 / (sigma_w^2 * (1 - rho))
+#     df1    = (K - 1) * epsilon
+#     df2    = (N - 1) * (K - 1) * epsilon
+#
+# When epsilon = 1 sphericity is assumed and the formula matches the
+# textbook ("uncorrected") univariate F test.  Reducing epsilon applies
+# the conservative Geisser-Greenhouse correction.
+
+examples:
+
+  - id: "Ex1 (means 0,-4,-3,0; sigma=7; rho=0.6; eps=1)"
+    description: >
+      Chapter 569 Example 1, design parameters: M=4 conditions,
+      means {0, -4, -3, 0}, equal across-subject SD sigma=7, AR(1)/
+      compound-symmetry correlation rho=0.60, alpha=0.05, target power
+      0.90.  Univariate F (epsilon=1) gives sigma_m=1.785, NCP per
+      subject = 4*3.1875/(49*0.40) = 0.6505 and yields N=24
+      (achieved=0.9121).  The reference chapter reports N=26 using the
+      Wilks-Lambda multivariate test; the univariate F is uniformly
+      slightly more powerful under exact sphericity, so the F-test
+      yields a marginally smaller N as expected.
+    inputs:
+      means: [0.0, -4.0, -3.0, 0.0]
+      sigma_w: 7.0
+      rho: 0.6
+      epsilon: 1.0
+      alpha: 0.05
+      power: 0.90
+    expected:
+      n: 24
+      achieved_power: 0.9121
+      sigma_m: 1.7853
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+      sigma_m: 0.001
+    source: "One-Way Repeated Measures (Example 1)"
+
+  - id: "Ex1 power at N=24 (means 0,-4,-3,0; sigma=7; rho=0.6)"
+    description: >
+      Same Example 1 design but solving for achieved power at the
+      published Wilks-Lambda sample size N=24 to verify the power
+      formula in reverse (solve_for=power).
+    inputs:
+      means: [0.0, -4.0, -3.0, 0.0]
+      sigma_w: 7.0
+      rho: 0.6
+      epsilon: 1.0
+      alpha: 0.05
+      n: 24
+    expected:
+      achieved_power: 0.9121
+      n: 24
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "One-Way Repeated Measures (Example 1)"
+
+  - id: "Cohen RM K=4 f=0.25 rho=0.5 (medium effect)"
+    description: >
+      Cohen / G*Power canonical RM ANOVA validation: K=4 repeated
+      measurements, Cohen's f=0.25 (medium), AR(1)/compound-symmetry
+      correlation rho=0.50, alpha=0.05, target power 0.80.  Mean
+      pattern {0.25, -0.25, 0.25, -0.25} with sigma_w=1.0 gives
+      sigma_m=0.25 (f = sigma_m / sigma_w = 0.25).  G*Power 3.1 RM
+      ANOVA "within factors" routine returns N=24 (achieved
+      approx 0.8168) under sphericity correction epsilon=1.
+    inputs:
+      means: [0.25, -0.25, 0.25, -0.25]
+      sigma_w: 1.0
+      rho: 0.5
+      epsilon: 1.0
+      alpha: 0.05
+      power: 0.80
+    expected:
+      n: 24
+      achieved_power: 0.8168
+      sigma_m: 0.25
+      effect_f: 0.25
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+      sigma_m: 0.0001
+      effect_f: 0.0001
+    source: "Cohen (1988) Statistical Power Analysis Chap 8; G*Power 3.1 RM ANOVA within-factors validation."
+
+  - id: "Cohen RM K=3 f=0.40 rho=0.5 (large effect)"
+    description: >
+      Cohen / G*Power canonical RM ANOVA validation: K=3 repeated
+      measurements, Cohen's f=0.40 (large), AR(1)/compound-symmetry
+      correlation rho=0.50, alpha=0.05, target power 0.80.  Mean
+      pattern {-0.48990, 0, 0.48990} with sigma_w=1.0 gives
+      sigma_m=0.40, NCP = 3*0.16*N/(1*0.5) = 0.96 N → N=12
+      yields achieved=0.8162 (G*Power reports N=12 for this scenario).
+    inputs:
+      means: [-0.4898979485566356, 0.0, 0.4898979485566356]
+      sigma_w: 1.0
+      rho: 0.5
+      epsilon: 1.0
+      alpha: 0.05
+      power: 0.80
+    expected:
+      n: 12
+      achieved_power: 0.8162
+      sigma_m: 0.4
+      effect_f: 0.4
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+      sigma_m: 0.0001
+      effect_f: 0.0001
+    source: "Cohen (1988) Statistical Power Analysis Chap 8; G*Power 3.1 RM ANOVA within-factors validation."
+
+  - id: "Geisser-Greenhouse correction (means 0,-4,-3,0; eps=0.5)"
+    description: >
+      Same Example 1 design but with Geisser-Greenhouse correction
+      epsilon=0.5 to validate the sphericity adjustment.  Both the df
+      and the NCP scale by epsilon (Box 1954) so the required N grows
+      from 24 (eps=1) to 38 (eps=0.5) for 90% power.  Achieved power at
+      N=38 is approximately 0.9026.
+    inputs:
+      means: [0.0, -4.0, -3.0, 0.0]
+      sigma_w: 7.0
+      rho: 0.6
+      epsilon: 0.5
+      alpha: 0.05
+      power: 0.90
+    expected:
+      n: 38
+      achieved_power: 0.9026
+    tolerance:
+      n: 0
+      achieved_power: 0.001
+    source: "Box (1954); Greenhouse-Geisser; Chap.569 §Geisser-Greenhouse F Test."

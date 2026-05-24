@@ -1,0 +1,118 @@
+chapter: "Tests for One Mean"
+method: "one_sample_t"
+examples:
+
+  - id: "Ex1 row 1 (power after a study)"
+    description: >
+      M0=100, M1=110, S=40, N=20, two-sided alpha=0.01.
+      Reproduces the first row of Example 1's numeric results.
+    inputs:
+      mean0: 100.0
+      mean1: 110.0
+      sd: 40.0
+      n: 20
+      alpha: 0.01
+      sides: 2
+    expected:
+      achieved_power: 0.06051
+    tolerance:
+      achieved_power: 0.0001
+    source: "Tests for One Mean (Example 1, row 1)"
+
+  - id: "Ex2 row 1 (find N)"
+    description: >
+      SIDS birth-weight: M0=3300, M1=2475, S=663, two-sided alpha=0.05,
+      target power=0.80.  Reference reports N=8 with achieved power=0.85339.
+    inputs:
+      mean0: 3300.0
+      mean1: 2475.0
+      sd: 663.0
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected:
+      n: 8
+      achieved_power: 0.85339
+    tolerance:
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for One Mean (Example 2, row 1)"
+
+  - id: "Ex2 row 4 (find N, more power)"
+    description: >
+      M0=3300, M1=3135, S=663, alpha=0.05, target power=0.90.  reference
+      reports N=172, achieved power=0.90070.
+    inputs:
+      mean0: 3300.0
+      mean1: 3135.0
+      sd: 663.0
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected:
+      n: 172
+      achieved_power: 0.90070
+    tolerance:
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for One Mean (Example 2, row 6)"
+
+  - id: "Ex3 (minimum detectable difference)"
+    description: >
+      M0=3300, S=663, N=50, alpha=0.05, target power=0.80, two-sided.
+      The SIDS context anticipates a *drop* in weight, so we resolve the
+      detectable mean below M0.  Reference reports M1=3032 (Δ=268).
+    inputs:
+      mean0: 3300.0
+      sd: 663.0
+      n: 50
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+      solve_for: "effect"
+      direction: "below"
+    expected:
+      mean1: 3032.0
+      achieved_power: 0.80
+    tolerance:
+      mean1: 1.0          # reference prints 3032 to integer precision
+      achieved_power: 0.001
+    source: "Tests for One Mean (Example 3)"
+
+  - id: "Ex6 (Zar 1984 validation)"
+    description: >
+      Validation against Zar (1984) pp. 111-112.  M0=0, M1=1, S=1.25,
+      N=12, two-sided alpha=0.05.  Reference reports power=0.71366; Zar's
+      approximation gives 0.72.
+    inputs:
+      mean0: 0.0
+      mean1: 1.0
+      sd: 1.25
+      n: 12
+      alpha: 0.05
+      sides: 2
+    expected:
+      achieved_power: 0.71366
+    tolerance:
+      achieved_power: 0.0001
+    source: "Tests for One Mean (Example 6)"
+
+  - id: "Ex7 (Machin et al. 1997 validation)"
+    description: >
+      Validation against Machin, Campbell, Fayers & Pinol (1997) p.37.
+      M0=0, M1=0.2, S=1.0, alpha=0.05, target power=0.80, two-sided.
+      Machin reports N=199; Reference reports N=199 with power=0.80169.
+    inputs:
+      mean0: 0.0
+      mean1: 0.2
+      sd: 1.0
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected:
+      n: 199
+      achieved_power: 0.80169
+    tolerance:
+      n: 0
+      achieved_power: 0.0001
+    source: "Tests for One Mean (Example 7)"

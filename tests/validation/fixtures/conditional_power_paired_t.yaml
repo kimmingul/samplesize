@@ -1,0 +1,75 @@
+chapter: "Conditional Power of Paired T-Tests"
+method: "conditional_power_paired_t"
+examples:
+
+  - id: "Ex1 row 3 (delta1=0.6, hand-validated by reference)"
+    description: >
+      reference chapter 403, Example 1 row 3 AND Example 2 (hand validation).
+      delta0=0, delta1=0.6, sigma_d=1.8, N=52, n_t=26, Z_k=2.12,
+      alpha=0.025, one-sided.  reference hand-derives 0.8526497.
+    inputs:
+      delta0: 0.0
+      delta1: 0.6
+      sd: 1.8
+      n: 52
+      n_t: 26
+      z_observed: 2.12
+      alpha: 0.025
+      sides: 1
+      direction: "upper"
+    expected:
+      conditional_power: 0.85265
+      predictive_power: 0.85040
+      achieved_power: 0.85265
+      futility_index: 0.14735
+    tolerance:
+      conditional_power: 0.001
+      predictive_power: 0.001
+      achieved_power: 0.001
+      futility_index: 0.001
+    source: "Conditional Power of Paired T-Tests (Example 2 (validation))"
+
+  - id: "Ex1 row 1 (delta1=0.2, weak interim signal)"
+    description: >
+      reference chapter 403, Example 1, row 1.  Same setup with delta1=0.2.
+      The interim t = 2.12 is large relative to the (small) design
+      effect, hence conditional power of only ~0.47.
+    inputs:
+      delta0: 0.0
+      delta1: 0.2
+      sd: 1.8
+      n: 52
+      n_t: 26
+      z_observed: 2.12
+      alpha: 0.025
+      sides: 1
+      direction: "upper"
+    expected:
+      conditional_power: 0.46603
+      predictive_power: 0.85040
+    tolerance:
+      conditional_power: 0.001
+      predictive_power: 0.001
+    source: "Conditional Power of Paired T-Tests (Example 1, row 1)"
+
+  - id: "Ex1 row 5 (delta1=1.0, near certainty)"
+    description: >
+      reference chapter 403, Example 1, row 5.  delta1=1.0, conditional
+      power=0.98541.
+    inputs:
+      delta0: 0.0
+      delta1: 1.0
+      sd: 1.8
+      n: 52
+      n_t: 26
+      z_observed: 2.12
+      alpha: 0.025
+      sides: 1
+      direction: "upper"
+    expected:
+      conditional_power: 0.98541
+      futility_index: 0.01459
+    tolerance:
+      conditional_power: 0.001
+      futility_index: 0.001
+    source: "Conditional Power of Paired T-Tests (Example 1, row 5)"

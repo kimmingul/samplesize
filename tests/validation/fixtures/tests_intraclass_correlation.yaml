@@ -1,0 +1,47 @@
+chapter: "Tests for Intraclass Correlation"
+method: "tests_intraclass_correlation"
+notes: |
+  One-way random-effects ICC F-test of H0: rho = rho0 vs
+  H1: rho = rho1 > rho0. Power = 1 - F_cdf(C0 * F_{1-alpha,N-1,N(K-1)})
+  with C0 = (1 + K*rho0/(1-rho0)) / (1 + K*rho1/(1-rho1))
+  per Walter, Eliasziw & Donner (1998). Reproduces the Ch.810
+  worked-example tables (Example 1 grid and the Walter-validation
+  Example 2) to better than 1e-4 absolute on power.
+examples:
+
+  - id: "Ex2 Walter et al. 1998 (N=544, K=2)"
+    description: >
+      Validation against Walter et al. (1998) p.106: rho0=0.2, rho1=0.3,
+      N=544, K=2, alpha=0.05. Reference reports power = 0.80033 (Walter
+      reports 0.80).
+    inputs: {rho0: 0.2, rho1: 0.3, n: 544, K: 2, alpha: 0.05, sides: 1}
+    expected: {achieved_power: 0.80033}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Intraclass Correlation (Example 2)"
+
+  - id: "Ex1 (N=50, K=2)"
+    description: >
+      Ch.810 Example 1: rho0=0.2, rho1=0.3, N=50, K=2, alpha=0.05.
+      Reference reports power = 0.18333.
+    inputs: {rho0: 0.2, rho1: 0.3, n: 50, K: 2, alpha: 0.05, sides: 1}
+    expected: {achieved_power: 0.18333}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Intraclass Correlation (Example 1 (N=50, K=2))"
+
+  - id: "Ex1 (N=150, K=4)"
+    description: >
+      Ch.810 Example 1: rho0=0.2, rho1=0.3, N=150, K=4, alpha=0.05.
+      Reference reports power = 0.74538.
+    inputs: {rho0: 0.2, rho1: 0.3, n: 150, K: 4, alpha: 0.05, sides: 1}
+    expected: {achieved_power: 0.74538}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Intraclass Correlation (Example 1 (N=150, K=4))"
+
+  - id: "Ex1 (N=250, K=5)"
+    description: >
+      Ch.810 Example 1: rho0=0.2, rho1=0.3, N=250, K=5, alpha=0.05.
+      Reference reports power = 0.95403.
+    inputs: {rho0: 0.2, rho1: 0.3, n: 250, K: 5, alpha: 0.05, sides: 1}
+    expected: {achieved_power: 0.95403}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Intraclass Correlation (Example 1 (N=250, K=5))"

@@ -1,0 +1,52 @@
+chapter: "Tests for One Proportion"
+method: "one_proportion"
+examples:
+
+  - id: "Ex9 Ryan (one-sided z S(P0))"
+    description: >
+      Ryan (2013) p.106: one-sided z-test using S(P0), P0=0.50, P1=0.60,
+      power=0.80, α=0.05. Reports n=153; reference achieved power=0.80125.
+    inputs:
+      p0: 0.50
+      p1: 0.60
+      alpha: 0.05
+      power: 0.80
+      sides: 1
+      test_type: "z_s0"
+    expected: {n: 153, achieved_power: 0.80125}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for One Proportion (Example 9)"
+
+  - id: "Ex11 Chow (two-sided z S(Phat))"
+    description: >
+      Chow, Shao & Wang (2008) p.87: two-sided z-test using S(Phat),
+      P0=0.30, P1=0.50, power=0.80, α=0.05. Reference reports n=50,
+      actual=0.80743 (Chow rounds to 49).
+    inputs:
+      p0: 0.30
+      p1: 0.50
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+      test_type: "z_s_phat"
+    expected: {n: 50, achieved_power: 0.80743}
+    tolerance: {n: 0, achieved_power: 0.0001}
+    source: "Tests for One Proportion (Example 11)"
+
+  - id: "Ex10 Fleiss (one-sided z S(P0)+CC, solve effect)"
+    description: >
+      Fleiss, Levin & Paik (2003) p.34: one-sided z-test with CC,
+      n=100, P0=0.06, power=0.90, search P1<P0.  Reference reports detectable
+      P1=0.006 (matches Fleiss's "less than 0.01").
+    inputs:
+      p0: 0.06
+      n: 100
+      alpha: 0.05
+      power: 0.90
+      sides: 1
+      test_type: "z_s0_cc"
+      solve_for: "effect"
+      direction: "below"
+    expected: {p1: 0.006, achieved_power: 0.90}
+    tolerance: {p1: 0.0001, achieved_power: 0.001}
+    source: "Tests for One Proportion (Example 10)"

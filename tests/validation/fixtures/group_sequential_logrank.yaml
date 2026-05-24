@@ -1,0 +1,50 @@
+chapter: "Group-Sequential Logrank Tests"
+method: "group_sequential_logrank"
+examples:
+
+  - id: "Ex1 GS Logrank S1=0.30 S2=0.45 4-look OBF power=0.90"
+    description: >
+      Ch.711 Ex1: S1=0.30, S2=0.45 (HR=0.6632), 4 looks equally spaced,
+      O'Brien-Fleming spending, two-sided, alpha=0.05, power=0.90.
+      Reference reports N=407, total events=254, power=0.900626.
+    inputs:
+      s1: 0.3
+      s2: 0.45
+      alpha: 0.05
+      power: 0.90
+      n_looks: 4
+      boundary: "obrien-fleming"
+      sides: 2
+    expected:
+      n: 407
+      events: 254
+      achieved_power: 0.9006
+    tolerance:
+      n: 0
+      events: 0
+      achieved_power: 0.001
+    source: "Group-Sequential Logrank Tests (Example 1)"
+
+  - id: "Ex5 GS Logrank Reboussin validation S1=0.30 S2=0.786 5-look OBF"
+    description: >
+      Ch.711 Ex5 (Reboussin 1992 validation): S1=0.30, S2=0.786 (HR=0.20),
+      5 looks equally spaced, O'Brien-Fleming, two-sided, alpha=0.05, power=0.90.
+      Reference reports N=37, total events=17, power=0.905173.
+    inputs:
+      s1: 0.30
+      s2: 0.786
+      alpha: 0.05
+      power: 0.90
+      n_looks: 5
+      boundary: "obrien-fleming"
+      sides: 2
+    expected:
+      n: 37
+      events: 17
+      achieved_power: 0.9052
+    tolerance:
+      n: 1
+      events: 0
+      achieved_power: 0.002
+    notes: "Schoenfeld rounding boundary: our 0.9067 vs. reference 0.9052 (Lan-DeMets vs. reference internal). ±0.002."
+    source: "Group-Sequential Logrank Tests (Example 5)"

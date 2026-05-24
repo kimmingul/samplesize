@@ -1,0 +1,42 @@
+chapter: "Tests for Two Means in a Repeated Measures Design"
+method: "two_means_repeated_measures"
+examples:
+  - id: "Ex2 solve-n AR1 M=4 D1=9.3 sigma=9 rho=0.7 alpha=0.05 2-sided power=0.80"
+    description: "Find N1=N2 for 80% power; AR(1) covariance, 4 time points"
+    solve_for: "n"
+    inputs:
+      d: 9.3
+      m: 4
+      sigma: 9.0
+      rho: 0.7
+      cov_type: "ar1"
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected:
+      n: 20
+      achieved_power: 0.80135
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: "Tests for Two Means in a Repeated Measures Design (Example 2)"
+
+  - id: "Ex5 solve-n CS M=3 d=0.3 sigma=1 rho=0.5 alpha=0.05 1-sided power=0.80"
+    description: "Validate against Diggle et al. (1994); compound symmetry, 3 time points"
+    solve_for: "n"
+    inputs:
+      d: 0.3
+      m: 3
+      sigma: 1.0
+      rho: 0.5
+      cov_type: "cs"
+      alpha: 0.05
+      power: 0.80
+      sides: 1
+    expected:
+      n: 184
+      achieved_power: 0.80154
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: "Tests for Two Means in a Repeated Measures Design (Example 5)"

@@ -1,0 +1,74 @@
+chapter: "Confidence Intervals for One Proportion"
+method: "ci_one_proportion"
+examples:
+
+  - id: "Ex2 Fleiss CP one-sided lower"
+    description: >
+      Fleiss, Levin, Paik (2003) pp.22-23: one-sided 95% Clopper-Pearson
+      lower-limit CI for a single proportion with P=0.92 and distance to
+      lower limit d=0.15104.  Reference reports N=25.
+    solve_for: "n"
+    inputs:
+      p: 0.92
+      alpha: 0.05
+      distance: 0.15104
+      sides: 1
+      tail: "lower"
+      method: "clopper_pearson"
+    expected:
+      n: 25
+      achieved_distance: 0.15104
+    tolerance:
+      n: 0
+      achieved_distance: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Proportion/hybrid_auto/
+      Confidence Intervals for One Proportion.md, §Example 2.
+
+  - id: "Ex3 Newcombe Wilson CC two-sided"
+    description: >
+      Newcombe (1998a) pp.860-861: two-sided 95% Score (Wilson) CI with
+      continuity correction, P=0.034483, target width W=0.1945.  reference
+      reports N=29 and actual width 0.194.
+    solve_for: "n"
+    inputs:
+      p: 0.034483
+      alpha: 0.05
+      width: 0.1945
+      sides: 2
+      method: "wilson_cc"
+    expected:
+      n: 29
+      achieved_width: 0.194
+      lower_limit: 0.002
+      upper_limit: 0.196
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+      lower_limit: 0.01
+      upper_limit: 0.01
+    source: >
+      reference/md/Confidence Intervals for One Proportion/hybrid_auto/
+      Confidence Intervals for One Proportion.md, §Example 3.
+
+  - id: "Ex4 Lachin CP zero-event upper"
+    description: >
+      Lachin (2000) p.19: one-sided 95% Clopper-Pearson upper-limit CI
+      for P=0 (zero events) with upper bound 0.01.  Reference reports N=299.
+    solve_for: "n"
+    inputs:
+      p: 0.0
+      alpha: 0.05
+      distance: 0.01
+      sides: 1
+      tail: "upper"
+      method: "clopper_pearson"
+    expected:
+      n: 299
+      achieved_distance: 0.010
+    tolerance:
+      n: 0
+      achieved_distance: 0.001
+    source: >
+      reference/md/Confidence Intervals for One Proportion/hybrid_auto/
+      Confidence Intervals for One Proportion.md, §Example 4.

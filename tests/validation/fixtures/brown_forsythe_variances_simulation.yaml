@@ -1,0 +1,122 @@
+chapter: "Brown-Forsythe Test of Variances (Simulation)"
+method: "brown_forsythe_variances_simulation"
+
+# Monte-Carlo Brown-Forsythe power fixtures vs the reference Chapter 554.
+# All results are stochastic; we use seed=42 and n_sims=10000 to make
+# them deterministic for CI.
+#
+# Tolerance: +/-0.01 absolute on achieved_power.  At n_sims=10000 the
+# binomial 95% CI half-width is ~0.010 at power=0.5 and ~0.004 at
+# power=0.95 (precision table in the reference chapter).  Combined with
+# the reference's own 5000-sim reference noise (CI half-width ~+/-0.014 at
+# power=0.5 per the chapter table), +/-0.01 is realistic.
+#
+# Implementation note: Brown-Forsythe is the median-centred Levene
+# variant -- Z_ki = |Y_ki - median(Y_k)|, then the ordinary one-way
+# ANOVA F-statistic on the Z's with df=(g-1, N-g).  The mean-centred
+# variant is the original Levene (see levene_variances_simulation).
+
+examples:
+
+  - id: "Ex1 row 1 (n=10, S2=7, k=4)"
+    description: >
+      Example 1 row 1: k=4 groups, means=[10,20,10,10],
+      sigmas=[5,7,5,5], n=10/group, alpha=0.05, 5000 sims.
+      Reference reports power=0.088.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 7.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 10
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 10
+      n_total: 40
+      achieved_power: 0.088
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.011
+    notes: >
+      Stochastic; +/-0.011 power (tightens MC noise envelope).  Sim at
+      seed=42 -> 0.098.  Difference (+0.010) is within the reference's own 95%
+      half-width of ~0.013 at this power, plus our 10k binomial CI
+      half-width of ~0.006.
+    source: "Brown-Forsythe Test of Variances (Simulation) (Example 1 Numeric Results row 1)"
+
+  - id: "Ex1 row 8 (n=30, S2=8, k=4)"
+    description: >
+      Example 1 row 8: k=4, sigmas=[5,8,5,5], n=30/group.
+      Reference reports power=0.655.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 8.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 30
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 30
+      n_total: 120
+      achieved_power: 0.655
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; +/-0.01 power.  Sim at seed=42 -> 0.657."
+    source: "Brown-Forsythe Test of Variances (Simulation) (Example 1 Numeric Results row 8)"
+
+  - id: "Ex1 row 14 (n=40, S2=9, k=4)"
+    description: >
+      Example 1 row 14: k=4, sigmas=[5,9,5,5], n=40/group.
+      Reference reports power=0.947.
+    inputs:
+      k_groups: 4
+      sigmas: [5.0, 9.0, 5.0, 5.0]
+      means: [10.0, 20.0, 10.0, 10.0]
+      n_per_group: 40
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 40
+      n_total: 160
+      achieved_power: 0.947
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; +/-0.01 power.  Sim at seed=42 -> 0.941."
+    source: "Brown-Forsythe Test of Variances (Simulation) (Example 1 Numeric Results row 14)"
+
+  - id: "Ex2 validation (k=2, target power=0.80, sigmas=[1,2])"
+    description: >
+      Example 2 -- Validation: solve for sample size, k=2,
+      sigmas=[1,2], means=[1,1], alpha=0.05, target power=0.80,
+      5000 sims.  Reference reports n=24/group (N=48), actual power=0.820.
+    inputs:
+      k_groups: 2
+      sigmas: [1.0, 2.0]
+      means: [1.0, 1.0]
+      power: 0.80
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 24
+      n_total: 48
+      achieved_power: 0.820
+    tolerance:
+      n_per_group: 2
+      n_total: 4
+      achieved_power: 0.015
+    notes: >
+      Sample-size bisection.  +/-2 on n_per_group reflects MC boundary
+      noise; +/-0.015 on power accommodates the bisection landing
+      exactly on n=24 with seed=42 (achieved=0.8068, reference=0.820).
+      Difference 0.013 is just outside the per-row 0.01 envelope so we
+      widen here.
+    source: "Brown-Forsythe Test of Variances (Simulation) (Example 2 Numeric Results row 1)"

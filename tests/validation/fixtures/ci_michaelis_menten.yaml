@@ -1,0 +1,43 @@
+chapter: "Confidence Intervals for Michaelis-Menten Parameters"
+method: "ci_michaelis_menten"
+examples:
+  - id: "Ex1 vmax-width-5-sigma-10"
+    description: "95% CI for Vmax; vmax=20, km=10, sigma=10, C=[1,4,16,64,256], width_vmax=5 -> N=135"
+    solve_for: "n"
+    inputs:
+      c_values: [1, 4, 16, 64, 256]
+      vmax: 20.0
+      km: 10.0
+      sigma: 10.0
+      alpha: 0.05
+      width_vmax: 5.0
+      sides: 2
+      target: "vmax"
+    expected:
+      n: 135
+      achieved_width_vmax: 4.943
+    tolerance:
+      n: 0
+      achieved_width_vmax: 0.001
+    source: "Confidence Intervals for Michaelis-Menten Parameters (Example 1)"
+
+  - id: "Ex2 Raaijmakers-validation-n-per-1"
+    description: "Validation from Raaijmakers (1987) p.798; vmax=25, km=10, sigma=6.25, n_per=1 per C value -> SE(Vmax)=4.444, SE(Km)=3.169"
+    solve_for: "power"
+    inputs:
+      c_values: [1, 4, 16, 64, 256]
+      vmax: 25.0
+      km: 10.0
+      sigma: 6.25
+      alpha: 0.05
+      n_per: 1
+      sides: 2
+    expected:
+      n: 5
+      achieved_width_vmax: 17.422
+      achieved_width_km: 12.423
+    tolerance:
+      n: 0
+      achieved_width_vmax: 0.001
+      achieved_width_km: 0.001
+    source: "Confidence Intervals for Michaelis-Menten Parameters (Example 2)"

@@ -1,0 +1,42 @@
+chapter: "Two-Stage Phase II Clinical Trials"
+method: "simon_two_stage"
+examples:
+
+  - id: "Ex1 reference p0=0.05 p1=0.25 alpha=0.05 beta=0.20 optimal"
+    description: >
+      Chapter 125 Example 1 optimal design: p0=0.05, p1=0.25, alpha=0.05, beta=0.20.
+      Reference reports optimal n1=9, r1=0, n=17, r=2, EN=11.96, alpha_actual=0.047, beta_actual=0.188.
+    solve_for: "n"
+    inputs:
+      p0: 0.05
+      p1: 0.25
+      alpha: 0.05
+      beta: 0.20
+      design_type: "optimal"
+    expected:
+      n: 17
+      achieved_power: 0.812
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: "Two-Stage Phase II Clinical Trials (Example 1)"
+
+  - id: "Ex2 Simon 1989 Table 1 p0=0.05 p1=0.25 alpha=0.10 beta=0.10 optimal"
+    description: >
+      Simon (1989) Table 1 first row: p0=0.05, p1=0.25, alpha=0.10, beta=0.10.
+      Simon reports optimal n1=9, r1=0, n=24, r=2, EN=14.55; minimax n1=13, r1=0, n=20, r=2.
+      reference matches exactly.
+    solve_for: "n"
+    inputs:
+      p0: 0.05
+      p1: 0.25
+      alpha: 0.10
+      beta: 0.10
+      design_type: "optimal"
+    expected:
+      n: 24
+      achieved_power: 0.903
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: "Two-Stage Phase II Clinical Trials (Example 2)"

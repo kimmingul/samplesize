@@ -1,0 +1,59 @@
+chapter: "Non-Inferiority Tests for the Difference Between Two Proportions"
+method: "non_inferiority_two_proportions"
+examples:
+
+  - id: "Ex7 Chow Shao Wang 2008"
+    description: >
+      Chow et al. (2008) p.92: P1.1=0.85, P2=0.65, margin=0.10, α=0.05,
+      power=0.80, higher-is-better, unpooled z.  Reports n=25 per
+      group; reference achieved=0.80858.
+    inputs:
+      p1: 0.85
+      p2: 0.65
+      margin: 0.10
+      alpha: 0.05
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 25, n2: 25, achieved_power: 0.80858}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for the Difference Between Two Proportions (Example 7)"
+
+  - id: "Ex8 Julius-Campbell 2012 (D1=-0.05)"
+    description: >
+      Julius & Campbell (2012) Table XIII row D1=-0.05: P1=0.65,
+      P2=0.70, margin=0.20, α=0.025, power=0.90.  reference n=205, actual
+      power=0.90096.
+    inputs:
+      p1: 0.65
+      p2: 0.70
+      margin: 0.20
+      alpha: 0.025
+      power: 0.90
+      higher_is_better: true
+    expected: {n1: 205, n2: 205, achieved_power: 0.90096}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for the Difference Between Two Proportions (Example 8 row 1)"
+
+  - id: "Ex8 Julius-Campbell 2012 (D1=0)"
+    inputs:
+      p1: 0.70
+      p2: 0.70
+      margin: 0.20
+      alpha: 0.025
+      power: 0.90
+      higher_is_better: true
+    expected: {n1: 111, n2: 111, achieved_power: 0.90172}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for the Difference Between Two Proportions (Example 8 row 6)"
+
+  - id: "Ex8 Julius-Campbell 2012 (D1=+0.05)"
+    inputs:
+      p1: 0.75
+      p2: 0.70
+      margin: 0.20
+      alpha: 0.025
+      power: 0.90
+      higher_is_better: true
+    expected: {n1: 67, n2: 67, achieved_power: 0.90073}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.0001}
+    source: "Non-Inferiority Tests for the Difference Between Two Proportions (Example 8 row 11)"

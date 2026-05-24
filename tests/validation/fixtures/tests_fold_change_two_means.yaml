@@ -1,0 +1,107 @@
+chapter: "Tests for Fold Change of Two Means"
+method: "tests_fold_change_two_means"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 - power table at FC0 = 1.0, COV = 1.2, alpha = 0.025,
+  # one-sided FC1 > FC0.  Sample sizes 100 to 900 by 200, FC1 in
+  # {1.1, 1.2}.  Reference reports power values to four decimals.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=100 FC1=1.1"
+    description: >
+      Example 1: FC0 = 1.0, FC1 = 1.1, COV = 1.2, alpha = 0.025,
+      one-sided, N1 = N2 = 100.  Reference reports power = 0.1057.
+    inputs:
+      fc0: 1.0
+      fc1: 1.1
+      cov: 1.2
+      alpha: 0.025
+      n1: 100
+      sides: 1
+    expected: {n: 200, achieved_power: 0.1057}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Fold Change of Two Means (Example 1 row 1)"
+
+  - id: "Ex1 N=300 FC1=1.1"
+    description: >
+      Example 1: FC0 = 1.0, FC1 = 1.1, COV = 1.2, alpha = 0.025,
+      one-sided, N1 = N2 = 300.  Reference reports power = 0.2339.
+    inputs:
+      fc0: 1.0
+      fc1: 1.1
+      cov: 1.2
+      alpha: 0.025
+      n1: 300
+      sides: 1
+    expected: {n: 600, achieved_power: 0.2339}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Fold Change of Two Means (Example 1 row 2)"
+
+  - id: "Ex1 N=500 FC1=1.2"
+    description: >
+      Example 1: FC0 = 1.0, FC1 = 1.2, COV = 1.2, alpha = 0.025,
+      one-sided, N1 = N2 = 500.  Reference reports power = 0.8625.
+    inputs:
+      fc0: 1.0
+      fc1: 1.2
+      cov: 1.2
+      alpha: 0.025
+      n1: 500
+      sides: 1
+    expected: {n: 1000, achieved_power: 0.8625}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Fold Change of Two Means (Example 1 row 8)"
+
+  - id: "Ex1 N=900 FC1=1.2"
+    description: >
+      Example 1: FC0 = 1.0, FC1 = 1.2, COV = 1.2, alpha = 0.025,
+      one-sided, N1 = N2 = 900.  Reference reports power = 0.9836.
+    inputs:
+      fc0: 1.0
+      fc1: 1.2
+      cov: 1.2
+      alpha: 0.025
+      n1: 900
+      sides: 1
+    expected: {n: 1800, achieved_power: 0.9836}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Fold Change of Two Means (Example 1 row 10)"
+
+  # ------------------------------------------------------------------
+  # Example 2 - Validation via the equivalent t-test on differences.
+  # Same parameters as Example 1.  Reference reports five-decimal power
+  # values from the difference-form analysis that match Example 1.
+  # ------------------------------------------------------------------
+
+  - id: "Ex2 N=100 FC1=1.1 (diff form)"
+    description: >
+      Example 2 validation: FC0 = 1.0, FC1 = 1.1, COV = 1.2,
+      alpha = 0.025, one-sided, N1 = N2 = 100.  The equivalent
+      t-test on differences reports power = 0.10568.
+    inputs:
+      fc0: 1.0
+      fc1: 1.1
+      cov: 1.2
+      alpha: 0.025
+      n1: 100
+      sides: 1
+    expected: {n: 200, achieved_power: 0.10568}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Fold Change of Two Means (Example 2 row 1)"
+
+  - id: "Ex2 N=900 FC1=1.2 (diff form)"
+    description: >
+      Example 2 validation: FC0 = 1.0, FC1 = 1.2, COV = 1.2,
+      alpha = 0.025, one-sided, N1 = N2 = 900.  The equivalent
+      t-test on differences reports power = 0.98359.
+    inputs:
+      fc0: 1.0
+      fc1: 1.2
+      cov: 1.2
+      alpha: 0.025
+      n1: 900
+      sides: 1
+    expected: {n: 1800, achieved_power: 0.98359}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Tests for Fold Change of Two Means (Example 2 row 10)"

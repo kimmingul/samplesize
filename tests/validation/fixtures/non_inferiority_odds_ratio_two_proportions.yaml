@@ -1,0 +1,84 @@
+chapter: "Non-Inferiority Tests for the Odds Ratio of Two Proportions"
+method: "non_inferiority_odds_ratio_two_proportions"
+examples:
+
+  - id: "Ex1 row 1 (n=50)"
+    description: >
+      Example 1: P2=0.625, OR0=0.80, OR1=1.0, alpha=0.05, equal
+      allocation, Farrington & Manning Likelihood Score test, Normal
+      Approximation.  Reports power=0.13427 at N1=N2=50.
+    inputs:
+      p2: 0.625
+      or0: 0.80
+      or1: 1.0
+      alpha: 0.05
+      n1: 50
+      n2: 50
+      higher_is_better: true
+    expected: {n1: 50, n2: 50, achieved_power: 0.13427}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Odds Ratio of Two Proportions (Example 1 row 1)"
+
+  - id: "Ex1 row 5 (n=250)"
+    description: >
+      Example 1 row 5: P2=0.625, OR0=0.80, OR1=1.0, alpha=0.05,
+      N1=N2=250.  Reports power=0.33101.
+    inputs:
+      p2: 0.625
+      or0: 0.80
+      or1: 1.0
+      alpha: 0.05
+      n1: 250
+      n2: 250
+      higher_is_better: true
+    expected: {n1: 250, n2: 250, achieved_power: 0.33101}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Odds Ratio of Two Proportions (Example 1 row 5)"
+
+  - id: "Ex1 row 10 (n=500)"
+    description: >
+      Example 1 row 10: P2=0.625, OR0=0.80, OR1=1.0, alpha=0.05,
+      N1=N2=500.  Reports power=0.52568.
+    inputs:
+      p2: 0.625
+      or0: 0.80
+      or1: 1.0
+      alpha: 0.05
+      n1: 500
+      n2: 500
+      higher_is_better: true
+    expected: {n1: 500, n2: 500, achieved_power: 0.52568}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Odds Ratio of Two Proportions (Example 1 row 10)"
+
+  - id: "Ex2 (solve for N, power=0.80)"
+    description: >
+      Example 2: P2=0.625, OR0=0.80, OR1=1.0, alpha=0.05,
+      power=0.80, Farrington & Manning, Normal Approximation.  Reports
+      N1=N2=1057 with actual power 0.80003.
+    inputs:
+      p2: 0.625
+      or0: 0.80
+      or1: 1.0
+      alpha: 0.05
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 1057, n2: 1057, achieved_power: 0.80003}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Odds Ratio of Two Proportions (Example 2)"
+
+  - id: "Ex4 detail row N=1100"
+    description: >
+      Example 4 (Normal Approximation column): P2=0.625, OR0=0.80,
+      OR1=1.0, alpha=0.05, N1=N2=1100.  Reports power=0.81377.
+    inputs:
+      p2: 0.625
+      or0: 0.80
+      or1: 1.0
+      alpha: 0.05
+      n1: 1100
+      n2: 1100
+      higher_is_better: true
+    expected: {n1: 1100, n2: 1100, achieved_power: 0.81377}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for the Odds Ratio of Two Proportions (Example 4 row 2)"

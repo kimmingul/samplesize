@@ -1,0 +1,68 @@
+chapter: "Confidence Intervals for One Standard Deviation with Tolerance Probability"
+method: "ci_one_sd_tolerance"
+examples:
+
+  - id: "Ex1 row 1 (TolProb=0.70, S=25.4 from m=12, W=5)"
+    description: >
+      Two-sided 95% CI with tolerance probability 0.70 that the realised
+      width is <= 5, using S=25.4 estimated from a previous sample of
+      m=12.  Reference reports N=273 with actual width 4.997.
+    inputs:
+      sd: 25.4
+      alpha: 0.05
+      tolerance_probability: 0.70
+      width: 5.0
+      sides: 2
+      sd_source: "previous_sample"
+      prior_n: 12
+    expected:
+      n: 273
+      achieved_width: 4.997
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+    source: "Confidence Intervals for One Standard Deviation with Tolerance Probability (Example 1, row 1)"
+
+  - id: "Ex1 row 6 (TolProb=0.95, S=25.4 from m=12, W=5)"
+    description: >
+      Two-sided 95% CI with tolerance probability 0.95 that the realised
+      width is <= 5, using S=25.4 estimated from a previous sample of
+      m=12.  Reference reports N=484 with actual width 4.997.
+    inputs:
+      sd: 25.4
+      alpha: 0.05
+      tolerance_probability: 0.95
+      width: 5.0
+      sides: 2
+      sd_source: "previous_sample"
+      prior_n: 12
+    expected:
+      n: 484
+      achieved_width: 4.997
+    tolerance:
+      n: 0
+      achieved_width: 0.001
+    source: "Confidence Intervals for One Standard Deviation with Tolerance Probability (Example 1, row 6)"
+
+  - id: "Ex2 (solve for tolerance prob; sigma=20, n=100, W=6)"
+    description: >
+      Two-sided 95% CI assuming sigma=20 is the population SD, N=100,
+      target width 6.  Reference reports tolerance probability 0.802 (matching
+      a 100 000-replicate simulation estimate of 0.80168).
+    inputs:
+      sd: 20.0
+      alpha: 0.05
+      width: 6.0
+      n: 100
+      sides: 2
+      sd_source: "population"
+      solve_for: "tolerance_probability"
+    expected:
+      n: 100
+      achieved_tolerance_probability: 0.802
+      achieved_width: 6.000
+    tolerance:
+      n: 0
+      achieved_tolerance_probability: 0.001
+      achieved_width: 0.001
+    source: "Confidence Intervals for One Standard Deviation with Tolerance Probability (Example 2)"

@@ -1,0 +1,37 @@
+chapter: "Multivariate Analysis of Variance (MANOVA)"
+method: "manova_pillai"
+examples:
+
+  - id: "Ex1 Ch.605 k=3 p=2 heart-rate-BP n=8"
+    description: >
+      Ch.605 Example 1: k=3 age groups, p=2 responses (heart rate
+      and blood pressure). Group means: [[93,130],[88,124],[84,117]].
+      Within-group sigma=[4,5] (diagonal covariance), alpha=0.05, n=8
+      per group (N=24). Pillai's trace power=0.9652.
+      (Reference Wilks gives 0.9603 at n=8; Pillai is slightly more powerful
+      here.)
+    inputs:
+      means_matrix: [[93.0, 130.0], [88.0, 124.0], [84.0, 117.0]]
+      sigma: [4.0, 5.0]
+      n_per_group: 8
+      alpha: 0.05
+    expected: {n_per_group: 8, achieved_power: 0.9652}
+    tolerance: {n_per_group: 0, achieved_power: 0.005}
+    source: "Multivariate Analysis of Variance (MANOVA) (Example 1)"
+
+  - id: "Ex2 Ch.605 validation k=3 p=2 n=4"
+    description: >
+      Ch.605 Example 2 (manual validation): k=3 groups, p=2
+      responses, means_matrix=[[1,1],[2,1],[3,2]], sigma_diag=[2,2]
+      (diagonal approximation of Sigma=[[4,1],[1,4]]).
+      n=4 per group (N=12), alpha=0.05.
+      Pillai's trace power=0.162 (Reference Wilks gives 0.1371; difference
+      is expected between Pillai and Wilks statistics).
+    inputs:
+      means_matrix: [[1.0, 1.0], [2.0, 1.0], [3.0, 2.0]]
+      sigma: [2.0, 2.0]
+      n_per_group: 4
+      alpha: 0.05
+    expected: {n_per_group: 4, achieved_power: 0.162}
+    tolerance: {n_per_group: 0, achieved_power: 0.01}
+    source: "Multivariate Analysis of Variance (MANOVA) (Example 2)"

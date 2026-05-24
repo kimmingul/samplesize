@@ -1,0 +1,41 @@
+chapter: "Confidence Intervals for the Exponential Lifetime Mean"
+method: "ci_exponential_lifetime_mean"
+examples:
+
+  - id: "Ex1 width=0.20 (theta=1, 20% censored)"
+    description: >
+      Two-sided 95% CI for the exponential mean lifetime theta=1. Target
+      relative width 0.20 (i.e. 20% of theta) with 20% censoring. Ch.406
+      reports E=388 events, expected N=485, actual width 0.200.
+    inputs:
+      theta: 1.0
+      width: 0.20
+      alpha: 0.05
+      sides: 2
+      pct_censored: 20.0
+    expected:
+      n: 485
+      achieved_width: 0.200
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for the Exponential Lifetime Mean (Example 1, row 4)"
+
+  - id: "Ex1 width=0.10 (theta=1, 20% censored)"
+    description: >
+      Two-sided 95% CI for the exponential mean lifetime theta=1. Target
+      relative width 0.10 with 20% censoring. Ch.406 reports E=1541
+      events, expected N=1927, actual width 0.100.
+    inputs:
+      theta: 1.0
+      width: 0.10
+      alpha: 0.05
+      sides: 2
+      pct_censored: 20.0
+    expected:
+      n: 1927
+      achieved_width: 0.100
+    tolerance:
+      n: 1
+      achieved_width: 0.001
+    source: "Confidence Intervals for the Exponential Lifetime Mean (Example 1, row 2)"

@@ -1,0 +1,74 @@
+chapter: "Logrank Tests in a Cluster-Randomized Design"
+method: "cluster_logrank"
+examples:
+  - id: "Ex1 K=10 M=4 rho=0.2"
+    description: >
+      Logrank test in cluster-randomized design. S1=0.5, S2=0.6, rho=0.2,
+      M=4, K1=K2=10, alpha=0.05, two-sided. Expected power=0.1072.
+    inputs:
+      s1: 0.5
+      s2: 0.6
+      m: 4.0
+      icc: 0.2
+      alpha: 0.05
+      k_clusters: 10
+      sides: 2
+    expected:
+      n: 80
+      n_clusters: 20
+      m_per_cluster: 4
+      achieved_power: 0.1072
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Logrank Tests in a Cluster-Randomized Design (Example 1)"
+
+  - id: "Ex1 K=40 M=8 rho=0.2"
+    description: >
+      Logrank test in cluster-randomized design. S1=0.5, S2=0.6, rho=0.2,
+      M=8, K1=K2=40, alpha=0.05, two-sided. Expected power=0.3817.
+    inputs:
+      s1: 0.5
+      s2: 0.6
+      m: 8.0
+      icc: 0.2
+      alpha: 0.05
+      k_clusters: 40
+      sides: 2
+    expected:
+      n: 640
+      n_clusters: 80
+      m_per_cluster: 8
+      achieved_power: 0.3817
+    tolerance:
+      n: 2
+      n_clusters: 1
+      m_per_cluster: 0
+      achieved_power: 0.005
+    source: "Logrank Tests in a Cluster-Randomized Design (Example 1)"
+
+  - id: "Ex2 validation K=100 M=2.7 rho=0.2"
+    description: >
+      Validation from Xie and Waksman (2003) Table, S1=0.223, S2=0.129, rho=0.2,
+      M=2.7, K1=K2=100, alpha=0.05, two-sided. Expected power=0.80.
+    inputs:
+      s1: 0.223
+      s2: 0.129
+      m: 2.7
+      icc: 0.2
+      alpha: 0.05
+      k_clusters: 100
+      sides: 2
+    expected:
+      n: 540
+      n_clusters: 200
+      m_per_cluster: 2
+      achieved_power: 0.8026
+    tolerance:
+      n: 4
+      n_clusters: 1
+      m_per_cluster: 1
+      achieved_power: 0.005
+    source: "Logrank Tests in a Cluster-Randomized Design (Example 2)"

@@ -1,0 +1,106 @@
+chapter: "One-Way Analysis of Variance F-Tests (Simulation)"
+method: "one_way_anova_f_simulation"
+
+# the reference Chapter 555 — Monte-Carlo simulation of the classical one-way
+# ANOVA F-test.  These fixtures pin the simulation against the worked
+# examples in §Example 1 and §Example 2.
+#
+# Tolerance: ±0.01 absolute on achieved_power.  At n_sims=10000 the
+# binomial 95% CI half-width is ~0.010 at power=0.5 and ~0.004 at
+# power=0.95.  the reference itself reports its 5000-sim numbers, so reference-vs-us
+# difference is bounded by sqrt( (0.005² + 0.010²) ) ≈ 0.011 at p=0.5.
+# Seed=42, n_sims=10000 makes results deterministic.
+
+examples:
+
+  - id: "Ex1 row 1 (k=4, n=4, σ=18, means=[40,10,10,10])"
+    description: >
+      Example 1 row 1: 4 groups, means=[40,10,10,10], σ=18, n=4
+      per group, α=0.05, 5000 sims.  Reference reports power=0.519.  Our
+      run (seed=42, 10k sims) lands on ~0.520.
+    inputs:
+      means: [40.0, 10.0, 10.0, 10.0]
+      sigma: 18.0
+      n: 4
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 4
+      n_total: 16
+      achieved_power: 0.519
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; seed=42 yields 0.5198 (≈reference 0.519)."
+    source: "One-Way Analysis of Variance F-Tests (Simulation) (Example 1 Numeric Results row 1)"
+
+  - id: "Ex1 row 2 (k=4, n=8, σ=18)"
+    description: >
+      Example 1 row 2: same as above with n=8.  Reference reports
+      power=0.914.  Our run (seed=42) lands on ~0.905.  Difference
+      is within the combined ±0.013 reference / ±0.006 us 95% CIs.
+    inputs:
+      means: [40.0, 10.0, 10.0, 10.0]
+      sigma: 18.0
+      n: 8
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 8
+      n_total: 32
+      achieved_power: 0.914
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.012
+    notes: "Stochastic; seed=42 -> 0.9049."
+    source: "One-Way Analysis of Variance F-Tests (Simulation) (Example 1 Numeric Results row 2)"
+
+  - id: "Ex1 row 3 (k=4, n=12, σ=18)"
+    description: >
+      Example 1 row 3: n=12.  Reference reports power=0.989; seed=42
+      run gives 0.9876.
+    inputs:
+      means: [40.0, 10.0, 10.0, 10.0]
+      sigma: 18.0
+      n: 12
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 12
+      n_total: 48
+      achieved_power: 0.989
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.01
+    notes: "Stochastic; seed=42 -> 0.9876."
+    source: "One-Way Analysis of Variance F-Tests (Simulation) (Example 1 Numeric Results row 3)"
+
+  - id: "Ex2 Fleiss validation (k=4, n=11)"
+    description: >
+      Example 2 — Validation using Fleiss (1986) p.374: 4 groups,
+      means=[9.775,12,12,14.225], σ=3, α=0.05, target β=0.20 → n=11/group.
+      reference Simulation Numeric Results reports actual power=0.802 at
+      n=11.  Our seed=42 run gives 0.8058.
+    inputs:
+      means: [9.775, 12.0, 12.0, 14.225]
+      sigma: 3.0
+      n: 11
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n_per_group: 11
+      n_total: 44
+      achieved_power: 0.802
+    tolerance:
+      n_per_group: 0
+      n_total: 0
+      achieved_power: 0.012
+    notes: "Stochastic; seed=42 -> 0.8058."
+    source: "One-Way Analysis of Variance F-Tests (Simulation) (Example 2 Output)"

@@ -1,0 +1,40 @@
+chapter: "Confidence Intervals for Linear Regression Slope"
+method: "ci_linear_regression_slope"
+examples:
+  - id: "Ex1 slope-distance-1.0"
+    description: "Two-sided 95% CI for slope; b=1.7, sx=11.2, s=48.6, target distance=1.0"
+    solve_for: "n"
+    inputs:
+      b: 1.7
+      sx: 11.2
+      s: 48.6
+      alpha: 0.05
+      distance: 1.0
+      sides: 2
+      residual_method: "s"
+    expected:
+      n: 76
+      achieved_distance: 0.998
+    tolerance:
+      n: 0
+      achieved_distance: 0.001
+    source: "Confidence Intervals for Linear Regression Slope (Example 1)"
+
+  - id: "Ex2 Ostle-Malone-validation"
+    description: "Validation from Ostle & Malone (1988) p.234; b=7.478, sx=3.8944, s=5.369792, distance=0.87608 -> N=13"
+    solve_for: "n"
+    inputs:
+      b: 7.478
+      sx: 3.8944
+      s: 5.369792
+      alpha: 0.05
+      distance: 0.87608
+      sides: 2
+      residual_method: "s"
+    expected:
+      n: 13
+      achieved_distance: 0.87608
+    tolerance:
+      n: 0
+      achieved_distance: 0.001
+    source: "Confidence Intervals for Linear Regression Slope (Example 2)"

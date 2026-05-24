@@ -1,0 +1,81 @@
+chapter: "Tests for Two Correlated Proportions in a Matched Case-Control Design"
+method: "tests_two_correlated_proportions_matched"
+examples:
+
+  - id: "Ex1 reference Dupont N=25 OR=1.5 M=1 P0=0.6 phi=0.2"
+    description: >
+      Example 1, matched 1:1 case-control study.  N=25 case
+      patients, M=1 control per case, OR=1.5, P0=0.6, phi=0.2,
+      alpha=0.05 two-sided.  reference power = 0.08863.
+    inputs:
+      p0: 0.6
+      odds_ratio: 1.5
+      phi: 0.2
+      m: 1
+      n: 25
+      alpha: 0.05
+    expected: {achieved_power: 0.08863}
+    tolerance: {achieved_power: 0.002}
+    source: "Tests for Two Correlated Proportions in a Matched Case-Control Design (Example 1 (N=25 OR=1.5))"
+
+  - id: "Ex1 reference Dupont N=200 OR=3.5 M=1"
+    description: >
+      Continuing Ex1, N=200, OR=3.5.  reference power = 0.99956.
+    inputs:
+      p0: 0.6
+      odds_ratio: 3.5
+      phi: 0.2
+      m: 1
+      n: 200
+      alpha: 0.05
+    expected: {achieved_power: 0.99956}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Two Correlated Proportions in a Matched Case-Control Design (Example 1 (N=200 OR=3.5))"
+
+  - id: "Ex2 reference Dupont solve-for-N OR=2.5 M=5 P0=0.3 phi=0.2 power=0.80"
+    description: >
+      Example 2, OR=2.5, M=5 controls per case, P0=0.3,
+      phi=0.2, alpha=0.05 two-sided, target power 0.80.  Reference reports
+      N=53 cases with actual power 0.80559.
+    inputs:
+      p0: 0.3
+      odds_ratio: 2.5
+      phi: 0.2
+      m: 5
+      alpha: 0.05
+      power: 0.80
+    expected: {n: 53, achieved_power: 0.80559}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "Tests for Two Correlated Proportions in a Matched Case-Control Design (Example 2 (OR=2.5, M=5))"
+
+  - id: "Ex3 reference Dupont(1988) p1164 M=1 OR=3 P0=0.6 phi=0.2 power=0.80 -> N=80"
+    description: >
+      Example 3 / Dupont (1988) page 1164 validation example.
+      M=1 control per case, OR=3, P0=0.6, phi=0.2, alpha=0.05 two-
+      sided, power=0.80.  Dupont reports N=80 (reference actual power
+      0.80149).
+    inputs:
+      p0: 0.6
+      odds_ratio: 3.0
+      phi: 0.2
+      m: 1
+      alpha: 0.05
+      power: 0.80
+    expected: {n: 80, achieved_power: 0.80149}
+    tolerance: {n: 2, achieved_power: 0.01}
+    source: "Tests for Two Correlated Proportions in a Matched Case-Control Design (Example 3 (M=1))"
+
+  - id: "Ex3 reference Dupont(1988) M=3 OR=3 P0=0.6 phi=0.2 power=0.80 -> N=50"
+    description: >
+      Example 3: M=3 controls per case (same other params).
+      Dupont reports N=50; reference actual power 0.80052.
+    inputs:
+      p0: 0.6
+      odds_ratio: 3.0
+      phi: 0.2
+      m: 3
+      alpha: 0.05
+      power: 0.80
+    expected: {n: 50, achieved_power: 0.80052}
+    tolerance: {n: 2, achieved_power: 0.01}
+    source: "Tests for Two Correlated Proportions in a Matched Case-Control Design (Example 3 (M=3))"

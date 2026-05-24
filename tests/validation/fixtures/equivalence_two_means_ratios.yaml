@@ -1,0 +1,111 @@
+chapter: "Equivalence Tests for Two Means using Ratios"
+method: "equivalence_two_means_ratios"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 2 - Julious (2004) p.1971 validation.  Reference reports
+  # N1 = 216, achieved power = 0.90044 for RL=0.80, RU=1.25,
+  # R1=1.00, CV=0.80, alpha=0.05, target power 0.90.
+  # ------------------------------------------------------------------
+
+  - id: "Ex2 Julious 2004 N for power=0.90"
+    description: >
+      Julious (2004) p.1971 / Example 2: RL = 0.80, RU = 1.25,
+      R1 = 1.00, CV = 0.80, alpha = 0.05, target power 0.90.  reference
+      reports N1 = 216 per group with achieved power 0.90044.
+    inputs:
+      r1: 1.00
+      lower_limit: 0.80
+      upper_limit: 1.25
+      cv: 0.80
+      alpha: 0.05
+      power: 0.90
+    expected: {n1: 216, n2: 216, achieved_power: 0.90044}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for Two Means using Ratios (Example 2)"
+
+  # ------------------------------------------------------------------
+  # Example 1 - Power at fixed N (RL=0.80, RU=1/RL=1.25, CV=1.50,
+  # alpha=0.05).  The reference table reports power for N=50..550 by 100
+  # and R1 in {1.00, 1.05}.  reference values are 5-decimal.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=250 R1=1.00"
+    description: >
+      Example 1: N1=N2=250, R1=1.00, CV=1.50, RL=0.80, RU=1.25,
+      alpha=0.05.  reference power = 0.48431.
+    inputs:
+      r1: 1.00
+      lower_limit: 0.80
+      upper_limit: 1.25
+      cv: 1.50
+      alpha: 0.05
+      n1: 250
+      n2: 250
+    expected: {n1: 250, n2: 250, achieved_power: 0.48431}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for Two Means using Ratios (Example 1 row N=250 R1=1.00)"
+
+  - id: "Ex1 N=350 R1=1.00"
+    description: >
+      Example 1: N1=N2=350, R1=1.00, CV=1.50, RL=0.80, RU=1.25,
+      alpha=0.05.  reference power = 0.71704.
+    inputs:
+      r1: 1.00
+      lower_limit: 0.80
+      upper_limit: 1.25
+      cv: 1.50
+      alpha: 0.05
+      n1: 350
+      n2: 350
+    expected: {n1: 350, n2: 350, achieved_power: 0.71704}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for Two Means using Ratios (Example 1 row N=350 R1=1.00)"
+
+  - id: "Ex1 N=450 R1=1.00"
+    description: >
+      Example 1: N1=N2=450, R1=1.00, CV=1.50, RL=0.80, RU=1.25,
+      alpha=0.05.  reference power = 0.84945.
+    inputs:
+      r1: 1.00
+      lower_limit: 0.80
+      upper_limit: 1.25
+      cv: 1.50
+      alpha: 0.05
+      n1: 450
+      n2: 450
+    expected: {n1: 450, n2: 450, achieved_power: 0.84945}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for Two Means using Ratios (Example 1 row N=450 R1=1.00)"
+
+  - id: "Ex1 N=250 R1=1.05"
+    description: >
+      Example 1: N1=N2=250, R1=1.05, CV=1.50, RL=0.80, RU=1.25,
+      alpha=0.05.  reference power = 0.43421.
+    inputs:
+      r1: 1.05
+      lower_limit: 0.80
+      upper_limit: 1.25
+      cv: 1.50
+      alpha: 0.05
+      n1: 250
+      n2: 250
+    expected: {n1: 250, n2: 250, achieved_power: 0.43421}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for Two Means using Ratios (Example 1 row N=250 R1=1.05)"
+
+  - id: "Ex1 N=550 R1=1.05"
+    description: >
+      Example 1: N1=N2=550, R1=1.05, CV=1.50, RL=0.80, RU=1.25,
+      alpha=0.05.  reference power = 0.83961.
+    inputs:
+      r1: 1.05
+      lower_limit: 0.80
+      upper_limit: 1.25
+      cv: 1.50
+      alpha: 0.05
+      n1: 550
+      n2: 550
+    expected: {n1: 550, n2: 550, achieved_power: 0.83961}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Equivalence Tests for Two Means using Ratios (Example 1 row N=550 R1=1.05)"

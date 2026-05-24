@@ -1,0 +1,97 @@
+chapter: "Confidence Intervals for the Ratio of Two Proportions"
+method: "ci_ratio_two_proportions"
+examples:
+
+  - id: "Ex2a Gart & Nam Walters log+1/2"
+    description: >
+      Gart & Nam (1988) p.331 Example 2 — Walters logarithm + 1/2 method,
+      P1/P2=2.0, P2=0.3, n2=20, target width 3.437 at 95% CL.  reference
+      reports n1=10 and actual width 3.431.
+    solve_for: "n"
+    inputs:
+      p1: 0.6
+      p2: 0.3
+      alpha: 0.05
+      width: 3.437
+      n2: 20
+      sides: 2
+      method: "walters"
+    expected:
+      n1: 10
+      n2: 20
+      n: 30
+      achieved_width: 3.431
+      lower_limit: 0.88
+      upper_limit: 4.31
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_width: 0.01
+      lower_limit: 0.02
+      upper_limit: 0.02
+    source: >
+      reference/md/Confidence Intervals for the Ratio of Two Proportions/
+      hybrid_auto/Confidence Intervals for the Ratio of Two Proportions.md,
+      §Example 2(a).
+
+  - id: "Ex3 Katz log one-sided lower (CL=0.975)"
+    description: >
+      Katz et al. (1978) pp.472-473: lower-limit confidence interval for
+      a risk ratio at one-sided 97.5% CL, P1/P2=1.596078, P2=0.153153,
+      n2=111, distance from ratio to lower limit d=0.6223.  Katz log
+      method.  Reference reports n1=225.
+    solve_for: "n"
+    inputs:
+      p1: 0.244444134  # phi * p2 = 1.596078 * 0.153153
+      p2: 0.153153
+      alpha: 0.025
+      distance: 0.6223
+      n2: 111
+      sides: 1
+      tail: "lower"
+      method: "katz"
+    expected:
+      n1: 225
+      n2: 111
+      n: 336
+      achieved_distance: 0.622
+      lower_limit: 0.97
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_distance: 0.01
+      lower_limit: 0.02
+    source: >
+      reference/md/Confidence Intervals for the Ratio of Two Proportions/
+      hybrid_auto/Confidence Intervals for the Ratio of Two Proportions.md,
+      §Example 3.
+
+  - id: "Ex1 Katz (W=0.10, CL=0.95)"
+    description: >
+      Example 1 of the reference chapter, first row of the Katz logarithm
+      method: P1=0.72, P2=0.60, target width 0.10 at 95% CL, equal
+      allocation.  Reference reports n1=n2=2337.
+    solve_for: "n"
+    inputs:
+      p1: 0.72
+      p2: 0.60
+      alpha: 0.05
+      width: 0.10
+      sides: 2
+      method: "katz"
+    expected:
+      n1: 2337
+      n2: 2337
+      n: 4674
+      achieved_width: 0.100
+    tolerance:
+      n1: 0
+      n2: 0
+      n: 0
+      achieved_width: 0.001
+    source: >
+      reference/md/Confidence Intervals for the Ratio of Two Proportions/
+      hybrid_auto/Confidence Intervals for the Ratio of Two Proportions.md,
+      §Example 1 (row 1).

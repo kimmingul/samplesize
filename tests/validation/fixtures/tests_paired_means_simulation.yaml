@@ -1,0 +1,60 @@
+chapter: "Tests for Paired Means (Simulation)"
+method: "tests_paired_means_simulation"
+# NOTE: Simulation-based method (seed=42, n_sims=10000).
+# reference uses 2000 simulations and a different RNG.  Fixtures are
+# calibrated against our deterministic implementation.
+# Ex1 analytic reference: N=50 -> ~0.39, N=100 -> ~0.64.
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 – Power at N=50, 100 (Ch.465 reference).
+  # mean_diff=0.6, sd=2, corr=0.20, alpha=0.05, two-sided, normal.
+  # Our sim (seed=42, 10000 sims) gives 0.3730 / 0.6565.
+  # reference (2000 sims) reports 0.388 / 0.642 — within ±0.02.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 N=50 power"
+    description: >
+      Example 1: mean_diff=0.6, sd=2, corr=0.20, alpha=0.05,
+      two-sided, N=50.  reference (2000 sims) reports ~0.388; our
+      (10000, seed=42) gives 0.3730.
+    solve_for: "power"
+    inputs:
+      mean_diff: 0.6
+      mean_diff0: 0.0
+      sd: 2.0
+      corr: 0.20
+      alpha: 0.05
+      n: 50
+      sides: 2
+      dist: "normal"
+      n_sims: 10000
+      seed: 42
+    expected:
+      achieved_power: 0.3730
+    tolerance:
+      achieved_power: 0.015
+    source: "Tests for Paired Means (Simulation) (Example 1 N=50)"
+
+  - id: "Ex1 N=100 power"
+    description: >
+      Example 1: mean_diff=0.6, sd=2, corr=0.20, alpha=0.05,
+      two-sided, N=100.  reference (2000 sims) reports ~0.642; our
+      (10000, seed=42) gives 0.6565.
+    solve_for: "power"
+    inputs:
+      mean_diff: 0.6
+      mean_diff0: 0.0
+      sd: 2.0
+      corr: 0.20
+      alpha: 0.05
+      n: 100
+      sides: 2
+      dist: "normal"
+      n_sims: 10000
+      seed: 42
+    expected:
+      achieved_power: 0.6565
+    tolerance:
+      achieved_power: 0.015
+    source: "Tests for Paired Means (Simulation) (Example 1 N=100)"

@@ -1,0 +1,45 @@
+chapter: "Confidence Intervals for Paired Means"
+method: "ci_paired_means"
+examples:
+
+  - id: "Ex1a 95% CI sigma_diff=9.6 D=3"
+    description: >
+      Ch.496 Example 1: two-sided 95% CI for paired mean difference,
+      sigma_diff=9.6, target D=3. Expected n=42, achieved width=2.992.
+    solve_for: "n"
+    inputs:
+      sigma_diff: 9.6
+      distance: 3.0
+      alpha: 0.05
+      sides: 2
+      known_sigma: false
+    expected:
+      n: 42
+      achieved_width: 2.992
+    tolerance:
+      n: 1
+      achieved_width: 0.005
+    source: >
+      reference/md/Confidence Intervals for Paired Means/hybrid_auto/Confidence
+      Intervals for Paired Means.md, §Example 1.
+
+  - id: "Ex1b 99% CI sigma_diff=9.6 D=3"
+    description: >
+      Ch.496 Example 1: two-sided 99% CI for paired mean difference,
+      sigma_diff=9.6, target D=3. Expected n=72, achieved width=2.995.
+    solve_for: "n"
+    inputs:
+      sigma_diff: 9.6
+      distance: 3.0
+      alpha: 0.01
+      sides: 2
+      known_sigma: false
+    expected:
+      n: 72
+      achieved_width: 2.995
+    tolerance:
+      n: 1
+      achieved_width: 0.005
+    source: >
+      reference/md/Confidence Intervals for Paired Means/hybrid_auto/Confidence
+      Intervals for Paired Means.md, §Example 1.

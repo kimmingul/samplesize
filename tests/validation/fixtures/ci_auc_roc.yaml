@@ -1,0 +1,89 @@
+chapter: "Confidence Intervals for the Area Under an ROC Curve"
+method: "ci_auc_roc"
+examples:
+
+  # ------------------------------------------------------------------
+  # Example 1 – Sample size for two-sided 95% CI on AUC (Ch.604).
+  # R=1 (equal groups).  Reference reports:
+  #   AUC=0.6, width=0.05 -> N1=976, N=1952
+  #   AUC=0.9, width=0.05 -> N1=314, N=628
+  #   AUC=0.7, width=0.10 -> N1=208, N=416
+  #   AUC=0.8, width=0.10 -> N1=151, N=302
+  # Our code matches all exactly.
+  # ------------------------------------------------------------------
+
+  - id: "Ex1 AUC=0.6 width=0.05"
+    description: >
+      Example 1: AUC=0.6, two-sided 95% CI, width=0.05, R=1.
+      Reference reports N1=976, N=1952.
+    solve_for: "n"
+    inputs:
+      auc: 0.6
+      width: 0.05
+      R: 1.0
+      alpha: 0.05
+      sides: 2
+    expected:
+      n1: 976
+      n: 1952
+    tolerance:
+      n1: 0
+      n: 0
+    source: "Confidence Intervals for the Area Under an ROC Curve (Example 1 AUC=0.6 width=0.05)"
+
+  - id: "Ex1 AUC=0.9 width=0.05"
+    description: >
+      Example 1: AUC=0.9, two-sided 95% CI, width=0.05, R=1.
+      Reference reports N1=314, N=628.
+    solve_for: "n"
+    inputs:
+      auc: 0.9
+      width: 0.05
+      R: 1.0
+      alpha: 0.05
+      sides: 2
+    expected:
+      n1: 314
+      n: 628
+    tolerance:
+      n1: 0
+      n: 0
+    source: "Confidence Intervals for the Area Under an ROC Curve (Example 1 AUC=0.9 width=0.05)"
+
+  - id: "Ex1 AUC=0.7 width=0.10"
+    description: >
+      Example 1: AUC=0.7, two-sided 95% CI, width=0.10, R=1.
+      Reference reports N1=208, N=416.
+    solve_for: "n"
+    inputs:
+      auc: 0.7
+      width: 0.10
+      R: 1.0
+      alpha: 0.05
+      sides: 2
+    expected:
+      n1: 208
+      n: 416
+    tolerance:
+      n1: 0
+      n: 0
+    source: "Confidence Intervals for the Area Under an ROC Curve (Example 1 AUC=0.7 width=0.10)"
+
+  - id: "Ex1 AUC=0.8 width=0.10"
+    description: >
+      Example 1: AUC=0.8, two-sided 95% CI, width=0.10, R=1.
+      Reference reports N1=151, N=302.
+    solve_for: "n"
+    inputs:
+      auc: 0.8
+      width: 0.10
+      R: 1.0
+      alpha: 0.05
+      sides: 2
+    expected:
+      n1: 151
+      n: 302
+    tolerance:
+      n1: 0
+      n: 0
+    source: "Confidence Intervals for the Area Under an ROC Curve (Example 1 AUC=0.8 width=0.10)"

@@ -1,0 +1,33 @@
+chapter: "Pearson's Correlation Tests"
+method: "pearson_correlation"
+notes: |
+  Default backend is the Guenther (1977) exact correlation density,
+  evaluated via the Hotelling form with scipy's ₂F₁ hypergeometric.
+  Matches reference to ≥4 significant figures on the chapter's worked
+  examples. A `method="fisher-z"` Fisher-transform backend is retained
+  for callers wanting the textbook (pwr-package) approximation.
+examples:
+
+  - id: "Ex3 Zar 1984 (ρ0=0, ρ1=0.866)"
+    description: >
+      Zar (1984) p.312: N=12, α=0.05, ρ0=0, ρ1=0.866.  reference 0.98398;
+      exact backend reproduces 0.98398.
+    inputs: {r: 0.866, rho0: 0.0, n: 12, alpha: 0.05, sides: 2}
+    expected: {achieved_power: 0.98398}
+    tolerance: {achieved_power: 0.0001}
+    source: "Pearson's Correlation Tests (Example 3)"
+
+  - id: "Ex4a Graybill 1961 (ρ0=0.5, ρ1=0.2)"
+    description: >
+      Graybill (1961) pp.211-212: N=24, α=0.05, ρ0=0.5, ρ1=0.2.
+      reference 0.36583; exact backend reproduces 0.36583.
+    inputs: {r: 0.2, rho0: 0.5, n: 24, alpha: 0.05, sides: 2}
+    expected: {achieved_power: 0.36583}
+    tolerance: {achieved_power: 0.0001}
+    source: "Pearson's Correlation Tests (Example 4 (ρ1=0.2))"
+
+  - id: "Ex4b Graybill 1961 (ρ0=0.5, ρ1=0.3)"
+    inputs: {r: 0.3, rho0: 0.5, n: 24, alpha: 0.05, sides: 2}
+    expected: {achieved_power: 0.19950}
+    tolerance: {achieved_power: 0.0001}
+    source: "Pearson's Correlation Tests (Example 4 (ρ1=0.3))"

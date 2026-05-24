@@ -1,0 +1,93 @@
+chapter: "Non-Inferiority Tests for One Mean"
+method: "non_inferiority_one_mean"
+notes: |
+  One-sample noncentral-t with df = n-1.  Cross-validated against
+  reference Examples 3, 4 and 5 (Chow Shao Wang 2003 and Julious 2004
+  cross-over).  Our power values agree with reference to <0.001 across
+  all checked rows.
+examples:
+
+  - id: "Ex3 Chow Shao Wang 2003 (find N)"
+    description: >
+      Chow et al. (2003) pp.54-55: D=0.5, NIM=0.5, S=1.0, α=0.05,
+      power=0.80, higher-is-better.  Reference reports N=8 with achieved
+      power=0.81502.
+    inputs:
+      mean: 0.5
+      reference: 0.0
+      sd: 1.0
+      margin: 0.5
+      alpha: 0.05
+      power: 0.80
+      higher_is_better: true
+    expected: {n: 8, achieved_power: 0.81502}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for One Mean (Example 3)"
+
+  - id: "Ex4 Julious 2004 cross-over (D=0)"
+    description: >
+      Julious (2004) p.1953 cross-over example: D=0, NIM=10,
+      S=28.284271, α=0.025, power=0.90.  Reference reports N=87 with
+      achieved power=0.90332.
+    inputs:
+      mean: 0.0
+      reference: 0.0
+      sd: 28.284271
+      margin: 10.0
+      alpha: 0.025
+      power: 0.90
+      higher_is_better: true
+    expected: {n: 87, achieved_power: 0.90332}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for One Mean (Example 4 row 1)"
+
+  - id: "Ex4 Julious 2004 cross-over (D=2)"
+    description: >
+      Julious (2004) p.1953 cross-over example with D=2: NIM=10,
+      S=28.284271, α=0.025, power=0.90.  Reference reports N=61 with
+      achieved power=0.90323.
+    inputs:
+      mean: 2.0
+      reference: 0.0
+      sd: 28.284271
+      margin: 10.0
+      alpha: 0.025
+      power: 0.90
+      higher_is_better: true
+    expected: {n: 61, achieved_power: 0.90323}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for One Mean (Example 4 row 2)"
+
+  - id: "Ex5 Chow Shao Wang 2004 cross-over"
+    description: >
+      Chow, Shao, Wang (2004) p.67 cross-over example: D=-0.1,
+      NIM=0.2, S=0.2, α=0.05, power=0.80, higher-is-better.  reference
+      reports N=27 with achieved power=0.81183.
+    inputs:
+      mean: -0.1
+      reference: 0.0
+      sd: 0.2
+      margin: 0.2
+      alpha: 0.05
+      power: 0.80
+      higher_is_better: true
+    expected: {n: 27, achieved_power: 0.81183}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for One Mean (Example 5)"
+
+  - id: "Ex2 (find N, NIM=0.575)"
+    description: >
+      Example 2 row 1: D=0, NIM=0.575, S=3, α=0.025, power=0.90,
+      higher-is-better.  Reference reports N=288 with achieved
+      power=0.90005.
+    inputs:
+      mean: 0.0
+      reference: 0.0
+      sd: 3.0
+      margin: 0.575
+      alpha: 0.025
+      power: 0.90
+      higher_is_better: true
+    expected: {n: 288, achieved_power: 0.90005}
+    tolerance: {n: 0, achieved_power: 0.001}
+    source: "Non-Inferiority Tests for One Mean (Example 2 row 1)"

@@ -1,0 +1,77 @@
+chapter: "Logistic Regression"
+method: "logistic_regression_simple"
+examples:
+
+  # Example 5 – Validation for continuous covariate (Hsieh 1998)
+  # N=317, P0=0.5, OR=1.5, alpha=0.05 two-sided, normal X -> power 0.95049
+  - id: "Ex5 N=317 P0=0.5 OR=1.5 continuous - power"
+    description: >
+      Chapter 860, Example 5 — Hsieh (1998) validation.  N=317,
+      P0=0.5, odds ratio=1.5, alpha=0.05 two-sided, continuous covariate.
+      Expected power = 0.95049.
+    inputs:
+      p0: 0.5
+      odds_ratio: 1.5
+      n: 317
+      alpha: 0.05
+      sides: 2
+      covariate_type: "normal"
+      r_squared: 0.0
+    expected: {n: 317, achieved_power: 0.95049}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Logistic Regression (Example 5)"
+
+  # Example 1 – Power for continuous covariate, N=1000, OR=1.5
+  # P0=0.07, OR=1.5, alpha=0.05, 2-sided -> power=0.90516
+  - id: "Ex1 N=1000 P0=0.07 OR=1.5 continuous - power"
+    description: >
+      Chapter 860, Example 1.  N=1000, P0=0.07, odds ratio=1.5,
+      alpha=0.05 two-sided, continuous covariate.  Expected power = 0.90516.
+    inputs:
+      p0: 0.07
+      odds_ratio: 1.5
+      n: 1000
+      alpha: 0.05
+      sides: 2
+      covariate_type: "normal"
+      r_squared: 0.0
+    expected: {n: 1000, achieved_power: 0.90516}
+    tolerance: {n: 0, achieved_power: 0.005}
+    source: "Logistic Regression (Example 1)"
+
+  # Example 2 – Sample size for continuous covariate
+  # P0=0.07, OR=1.5, power=0.90, alpha=0.05, 2-sided -> N=981
+  - id: "Ex2 P0=0.07 OR=1.5 continuous - solve N"
+    description: >
+      Chapter 860, Example 2.  P0=0.07, odds ratio=1.5, power=0.90,
+      alpha=0.05 two-sided, continuous covariate.  Expected N=981.
+    inputs:
+      p0: 0.07
+      odds_ratio: 1.5
+      power: 0.90
+      alpha: 0.05
+      sides: 2
+      covariate_type: "normal"
+      r_squared: 0.0
+    expected: {n: 981, achieved_power: 0.89978}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "Logistic Regression (Example 2)"
+
+  # Example 4 – Sample size for binary covariate
+  # P0=0.07, OR=1.5, R=0.5, power=0.90, alpha=0.05, 2-sided -> N=3326
+  - id: "Ex4 P0=0.07 OR=1.5 binary R=0.5 - solve N"
+    description: >
+      Chapter 860, Example 4.  P0=0.07, odds ratio=1.5, R=0.5,
+      power=0.90, alpha=0.05 two-sided, binary covariate.  Expected N=3326.
+    inputs:
+      p0: 0.07
+      odds_ratio: 1.5
+      power: 0.90
+      alpha: 0.05
+      sides: 2
+      covariate_type: "binary"
+      r_binary: 0.5
+      r_squared: 0.0
+    expected: {n: 3326, achieved_power: 0.89997}
+    tolerance: {n: 1, achieved_power: 0.005}
+    source: "Logistic Regression (Example 4)"

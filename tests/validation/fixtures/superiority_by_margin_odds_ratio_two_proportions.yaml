@@ -1,0 +1,97 @@
+chapter: "Superiority by a Margin Tests for the Odds Ratio of Two Proportions"
+method: "superiority_by_margin_odds_ratio_two_proportions"
+examples:
+
+  - id: "Ex1 row 1 (n=50, OR1=2.0)"
+    description: >
+      Example 1: P2=0.65, OR0=1.4, OR1=2.0, alpha=0.025,
+      one-sided H1: OR1>OR0, Farrington & Manning Likelihood Score
+      test, Normal Approximation.  Reports power=0.12420 at N1=N2=50.
+    inputs:
+      p2: 0.65
+      or0: 1.4
+      or1: 2.0
+      alpha: 0.025
+      n1: 50
+      n2: 50
+      higher_is_better: true
+    expected: {n1: 50, n2: 50, achieved_power: 0.12420}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Odds Ratio of Two Proportions (Example 1 row 1)"
+
+  - id: "Ex1 row 4 (n=200, OR1=2.0)"
+    description: >
+      Example 1 row 4: P2=0.65, OR0=1.4, OR1=2.0, alpha=0.025,
+      N1=N2=200.  Reports power=0.35055.
+    inputs:
+      p2: 0.65
+      or0: 1.4
+      or1: 2.0
+      alpha: 0.025
+      n1: 200
+      n2: 200
+      higher_is_better: true
+    expected: {n1: 200, n2: 200, achieved_power: 0.35055}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Odds Ratio of Two Proportions (Example 1 row 4)"
+
+  - id: "Ex2 (solve N, OR1=2.0, power=0.80)"
+    description: >
+      Example 2 row 1: P2=0.65, OR0=1.4, OR1=2.0, alpha=0.025,
+      target power=0.80.  Reports N1=N2=645 with actual power 0.80022.
+    inputs:
+      p2: 0.65
+      or0: 1.4
+      or1: 2.0
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 645, n2: 645, achieved_power: 0.80022}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Odds Ratio of Two Proportions (Example 2 row 1)"
+
+  - id: "Ex2 (solve N, OR1=2.5, power=0.80)"
+    description: >
+      Example 2 row 2: P2=0.65, OR0=1.4, OR1=2.5, alpha=0.025,
+      target power=0.80.  Reports N1=N2=266 with actual power 0.80057.
+    inputs:
+      p2: 0.65
+      or0: 1.4
+      or1: 2.5
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 266, n2: 266, achieved_power: 0.80057}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Odds Ratio of Two Proportions (Example 2 row 2)"
+
+  - id: "Ex2 (solve N, OR1=3.0, power=0.80)"
+    description: >
+      Example 2 row 3: P2=0.65, OR0=1.4, OR1=3.0, alpha=0.025,
+      target power=0.80.  Reports N1=N2=167 with actual power 0.80122.
+    inputs:
+      p2: 0.65
+      or0: 1.4
+      or1: 3.0
+      alpha: 0.025
+      power: 0.80
+      higher_is_better: true
+    expected: {n1: 167, n2: 167, achieved_power: 0.80122}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Odds Ratio of Two Proportions (Example 2 row 3)"
+
+  - id: "Ex4 row 1 (Normal Approx, n=600, OR1=2.0)"
+    description: >
+      Example 4 Normal Approximation column: P2=0.65, OR0=1.4,
+      OR1=2.0, alpha=0.025, N1=N2=600.  Reports power=0.77161.
+    inputs:
+      p2: 0.65
+      or0: 1.4
+      or1: 2.0
+      alpha: 0.025
+      n1: 600
+      n2: 600
+      higher_is_better: true
+    expected: {n1: 600, n2: 600, achieved_power: 0.77161}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Superiority by a Margin Tests for the Odds Ratio of Two Proportions (Example 4 row 1)"

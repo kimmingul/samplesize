@@ -1,0 +1,55 @@
+chapter: "Tests for Two Correlations"
+method: "tests_two_correlations"
+notes: |
+  Fisher z-difference test: (z1 - z2) / sqrt(1/(N1-3) + 1/(N2-3))
+  ~ N(0,1) under H0. Validated against Chapter 805 worked
+  examples; agreement is to 5 significant figures on every row of
+  the Example 1 and Example 3 numeric tables.
+examples:
+
+  - id: "Ex1 (N=100, alpha=0.05)"
+    description: >
+      Ch.805 Example 1: balanced N1=N2=100, rho1=0.3, rho2=0.5,
+      alpha=0.05, two-sided. Reference reports power = 0.38603.
+    inputs: {rho1: 0.3, rho2: 0.5, n1: 100, n2: 100, alpha: 0.05, sides: 2}
+    expected: {achieved_power: 0.38603}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Two Correlations (Example 1 (N=100, alpha=0.05))"
+
+  - id: "Ex1 (N=600, alpha=0.05)"
+    description: >
+      Ch.805 Example 1: balanced N1=N2=600, rho1=0.3, rho2=0.5,
+      alpha=0.05, two-sided. Reference reports power = 0.98548.
+    inputs: {rho1: 0.3, rho2: 0.5, n1: 600, n2: 600, alpha: 0.05, sides: 2}
+    expected: {achieved_power: 0.98548}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Two Correlations (Example 1 (N=600, alpha=0.05))"
+
+  - id: "Ex1 (N=200, alpha=0.01)"
+    description: >
+      Ch.805 Example 1: balanced N1=N2=200, rho1=0.3, rho2=0.5,
+      alpha=0.01, two-sided. Reference reports power = 0.42230.
+    inputs: {rho1: 0.3, rho2: 0.5, n1: 200, n2: 200, alpha: 0.01, sides: 2}
+    expected: {achieved_power: 0.42230}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Two Correlations (Example 1 (N=200, alpha=0.01))"
+
+  - id: "Ex2 sample-size (N=369, target power=0.90)"
+    description: >
+      Ch.805 Example 2: rho1=0.3, rho2=0.5, alpha=0.05,
+      target power=0.90 → Reference reports N1=N2=369, achieved power
+      0.90040.
+    inputs: {rho1: 0.3, rho2: 0.5, power: 0.90, alpha: 0.05, sides: 2, ratio: 1.0}
+    expected: {n1: 369, n2: 369, achieved_power: 0.90040}
+    tolerance: {n1: 0, n2: 0, achieved_power: 0.001}
+    source: "Tests for Two Correlations (Example 2)"
+
+  - id: "Ex3 Zar (N1=95, N2=98)"
+    description: >
+      Ch.805 Example 3 (validation against Zar 1984 p.314):
+      N1=95, N2=98, rho1=0.84, rho2=0.78, alpha=0.05. Reference reports
+      power = 0.22498.
+    inputs: {rho1: 0.84, rho2: 0.78, n1: 95, n2: 98, alpha: 0.05, sides: 2}
+    expected: {achieved_power: 0.22498}
+    tolerance: {achieved_power: 0.001}
+    source: "Tests for Two Correlations (Example 3)"
