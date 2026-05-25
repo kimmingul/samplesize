@@ -12,6 +12,28 @@ license = { text = "MIT" }
 authors = [
   { name = "Mingul Kim", email = "kimmingul@gmail.com" },
 ]
+keywords = [
+  "sample-size",
+  "power-analysis",
+  "statistics",
+  "clinical-trials",
+  "biostatistics",
+  "research",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Healthcare Industry",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "Topic :: Scientific/Engineering :: Mathematics",
+  "Typing :: Typed",
+]
 dependencies = [
   "numpy>=1.26",
   "scipy>=1.12",
@@ -19,6 +41,12 @@ dependencies = [
   "matplotlib>=3.8",
   "mpmath>=1.3",
 ]
+
+[project.urls]
+Homepage = "https://github.com/kimmingul/samplesize"
+Documentation = "https://kimmingul.github.io/samplesize/"
+Repository = "https://github.com/kimmingul/samplesize"
+Issues = "https://github.com/kimmingul/samplesize/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -37,6 +65,7 @@ include = ["samplesize*"]
 samplesize = [
   "registry/*.json",
   "registry/*.yaml",
+  "reporting/templates/*.yaml",
 ]
 
 [tool.pytest.ini_options]
