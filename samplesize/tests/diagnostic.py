@@ -24,6 +24,8 @@ from __future__ import annotations
 import math
 from typing import Any
 
+import numpy as np
+from scipy.optimize import linprog
 from scipy.stats import norm as _norm, binom as _binom
 
 
@@ -381,9 +383,6 @@ def _tau_max(kappa_val: float, freqs: list[float]) -> float:
     (HiGHS).  Both raters share the same marginals `freqs` per
     "equal frequencies" assumption.
     """
-    import numpy as np
-    from scipy.optimize import linprog
-
     k = len(freqs)
     p_e = sum(f * f for f in freqs)
     if 1 - p_e <= 0:
