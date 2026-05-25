@@ -1,13 +1,20 @@
 # samplesize — Sample-size and power calculations for clinical and applied research
 
+[![CI](https://github.com/kimmingul/samplesize/actions/workflows/ci.yml/badge.svg)](https://github.com/kimmingul/samplesize/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
+[![Methods](https://img.shields.io/badge/methods-222-brightgreen)](docs/METHOD_COVERAGE.md)
+[![Tests](https://img.shields.io/badge/tests-793%20passing-brightgreen)](tests/validation/test_fixture_consistency.py)
+
 A Python package + Claude Code plugin implementing 222 sample-size and power-calculation
 methods validated against worked examples from established statistical references.
 
 ## Status
 
-**v0.1, 19 methods validated.** 70 worked-example fixtures all match to documented
-tolerance; doctor passes 9/9 integrity checks.
-Roadmap in `docs/ROADMAP.md`; live coverage matrix in `docs/METHOD_COVERAGE.md`.
+**v0.1 — 222 methods implemented, 793 worked-example fixture tests passing.**
+Doctor passes 9/9 integrity checks across registry, callables, plugin manifest, and
+reporting templates. Roadmap in `docs/ROADMAP.md`; live coverage matrix in
+`docs/METHOD_COVERAGE.md`.
 
 ## Layout
 
