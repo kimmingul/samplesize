@@ -35,8 +35,8 @@ jobs:
       - name: Method coverage doc is current
         run: python scripts/gen_method_coverage.py --check
 
-      - name: Pytest (worked-example fixtures)
-        run: python -m pytest tests/validation/test_fixture_consistency.py --no-header -q
+      - name: Pytest (full suite — unit + worked-example fixtures)
+        run: python -m pytest tests/ --no-header -q
 
   lint:
     name: lint (ruff)
