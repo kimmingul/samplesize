@@ -1,12 +1,12 @@
 {
-  "name": "samplesize",
+  "name": "samplesize-copilot",
   "version": "0.1.0",
   "description": "Sample-size and power calculator — recommends the right test, runs validated Python calculations, generates power curves and protocol text.",
   "author": {
     "name": "Mingul Kim",
     "email": "kimmingul@gmail.com"
   },
-  "homepage": "https://github.com/kimmingul/SampleSize",
+  "homepage": "https://github.com/kimmingul/samplesize-copilot",
   "keywords": [
     "statistics",
     "sample-size",

@@ -1,7 +1,7 @@
-# Project: SampleSize
+# Project: samplesize-copilot
 
 Goal: a Python sample-size and power-calculation package (`samplesize`) and a
-Claude Code plugin (`plugin/`).
+Claude Code plugin (`samplesize-copilot`, in `plugin/`).
 
 ## Working agreements
 

@@ -1,8 +1,8 @@
-site_name: samplesize
+site_name: samplesize-copilot
 site_description: Sample-size and power calculations for clinical and applied research
-site_url: https://kimmingul.github.io/samplesize/
-repo_url: https://github.com/kimmingul/samplesize
-repo_name: kimmingul/samplesize
+site_url: https://kimmingul.github.io/samplesize-copilot/
+repo_url: https://github.com/kimmingul/samplesize-copilot
+repo_name: kimmingul/samplesize-copilot
 edit_uri: edit/main/docs/
 
 theme:
