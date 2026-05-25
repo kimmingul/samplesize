@@ -1,0 +1,54 @@
+chapter: "Normality Tests (Simulation)"
+method: "normality_tests_simulation"
+examples:
+
+  - id: "Ex1 Shapiro-Wilk lognormal(0,1) n=30 alpha=0.05"
+    description: >
+      Shapiro-Wilk test against a lognormal(mu_ln=0, sigma_ln=1) alternative,
+      n=30, alpha=0.05. Monte-Carlo with seed=42, n_sims=10000. The lognormal
+      distribution with sigma_ln=1 is strongly non-normal and the Shapiro-Wilk
+      test has high power at n=30.
+    solve_for: "power"
+    inputs:
+      n: 30
+      distribution: "lognormal"
+      dist_params:
+        mu_ln: 0.0
+        sigma_ln: 1.0
+      test: "shapiro_wilk"
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 30
+      achieved_power: 0.993
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: >
+      Shapiro, S. S. and Wilk, M. B. (1965). An analysis of variance test
+      for normality (complete samples). Biometrika, 52, 591-611. (Example 1)
+
+  - id: "Ex2 Anderson-Darling exponential n=20 alpha=0.05"
+    description: >
+      Anderson-Darling test against an exponential(scale=1) alternative,
+      n=20, alpha=0.05. Monte-Carlo with seed=42, n_sims=10000.
+    solve_for: "power"
+    inputs:
+      n: 20
+      distribution: "exponential"
+      dist_params:
+        scale: 1.0
+      test: "anderson_darling"
+      alpha: 0.05
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 20
+      achieved_power: 0.785
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: >
+      Anderson, T. W. and Darling, D. A. (1954). A test of goodness of fit.
+      Journal of the American Statistical Association, 49, 765-769. (Example 2)

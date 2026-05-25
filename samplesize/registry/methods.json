@@ -2352,7 +2352,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_correlation:ci_pearson_correlation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2373,7 +2373,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_correlation:ci_spearman_correlation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2394,7 +2394,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_correlation:ci_kendall_tau_b",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2415,7 +2415,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_correlation:ci_intraclass_correlation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2436,7 +2436,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_correlation:ci_point_biserial_correlation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2457,7 +2457,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlation_specialty:tests_two_correlations",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups"
     ],
@@ -2478,7 +2478,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlation_specialty:lin_concordance_correlation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2499,7 +2499,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlation_specialty:tests_intraclass_correlation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "repeated-measures"
     ],
@@ -2520,7 +2520,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlation_specialty:point_biserial_correlation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2541,7 +2541,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlation_simulation:spearman_correlation_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2562,7 +2562,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlation_simulation:kendall_tau_b_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2583,7 +2583,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlation_simulation:pearson_correlation_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2604,7 +2604,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlation_simulation:power_comparison_correlation_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2625,7 +2625,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_regression:ci_linear_regression_slope",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2646,7 +2646,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_regression:ci_michaelis_menten",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2667,7 +2667,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_correlation:ci_kappa",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "paired"
     ],
@@ -2688,7 +2688,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.repeated_measures:ci_one_way_repeated_measures_contrasts",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "repeated-measures"
     ],
@@ -2709,7 +2709,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cox:non_inferiority_cox_regression",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -2730,7 +2730,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cox:equivalence_cox_regression",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -2751,7 +2751,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cox:superiority_by_margin_cox_regression",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -2772,7 +2772,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.survival:non_inferiority_two_hazard_rates",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -2793,7 +2793,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.survival:equivalence_two_hazard_rates",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -2814,7 +2814,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_survival:group_sequential_logrank",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -2835,7 +2835,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cure_model:one_sample_cure_model_logrank",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2856,7 +2856,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.survival:competing_risks_logrank",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -2877,7 +2877,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.anova:factorial_anova_two_way",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample",
       "multi-sample"
@@ -2903,7 +2903,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.anova_rm:anova_repeated_measures_within",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -2927,7 +2927,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.anova_rm:anova_mixed_between_within",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample",
       "multi-sample"
@@ -2953,7 +2953,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.manova:manova_pillai",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample",
       "multi-sample"
@@ -2979,7 +2979,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.anova:ancova_one_way",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample",
       "multi-sample"
@@ -3005,7 +3005,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.regression:multiple_regression_omnibus",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -3030,7 +3030,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.regression:multiple_regression_partial",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -3054,7 +3054,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.regression:multivariate_regression_wilks",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -3079,7 +3079,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.poisson:one_sample_poisson_rate",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -3104,7 +3104,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.poisson:two_sample_poisson_rates",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -3129,7 +3129,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.negative_binomial:negative_binomial_two_rates",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -3154,7 +3154,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.poisson:incidence_rate_ratio_with_followup",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -3180,7 +3180,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.roc:roc_auc_one_sample",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -3206,7 +3206,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.roc:roc_auc_two_independent_samples",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -3231,7 +3231,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.roc:roc_auc_two_correlated_samples",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -3257,7 +3257,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.diagnostic:sensitivity_specificity_one_sample",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -3283,7 +3283,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.diagnostic:sensitivity_specificity_two_samples",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -3308,8 +3308,8 @@
     "category": "Diagnostic - ROC/Sensitivity/Kappa",
     "manual_path": "",
     "callable": "samplesize.tests.diagnostic:kappa_two_raters_binary",
-    "implemented": false,
-    "validated": false,
+    "implemented": true,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -3335,7 +3335,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.nonparametric_simulation:mann_whitney_wilcoxon_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups"
     ],
@@ -3360,7 +3360,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.nonparametric_simulation:kruskal_wallis_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups"
     ],
@@ -3385,7 +3385,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.phase_ii:simon_two_stage",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "single-arm"
     ],
@@ -3409,7 +3409,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.phase_ii:simon_optimal_two_stage",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "single-arm"
     ],
@@ -3432,7 +3432,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.phase_ii:simon_minimax_two_stage",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "single-arm"
     ],
@@ -3455,7 +3455,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.phase_ii:single_stage_phase_ii",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "single-arm"
     ],
@@ -3479,7 +3479,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.phase_ii:three_stage_phase_ii",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "single-arm"
     ],
@@ -3503,7 +3503,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cluster:non_inferiority_cluster_two_means",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "clustered"
@@ -3528,7 +3528,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cluster:equivalence_cluster_two_means",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "clustered"
@@ -3553,7 +3553,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cluster:superiority_by_margin_cluster_two_means",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "clustered"
@@ -3577,7 +3577,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cluster:non_inferiority_cluster_two_proportions",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "clustered"
@@ -3601,7 +3601,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cluster:non_inferiority_cluster_ratio_two_proportions",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "clustered"
@@ -3626,7 +3626,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cluster:equivalence_cluster_two_proportions",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "clustered"
@@ -3650,7 +3650,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cluster:cluster_two_poisson_rates",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "clustered"
@@ -3675,7 +3675,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cluster_survival:cluster_logrank",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "clustered",
@@ -3701,7 +3701,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential:group_sequential_two_proportions",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential"
@@ -3726,7 +3726,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_two_means_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -3750,7 +3750,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_two_proportions_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -3774,7 +3774,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_logrank_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -3800,7 +3800,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_ni_two_means_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -3824,7 +3824,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_ni_two_proportions_difference_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -3848,7 +3848,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cross_over_higher_order:non_inferiority_higher_order_cross_over_ratio",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "cross-over"
     ],
@@ -3872,7 +3872,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cross_over_higher_order:equivalence_higher_order_cross_over_ratio",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "cross-over"
     ],
@@ -3896,7 +3896,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.conditional_power:conditional_power_one_proportion",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -3919,7 +3919,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.conditional_power:conditional_power_two_proportions",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups"
     ],
@@ -3942,7 +3942,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.conditional_power:conditional_power_logrank",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "survival"
@@ -3966,7 +3966,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.repeated_measures:two_means_repeated_measures",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "repeated-measures"
@@ -3992,7 +3992,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.repeated_measures:two_proportions_repeated_measures",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "repeated-measures"
@@ -4018,7 +4018,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.logistic_regression:logistic_regression_simple",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample",
       "independent-groups"
@@ -4045,7 +4045,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.linear_regression:linear_regression_test_slope",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -4070,7 +4070,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.conditional_power_crossover:conditional_power_2x2_crossover",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "cross-over"
     ],
@@ -4094,7 +4094,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cross_over_mxm:mxm_crossover",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "cross-over",
       "repeated-measures"
@@ -4122,7 +4122,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.control_charts:control_chart_means_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "quality-control"
     ],
@@ -4147,7 +4147,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.control_charts:control_chart_variability_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "quality-control"
     ],
@@ -4172,7 +4172,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.acceptance_sampling:acceptance_sampling_attributes",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "quality-control"
     ],
@@ -4198,7 +4198,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_means:ci_one_mean",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -4222,7 +4222,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_means:ci_paired_means",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "paired"
     ],
@@ -4246,7 +4246,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_means:ci_difference_two_means",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups"
     ],
@@ -4270,7 +4270,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlated_proportions:non_inferiority_paired_proportions",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "paired"
     ],
@@ -4294,7 +4294,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlated_proportions:equivalence_paired_proportions",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "paired"
     ],
@@ -4318,7 +4318,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.correlated_proportions:non_inferiority_paired_proportions_ratio",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "paired"
     ],
@@ -4342,7 +4342,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.survival:non_inferiority_logrank",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups"
     ],
@@ -4366,7 +4366,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.survival:one_sample_logrank",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -4391,7 +4391,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.exponential:tests_one_exponential_mean",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -4416,7 +4416,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.exponential:tests_two_exponential_means",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -4441,7 +4441,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.mean_simulation:tests_one_mean_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -4465,7 +4465,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.mean_simulation:tests_two_means_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -4489,7 +4489,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.mean_simulation:tests_paired_means_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "paired"
     ],
@@ -4513,7 +4513,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.mean_simulation:equivalence_two_means_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -4537,7 +4537,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.mean_simulation:equivalence_paired_means_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "paired"
     ],
@@ -4561,7 +4561,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.superiority:superiority_by_margin_one_mean",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -4585,7 +4585,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.cross_over_higher_order:tests_ratio_two_means_higher_order_crossover",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "cross-over"
     ],
@@ -4609,7 +4609,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.roc:ci_auc_roc",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "diagnostic"
     ],
@@ -4633,7 +4633,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.linear_regression:tests_difference_two_regression_slopes",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups"
     ],
@@ -4657,7 +4657,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.linear_regression:tests_difference_two_regression_intercepts",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups"
     ],
@@ -4681,7 +4681,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.poisson_regression:poisson_regression",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups"
     ],
@@ -4706,7 +4706,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.probit:probit_analysis",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups"
     ],
@@ -4731,7 +4731,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.pms:post_marketing_surveillance",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "cohort",
       "case-control"
@@ -4757,7 +4757,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.mendelian:mendelian_randomization_continuous",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "observational"
     ],
@@ -4782,7 +4782,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_means:ci_one_mean_tolerance",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "one-sample"
     ],
@@ -4807,7 +4807,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_means:ci_paired_means_tolerance",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "paired"
     ],
@@ -4832,7 +4832,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_means:ci_difference_two_means_tolerance",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "two-sample"
     ],
@@ -4856,7 +4856,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_exponential:ci_exponential_lifetime_mean",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "survival",
       "reliability"
@@ -4882,7 +4882,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_exponential:ci_exponential_hazard_rate",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "survival",
       "reliability"
@@ -4908,7 +4908,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_exponential:ci_exponential_reliability",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "survival",
       "reliability"
@@ -4934,7 +4934,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.ci_exponential:ci_exponential_lifetime_percentile",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "survival",
       "reliability"
@@ -4960,7 +4960,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_ni_two_proportions_ratio_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -4984,7 +4984,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_ni_two_proportions_odds_ratio_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -5008,7 +5008,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_sup_two_proportions_difference_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -5032,7 +5032,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_sup_two_proportions_ratio_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -5056,7 +5056,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_sup_two_proportions_odds_ratio_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -5080,7 +5080,7 @@
     "manual_path": "",
     "callable": "samplesize.tests.group_sequential_simulation:group_sequential_two_means_normality_simulation",
     "implemented": true,
-    "validated": false,
+    "validated": true,
     "study_types": [
       "independent-groups",
       "group-sequential",
@@ -5094,6 +5094,274 @@
       "group sequential two means normality simulation"
     ],
     "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "terry_hoeffding_simulation",
+    "name": "Terry-Hoeffding Normal-Scores Tests of Means (Simulation)",
+    "category": "Nonparametric",
+    "manual_path": "",
+    "callable": "samplesize.tests.normal_scores_simulation:terry_hoeffding_simulation",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups",
+      "simulation"
+    ],
+    "outcome": "continuous",
+    "design": "two-sample",
+    "hypothesis": "difference",
+    "purpose": "Monte-Carlo power for the Terry-Hoeffding c1 normal-scores two-sample test of means.",
+    "synonyms": [
+      "terry hoeffding normal scores simulation",
+      "c1 statistic simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "van_der_waerden_simulation",
+    "name": "Van der Waerden Normal Quantiles Tests of Means (Simulation)",
+    "category": "Nonparametric",
+    "manual_path": "",
+    "callable": "samplesize.tests.normal_scores_simulation:van_der_waerden_simulation",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups",
+      "simulation"
+    ],
+    "outcome": "continuous",
+    "design": "two-sample",
+    "hypothesis": "difference",
+    "purpose": "Monte-Carlo power for the Van der Waerden X normal-scores two-sample test of means.",
+    "synonyms": [
+      "van der waerden normal quantiles simulation",
+      "X statistic simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "normality_tests_simulation",
+    "name": "Normality Tests (Simulation)",
+    "category": "Goodness-of-Fit",
+    "manual_path": "",
+    "callable": "samplesize.tests.normality_simulation:normality_tests_simulation",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample",
+      "simulation"
+    ],
+    "outcome": "continuous",
+    "design": "one-sample",
+    "hypothesis": "goodness-of-fit",
+    "purpose": "Monte-Carlo power for Shapiro-Wilk, Anderson-Darling, and D'Agostino-Pearson normality tests against specified alternative distributions.",
+    "synonyms": [
+      "shapiro wilk simulation",
+      "anderson darling simulation",
+      "dagostino pearson simulation",
+      "normality test power simulation"
+    ],
+    "solve_for_options": [
+      "power"
+    ]
+  },
+  {
+    "id": "tests_two_poisson_means",
+    "name": "Tests for Two Poisson Means",
+    "category": "Counts",
+    "manual_path": "",
+    "callable": "samplesize.tests.poisson:tests_two_poisson_means",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "independent-groups"
+    ],
+    "outcome": "count",
+    "design": "two-sample",
+    "hypothesis": "difference",
+    "purpose": "Sample size and power for two-sample test of equality of two Poisson means using the normal approximation.",
+    "synonyms": [
+      "two poisson means test",
+      "equality of Poisson counts",
+      "Poisson two-sample means"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "randomized_block_anova",
+    "name": "Randomized Block Analysis of Variance",
+    "category": "ANOVA",
+    "manual_path": "",
+    "callable": "samplesize.tests.randomized_block:randomized_block_anova",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "blocked"
+    ],
+    "outcome": "continuous",
+    "design": "randomized-complete-block",
+    "hypothesis": "difference",
+    "purpose": "Power and sample size (number of blocks) for the F-test of treatment effects in a randomized complete block design.",
+    "synonyms": [
+      "RCBD power",
+      "randomized complete block design",
+      "block design ANOVA"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "reference_intervals_clinical_lab",
+    "name": "Reference Intervals for Clinical and Lab Medicine",
+    "category": "Reference Intervals",
+    "manual_path": "",
+    "callable": "samplesize.tests.reference_intervals:reference_intervals_clinical_lab",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "one-sample"
+    ],
+    "outcome": "continuous",
+    "design": "reference-interval",
+    "hypothesis": "tolerance-interval",
+    "purpose": "Sample size for establishing a normal reference interval with specified coverage and confidence using the two-sided tolerance interval approach (CLSI EP28-A3c).",
+    "synonyms": [
+      "reference range sample size",
+      "CLSI EP28 sample size",
+      "tolerance interval reference interval",
+      "clinical lab reference interval"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "tests_difference_two_hazard_rates",
+    "name": "Tests for the Difference of Two Hazard Rates Assuming an Exponential Model",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.survival:tests_difference_two_hazard_rates",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "survival",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Two-sided test for the difference of two exponential hazard rates with uniform accrual and loss to follow-up (Chow/Shao/Wang; Lachin-Foulkes).",
+    "synonyms": [
+      "two hazard rates test",
+      "exponential hazard difference"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_two_hazard_rates",
+    "name": "Superiority by a Margin Tests for the Difference of Two Hazard Rates Assuming an Exponential Model",
+    "category": "Survival",
+    "manual_path": "",
+    "callable": "samplesize.tests.survival:superiority_by_margin_two_hazard_rates",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "two-sample"
+    ],
+    "outcome": "survival",
+    "design": "parallel",
+    "hypothesis": "superiority",
+    "purpose": "Superiority-by-margin test for the difference of two exponential hazard rates (Chow/Shao/Wang).",
+    "synonyms": [
+      "superiority margin hazard rates"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_paired_means_difference",
+    "name": "Equivalence Tests for the Difference Between Two Paired Means",
+    "category": "Means - T/Z Tests",
+    "manual_path": "",
+    "callable": "samplesize.tests.equivalence:equivalence_paired_means_difference",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "continuous",
+    "design": "parallel",
+    "hypothesis": "equivalence",
+    "purpose": "TOST equivalence test for the difference between two paired means (Schuirmann/Phillips).",
+    "synonyms": [
+      "paired means equivalence",
+      "TOST paired means"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "equivalence_paired_proportions_ratio",
+    "name": "Equivalence Tests for the Ratio of Two Correlated Proportions",
+    "category": "Proportions - Correlated",
+    "manual_path": "",
+    "callable": "samplesize.tests.correlated_proportions:equivalence_paired_proportions_ratio",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "paired"
+    ],
+    "outcome": "binary",
+    "design": "crossover",
+    "hypothesis": "equivalence",
+    "purpose": "TOST equivalence test for the ratio of two correlated (matched-pair) proportions (Nam & Blackwelder 2002).",
+    "synonyms": [
+      "correlated proportions ratio equivalence",
+      "matched-pair ratio equivalence"
+    ],
+    "solve_for_options": [
+      "n",
+      "power"
+    ]
+  },
+  {
+    "id": "superiority_by_margin_higher_order_cross_over_ratio",
+    "name": "Superiority by a Margin Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design",
+    "category": "Cross-Over",
+    "manual_path": "",
+    "callable": "samplesize.tests.cross_over_higher_order:superiority_by_margin_higher_order_cross_over_ratio",
+    "implemented": true,
+    "validated": true,
+    "study_types": [
+      "cross-over"
+    ],
+    "outcome": "continuous",
+    "design": "higher-order-cross-over",
+    "hypothesis": "superiority",
+    "purpose": "Superiority-by-margin test for the ratio of two means in a higher-order cross-over design (multiplicative/log-scale model).",
+    "synonyms": [
+      "higher-order crossover ratio superiority"
+    ],
+    "solve_for_options": [
+      "n",
       "power"
     ]
   }

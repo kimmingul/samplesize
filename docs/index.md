@@ -2,22 +2,22 @@
 
 **Sample-size and power calculations for clinical and applied research.**
 
-A Python package + Claude Code plugin implementing 222 sample-size and
+A Python package + Claude Code plugin implementing 234 sample-size and
 power-calculation methods, validated against worked examples from
 established statistical references.
 
 [![CI](https://github.com/kimmingul/samplesize/actions/workflows/ci.yml/badge.svg)](https://github.com/kimmingul/samplesize/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/kimmingul/samplesize/blob/main/LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://github.com/kimmingul/samplesize/blob/main/pyproject.toml)
-[![Methods](https://img.shields.io/badge/methods-222-brightgreen)](METHOD_COVERAGE.md)
-[![Tests](https://img.shields.io/badge/tests-793%20passing-brightgreen)](https://github.com/kimmingul/samplesize/blob/main/tests/validation/test_fixture_consistency.py)
+[![Methods](https://img.shields.io/badge/methods-234-brightgreen)](METHOD_COVERAGE.md)
+[![Tests](https://img.shields.io/badge/tests-819%20passing-brightgreen)](https://github.com/kimmingul/samplesize/blob/main/tests/validation/test_fixture_consistency.py)
 
 ## What's here
 
-- **222 methods** spanning means, proportions, correlation, survival,
+- **234 methods** spanning means, proportions, correlation, survival,
   ANOVA/GLM, ROC/diagnostic accuracy, group-sequential, cluster-randomized,
   cross-over, Phase II clinical trials, and specialty designs.
-- **793 worked-example fixture tests** — every method has at least two
+- **819 worked-example fixture tests** — every method has at least two
   pinned reference examples with documented tolerances.
 - **Doctor integrity gate** — 9 cross-checks on the method registry,
   callable imports, fixture references, plugin manifest, and reporting

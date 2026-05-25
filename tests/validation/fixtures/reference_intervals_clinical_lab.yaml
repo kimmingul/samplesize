@@ -1,0 +1,42 @@
+chapter: "Reference Intervals for Clinical and Lab Medicine"
+method: "reference_intervals_clinical_lab"
+examples:
+
+  - id: "Ex1 CLSI EP28-A3c 95pct coverage 90pct confidence default"
+    description: >
+      CLSI EP28-A3c minimum recommendation: n=120 for a 95% reference interval
+      with 90% confidence. The tolerance factor k(120, 0.95, 0.90) ≈ 2.179.
+      No sigma or target_k provided; returns the CLSI fixed recommendation.
+    solve_for: "n"
+    inputs:
+      coverage: 0.95
+      confidence: 0.90
+    expected:
+      n: 120
+      tolerance_factor_k: 2.1792
+    tolerance:
+      n: 0
+      tolerance_factor_k: 0.001
+    source: >
+      CLSI EP28-A3c (2010). Defining, Establishing, and Verifying Reference
+      Intervals in the Clinical Laboratory; Approved Guideline, 3rd ed.
+      Clinical and Laboratory Standards Institute. (Example 1)
+
+  - id: "Ex2 95pct coverage 90pct confidence target_k=2.20"
+    description: >
+      Find smallest n such that the tolerance factor k(n, 0.95, 0.90) <= 2.20.
+      At n=102, k ≈ 2.1999 <= 2.20.
+    solve_for: "n"
+    inputs:
+      coverage: 0.95
+      confidence: 0.90
+      target_k: 2.20
+    expected:
+      n: 102
+      tolerance_factor_k: 2.1999
+    tolerance:
+      n: 0
+      tolerance_factor_k: 0.001
+    source: >
+      Hahn, G. J. and Meeker, W. Q. (1991). Statistical Intervals: A Guide
+      for Practitioners. Wiley. Chapter 4. (Example 2)

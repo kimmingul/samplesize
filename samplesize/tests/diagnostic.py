@@ -394,18 +394,20 @@ def _tau_max(kappa_val: float, freqs: list[float]) -> float:
 
     n_vars = k * k
 
-    # Maximise: (1-p_o)^2 · Σ_{i≠j} p_ij · (freqs[j]+freqs[i])^2
-    #         - 2(1-p_o)(1-p_e) · Σ_i p_ii · (2·freqs[i])^2
-    # (additive constants drop in the optimisation step).
+    # Objective = A + B  (the constant term C drops out of the maximisation).
+    # Fleiss-Cohen-Everitt (1969) large-sample variance numerator:
+    #   A = Σ_i p_ii · [(1-p_e) - 2·freqs[i]·(1-p_o)]^2
+    #   B = (1-p_o)^2 · Σ_{i≠j} p_ij · (freqs[i]+freqs[j])^2
+    # Both A and B are linear in the table entries once the marginals and p_o
+    # are fixed, so the maximum-variance table is found by linear programming.
     c = np.zeros(n_vars)
     a = (1 - p_o) ** 2
-    b = 2 * (1 - p_o) * (1 - p_e)
     for i in range(k):
         for j in range(k):
             if i != j:
-                c[i * k + j] = a * (freqs[j] + freqs[i]) ** 2
+                c[i * k + j] = a * (freqs[i] + freqs[j]) ** 2
             else:
-                c[i * k + j] = -b * (2 * freqs[i]) ** 2
+                c[i * k + j] = ((1 - p_e) - 2 * freqs[i] * (1 - p_o)) ** 2
 
     A_eq, b_eq = [], []
     for i in range(k):  # row sums
@@ -432,17 +434,16 @@ def _tau_max(kappa_val: float, freqs: list[float]) -> float:
         return 0.0
 
     p_ij = res.x.reshape(k, k)
-    sum_off = sum(
-        p_ij[i, j] * (freqs[j] + freqs[i]) ** 2
+    term_a = sum(
+        p_ij[i, i] * ((1 - p_e) - 2 * freqs[i] * (1 - p_o)) ** 2
+        for i in range(k)
+    )
+    term_b = (1 - p_o) ** 2 * sum(
+        p_ij[i, j] * (freqs[i] + freqs[j]) ** 2
         for i in range(k) for j in range(k) if i != j
     )
-    sum_diag = sum(p_ij[i, i] * (2 * freqs[i]) ** 2 for i in range(k))
-    inner = (
-        p_o * (1 - p_e) ** 2
-        + (1 - p_o) ** 2 * sum_off
-        - 2 * (1 - p_o) * (1 - p_e) * sum_diag
-        - (p_o * p_e - 2 * p_e + p_o) ** 2
-    )
+    term_c = (p_o * p_e - 2 * p_e + p_o) ** 2
+    inner = term_a + term_b - term_c
     if inner < 0:
         return 0.0
     return math.sqrt(inner) / (1 - p_e) ** 2

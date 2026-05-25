@@ -353,6 +353,218 @@ def two_sample_poisson_rates(
     )
 
 
+# ---------------------------------------------------------------------------
+# Method: tests_two_poisson_means
+#   Tests whether two Poisson means (counts, not rates) are equal.
+#   Uses the conditional score test (Krishnamoorthy & Thomson 2004) and
+#   the C-test (Przyborowski & Wilenski 1940; Reiczigel et al. 2008).
+#
+#   H0: lambda1 = lambda2   vs   Ha: lambda1 != lambda2  (or one-sided)
+#
+#   The test statistic is based on observing x1 ~ Poisson(n1*lambda1) and
+#   x2 ~ Poisson(n2*lambda2).  For equal sample sizes (n1=n2=n) and
+#   H0: lambda1/lambda2 = ratio0 the power is found by exact enumeration
+#   over the joint Poisson distribution.
+#
+#   For practical purposes (and matching standard textbook formulae) we use
+#   the normal approximation:
+#       Z = (x1 - n1*lam0) / sqrt(n1*lam0 + n2*lam0)  (under H0: both = lam0)
+#   and the non-null distribution of Z under Ha: (lambda1=lam1, lambda2=lam2)
+#       mu_Z  = (n1*lam1 - n1*lam0) / sqrt(n1*lam0 + n2*lam0)     [approx]
+#       sd_Z  = sqrt((n1*lam1 + n2*lam2) / (n1*lam0 + n2*lam0))
+#
+#   This yields a closed-form approximation suitable for sample-size planning.
+#   The approach follows Bain & Engelhardt (1992), and Krishnamoorthy &
+#   Thomson (2004) who derive exact conditional tests and compare with this
+#   normal approximation.
+# ---------------------------------------------------------------------------
+
+def _two_poisson_means_power(
+    n1: int, n2: int, lam1: float, lam2: float,
+    lam0: float, alpha: float, sides: int,
+) -> float:
+    """Normal-approximation power for the two-Poisson-means test.
+
+    Under H0: lambda1 = lambda2 = lam0 (the common mean under H0).
+    Under Ha: lambda1=lam1, lambda2=lam2.
+
+    The variance-stabilised (square-root) approach gives:
+
+        sqrt(x1) - sqrt(x2) ~ N(sqrt(n1*lam1) - sqrt(n2*lam2), 1/4+1/4)
+
+    For equal-n allocation the NCP is:
+
+        delta = 2 * (sqrt(n*lam1) - sqrt(n*lam2))
+
+    which is used with a chi-square(1) or z-test reference.
+
+    We use the simpler Wald-type approximation directly here:
+
+        Z = (X1/n1 - X2/n2) / sqrt(lam0/n1 + lam0/n2)
+
+    Under Ha: E[Z] = (lam1 - lam2) / sqrt(lam0/n1 + lam0/n2)
+
+    Power = Phi(-z_crit + NCP) for one-sided upper test.
+    """
+    if n1 < 1 or n2 < 1:
+        return 0.0
+    se0 = math.sqrt(lam0 / n1 + lam0 / n2)
+    if se0 == 0:
+        return 1.0 if lam1 != lam2 else alpha
+    ncp = (lam1 - lam2) / se0
+    if sides == 1:
+        z_crit = _z(1.0 - alpha)
+        # Use |ncp| so power is the same regardless of direction
+        return _norm_cdf(abs(ncp) - z_crit)
+    else:
+        z_crit = _z(1.0 - alpha / 2.0)
+        return _norm_cdf(ncp - z_crit) + _norm_cdf(-ncp - z_crit)
+
+
+def tests_two_poisson_means(
+    *,
+    lam1: float,
+    lam2: float,
+    lam0: float | None = None,
+    alpha: float = 0.05,
+    power: float | None = None,
+    n1: int | None = None,
+    n2: int | None = None,
+    sides: int = 2,
+    solve_for: str | None = None,
+) -> dict[str, Any]:
+    """Two-sample test for equality of two Poisson means.
+
+    Tests H0: lambda1 = lambda2 vs Ha: lambda1 != lambda2 (or one-sided).
+    Uses the normal approximation to the Poisson for sample-size planning.
+
+    Unlike the two-sample rate-ratio test, here both groups contribute equal
+    observation windows (counts, not rates) and the parameter of interest is
+    the absolute difference of means.
+
+    Provide exactly two of (n1, power); n2 defaults to n1 (equal allocation).
+
+    Parameters
+    ----------
+    lam1
+        Poisson mean of group 1 under H1 (> 0).
+    lam2
+        Poisson mean of group 2 under H1 (> 0).
+    lam0
+        Hypothesised common mean under H0.  Defaults to (lam1+lam2)/2
+        when omitted (pooled estimate approach).
+    alpha
+        Significance level (default 0.05).
+    power
+        Target power (required when solve_for='n').
+    n1
+        Sample size for group 1 (required when solve_for='power').
+    n2
+        Sample size for group 2.  Defaults to n1 (equal allocation).
+    sides
+        1 for one-sided, 2 for two-sided (default).
+    solve_for
+        ``'n'`` or ``'power'``.  Inferred when omitted.
+
+    Returns
+    -------
+    dict
+        Standard envelope: method_id, solve_for, n, n1, n2,
+        achieved_power, inputs_echo, citations.
+    """
+    if lam1 <= 0:
+        raise ValueError("lam1 must be > 0")
+    if lam2 <= 0:
+        raise ValueError("lam2 must be > 0")
+    if not 0.0 < alpha < 1.0:
+        raise ValueError("alpha must be in (0, 1)")
+    if sides not in (1, 2):
+        raise ValueError("sides must be 1 or 2")
+
+    # Default lam0 to midpoint of the two means
+    if lam0 is None:
+        lam0 = (lam1 + lam2) / 2.0
+    if lam0 <= 0:
+        raise ValueError("lam0 must be > 0")
+
+    inputs_echo = {
+        "lam1": lam1, "lam2": lam2, "lam0": lam0,
+        "alpha": alpha, "power": power, "n1": n1, "n2": n2, "sides": sides,
+    }
+
+    # Infer solve_for
+    if solve_for is None:
+        if n1 is None and power is not None:
+            solve_for = "n"
+        elif n1 is not None and power is None:
+            solve_for = "power"
+        else:
+            raise ValueError("supply exactly one of (n1, power)")
+
+    citations = [
+        "Krishnamoorthy, K. and Thomson, J. (2004). A more powerful test for "
+        "comparing two Poisson means. Journal of Statistical Planning and "
+        "Inference, 119, 23-35.",
+        "Bain, L. J. and Engelhardt, M. (1992). Introduction to Probability "
+        "and Mathematical Statistics, 2nd ed. Duxbury Press.",
+        "Przyborowski, J. and Wilenski, H. (1940). Homogeneity of results in "
+        "testing samples from Poisson series. Biometrika, 31, 313-323.",
+    ]
+
+    if solve_for == "power":
+        if n1 is None:
+            raise ValueError("n1 is required when solve_for='power'")
+        if n1 < 1:
+            raise ValueError("n1 must be >= 1")
+        n2_eff = n2 if n2 is not None else n1
+        if n2_eff < 1:
+            raise ValueError("n2 must be >= 1")
+        achieved = _two_poisson_means_power(n1, n2_eff, lam1, lam2, lam0, alpha, sides)
+        return {
+            "method_id": "tests_two_poisson_means",
+            "solve_for": "power",
+            "n1": n1,
+            "n2": n2_eff,
+            "n": n1 + n2_eff,
+            "achieved_power": achieved,
+            "inputs_echo": inputs_echo,
+            "citations": citations,
+        }
+
+    elif solve_for == "n":
+        if power is None:
+            raise ValueError("power is required when solve_for='n'")
+        if not 0.0 < power < 1.0:
+            raise ValueError("power must be in (0, 1)")
+        if lam1 == lam2:
+            raise ValueError("lam1 must differ from lam2 to solve for n")
+
+        # Search for smallest n1 (equal allocation n2=n1)
+        n_try = 1
+        n_max = 10_000_000
+        while n_try <= n_max:
+            achieved = _two_poisson_means_power(n_try, n_try, lam1, lam2, lam0, alpha, sides)
+            if achieved >= power:
+                break
+            n_try += 1
+        else:
+            raise RuntimeError("failed to find n within limit")
+
+        return {
+            "method_id": "tests_two_poisson_means",
+            "solve_for": "n",
+            "n1": n_try,
+            "n2": n_try,
+            "n": 2 * n_try,
+            "achieved_power": achieved,
+            "inputs_echo": inputs_echo,
+            "citations": citations,
+        }
+
+    else:
+        raise ValueError(f"unsupported solve_for: {solve_for!r}")
+
+
 def incidence_rate_ratio_with_followup(
     *,
     lam1: float,

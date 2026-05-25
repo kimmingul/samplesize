@@ -986,6 +986,179 @@ _CITATIONS_RATIO_HO = [
 ]
 
 
+# ===========================================================================
+# 7) Superiority by a Margin Tests for the Ratio of Two Means in a
+#    Higher-Order Cross-Over Design
+# ===========================================================================
+#
+# On the log scale the superiority margin SM becomes:
+#   Higher better: eps_log = ln(1 + SM)  (>0); Ha: ln(phi) > eps_log
+#   Lower  better: eps_log = ln(1 - SM)  (<0); Ha: ln(phi) < eps_log
+#
+# Power:
+#   higher better: T_V( (ln(R1) - eps_log)/se - t_{V,1-alpha} )
+#   lower  better: 1 - T_V( t_{V,1-alpha} - (eps_log - ln(R1))/se )
+# ===========================================================================
+
+
+def _power_sup_ratio_ho(
+    *, r1: float, sm: float, cov: float, n_total: int,
+    S: int, Vfn, b: float, alpha: float,
+    higher_means_better: bool,
+) -> float:
+    """Power for superiority-by-margin on ratio in higher-order cross-over.
+
+    Superiority by a Margin Tests for the
+    Ratio of Two Means in a Higher-Order Cross-Over Design.
+    """
+    if n_total < S + 1:
+        return 0.0
+    n_avg = n_total / S
+    V = Vfn(n_avg)
+    if V <= 0:
+        return 0.0
+    sigma_w = _sigma_w_from_cov(cov)
+    se = sigma_w * math.sqrt(b / n_avg)
+    if se <= 0:
+        return 0.0
+    tc = D.t_ppf(1.0 - alpha, V)
+    log_r1 = math.log(r1)
+    if higher_means_better:
+        # Ha: phi > 1 + SM  (higher better)
+        eps_log = math.log(1.0 + sm)
+        arg = (log_r1 - eps_log) / se
+        return _stdt(arg - tc, V)
+    else:
+        # Ha: phi < 1 - SM  (lower better)
+        if sm >= 1:
+            raise ValueError("sm must be < 1 when higher_means_better=False")
+        eps_log = math.log(1.0 - sm)
+        arg = (eps_log - log_r1) / se
+        return 1.0 - _stdt(tc - arg, V)
+
+
+def superiority_by_margin_higher_order_cross_over_ratio(
+    *,
+    sm: float,
+    r1: float,
+    cov: float,
+    design: str | None = None,
+    n_sequences: int | None = None,
+    n_periods: int | None = None,
+    efficiency: float | None = None,
+    higher_means_better: bool = True,
+    alpha: float = 0.05,
+    power: float | None = None,
+    n: int | None = None,
+    equal_per_sequence: bool = True,
+    solve_for: str | None = None,
+) -> dict[str, Any]:
+    """Superiority-by-a-margin test for ratio of two means in a higher-order
+    cross-over design.
+
+    Superiority by a Margin Tests for the Ratio of Two Means in a
+    Higher-Order Cross-Over Design.
+
+    The analysis uses the multiplicative model on the log scale.
+    ``sigma_w = sqrt(ln(COV^2 + 1))``.
+
+    Inputs
+    ------
+    sm
+        Superiority margin magnitude (positive).  When
+        ``higher_means_better=True``, the lower bound for superiority is
+        ``1 + SM`` (so SM > 0).  When False, the upper bound is ``1 - SM``
+        (SM must be < 1).
+    r1
+        True mean ratio mu_T / mu_R at which power is computed.
+    cov
+        Coefficient of variation on the original scale.
+    design / n_sequences / n_periods / efficiency
+        Higher-order design specification (see
+        ``tests_higher_order_cross_over_diff``).
+    higher_means_better
+        If True (default), H1: phi > 1 + SM.  If False, H1: phi < 1 - SM.
+    alpha
+        One-sided type-I error rate.  Default 0.05.
+    power, n
+        Provide exactly one; the other is solved for.
+    equal_per_sequence
+        When solving for N, restrict to multiples of S.  Default True.
+    """
+    if sm <= 0:
+        raise ValueError("sm must be positive")
+    if not higher_means_better and sm >= 1:
+        raise ValueError("sm must be < 1 when higher_means_better=False")
+    if r1 <= 0:
+        raise ValueError("r1 must be positive")
+    if cov <= 0:
+        raise ValueError("cov must be positive")
+    if not 0 < alpha < 0.5:
+        raise ValueError("alpha must be in (0, 0.5)")
+
+    S, Vfn, b, label = _resolve_design(
+        design, n_sequences, n_periods, efficiency
+    )
+
+    inputs_echo = {
+        "sm": sm, "r1": r1, "cov": cov,
+        "design": design, "n_sequences": n_sequences,
+        "n_periods": n_periods, "efficiency": efficiency,
+        "higher_means_better": higher_means_better,
+        "alpha": alpha, "power": power, "n": n,
+        "equal_per_sequence": equal_per_sequence,
+    }
+
+    given = sum(x is not None for x in (power, n))
+    if given != 1:
+        raise ValueError("supply exactly one of (power, n)")
+    if solve_for is None:
+        solve_for = "n" if n is None else "power"
+
+    if solve_for == "power":
+        assert n is not None
+        achieved = _power_sup_ratio_ho(
+            r1=r1, sm=sm, cov=cov, n_total=n,
+            S=S, Vfn=Vfn, b=b, alpha=alpha,
+            higher_means_better=higher_means_better,
+        )
+        n_used = n
+    elif solve_for == "n":
+        assert power is not None
+
+        def _pwr(nt: int) -> float:
+            return _power_sup_ratio_ho(
+                r1=r1, sm=sm, cov=cov, n_total=nt,
+                S=S, Vfn=Vfn, b=b, alpha=alpha,
+                higher_means_better=higher_means_better,
+            )
+
+        n_used, achieved = _solve_n(
+            _pwr, S=S, target_power=power,
+            equal_per_sequence=equal_per_sequence,
+        )
+    else:
+        raise ValueError(f"unknown solve_for: {solve_for!r}")
+
+    sigma_w = _sigma_w_from_cov(cov)
+
+    return {
+        "method_id": "superiority_by_margin_higher_order_cross_over_ratio",
+        "solve_for": solve_for,
+        "n": n_used,
+        "n_per_sequence": n_used // S if S > 0 else None,
+        "n_sequences": S,
+        "design_label": label,
+        "sigma_w": sigma_w,
+        "achieved_power": achieved,
+        "inputs_echo": inputs_echo,
+        "citations": [
+            "Ratio of Two Means in a Higher-Order Cross-Over Design.",
+            *_CITATIONS_RATIO_HO,
+        ],
+    }
+
+
 def _sigma_w_from_cov(cov: float) -> float:
     """Log-scale within-subject SD from original-scale COV."""
     return math.sqrt(math.log(cov * cov + 1.0))

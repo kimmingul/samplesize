@@ -1,0 +1,52 @@
+chapter: "Equivalence Tests for the Ratio of Two Correlated Proportions"
+method: "equivalence_paired_proportions_ratio"
+examples:
+
+  - id: "Ex2 n-solve Re=0.95 Ps=0.80 P01=0.05 power=0.90 N=688"
+    description: >
+      Example 2 (Finding Sample Size), normal-approximation method.
+      Two-sided equivalence on the ratio PT/PS, equivalence ratio Re=0.95
+      (region 0.95..1/0.95), actual ratio Ra=1.0, standard proportion
+      Ps=0.80, nuisance P01=0.05, alpha=0.05, target power 0.90.
+      Reference reports N=688, power 0.90046.
+    solve_for: "n"
+    inputs:
+      ps: 0.80
+      ra: 1.0
+      re: 0.95
+      nuisance_type: "p01"
+      nuisance_value: 0.05
+      alpha: 0.05
+      power: 0.90
+      sides: 2
+    expected:
+      n: 688
+      achieved_power: 0.90046
+    tolerance:
+      n: 1
+      achieved_power: 0.001
+    source: >
+      Equivalence Tests for the Ratio of Two Correlated Proportions
+      (Example 2, P01=0.05 row: N=688). Nam & Blackwelder (2002).
+
+  - id: "Ex1 power-solve Re=0.95 Ps=0.80 P01=0.05 N=450"
+    description: >
+      Example 1 (Finding Power), P01=0.05, N=450.  Same Re/Ra/Ps/alpha
+      as Example 2.  Reference power 0.68145.
+    solve_for: "power"
+    inputs:
+      ps: 0.80
+      ra: 1.0
+      re: 0.95
+      nuisance_type: "p01"
+      nuisance_value: 0.05
+      alpha: 0.05
+      n: 450
+      sides: 2
+    expected:
+      achieved_power: 0.68145
+    tolerance:
+      achieved_power: 0.001
+    source: >
+      Equivalence Tests for the Ratio of Two Correlated Proportions
+      (Example 1, P01=0.05 / N=450 row). Nam & Blackwelder (2002).

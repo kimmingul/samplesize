@@ -1,4 +1,4 @@
-"""Equivalence (TOST) tests, parallel two-group designs.
+"""Equivalence (TOST) tests — parallel two-group and paired designs.
 
 - "Equivalence Tests for Two Means using Differences"
 - "Equivalence Tests for the Difference Between Two Proportions"
@@ -651,5 +651,159 @@ def equivalence_two_means_ratios(
             "23:1921-1986.",
             "Schuirmann, D.J. (1987). A comparison of the two one-sided "
             "tests procedure.",
+        ],
+    }
+
+
+# -------------------- Equivalence for paired means (TOST, paired t-test) ---
+
+def _eq_paired_means_power(
+    diff: float, sd: float,
+    lower_margin: float, upper_margin: float,
+    alpha: float, n: int,
+) -> float:
+    """TOST power for equivalence of two paired means (Chapter 519).
+
+    Uses bivariate non-central t noncentrality parameters (Schuirmann 1987 /
+    Phillips 1990) with df = n - 1:
+
+      Delta_L = (delta - EL) / (sigma / sqrt(n))
+      Delta_U = (delta - EU) / (sigma / sqrt(n))
+      Power = Phi(Delta_L - t_{1-alpha,df}) - Phi(Delta_U + t_{1-alpha,df})
+    """
+    if upper_margin <= lower_margin:
+        raise ValueError("upper_margin must be > lower_margin")
+    if n < 2:
+        return 0.0
+    df = n - 1
+    se = sd / math.sqrt(n)
+    t_alpha = D.t_ppf(1.0 - alpha, df)
+    delta_l = (diff - lower_margin) / se
+    delta_u = (diff - upper_margin) / se
+    upper_term = _norm_cdf(delta_l - t_alpha)
+    lower_term = _norm_cdf(delta_u + t_alpha)
+    return max(0.0, upper_term - lower_term)
+
+
+def equivalence_paired_means_difference(
+    *,
+    diff: float = 0.0,
+    sd: float,
+    lower_margin: float | None = None,
+    upper_margin: float | None = None,
+    margin: float | None = None,
+    alpha: float = 0.05,
+    power: float | None = None,
+    n: int | None = None,
+    solve_for: str | None = None,
+) -> dict[str, Any]:
+    """Equivalence (TOST) test for the difference between two paired means.
+
+    Equivalence Tests for the Difference Between Two Paired Means.
+    Uses the paired t-test with Schuirmann (1987) / Phillips (1990) TOST
+    power formula:
+
+        H0: delta <= EL  or  delta >= EU
+        Ha: EL < delta < EU
+
+    where delta = mu_1 - mu_2 is the true paired mean difference.
+
+    Parameters
+    ----------
+    diff
+        True mean difference delta = mu_1 - mu_2.  Default 0.
+    sd
+        Standard deviation of the paired differences (one per subject).
+    lower_margin
+        Lower equivalence limit EL (typically negative).
+    upper_margin
+        Upper equivalence limit EU (typically positive).
+    margin
+        Symmetric margin; sets EL = -margin, EU = +margin.
+        Supply either ``margin`` or both (lower_margin, upper_margin).
+    alpha
+        Per one-sided test significance level (TOST).  Default 0.05.
+    power
+        Target power.  Required when solve_for='n'.
+    n
+        Sample size (number of pairs).  Required when solve_for='power'.
+    solve_for
+        'n' or 'power'.
+    """
+    if margin is not None:
+        if lower_margin is not None or upper_margin is not None:
+            raise ValueError(
+                "supply either `margin` or (lower_margin, upper_margin)"
+            )
+        lower_margin = -abs(margin)
+        upper_margin = abs(margin)
+    if lower_margin is None or upper_margin is None:
+        raise ValueError("equivalence limits required")
+    if upper_margin <= lower_margin:
+        raise ValueError("upper_margin must be > lower_margin")
+    if sd <= 0:
+        raise ValueError("sd must be > 0")
+    if not 0 < alpha < 1:
+        raise ValueError("alpha must be in (0, 1)")
+
+    inputs_echo = {
+        "diff": diff, "sd": sd,
+        "lower_margin": lower_margin, "upper_margin": upper_margin,
+        "alpha": alpha, "power": power, "n": n,
+    }
+
+    have_n = n is not None
+    have_power = power is not None
+    if not (have_n or have_power):
+        raise ValueError("supply at least one of (n, power)")
+    if solve_for is None:
+        solve_for = "n" if not have_n else "power"
+
+    def p_at(n_val: int) -> float:
+        return _eq_paired_means_power(
+            diff=diff, sd=sd,
+            lower_margin=lower_margin, upper_margin=upper_margin,
+            alpha=alpha, n=n_val,
+        )
+
+    if solve_for == "power":
+        assert n is not None
+        achieved = p_at(n)
+        result: dict[str, Any] = {"n": n, "achieved_power": achieved}
+    elif solve_for == "n":
+        assert power is not None
+        if not 0.0 < power < 1.0:
+            raise ValueError("power must be in (0, 1)")
+        lo, hi = 2, 2
+        while hi <= 10_000_000:
+            if p_at(hi) >= power:
+                break
+            lo = hi
+            hi = max(hi + 1, hi * 2)
+        else:
+            raise RuntimeError("failed to bracket N")
+        while lo + 1 < hi:
+            mid = (lo + hi) // 2
+            if p_at(mid) >= power:
+                hi = mid
+            else:
+                lo = mid
+        result = {"n": hi, "achieved_power": p_at(hi)}
+    else:
+        raise ValueError(f"unsupported solve_for: {solve_for!r}")
+
+    return {
+        "method_id": "equivalence_paired_means_difference",
+        "solve_for": solve_for,
+        **result,
+        "inputs_echo": inputs_echo,
+        "citations": [
+            "Schuirmann, D.J. (1987). A comparison of the two one-sided "
+            "tests procedure and the power approach for assessing the "
+            "equivalence of average bioavailability. J Pharmacokinet "
+            "Biopharm 15:657-680.",
+            "Phillips, K.F. (1990). Power of the two one-sided tests "
+            "procedure in bioequivalence. J Pharmacokinet Biopharm "
+            "18:137-144.",
         ],
     }

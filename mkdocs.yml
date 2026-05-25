@@ -44,6 +44,7 @@ nav:
   - Method Coverage: METHOD_COVERAGE.md
   - Roadmap: ROADMAP.md
   - Troubleshooting: TROUBLESHOOTING.md
+  - Release Process: RELEASE.md
 
 markdown_extensions:
   - admonition

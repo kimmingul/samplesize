@@ -1,0 +1,56 @@
+chapter: "Tests for the Difference of Two Hazard Rates Assuming an Exponential Model"
+method: "tests_difference_two_hazard_rates"
+examples:
+
+  - id: "Ex1 power-solve N=100 h1=0.693 h2=0.288 R=1 T-R=2"
+    description: >
+      Ch.708-family Example 1 (Finding Power), row 4.  Two-sided test,
+      h1=0.693, h2=0.288, R=1, T-R=2, loss hazard omega=0.165 both arms,
+      uniform accrual, alpha=0.05, N=100 (50/50).  Reference power 0.8668.
+    solve_for: "power"
+    inputs:
+      h1: 0.693
+      h2: 0.288
+      t_accrual: 1.0
+      t_followup: 2.0
+      omega1: 0.165
+      omega2: 0.165
+      alpha: 0.05
+      n: 100
+      p1: 0.5
+      sides: 2
+    expected:
+      achieved_power: 0.8668
+    tolerance:
+      achieved_power: 0.001
+    source: >
+      Tests for the Difference of Two Hazard Rates Assuming an Exponential
+      Model (Example 1, row 4: N=100). Chow, Shao & Wang (2008);
+      Lachin & Foulkes (1986).
+
+  - id: "Ex2 n-solve power=0.90 h1=0.693 h2=0.5 T-R=2"
+    description: >
+      Example 2 (Finding Sample Size): two-sided, h1=0.693, h2=0.5
+      (D=-0.193), R=1, T-R=2, omega=0.165 both arms, alpha=0.05,
+      target power 0.90.  Reference reports N=614 (307/307), power 0.9000.
+    solve_for: "n"
+    inputs:
+      h1: 0.693
+      h2: 0.5
+      t_accrual: 1.0
+      t_followup: 2.0
+      omega1: 0.165
+      omega2: 0.165
+      alpha: 0.05
+      power: 0.90
+      p1: 0.5
+      sides: 2
+    expected:
+      n: 614
+      achieved_power: 0.9000
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: >
+      Tests for the Difference of Two Hazard Rates Assuming an Exponential
+      Model (Example 2, h2=0.5 / T-R=2 row: N=614).
