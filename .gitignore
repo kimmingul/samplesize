@@ -27,6 +27,9 @@ env/
 .idea/
 .vscode/
 
+# MkDocs build output
+site/
+
 # Plugin-host caches & local agent state
 .claude/
 .omc/
