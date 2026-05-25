@@ -33,6 +33,12 @@ theme:
 
 nav:
   - Home: index.md
+  - Examples:
+    - One-sample t: examples/01-one-mean-t-test.md
+    - Two-sample t: examples/02-two-means-t-test.md
+    - Cox survival: examples/03-cox-survival.md
+    - Cluster RCT: examples/04-cluster-rct.md
+    - Simon two-stage: examples/05-simon-two-stage.md
   - Architecture: ARCHITECTURE.md
   - Cookbook: COOKBOOK.md
   - Method Coverage: METHOD_COVERAGE.md
