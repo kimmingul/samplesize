@@ -8,7 +8,7 @@ adapt the numbers.
 All examples assume:
 
 ```sh
-cd /path/to/SampleSize           # or wherever you cloned
+cd /path/to/samplesize-copilot   # or wherever you cloned
 # (no install needed for CLI use; `pip install -e .` makes it path-free)
 ```
 

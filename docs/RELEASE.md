@@ -10,7 +10,7 @@ short-lived OIDC token for the GitHub Actions job at publish time.
    <https://pypi.org/manage/account/publishing/>:
    - PyPI Project Name: `samplesize`
    - Owner: `kimmingul`
-   - Repository name: `samplesize`
+   - Repository name: `samplesize-copilot`
    - Workflow name: `release.yml`
    - Environment name: `pypi`
 2. In GitHub repo settings → Environments, create an environment named

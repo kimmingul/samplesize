@@ -1,7 +1,7 @@
-# samplesize — Sample-size and power calculations for clinical and applied research
+# samplesize-copilot — Sample-size and power calculations for clinical and applied research
 
-[![CI](https://github.com/kimmingul/samplesize/actions/workflows/ci.yml/badge.svg)](https://github.com/kimmingul/samplesize/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/kimmingul/samplesize-copilot/actions/workflows/ci.yml/badge.svg)](https://github.com/kimmingul/samplesize-copilot/actions/workflows/ci.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
 [![Methods](https://img.shields.io/badge/methods-234-brightgreen)](docs/METHOD_COVERAGE.md)
 [![Tests](https://img.shields.io/badge/tests-819%20passing-brightgreen)](tests/validation/test_fixture_consistency.py)
@@ -19,7 +19,7 @@ reporting templates. Roadmap in `docs/ROADMAP.md`; live coverage matrix in
 ## Layout
 
 ```
-SampleSize/
+samplesize-copilot/
 ├── samplesize/             # Python package — pure-Python calculators
 │   ├── core/               # distributions, effect sizes, adjustments
 │   ├── tests/              # per-method calculator modules
@@ -78,23 +78,23 @@ Two ways to make the slash commands and skills available:
 
 **Ephemeral — load for one session**:
 ```sh
-claude --plugin-dir /path/to/SampleSize/plugin
+claude --plugin-dir /path/to/samplesize-copilot/plugin
 ```
 
 **Persistent — register a local marketplace and install**:
 ```sh
-claude plugin marketplace add /path/to/SampleSize/plugin
-claude plugin install samplesize@samplesize-local      # requires CC ≥ 2.2
+claude plugin marketplace add /path/to/samplesize-copilot/plugin
+claude plugin install samplesize-copilot@samplesize-copilot-local      # requires CC ≥ 2.2
 ```
 
 Once loaded, these commands work inside Claude Code:
 
-- `/samplesize:ss-design <study description>` — pick the right test
-- `/samplesize:ss-calc <method> ...` — run a calculation
-- `/samplesize:ss-power ...` — solve for power at fixed N
-- `/samplesize:ss-curve` — emit a power-curve PNG for the latest result
-- `/samplesize:ss-report` — generate ICH E9 protocol / grant text
-- `/samplesize:ss-validate <method?>` — run worked-example validation tests
+- `/samplesize-copilot:ss-design <study description>` — pick the right test
+- `/samplesize-copilot:ss-calc <method> ...` — run a calculation
+- `/samplesize-copilot:ss-power ...` — solve for power at fixed N
+- `/samplesize-copilot:ss-curve` — emit a power-curve PNG for the latest result
+- `/samplesize-copilot:ss-report` — generate ICH E9 protocol / grant text
+- `/samplesize-copilot:ss-validate <method?>` — run worked-example validation tests
 
 ## Coverage
 
@@ -126,7 +126,7 @@ pytest tests/validation/
 
 ## License
 
-MIT — see `LICENSE`.
+Apache License 2.0 — see `LICENSE`.
 
 ## Acknowledgments
 

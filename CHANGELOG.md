@@ -34,4 +34,4 @@ First public release.
 - `kappa_two_raters_binary` uses the Fleiss-Cohen-Everitt variance maximised over
   tables (Flack et al. 1988 conservative approach).
 
-[0.1.0]: https://github.com/kimmingul/samplesize/releases/tag/v0.1.0
+[0.1.0]: https://github.com/kimmingul/samplesize-copilot/releases/tag/v0.1.0
