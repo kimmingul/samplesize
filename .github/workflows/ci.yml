@@ -32,6 +32,9 @@ jobs:
       - name: Doctor (registry + plugin integrity)
         run: python -m samplesize doctor
 
+      - name: Method coverage doc is current
+        run: python scripts/gen_method_coverage.py --check
+
       - name: Pytest (worked-example fixtures)
         run: python -m pytest tests/validation/test_fixture_consistency.py --no-header -q
 
@@ -53,4 +56,4 @@ jobs:
           pip install ruff
 
       - name: Ruff check
-        run: ruff check samplesize/ tests/
+        run: ruff check samplesize/ tests/ scripts/

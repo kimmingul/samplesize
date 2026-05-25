@@ -171,21 +171,14 @@ def _run_test(samples: np.ndarray, test: str, alpha: float) -> float:
                 rejects += 1
 
     elif test == "anderson_darling":
-        # scipy anderson returns critical values, not p-values.
-        # We compare the statistic to the critical value at the requested
-        # significance level.  scipy provides critical values at
-        # significance levels [15, 10, 5, 2.5, 1] percent.
-        alpha_pct = alpha * 100.0
-        # Find the closest supported significance level
-        supported_pct = [15.0, 10.0, 5.0, 2.5, 1.0]
-        # Pick nearest
-        closest_idx = int(
-            np.argmin([abs(alpha_pct - s) for s in supported_pct])
-        )
+        # scipy >= 1.17: request method="interpolate" to obtain an
+        # interpolated p-value directly.  The legacy critical_values /
+        # significance_level attributes are removed in scipy 1.19, and for
+        # alpha = 0.05 the interpolated p-value reproduces the old
+        # nearest-5%-critical-value rejection rule exactly.
         for row in samples:
-            res = stats.anderson(row, dist="norm")
-            crit = res.critical_values[closest_idx]
-            if res.statistic > crit:
+            res = stats.anderson(row, dist="norm", method="interpolate")
+            if res.pvalue < alpha:
                 rejects += 1
 
     elif test == "dagostino_pearson":
