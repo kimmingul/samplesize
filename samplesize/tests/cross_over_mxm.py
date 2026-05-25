@@ -41,7 +41,6 @@ import math
 from typing import Any
 
 from samplesize.tests.anova_rm import _power_within_f, _sigma_m_squared
-from samplesize.core import distributions as D
 
 
 # ---------------------------------------------------------------------------

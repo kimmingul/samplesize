@@ -20,7 +20,6 @@ from __future__ import annotations
 import math
 from typing import Any
 
-from samplesize.core import distributions as D
 from samplesize.tests.group_sequential import (
     _exit_probability,
     _solve_boundaries,

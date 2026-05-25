@@ -38,7 +38,6 @@ from typing import Any
 from scipy.stats import f as fdist
 from scipy.stats import ncf
 
-from samplesize.core import distributions as D
 
 
 # ---------------------------------------------------------------------------

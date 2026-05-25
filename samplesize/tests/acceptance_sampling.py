@@ -31,7 +31,6 @@ References
 """
 from __future__ import annotations
 
-import math
 from typing import Any
 
 from scipy.stats import binom, hypergeom

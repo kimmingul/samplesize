@@ -7,7 +7,7 @@ purpose) so they drop cleanly into protocols and grant documents.
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import matplotlib
 matplotlib.use("Agg")

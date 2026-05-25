@@ -25,7 +25,7 @@ Each routine follows the project convention:
 from __future__ import annotations
 
 import math
-from typing import Any, Iterable, Sequence
+from typing import Any, Sequence
 
 from scipy.stats import norm
 

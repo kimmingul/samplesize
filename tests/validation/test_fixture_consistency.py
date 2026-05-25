@@ -10,7 +10,7 @@ import math
 
 import pytest
 
-from samplesize.registry import load_methods, resolve_method
+from samplesize.registry import resolve_method
 
 
 def _within(actual, expected, tol):

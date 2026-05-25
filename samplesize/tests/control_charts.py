@@ -40,7 +40,6 @@ import math
 import random
 from typing import Any
 
-from scipy.stats import norm
 
 
 # ---------------------------------------------------------------------------
@@ -89,8 +88,6 @@ def _d2_d3(n: int) -> tuple[float, float]:
     # d3 is harder; approximate as d3 ≈ d2 * sqrt(1 - (d2/sqrt(n))**2) / sqrt(n) roughly.
     # For the purposes of this simulation we use a numerical integration approach
     # that is accurate to 3 decimal places.
-    import scipy.integrate as integrate
-    from scipy.stats import norm as _norm
     # d2 = integral_0^inf [1 - (F(x) - F(-x))^n - n*F(-x)*(F(x)-F(-x))^(n-1)] ...
     # Easier: use the exact formula d2 = n * integral x * n*pdf(x)*(Phi(x)-Phi(-x))^(n-1) dx but
     # for simplicity fall back to closest table value

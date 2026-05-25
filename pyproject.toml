@@ -46,3 +46,8 @@ pythonpath = ["."]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+
+[tool.ruff.lint]
+# F841 (unused locals) and E731 (lambda assignment) are stylistic and
+# sometimes intentional in numerical code; revisit case-by-case.
+ignore = ["F841", "E731"]

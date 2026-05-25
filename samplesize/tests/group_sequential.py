@@ -35,7 +35,7 @@ import math
 from typing import Any
 
 import numpy as np
-from scipy.stats import multivariate_normal, norm
+from scipy.stats import multivariate_normal
 
 from samplesize.core import distributions as D
 

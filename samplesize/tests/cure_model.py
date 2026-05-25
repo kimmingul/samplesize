@@ -25,7 +25,6 @@ from __future__ import annotations
 import math
 from typing import Any
 
-import numpy as np
 from scipy import integrate
 
 from samplesize.core import distributions as D

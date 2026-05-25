@@ -55,7 +55,6 @@ from samplesize.tests.group_sequential import (
     _phi,
     _exit_probability,
 )
-import math as _math
 
 
 # ---------------------------------------------------------------------------

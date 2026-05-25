@@ -44,7 +44,6 @@ References
 """
 from __future__ import annotations
 
-import math
 from typing import Any
 
 from samplesize.core import distributions as D
