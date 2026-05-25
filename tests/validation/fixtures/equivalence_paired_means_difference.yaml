@@ -1,0 +1,54 @@
+chapter: "Equivalence Tests for the Difference Between Two Paired Means"
+method: "equivalence_paired_means_difference"
+examples:
+
+  - id: "Ex2 Phillips 1990 n-solve delta=-10 power=0.70 N=40"
+    description: >
+      Example 2 (Validation using Phillips 1990, p.142).  TOST paired-means
+      equivalence, equivalence limits +/-20, sigma=28.28427 (sqrt of 2*MSE,
+      MSE=400 i.e. 20% scale), true difference delta=-10, alpha=0.05,
+      target power 0.70.  Phillips/PASS report N=40.
+    solve_for: "n"
+    inputs:
+      diff: -10.0
+      sd: 28.28427
+      lower_margin: -20.0
+      upper_margin: 20.0
+      alpha: 0.05
+      power: 0.70
+    expected:
+      n: 40
+      achieved_power: 0.70
+    tolerance:
+      n: 1
+      achieved_power: 0.012
+    source: >
+      Equivalence Tests for the Difference Between Two Paired Means
+      (Example 2, Phillips 1990 validation, delta=-10 row: N=40).
+
+  - id: "Ex1 power-solve delta=-4 sigma=25.4558 N=50"
+    description: >
+      Example 1 (Finding Power), row 7.  Diastolic-BP paired design,
+      equivalence limits +/-19.2, true difference delta=-4,
+      sigma=25.4558 (sqrt(2*324)), alpha=0.05, N=50.  Reference power 0.9941.
+    solve_for: "power"
+    inputs:
+      diff: -4.0
+      sd: 25.4558
+      lower_margin: -19.2
+      upper_margin: 19.2
+      alpha: 0.05
+      n: 50
+    expected:
+      achieved_power: 0.9941
+    tolerance:
+      achieved_power: 0.002
+    notes: >
+      Uses the central-t TOST formulation, which agrees with PASS's exact
+      bivariate-noncentral-t method at moderate-to-large N (matches Ex1 rows
+      N>=15 and all Phillips n-solve rows) but is conservative at very small
+      N (e.g. N=5,10), the same documented approximation boundary noted for
+      equivalence_one_mean.  Fixture points are chosen in the valid range.
+    source: >
+      Equivalence Tests for the Difference Between Two Paired Means
+      (Example 1, row 7: N=50).

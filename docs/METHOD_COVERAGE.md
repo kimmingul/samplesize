@@ -3,6 +3,18 @@
 Tracks which methods are implemented and validated.
 Update whenever a method moves between states.
 
+## Current status
+
+**All 234 registry methods are implemented and validated (🟢).**
+The canonical, always-current catalogue is
+`samplesize/registry/methods.json`; the validation suite covers
+**819 worked-example fixtures across 234 fixture files**, all passing
+within their documented tolerances.
+
+The tiered tables below are retained as historical delivery milestones
+(the order methods were first picked up). They are a curated subset — the
+registry is the source of truth for the complete list.
+
 ## Legend
 
 - ⚪ Not implemented
@@ -62,9 +74,11 @@ Pearson correlation uses the exact Guenther/Hotelling density via
 | `cross_over_two_means` | Tests for Two Means in a 2x2 Cross-Over Design using Differences | 🟢 | 6 |
 | `group_sequential_two_means` | Group-Sequential Tests for Two Means (OBF + Pocock) | 🟢 | 2 |
 
-**Cumulative: 26 methods, 103 fixtures, 167/167 validation tests passing.**
+**Early-milestone cumulative (Tiers 1–3): 26 methods, 103 fixtures.**
 
 ## Long tail
 
-The full catalogue of methods is in `samplesize/registry/methods.json`.
-Each method will appear here in priority order as it is picked up.
+Beyond the curated tiers above, every remaining method in
+`samplesize/registry/methods.json` is also implemented and validated.
+See **Current status** at the top for the authoritative totals
+(234 methods, 819 worked-example fixtures, all 🟢).

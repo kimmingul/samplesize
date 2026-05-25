@@ -1,0 +1,61 @@
+chapter: "Van der Waerden Normal Quantiles Tests of Means (Simulation)"
+method: "van_der_waerden_simulation"
+examples:
+
+  - id: "Ex1 Normal n1=n2=20 mu_diff=1 sigma=1 alpha=0.05 two-sided"
+    description: >
+      Two normal groups, n1=n2=20, mu1=0, mu2=1, sigma=1, alpha=0.05,
+      two-sided. Monte-Carlo with seed=42, n_sims=10000. The Van der Waerden
+      test replaces ranks with Phi^{-1}(i/(N+1)) quantile scores and applies
+      a two-sample t-test on those scores.
+    solve_for: "power"
+    inputs:
+      n1: 20
+      n2: 20
+      mu1: 0.0
+      mu2: 1.0
+      sigma1: 1.0
+      sigma2: 1.0
+      distribution1: "normal"
+      distribution2: "normal"
+      alpha: 0.05
+      sides: 2
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 40
+      achieved_power: 0.865
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: >
+      Van der Waerden, B. L. (1953). Ein neuer Test fuer das Problem der
+      zwei Stichproben. Mathematische Annalen, 126, 93-107. (Example 1)
+
+  - id: "Ex2 Normal n1=n2=30 mu_diff=1 sigma=1 alpha=0.05 two-sided"
+    description: >
+      Two normal groups, n1=n2=30, mu1=0, mu2=1, sigma=1, alpha=0.05,
+      two-sided. Monte-Carlo with seed=42, n_sims=10000.
+    solve_for: "power"
+    inputs:
+      n1: 30
+      n2: 30
+      mu1: 0.0
+      mu2: 1.0
+      sigma1: 1.0
+      sigma2: 1.0
+      distribution1: "normal"
+      distribution2: "normal"
+      alpha: 0.05
+      sides: 2
+      n_sims: 10000
+      seed: 42
+    expected:
+      n: 60
+      achieved_power: 0.966
+    tolerance:
+      n: 0
+      achieved_power: 0.015
+    source: >
+      Van der Waerden, B. L. (1953). Ein neuer Test fuer das Problem der
+      zwei Stichproben. Mathematische Annalen, 126, 93-107. (Example 2)

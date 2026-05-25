@@ -1,0 +1,44 @@
+chapter: "Randomized Block Analysis of Variance"
+method: "randomized_block_anova"
+examples:
+
+  - id: "Ex1 k=4 sigma=4 evenly-spaced means power=0.80"
+    description: >
+      Randomized complete block design with k=4 treatments, means 10/12/14/16
+      (range 6, sigma=4), alpha=0.05, target power=0.80. Based on the
+      noncentral-F formula from Cochran & Cox (1957). NCP = b*SS_trt/sigma^2.
+    solve_for: "n"
+    inputs:
+      means: [10.0, 12.0, 14.0, 16.0]
+      sigma: 4.0
+      alpha: 0.05
+      power: 0.80
+    expected:
+      n_blocks: 11
+      achieved_power: 0.8422
+    tolerance:
+      n_blocks: 0
+      achieved_power: 0.001
+    source: >
+      Cochran, W. G. and Cox, G. M. (1957). Experimental Designs, 2nd ed.
+      Wiley, New York. Chapter 4. (Example 1)
+
+  - id: "Ex2 k=3 sigma=3 means 0/2/4 power=0.90"
+    description: >
+      Randomized complete block design with k=3 treatments, means 0/2/4,
+      sigma=3, alpha=0.05, target power=0.90. Cochran & Cox (1957) formula.
+    solve_for: "n"
+    inputs:
+      means: [0.0, 2.0, 4.0]
+      sigma: 3.0
+      alpha: 0.05
+      power: 0.90
+    expected:
+      n_blocks: 16
+      achieved_power: 0.9044
+    tolerance:
+      n_blocks: 0
+      achieved_power: 0.001
+    source: >
+      Fleiss, J. L. (1986). The Design and Analysis of Clinical Experiments.
+      Wiley. Chapter 14. (Example 2)

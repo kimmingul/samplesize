@@ -20,10 +20,11 @@ examples:
     tolerance:
       achieved_power: 0.005
     notes: >
-      The _tau_max helper in the current implementation contains a bug in the
-      off-diagonal bound formula (inner term goes negative) causing it to
-      return tau=0 and power=alpha for all inputs.  These fixtures document
-      the reference ground-truth values and will FAIL until the bug is fixed.
+      Validated against the Fleiss-Cohen-Everitt (1969) large-sample kappa
+      variance maximised over tables consistent with the marginals and kappa
+      (the Flack et al. 1988 conservative approach).  An earlier _tau_max had
+      incorrect diagonal-term coefficients; corrected so all four reference
+      rows match exactly.
     source: "Kappa Test for Agreement Between Two Raters (Example 1, row 1 (k1=0.5, N=30))"
 
   - id: "Ex1 row2 (power, N=30, k0=0.4, k1=0.6)"
@@ -42,8 +43,7 @@ examples:
     tolerance:
       achieved_power: 0.005
     notes: >
-      Buggy implementation returns power=alpha.  Documented for regression
-      once _tau_max is corrected.
+      Regression row for the corrected _tau_max (kappa1=0.6).
     source: "Kappa Test for Agreement Between Two Raters (Example 1, row 2 (k1=0.6, N=30))"
 
   - id: "Ex2 row1 (sample size, k0=0.4, k1=0.5, power=0.95)"
@@ -63,8 +63,7 @@ examples:
     tolerance:
       n: 1
     notes: >
-      Buggy implementation returns N>10,000,000 due to tau=0.  Documented
-      for regression once _tau_max is corrected.
+      Sample-size regression row for the corrected _tau_max (kappa1=0.5).
     source: "Kappa Test for Agreement Between Two Raters (Example 2, row 1 (k1=0.5))"
 
   - id: "Ex2 row2 (sample size, k0=0.4, k1=0.6, power=0.95)"
@@ -83,5 +82,5 @@ examples:
     tolerance:
       n: 1
     notes: >
-      Buggy implementation returns N>10,000,000.
+      Sample-size regression row for the corrected _tau_max (kappa1=0.6).
     source: "Kappa Test for Agreement Between Two Raters (Example 2, row 2 (k1=0.6))"

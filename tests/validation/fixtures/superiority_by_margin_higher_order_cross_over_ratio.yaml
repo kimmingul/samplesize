@@ -1,0 +1,50 @@
+chapter: "Superiority by a Margin Tests for the Ratio of Two Means in a Higher-Order Cross-Over Design"
+method: "superiority_by_margin_higher_order_cross_over_ratio"
+examples:
+
+  - id: "Ex1 power-solve 2x4 Balaam SM=0.2 R1=1.4 COV=0.4 N=350"
+    description: >
+      Example 1 (Finding Power), row 4.  2x4 Balaam design (AA|BB|AB|BA),
+      higher means better (H1: R > 1+SM), superiority margin SM=0.2,
+      true ratio R1=1.4, COV=0.4, alpha=0.05, N=350.  Reference power 0.8404.
+    solve_for: "power"
+    inputs:
+      sm: 0.2
+      r1: 1.4
+      cov: 0.4
+      design: "2x4"
+      higher_means_better: true
+      alpha: 0.05
+      n: 350
+    expected:
+      achieved_power: 0.8404
+    tolerance:
+      achieved_power: 0.001
+    source: >
+      Superiority by a Margin Tests for the Ratio of Two Means in a
+      Higher-Order Cross-Over Design (Example 1, row 4: N=350).
+
+  - id: "Ex2 n-solve exact 2x4 Balaam power=0.90 N=430"
+    description: >
+      Example 2 (Finding Sample Size, Exact).  Same 2x4 Balaam setup,
+      target power 0.90, exact search (not restricted to multiples of S).
+      Reference reports N=430, achieved power 0.9003.
+    solve_for: "n"
+    inputs:
+      sm: 0.2
+      r1: 1.4
+      cov: 0.4
+      design: "2x4"
+      higher_means_better: true
+      alpha: 0.05
+      power: 0.90
+      equal_per_sequence: false
+    expected:
+      n: 430
+      achieved_power: 0.9003
+    tolerance:
+      n: 1
+      achieved_power: 0.001
+    source: >
+      Superiority by a Margin Tests for the Ratio of Two Means in a
+      Higher-Order Cross-Over Design (Example 2, 90% power: N=430).

@@ -1381,3 +1381,426 @@ def one_sample_logrank(
             "J Biomet Biostat 5:210.",
         ],
     }
+
+
+# =========================================================================
+# Tests for the Difference of Two Hazard Rates (basic two-sided or
+# one-sided inequality test, no margin)
+# Chow, Shao, Wang (2008) / Lachin & Foulkes (1986) unconditional method.
+# =========================================================================
+#
+# This is the standard equality test:
+#   H0: h2 = h1  vs  Ha: h2 ≠ h1  (sides=2)  or  one-sided (sides=1)
+#
+# Power formula (two-sided):
+#   sqrt(N) * |h2-h1| / sqrt(sigma2(h1)/q1 + sigma2(h2)/q2) - z_{alpha/2} = z_{1-beta}
+#
+# Identical machinery to the NI/Equivalence tests already in this module
+# except delta=0 and sides drives the z_alpha choice.
+
+
+def _tdhz_power(
+    *,
+    h1: float, h2: float,
+    omega1: float, omega2: float,
+    R: float, T: float,
+    n: int, alpha: float, sides: int, p1: float,
+) -> float:
+    """Power for the two-sample exponential hazard difference test (no margin)."""
+    n1 = max(1, round(n * p1))
+    n2 = n - n1
+    if n1 < 1 or n2 < 1:
+        return 0.0
+    s1 = _sigma2_chow(h1, omega1, R, T)
+    s2 = _sigma2_chow(h2, omega2, R, T)
+    denom = math.sqrt(s1 / n1 + s2 / n2)
+    if denom <= 0.0:
+        return 0.0
+    k = 1 if sides == 1 else 2
+    z_a = D.norm_ppf(1.0 - alpha / k)
+    effect = abs(h2 - h1)
+    z_beta = effect / denom - z_a
+    from scipy.stats import norm as _n
+    return float(_n.cdf(z_beta))
+
+
+def _tdhz_n_for_power(
+    *,
+    h1: float, h2: float,
+    omega1: float, omega2: float,
+    R: float, T: float,
+    alpha: float, power: float, sides: int, p1: float,
+    n_min: int = 4, n_max: int = 10_000_000,
+) -> tuple[int, float]:
+    lo, hi = n_min, n_min
+    while hi <= n_max:
+        if _tdhz_power(h1=h1, h2=h2, omega1=omega1, omega2=omega2,
+                       R=R, T=T, n=hi, alpha=alpha, sides=sides,
+                       p1=p1) >= power:
+            break
+        lo = hi
+        hi = max(hi + 1, hi * 2)
+    else:
+        raise RuntimeError(f"failed to bracket N within {n_max}")
+    while lo + 1 < hi:
+        mid = (lo + hi) // 2
+        if _tdhz_power(h1=h1, h2=h2, omega1=omega1, omega2=omega2,
+                       R=R, T=T, n=mid, alpha=alpha, sides=sides,
+                       p1=p1) >= power:
+            hi = mid
+        else:
+            lo = mid
+    n_total = hi
+    while True:
+        ach = _tdhz_power(h1=h1, h2=h2, omega1=omega1, omega2=omega2,
+                          R=R, T=T, n=n_total, alpha=alpha, sides=sides,
+                          p1=p1)
+        if ach >= power:
+            break
+        n_total += 1
+    return n_total, _tdhz_power(h1=h1, h2=h2, omega1=omega1, omega2=omega2,
+                                R=R, T=T, n=n_total, alpha=alpha, sides=sides,
+                                p1=p1)
+
+
+def tests_difference_two_hazard_rates(
+    *,
+    h1: float,
+    h2: float | None = None,
+    diff: float | None = None,
+    t_accrual: float,
+    t_followup: float,
+    omega1: float = 0.0,
+    omega2: float | None = None,
+    alpha: float = 0.05,
+    power: float | None = None,
+    n: int | None = None,
+    p1: float = 0.5,
+    sides: int = 2,
+    solve_for: str | None = None,
+) -> dict[str, Any]:
+    """Two-sample test for the difference of two exponential hazard rates.
+
+    Tests for the Difference of Two Hazard Rates Assuming an Exponential Model.
+    Standard inequality test (no non-inferiority or equivalence margin).
+
+    H0: h2 - h1 = 0  vs  Ha: h2 - h1 ≠ 0  (sides=2)  or  one-sided (sides=1).
+
+    Uses the unconditional Chow, Shao & Wang (2008) method based on
+    Lachin & Foulkes (1986) with uniform patient accrual over R time
+    units and follow-up through T = t_accrual + t_followup.
+
+    Parameters
+    ----------
+    h1
+        Control group hazard rate.
+    h2
+        Treatment hazard rate.  If None, ``diff`` (= h2 - h1) is required.
+    diff
+        Difference h2 - h1.  Used when h2 is None.
+    t_accrual
+        Accrual period R.
+    t_followup
+        Follow-up period T - R (after last enrolment).
+    omega1, omega2
+        Loss-to-follow-up hazard rates (default 0).  When omega2 is None
+        both groups share omega1.
+    alpha
+        Significance level.
+    power
+        Target power.  Required when solve_for='n'.
+    n
+        Total sample size.  Required when solve_for='power'.
+    p1
+        Proportion of N in group 1.  Default 0.5 (equal allocation).
+    sides
+        1 or 2 (default 2).
+    solve_for
+        'n' or 'power'.
+    """
+    if h2 is None:
+        if diff is None:
+            raise ValueError("supply h2 or diff (= h2 - h1)")
+        h2 = h1 + diff
+    if omega2 is None:
+        omega2 = omega1
+    if h1 <= 0 or h2 <= 0:
+        raise ValueError("h1 and h2 must be > 0")
+    if h1 == h2:
+        raise ValueError("h1 and h2 must differ")
+    if t_accrual < 0 or t_followup < 0:
+        raise ValueError("t_accrual and t_followup must be >= 0")
+    if t_accrual + t_followup <= 0:
+        raise ValueError("t_accrual + t_followup must be > 0")
+    if not 0 < p1 < 1:
+        raise ValueError("p1 must be in (0, 1)")
+    if sides not in (1, 2):
+        raise ValueError("sides must be 1 or 2")
+
+    T_total = t_accrual + t_followup
+    inputs_echo = dict(
+        h1=h1, h2=h2, diff=h2 - h1,
+        t_accrual=t_accrual, t_followup=t_followup,
+        T_total=T_total, omega1=omega1, omega2=omega2,
+        alpha=alpha, power=power, n=n, p1=p1, sides=sides,
+    )
+
+    have_n = n is not None
+    have_power = power is not None
+    if not (have_n or have_power):
+        raise ValueError("supply at least one of (n, power)")
+    if solve_for is None:
+        solve_for = "n" if not have_n else "power"
+
+    if solve_for == "power":
+        assert n is not None
+        achieved = _tdhz_power(h1=h1, h2=h2, omega1=omega1, omega2=omega2,
+                               R=t_accrual, T=T_total, n=n, alpha=alpha,
+                               sides=sides, p1=p1)
+        n_total = n
+    else:
+        assert power is not None
+        n_total, achieved = _tdhz_n_for_power(
+            h1=h1, h2=h2, omega1=omega1, omega2=omega2,
+            R=t_accrual, T=T_total, alpha=alpha, power=power,
+            sides=sides, p1=p1,
+        )
+
+    n1 = round(n_total * p1)
+    n2 = n_total - n1
+    return {
+        "method_id": "tests_difference_two_hazard_rates",
+        "solve_for": solve_for,
+        "n": n_total,
+        "n1": n1,
+        "n2": n2,
+        "achieved_power": achieved,
+        "inputs_echo": inputs_echo,
+        "citations": [
+            "Chow, S.C., Shao, J., Wang, H. (2008). Sample Size Calculations "
+            "in Clinical Research, 2nd Ed. Chapman & Hall/CRC.",
+            "Lachin, J.M. & Foulkes, M.A. (1986). Evaluation of sample size "
+            "and power for analyses of survival with allowance for "
+            "nonuniform patient entry. Biometrics 42:507-519.",
+        ],
+    }
+
+
+# =========================================================================
+# Superiority by a Margin Tests for the Difference of Two Hazard Rates
+# Chow, Shao, Wang (2008) / Lachin & Foulkes (1986) unconditional method.
+# =========================================================================
+#
+# "Lower hazard better" (default):
+#   H0: h2 - h1 >= -delta  vs  Ha: h2 - h1 < -delta  (i.e. h2 < h1 - delta)
+#
+# Power formula:
+#   z_beta = (h1 - h2 - delta) / sqrt(sigma2(h1)/N1 + sigma2(h2)/N2) - z_alpha
+#
+# "Higher hazard better":
+#   H0: h2 - h1 <= delta  vs  Ha: h2 - h1 > delta
+#
+# Power formula:
+#   z_beta = (h2 - h1 - delta) / sqrt(...) - z_alpha
+
+
+def _sup_hz_power(
+    *,
+    h1: float, h2: float, delta: float,
+    omega1: float, omega2: float,
+    R: float, T: float,
+    n: int, alpha: float, p1: float,
+    lower_better: bool,
+) -> float:
+    """Power of the superiority-by-margin hazard rate difference test."""
+    n1 = max(1, round(n * p1))
+    n2 = n - n1
+    if n1 < 1 or n2 < 1:
+        return 0.0
+    s1 = _sigma2_chow(h1, omega1, R, T)
+    s2 = _sigma2_chow(h2, omega2, R, T)
+    denom = math.sqrt(s1 / n1 + s2 / n2)
+    if denom <= 0.0:
+        return 0.0
+    z_a = D.norm_ppf(1.0 - alpha)
+    if lower_better:
+        # Ha: h2 < h1 - delta  => effect = h1 - h2 - delta must be > 0
+        effect = h1 - h2 - delta
+    else:
+        # Ha: h2 > h1 + delta  => effect = h2 - h1 - delta must be > 0
+        effect = h2 - h1 - delta
+    if effect <= 0:
+        return 0.0
+    z_beta = effect / denom - z_a
+    from scipy.stats import norm as _n
+    return float(_n.cdf(z_beta))
+
+
+def _sup_hz_n_for_power(
+    *,
+    h1: float, h2: float, delta: float,
+    omega1: float, omega2: float,
+    R: float, T: float,
+    alpha: float, power: float, p1: float,
+    lower_better: bool,
+    n_min: int = 4, n_max: int = 10_000_000,
+) -> tuple[int, float]:
+    lo, hi = n_min, n_min
+    while hi <= n_max:
+        if _sup_hz_power(h1=h1, h2=h2, delta=delta, omega1=omega1,
+                         omega2=omega2, R=R, T=T, n=hi, alpha=alpha,
+                         p1=p1, lower_better=lower_better) >= power:
+            break
+        lo = hi
+        hi = max(hi + 1, hi * 2)
+    else:
+        raise RuntimeError(f"failed to bracket N within {n_max}")
+    while lo + 1 < hi:
+        mid = (lo + hi) // 2
+        if _sup_hz_power(h1=h1, h2=h2, delta=delta, omega1=omega1,
+                         omega2=omega2, R=R, T=T, n=mid, alpha=alpha,
+                         p1=p1, lower_better=lower_better) >= power:
+            hi = mid
+        else:
+            lo = mid
+    n_total = hi
+    while True:
+        ach = _sup_hz_power(h1=h1, h2=h2, delta=delta, omega1=omega1,
+                            omega2=omega2, R=R, T=T, n=n_total, alpha=alpha,
+                            p1=p1, lower_better=lower_better)
+        if ach >= power:
+            break
+        n_total += 1
+    return n_total, _sup_hz_power(h1=h1, h2=h2, delta=delta, omega1=omega1,
+                                  omega2=omega2, R=R, T=T, n=n_total,
+                                  alpha=alpha, p1=p1, lower_better=lower_better)
+
+
+def superiority_by_margin_two_hazard_rates(
+    *,
+    h1: float,
+    h2: float | None = None,
+    diff: float | None = None,
+    delta: float,
+    t_accrual: float,
+    t_followup: float,
+    omega1: float = 0.0,
+    omega2: float | None = None,
+    alpha: float = 0.05,
+    power: float | None = None,
+    n: int | None = None,
+    p1: float = 0.5,
+    lower_better: bool = True,
+    solve_for: str | None = None,
+) -> dict[str, Any]:
+    """Superiority-by-margin test for the difference of two exponential hazard rates.
+
+    Superiority by a Margin Tests for the Difference of Two Hazard Rates
+    Assuming an Exponential Model.
+
+    When lower hazard is better (default):
+        H0: h2 - h1 >= -delta  vs  Ha: h2 - h1 < -delta
+        (i.e. treatment hazard is better by at least delta)
+
+    When higher hazard is better:
+        H0: h2 - h1 <= delta  vs  Ha: h2 - h1 > delta
+
+    Uses the unconditional Chow, Shao & Wang (2008) method.
+
+    Parameters
+    ----------
+    h1
+        Control group hazard rate.
+    h2
+        Treatment hazard rate.  If None, ``diff`` (= h2 - h1) is required.
+    diff
+        Difference h2 - h1.  Used when h2 is None.
+    delta
+        Superiority margin (positive).
+    t_accrual
+        Accrual period R.
+    t_followup
+        Follow-up period T - R.
+    omega1, omega2
+        Loss-to-follow-up hazard rates.
+    alpha
+        One-sided significance level (default 0.05).
+    power
+        Target power.  Required when solve_for='n'.
+    n
+        Total sample size.  Required when solve_for='power'.
+    p1
+        Proportion of N in group 1.  Default 0.5.
+    lower_better
+        If True (default): lower hazard is clinically better.
+        If False: higher hazard is better.
+    solve_for
+        'n' or 'power'.
+    """
+    if h2 is None:
+        if diff is None:
+            raise ValueError("supply h2 or diff (= h2 - h1)")
+        h2 = h1 + diff
+    if omega2 is None:
+        omega2 = omega1
+    if h1 <= 0 or h2 <= 0:
+        raise ValueError("h1 and h2 must be > 0")
+    if delta <= 0:
+        raise ValueError("delta (superiority margin) must be > 0")
+    if t_accrual < 0 or t_followup < 0:
+        raise ValueError("t_accrual and t_followup must be >= 0")
+    if t_accrual + t_followup <= 0:
+        raise ValueError("t_accrual + t_followup must be > 0")
+    if not 0 < p1 < 1:
+        raise ValueError("p1 must be in (0, 1)")
+    if not 0 < alpha < 1:
+        raise ValueError("alpha must be in (0, 1)")
+
+    T_total = t_accrual + t_followup
+    inputs_echo = dict(
+        h1=h1, h2=h2, diff=h2 - h1, delta=delta,
+        t_accrual=t_accrual, t_followup=t_followup,
+        T_total=T_total, omega1=omega1, omega2=omega2,
+        alpha=alpha, power=power, n=n, p1=p1,
+        lower_better=lower_better,
+    )
+
+    have_n = n is not None
+    have_power = power is not None
+    if not (have_n or have_power):
+        raise ValueError("supply at least one of (n, power)")
+    if solve_for is None:
+        solve_for = "n" if not have_n else "power"
+
+    if solve_for == "power":
+        assert n is not None
+        achieved = _sup_hz_power(h1=h1, h2=h2, delta=delta, omega1=omega1,
+                                 omega2=omega2, R=t_accrual, T=T_total,
+                                 n=n, alpha=alpha, p1=p1,
+                                 lower_better=lower_better)
+        n_total = n
+    else:
+        assert power is not None
+        n_total, achieved = _sup_hz_n_for_power(
+            h1=h1, h2=h2, delta=delta, omega1=omega1, omega2=omega2,
+            R=t_accrual, T=T_total, alpha=alpha, power=power,
+            p1=p1, lower_better=lower_better,
+        )
+
+    n1 = round(n_total * p1)
+    n2 = n_total - n1
+    return {
+        "method_id": "superiority_by_margin_two_hazard_rates",
+        "solve_for": solve_for,
+        "n": n_total,
+        "n1": n1,
+        "n2": n2,
+        "achieved_power": achieved,
+        "inputs_echo": inputs_echo,
+        "citations": [
+            "Chow, S.C., Shao, J., Wang, H. (2008). Sample Size Calculations "
+            "in Clinical Research, 2nd Ed. Chapman & Hall/CRC.",
+            "Lachin, J.M. & Foulkes, M.A. (1986). Evaluation of sample size "
+            "and power for analyses of survival. Biometrics 42:507-519.",
+        ],
+    }

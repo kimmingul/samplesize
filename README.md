@@ -3,15 +3,15 @@
 [![CI](https://github.com/kimmingul/samplesize/actions/workflows/ci.yml/badge.svg)](https://github.com/kimmingul/samplesize/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
-[![Methods](https://img.shields.io/badge/methods-222-brightgreen)](docs/METHOD_COVERAGE.md)
-[![Tests](https://img.shields.io/badge/tests-793%20passing-brightgreen)](tests/validation/test_fixture_consistency.py)
+[![Methods](https://img.shields.io/badge/methods-234-brightgreen)](docs/METHOD_COVERAGE.md)
+[![Tests](https://img.shields.io/badge/tests-819%20passing-brightgreen)](tests/validation/test_fixture_consistency.py)
 
-A Python package + Claude Code plugin implementing 222 sample-size and power-calculation
+A Python package + Claude Code plugin implementing 234 sample-size and power-calculation
 methods validated against worked examples from established statistical references.
 
 ## Status
 
-**v0.1 — 222 methods implemented, 793 worked-example fixture tests passing.**
+**v0.1 — 234 methods implemented and validated, 819 worked-example fixture tests passing.**
 Doctor passes 9/9 integrity checks across registry, callables, plugin manifest, and
 reporting templates. Roadmap in `docs/ROADMAP.md`; live coverage matrix in
 `docs/METHOD_COVERAGE.md`.
@@ -98,7 +98,7 @@ Once loaded, these commands work inside Claude Code:
 
 ## Coverage
 
-222 methods across:
+234 methods across:
 
 - Means (one-sample, two-sample, paired, non-inferiority, equivalence, superiority-by-margin)
 - Proportions (one, two, McNemar, NI/equivalence variants)
@@ -114,7 +114,7 @@ Once loaded, these commands work inside Claude Code:
 
 ## Validation
 
-793 fixture tests passing. Methods are validated against worked examples from
+819 fixture tests passing. Methods are validated against worked examples from
 established statistical software references. Reference content itself is
 user-supplied (see `reference/` — not bundled in this repository).
 

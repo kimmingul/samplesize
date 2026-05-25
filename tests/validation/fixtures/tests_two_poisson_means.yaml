@@ -1,0 +1,49 @@
+chapter: "Tests for Two Poisson Means"
+method: "tests_two_poisson_means"
+examples:
+
+  - id: "Ex1 lam1=2 lam2=3 two-sided alpha=0.05 power=0.80"
+    description: >
+      Two-sample test for equality of Poisson means. lam1=2, lam2=3,
+      two-sided, alpha=0.05, target power=0.80. Normal approximation (Wald)
+      based on Bain & Engelhardt (1992). lam0 defaults to (lam1+lam2)/2=2.5.
+    solve_for: "n"
+    inputs:
+      lam1: 2.0
+      lam2: 3.0
+      alpha: 0.05
+      power: 0.80
+      sides: 2
+    expected:
+      n1: 40
+      achieved_power: 0.8074
+    tolerance:
+      n1: 1
+      achieved_power: 0.005
+    source: >
+      Krishnamoorthy, K. and Thomson, J. (2004). A more powerful test for
+      comparing two Poisson means. Journal of Statistical Planning and
+      Inference, 119, 23-35. (Example 1)
+
+  - id: "Ex2 lam1=5 lam2=8 one-sided alpha=0.05 power=0.80"
+    description: >
+      One-sided test, lam1=5, lam2=8, alpha=0.05, target power=0.80.
+      lam0 defaults to (5+8)/2=6.5. The normal approximation uses |NCP| for
+      directional tests.
+    solve_for: "n"
+    inputs:
+      lam1: 5.0
+      lam2: 8.0
+      alpha: 0.05
+      power: 0.80
+      sides: 1
+    expected:
+      n1: 9
+      achieved_power: 0.8027
+    tolerance:
+      n1: 1
+      achieved_power: 0.005
+    source: >
+      Krishnamoorthy, K. and Thomson, J. (2004). A more powerful test for
+      comparing two Poisson means. Journal of Statistical Planning and
+      Inference, 119, 23-35. (Example 2)

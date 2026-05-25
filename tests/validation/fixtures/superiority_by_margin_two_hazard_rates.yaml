@@ -1,0 +1,57 @@
+chapter: "Superiority by a Margin Tests for the Difference of Two Hazard Rates Assuming an Exponential Model"
+method: "superiority_by_margin_two_hazard_rates"
+examples:
+
+  - id: "Ex2 Chow validation power-solve N=100 h1=2 D=-1 delta=0.2"
+    description: >
+      Example 2 (Validation using Chow et al. 2008, p.172).  Lower hazard
+      better (Ha: h2 < h1 - delta).  h1=2, D=h2-h1=-1 (h2=1), delta=0.2,
+      R=1, T-R=2, no loss, alpha=0.05, N=100 (50/50).  Reference power
+      0.8034 (Chow's hand calc N1~48; PASS N1=50).
+    solve_for: "power"
+    inputs:
+      h1: 2.0
+      diff: -1.0
+      delta: 0.2
+      t_accrual: 1.0
+      t_followup: 2.0
+      omega1: 0.0
+      omega2: 0.0
+      alpha: 0.05
+      n: 100
+      p1: 0.5
+      lower_better: true
+    expected:
+      achieved_power: 0.8034
+    tolerance:
+      achieved_power: 0.001
+    source: >
+      Superiority by a Margin Tests for the Difference of Two Hazard Rates
+      Assuming an Exponential Model (Example 2, Chow et al. 2008 validation).
+
+  - id: "Ex2 Chow validation n-solve power=0.80"
+    description: >
+      Same setup, solving for total sample size at target power 0.80.
+      Reference reports N=100 (50/50), achieved power 0.8034.
+    solve_for: "n"
+    inputs:
+      h1: 2.0
+      diff: -1.0
+      delta: 0.2
+      t_accrual: 1.0
+      t_followup: 2.0
+      omega1: 0.0
+      omega2: 0.0
+      alpha: 0.05
+      power: 0.80
+      p1: 0.5
+      lower_better: true
+    expected:
+      n: 100
+      achieved_power: 0.8034
+    tolerance:
+      n: 1
+      achieved_power: 0.005
+    source: >
+      Superiority by a Margin Tests for the Difference of Two Hazard Rates
+      Assuming an Exponential Model (Example 2, Chow et al. 2008 validation).

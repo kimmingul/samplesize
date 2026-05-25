@@ -628,3 +628,194 @@ def non_inferiority_paired_proportions_ratio(
             "21:689-699.",
         ],
     }
+
+
+# ---------------------------------------------------------------------------
+# Equivalence (TOST) for Ratio of Two Correlated Proportions
+# Nam & Blackwelder (2002) / Tango (1998) — two one-sided ratio tests
+# ---------------------------------------------------------------------------
+#
+# TOST: H0: PT/PS <= Re  or  PT/PS >= 1/Re  (where Re in (0,1))
+#       Ha: Re < PT/PS < 1/Re  (ratio equivalence)
+#
+# Power = Phi(E1*sqrt(n/V1) - z_alpha*sqrt(V0/V1))
+#         evaluated separately for the lower (H1: R > Re) and upper
+#         (H2: R < 1/Re) one-sided tests, then combined:
+#
+#   Power = max(0, P_lower + P_upper - 1)
+#
+# Each one-sided test uses the Nam & Blackwelder (2002) NI-ratio power
+# formula:  _ni_ratio_power(...).  The lower test uses r_ni=Re (the
+# equivalence ratio) and the upper test uses r_ni=1/Re inverted
+# (i.e. Re < 1 for "upper test: PT < (1/Re)*PS" which is equivalent to
+# "PS/PT > Re").
+
+def _eq_ratio_power(
+    *, n: int, ra: float, re: float,
+    ps: float, pt: float,
+    p11: float, p10: float, p01: float, p00: float,
+    alpha: float,
+) -> float:
+    """TOST power for equivalence on ratio of two correlated proportions.
+
+    Nam & Blackwelder (2002) score statistic applied as two one-sided tests.
+    """
+    if n < 2:
+        return 0.0
+    if not (re < ra < 1.0 / re):
+        return 0.0
+    # Lower one-sided test: H0: R <= Re  (re < 1)
+    p_lower = _ni_ratio_power(
+        n=n, ra=ra, r_ni=re,
+        ps=ps, pt=pt,
+        p11=p11, p10=p10, p01=p01, p00=p00,
+        alpha=alpha,
+    )
+    # Upper one-sided test: H0: R >= 1/Re  equivalent to H0: PS/PT <= Re
+    # Swap roles: PS_upper = pt, PT_upper = ps, R_upper = 1/ra, r_ni_upper = re
+    re_upper = re  # 1/(1/re) = re, swapped direction
+    ra_upper = 1.0 / ra
+    # Rebuild table with swapped roles
+    p11_u, p10_u, p01_u, p00_u = p11, p01, p10, p00  # swap p10 and p01
+    p_upper = _ni_ratio_power(
+        n=n, ra=ra_upper, r_ni=re_upper,
+        ps=pt, pt=ps,
+        p11=p11_u, p10=p10_u, p01=p01_u, p00=p00_u,
+        alpha=alpha,
+    )
+    return max(0.0, p_lower + p_upper - 1.0)
+
+
+def _eq_ratio_n(
+    *, power: float, ra: float, re: float,
+    ps: float, pt: float,
+    p11: float, p10: float, p01: float, p00: float,
+    alpha: float,
+    n_max: int = 10_000_000,
+) -> tuple[int, float]:
+    lo, hi = 2, 2
+    while hi <= n_max:
+        if _eq_ratio_power(n=hi, ra=ra, re=re, ps=ps, pt=pt,
+                           p11=p11, p10=p10, p01=p01, p00=p00,
+                           alpha=alpha) >= power:
+            break
+        lo = hi
+        hi = max(hi + 1, hi * 2)
+    else:
+        raise RuntimeError(f"failed to bracket N within {n_max}")
+    while lo + 1 < hi:
+        mid = (lo + hi) // 2
+        if _eq_ratio_power(n=mid, ra=ra, re=re, ps=ps, pt=pt,
+                           p11=p11, p10=p10, p01=p01, p00=p00,
+                           alpha=alpha) >= power:
+            hi = mid
+        else:
+            lo = mid
+    achieved = _eq_ratio_power(n=hi, ra=ra, re=re, ps=ps, pt=pt,
+                                p11=p11, p10=p10, p01=p01, p00=p00,
+                                alpha=alpha)
+    return hi, achieved
+
+
+def equivalence_paired_proportions_ratio(
+    *,
+    ps: float,
+    ra: float = 1.0,
+    re: float,
+    nuisance_type: str = "p10",
+    nuisance_value: float,
+    alpha: float = 0.05,
+    power: float | None = None,
+    n: int | None = None,
+    sides: int = 2,
+    solve_for: str | None = None,
+) -> dict[str, Any]:
+    """Equivalence (TOST) test for ratio of two correlated proportions.
+
+    Equivalence Tests for the Ratio of Two Correlated Proportions.
+    Uses the Nam & Blackwelder (2002) score statistic applied as two
+    one-sided ratio tests.
+
+    H0: PT/PS <= Re  or  PT/PS >= 1/Re  vs  Ha: Re < PT/PS < 1/Re
+
+    Parameters
+    ----------
+    ps
+        Standard proportion.
+    ra
+        Actual ratio PT/PS.  Default 1.0 (PT = PS).
+    re
+        Equivalence ratio (0 < re < 1).  The equivalence region is
+        (re, 1/re) on the ratio scale.
+    nuisance_type
+        Which nuisance parameter is specified: 'p01', 'p10', 'p11', 'p00',
+        'p01_p10', 'p11_p00', or 'sensitivity'.
+    nuisance_value
+        Value of the nuisance parameter.
+    alpha
+        Significance level for each one-sided test.
+    power
+        Target power.  Required when solve_for='n'.
+    n
+        Sample size.  Required when solve_for='power'.
+    sides
+        Must be 2 (two-sided equivalence test).
+    solve_for
+        'n' or 'power'.
+    """
+    if sides != 2:
+        raise ValueError("Equivalence ratio test is always two-sided (sides=2)")
+    if not 0 < re < 1:
+        raise ValueError("re must be in (0, 1)")
+    if not 0 < ps < 1:
+        raise ValueError("ps must be in (0, 1)")
+    if not 0 < alpha < 1:
+        raise ValueError("alpha must be in (0, 1)")
+
+    pt = ps * ra
+    p11, p10, p01, p00 = _resolve_table(ps=ps, pt=pt,
+                                         nuisance_type=nuisance_type,
+                                         nuisance_value=nuisance_value)
+
+    inputs_echo = dict(ps=ps, pt=pt, ra=ra, re=re,
+                       nuisance_type=nuisance_type,
+                       nuisance_value=nuisance_value,
+                       alpha=alpha, power=power, n=n, sides=sides)
+
+    have_n = n is not None
+    have_power = power is not None
+    if not (have_n or have_power):
+        raise ValueError("supply at least one of (n, power)")
+    if solve_for is None:
+        solve_for = "n" if not have_n else "power"
+
+    if solve_for == "power":
+        assert n is not None
+        achieved = _eq_ratio_power(n=n, ra=ra, re=re, ps=ps, pt=pt,
+                                    p11=p11, p10=p10, p01=p01, p00=p00,
+                                    alpha=alpha)
+        n_out = n
+    elif solve_for == "n":
+        assert power is not None
+        n_out, achieved = _eq_ratio_n(power=power, ra=ra, re=re, ps=ps,
+                                       pt=pt, p11=p11, p10=p10, p01=p01,
+                                       p00=p00, alpha=alpha)
+    else:
+        raise ValueError(f"unsupported solve_for: {solve_for!r}")
+
+    return {
+        "method_id": "equivalence_paired_proportions_ratio",
+        "solve_for": solve_for,
+        "n": n_out,
+        "achieved_power": achieved,
+        "achieved_width": None,
+        "inputs_echo": inputs_echo,
+        "citations": [
+            "Nam, J.M. and Blackwelder, W.C. (2002). Analysis of the ratio "
+            "of marginal probabilities in a matched-pair setting. "
+            "Stat Med 21:689-699.",
+            "Tango, T. (1998). Equivalence test and confidence interval for "
+            "the difference in proportions for the paired-sample design. "
+            "Stat Med 17:891-908.",
+        ],
+    }
