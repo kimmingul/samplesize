@@ -81,10 +81,11 @@ Two ways to make the slash commands and skills available:
 claude --plugin-dir /path/to/samplesize-copilot/plugin
 ```
 
-**Persistent — register a local marketplace and install**:
+**Persistent — register the marketplace and install**:
 ```sh
-claude plugin marketplace add /path/to/samplesize-copilot/plugin
-claude plugin install samplesize-copilot@samplesize-copilot-local      # requires CC ≥ 2.2
+claude plugin marketplace add kimmingul/samplesize-copilot   # from GitHub
+# …or from a local clone (repo root): claude plugin marketplace add /path/to/samplesize-copilot
+claude plugin install samplesize-copilot@samplesize-copilot  # requires CC ≥ 2.2
 ```
 
 Once loaded, these commands work inside Claude Code:

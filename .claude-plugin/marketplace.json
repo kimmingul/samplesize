@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "samplesize-copilot-local",
-  "description": "Local development marketplace for the samplesize-copilot plugin (research-grade power & sample-size calculator).",
+  "name": "samplesize-copilot",
+  "description": "Marketplace for the samplesize-copilot plugin — a research-grade sample-size & power calculator validated against established statistical references.",
   "owner": {
     "name": "Mingul Kim",
     "email": "kimmingul@gmail.com"
@@ -9,17 +9,15 @@
   "plugins": [
     {
       "name": "samplesize-copilot",
+      "source": "./plugin",
       "description": "Sample-size and power calculator validated against established statistical references. Recommends the right test, runs validated Python calculations, generates power curves and protocol text.",
       "author": {
         "name": "Mingul Kim",
         "email": "kimmingul@gmail.com"
       },
       "category": "research",
-      "source": {
-        "source": "file",
-        "path": "."
-      },
-      "homepage": "https://github.com/kimmingul/samplesize-copilot"
+      "homepage": "https://github.com/kimmingul/samplesize-copilot",
+      "tags": ["statistics", "sample-size", "power-analysis", "biostatistics", "clinical-trials"]
     }
   ]
 }
