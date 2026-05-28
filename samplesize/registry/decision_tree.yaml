@@ -20,7 +20,7 @@ root:
               question: "Equal variance assumed?"
               options:
                 equal:    { leaf: two_sample_t_equal_var }
-                unequal:  { leaf: two_sample_t_unequal_var }  # not in MVP
+                unequal:  { leaf: two_sample_t_welch_means }
                 unknown:  { leaf: two_sample_t_equal_var }    # default
             paired:
               leaf: paired_t
@@ -39,12 +39,26 @@ root:
     time_to_event:
       question: "How many groups / arms?"
       options:
-        one:    { leaf: one_sample_logrank }   # not in MVP
+        one:    { leaf: one_sample_logrank }
         two:    { leaf: logrank_freedman }
-        three_or_more: { leaf: logrank_kgroup }  # not in MVP
+        three_or_more:
+          unimplemented: true
+          reason: "k-group logrank not in this catalogue; do not silently downgrade to two-group."
     count:
-      leaf: poisson_test  # not in MVP
+      question: "How many groups / arms?"
+      options:
+        one: { leaf: one_sample_poisson_rate }
+        two: { leaf: tests_two_poisson_means }
+        three_or_more:
+          unimplemented: true
+          reason: "k-group Poisson rate test not in this catalogue."
     ordinal:
-      leaf: mann_whitney_simulation  # not in MVP
+      question: "How many groups / arms?"
+      options:
+        one:
+          unimplemented: true
+          reason: "one-sample ordinal (sign test / one-sample Wilcoxon) not in this catalogue."
+        two: { leaf: mann_whitney_wilcoxon_simulation }
+        three_or_more: { leaf: kruskal_wallis_simulation }
     correlation:
       leaf: pearson_correlation

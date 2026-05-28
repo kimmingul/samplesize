@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -128,10 +129,10 @@ def _check_headline_counts(n_methods: int, n_examples: int) -> list[str]:
     errors: list[str] = []
     for rel in ("README.md", "docs/index.md"):
         text = (ROOT / rel).read_text()
-        if str(n_methods) not in text:
+        if not re.search(rf"\b{re.escape(str(n_methods))}\b", text):
             errors.append(f"{rel}: current method count {n_methods} not found "
                           f"(stale total?)")
-        if str(n_examples) not in text:
+        if not re.search(rf"\b{re.escape(str(n_examples))}\b", text):
             errors.append(f"{rel}: current fixture count {n_examples} not found "
                           f"(stale total?)")
     return errors

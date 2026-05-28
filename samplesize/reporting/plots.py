@@ -43,13 +43,11 @@ def power_curve(
     fn = method["_callable"]
 
     # decide which N parameter to sweep
-    sweep_key = "n"
-    sig_params = method.get("params", {}).get("required", []) + \
-                 list(method.get("params", {}).get("optional", {}).keys())
-    if "n1" in sig_params:
-        sweep_key = "n1"
+    sig_names = {p["name"] for p in method.get("signature", {}).get("kwargs", [])}
+    sweep_key = "n1" if "n1" in sig_names else "n"
 
-    base = {k: v for k, v in base_inputs.items() if k not in {"n", "n1", "power"}}
+    base = {k: v for k, v in base_inputs.items()
+            if k not in {"n", "n1", "n2", "power"}}
 
     # auto-range: 5 -> 5 * (solve-for-N at target_power)
     if n_range is None:

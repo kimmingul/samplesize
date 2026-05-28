@@ -207,7 +207,14 @@ def _check_skill_cli_flags_exist() -> list[str]:
 
     pat = re.compile(r"python -m samplesize (\w+)([^\n`]*)")
     errs: list[str] = []
-    for md in sorted((_PLUGIN).rglob("*.md")):
+    md_paths: list[Path] = list(_PLUGIN.rglob("*.md"))
+    docs_dir = _ROOT / "docs"
+    if docs_dir.exists():
+        md_paths.extend(docs_dir.rglob("*.md"))
+    readme = _ROOT / "README.md"
+    if readme.exists():
+        md_paths.append(readme)
+    for md in sorted(md_paths):
         text = md.read_text()
         for m in pat.finditer(text):
             sub = m.group(1)
@@ -220,6 +227,89 @@ def _check_skill_cli_flags_exist() -> list[str]:
                 if flag not in sub_options[sub]:
                     errs.append(f"{md.relative_to(_ROOT)}: `samplesize {sub}` "
                                 f"has no flag {flag!r}")
+    return errs
+
+
+def _check_decision_tree_leaves_exist() -> list[str]:
+    """Every `leaf:` value in decision_tree.yaml must be a registered method id."""
+    import yaml
+    from samplesize.registry import load_methods
+    errs: list[str] = []
+    tree_path = _ROOT / "samplesize/registry/decision_tree.yaml"
+    if not tree_path.exists():
+        return [f"missing {tree_path.relative_to(_ROOT)}"]
+    try:
+        doc = yaml.safe_load(tree_path.read_text())
+    except yaml.YAMLError as e:
+        return [f"{tree_path.relative_to(_ROOT)}: invalid YAML: {e}"]
+    known = {e["id"] for e in load_methods()}
+
+    def walk(node, path: str) -> None:
+        if not isinstance(node, dict):
+            return
+        # A node is "terminal" if it has `leaf` OR `unimplemented`.
+        # `unimplemented: true` (or a string reason) documents a known
+        # catalogue gap — per CLAUDE.md "no fallback heuristics", these
+        # are valid terminals (the CLI should error rather than silently
+        # downgrade to a different method).
+        if "unimplemented" in node:
+            return
+        if "leaf" in node:
+            mid = node["leaf"]
+            if mid not in known:
+                errs.append(f"decision_tree.yaml at {path}: leaf "
+                            f"{mid!r} is not a registered method id")
+            return
+        opts = node.get("options")
+        if isinstance(opts, dict):
+            for key, child in opts.items():
+                walk(child, f"{path}.{key}")
+
+    if isinstance(doc, dict):
+        for top_key, top_node in doc.items():
+            walk(top_node, top_key)
+    return errs
+
+
+def _check_skill_kind_choices_exist() -> list[str]:
+    """Every `--kind <name>` mentioned in a plugin markdown file must be a
+    valid argparse `choices=` value for that subcommand.
+
+    Currently covers `cmd_report`'s `--kind`. Extracts the choices list
+    from cli.py's source with a regex so we stay in lockstep with the
+    style of `_check_skill_cli_flags_exist`.
+    """
+    # NOTE: regex assumes `--kind` and `choices=[...]` appear inside the
+    # same `add_argument(...)` call; if cli.py refactors to a module-level
+    # CHOICES constant, update both this check and the call site together.
+    errs: list[str] = []
+    cli_path = _ROOT / "samplesize/cli.py"
+    if not cli_path.exists():
+        return [f"missing {cli_path.relative_to(_ROOT)}"]
+    src = cli_path.read_text()
+
+    # Find `--kind` argparse add_argument call and extract its choices=[...].
+    kind_block = re.search(
+        r'add_argument\(\s*"--kind"[^)]*choices\s*=\s*\[([^\]]*)\]',
+        src,
+        re.DOTALL,
+    )
+    if not kind_block:
+        return [f"{cli_path.relative_to(_ROOT)}: could not locate --kind "
+                f"argparse choices"]
+    choices = set(re.findall(r'"([^"]+)"', kind_block.group(1)))
+    if not choices:
+        return [f"{cli_path.relative_to(_ROOT)}: --kind choices list is empty"]
+
+    pat = re.compile(r"--kind\s+([\w-]+)")
+    for md in sorted(_PLUGIN.rglob("*.md")):
+        text = md.read_text()
+        for m in pat.finditer(text):
+            name = m.group(1)
+            if name not in choices:
+                errs.append(f"{md.relative_to(_ROOT)}: `--kind {name}` is "
+                            f"not in argparse choices "
+                            f"(have: {sorted(choices)})")
     return errs
 
 
@@ -240,10 +330,13 @@ CHECKS: list[tuple[str, Callable[[], list[str]]]] = [
     ("registry.manual-paths", _check_manual_paths),
     ("registry.fixtures-reference-real-methods",
      _check_fixtures_reference_real_methods),
+    ("registry.decision-tree-leaves-exist",
+     _check_decision_tree_leaves_exist),
     ("plugin.manifest", _check_plugin_manifest),
     ("plugin.commands-have-descriptions", _check_commands_have_descriptions),
     ("plugin.skills-have-metadata", _check_skills_have_metadata),
     ("plugin.skill-cli-flags-exist", _check_skill_cli_flags_exist),
+    ("plugin.skill-kind-choices-exist", _check_skill_kind_choices_exist),
     ("reporting.protocol-templates", _check_protocol_templates),
 ]
 

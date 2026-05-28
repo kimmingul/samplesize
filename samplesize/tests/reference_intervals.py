@@ -166,6 +166,7 @@ def reference_intervals_clinical_lab(
         "confidence": confidence,
         "target_k": target_k,
         "n": n,
+        "solve_for": solve_for,
     }
 
     citations = [
@@ -216,16 +217,25 @@ def reference_intervals_clinical_lab(
                 f"target_k ({target_k}) must be > z_p ({zp:.4f}) for coverage={coverage}; "
                 "the tolerance factor approaches z_p asymptotically as n -> infinity."
             )
-        # Search smallest n such that k(n) <= target_k (k decreases with n)
-        n_try = 3
+        # Binary search for smallest n such that k(n) <= target_k.
+        # k(n) is monotone-decreasing in n (achieved coverage tightens with N).
         n_max = 1_000_000
-        while n_try <= n_max:
-            k = _tolerance_factor(n_try, coverage, confidence)
-            if k <= target_k:
-                break
-            n_try += 1
-        else:
+        # Verify the upper bound satisfies the condition; otherwise infeasible.
+        if _tolerance_factor(n_max, coverage, confidence) > target_k:
             raise RuntimeError("failed to find n within limit")
+        # Quick check at the lower bound.
+        if _tolerance_factor(3, coverage, confidence) <= target_k:
+            n_try = 3
+        else:
+            lo, hi = 3, n_max
+            while lo < hi:
+                mid = (lo + hi) // 2
+                k_mid = _tolerance_factor(mid, coverage, confidence)
+                if k_mid <= target_k:
+                    hi = mid
+                else:
+                    lo = mid + 1
+            n_try = lo
 
         achieved_k = _tolerance_factor(n_try, coverage, confidence)
         return {

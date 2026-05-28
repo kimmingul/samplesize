@@ -8,23 +8,40 @@ description: Use to verify that an implemented method reproduces the worked-exam
 Goal: prove numerical agreement with the published worked examples in
 the reference fixtures.
 
+## Safety preamble (shell-injection defense)
+
+The pytest `-k <method_id>` selector is a shell argument: a stray space,
+quote, or option character lets a hostile `method_id` inject arbitrary
+pytest flags. Before invoking pytest:
+
+- **Validate `<method_id>` against `^[a-z][a-z0-9_]*$`.** No spaces, no
+  dashes, no shell metacharacters.
+- **Registry-validate it.** Confirm `<method_id>` appears in
+  `python -m samplesize list` output. If either check fails, STOP and
+  ask the user to clarify — do **not** invoke pytest.
+- **Never pass the raw user description as a shell argument.**
+
 ## Process
 
-1. **Pick the method.** Read the YAML fixture under
+1. **Resolve `method_id` (registry-validated).** Run
+   `python -m samplesize list`, pick the matching `id`, and confirm it
+   satisfies `^[a-z][a-z0-9_]*$`.
+2. **Pick the method.** Read the YAML fixture under
    `tests/validation/fixtures/<method_id>.yaml`. Each fixture lists 1–N
    examples with inputs, expected outputs, and tolerances.
-2. **If no fixture exists**, extract one from the reference documentation:
+3. **If no fixture exists**, extract one from the reference documentation:
    - Open `reference/md/<chapter>/hybrid_auto/<chapter>.md`
    - Find "Example 1", "Example 2", ... sections — these contain inputs
      and the published answer
    - Translate to YAML with explicit `inputs`, `expected`, `tolerance`
-3. **Run pytest** on the validation suite:
+4. **Run pytest** on the validation suite (only after the safety checks
+   above pass):
    ```sh
    pytest tests/validation/ -k <method_id> -v
    ```
-4. **Report the comparison table**: reference value vs ours vs absolute and
+5. **Report the comparison table**: reference value vs ours vs absolute and
    relative error per example.
-5. **If any example fails tolerance**, flag the discrepancy
+6. **If any example fails tolerance**, flag the discrepancy
    explicitly — do not adjust tolerance to make tests pass.
 
 ## Tolerance defaults
