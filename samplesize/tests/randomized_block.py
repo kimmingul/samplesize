@@ -156,6 +156,7 @@ def randomized_block_anova(
         "alpha": alpha,
         "power": power,
         "n_blocks": n_blocks,
+        "solve_for": solve_for,
     }
 
     # Infer solve_for

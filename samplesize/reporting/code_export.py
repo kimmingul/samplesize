@@ -173,13 +173,15 @@ def _r_cox_regression(inputs: dict, result: dict) -> str:
 
 def _r_unsupported(method_id: str):
     def gen(inputs, result):
+        ap = result.get("achieved_power")
+        ap_str = f"{ap:.4f}" if ap is not None else "N/A"
         return (
             f'# No widely-installed R package replicates this procedure for '
             f'{method_id}.\n'
             f'# Verify via simulation or refer to the closed-form audit:\n'
             f'#   inputs: {inputs}\n'
             f'#   result: N={result.get("n") or result.get("n_total")} '
-            f'power={result.get("achieved_power"):.4f}\n'
+            f'power={ap_str}\n'
         )
     return gen
 
@@ -313,11 +315,13 @@ def _sas_one_way_anova_f(inputs: dict, result: dict) -> str:
 
 def _sas_unsupported(method_id: str):
     def gen(inputs, result):
+        ap = result.get("achieved_power")
+        ap_str = f"{ap:.4f}" if ap is not None else "N/A"
         return (
             f'/* No direct SAS PROC POWER mapping for {method_id} */\n'
             f'/* Inputs: {inputs} */\n'
             f'/* Result: N={result.get("n") or result.get("n_total")} '
-            f'power={result.get("achieved_power"):.4f} */\n'
+            f'power={ap_str} */\n'
         )
     return gen
 

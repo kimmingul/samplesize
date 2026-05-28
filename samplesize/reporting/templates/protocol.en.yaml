@@ -3,7 +3,7 @@ display_name: English
 templates:
   ich_e9_section: |-
     The sample size was determined for {method_name}. With {sides_word}
-    α = {alpha} the design achieves an actual power of {power:.4f} at
+    α = {alpha} the design achieves an actual power of {power} at
     {n_phrase}. Calculations follow the validated procedure for
     {method_name} ({citation}).
   grant_aims: |-
@@ -15,6 +15,7 @@ templates:
 words:
   two_sided: "two-sided"
   one_sided: "one-sided"
+  not_applicable: "n/a"
 n_phrase:
   with_groups: "a total of {total} subjects ({per_group} per group)"
   two_arm: "a total of {total} subjects (group 1: {n1}, group 2: {n2})"

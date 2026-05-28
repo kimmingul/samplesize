@@ -7,8 +7,38 @@ on:
   workflow_dispatch:
 
 jobs:
+  verify:
+    name: Verify before release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install package + dev extras
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Doctor
+        run: python -m samplesize doctor
+
+      - name: Method coverage drift check
+        run: python scripts/gen_method_coverage.py --check
+
+      - name: Run tests
+        run: python -m pytest tests/ --no-header -q
+
+      - name: Lint
+        run: ruff check samplesize/ tests/ scripts/
+
   build:
     name: Build distribution
+    needs: verify
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

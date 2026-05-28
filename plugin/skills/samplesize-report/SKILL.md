@@ -23,8 +23,20 @@ Goal: turn a single N into research-grade deliverables.
    python -m samplesize report <audit_json> --kind power-curve --out plot.png
    python -m samplesize report <audit_json> --kind protocol --lang en
    python -m samplesize report <audit_json> --kind grant
+   python -m samplesize report <audit_json> --kind sensitivity --vary 'sd=15,20,25'
+   python -m samplesize report <audit_json> --kind r-code --out calc.R
+   python -m samplesize report <audit_json> --kind sas-code --out calc.sas
    ```
-   Available `--kind` values: `power-curve`, `protocol`, `grant`.
+   Available `--kind` values (must match `cmd_report` argparse choices in
+   `samplesize/cli.py`):
+   - `power-curve` — matplotlib PNG of power vs N curve
+   - `protocol` — ICH E9 R1 statistical-methods paragraph (use `--lang`)
+   - `grant` — NIH/NRF-style grant-aims paragraph (use `--lang`)
+   - `sensitivity` — tabular sweep over 1-2 input dimensions; requires
+     `--vary 'key=v1,v2,v3'` (pass twice for a 2D grid); optional
+     `--report-key` selects which result field to tabulate (default `n`)
+   - `r-code` — standalone R snippet that reproduces the calculation
+   - `sas-code` — standalone SAS snippet that reproduces the calculation
    Available `--lang` values are discovered from
    `samplesize/reporting/templates/protocol.<lang>.yaml` (default `en`).
 4. **Show inline** for short outputs, **link** to file path for figures

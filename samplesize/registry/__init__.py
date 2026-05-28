@@ -26,6 +26,11 @@ _REQUIRED_TOP_KEYS = {
     "implemented", "validated",
 }
 
+# Restrict dynamic imports to the package's own test-callables module tree.
+# Registry is trusted today; allowlist guards against future regressions where
+# callable strings might flow from less-trusted sources.
+ALLOWED_MODULE_PREFIXES = ("samplesize.tests.",)
+
 
 def _signature_kwargs(fn) -> list[dict[str, Any]]:
     """Return keyword-only parameters of `fn` as registry-friendly dicts."""
@@ -45,6 +50,10 @@ def _signature_kwargs(fn) -> list[dict[str, Any]]:
 
 def _resolve_callable(spec: str):
     module_name, attr = spec.rsplit(":", 1)
+    if not any(module_name.startswith(p) for p in ALLOWED_MODULE_PREFIXES):
+        raise ValueError(
+            f"callable module {module_name!r} not on allowlist"
+        )
     mod = importlib.import_module(module_name)
     return getattr(mod, attr)
 

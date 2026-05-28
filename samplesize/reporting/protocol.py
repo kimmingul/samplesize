@@ -55,16 +55,39 @@ def _n_phrase(record: dict[str, Any], pack: dict[str, Any]) -> str:
 
 
 def _common_fields(rec: dict[str, Any], pack: dict[str, Any]) -> dict[str, Any]:
+    # Audit JSON nests the calculator output under `result` (see
+    # `cli.cmd_calc` -> `write_audit`). Top-level keys are
+    # `method_id`, `method_name`, `chapter`, `result`, `_meta`.
     res = rec["result"]
     inputs = res.get("inputs_echo", {})
     sides = inputs.get("sides", 2)
     sides_word = pack["words"]["one_sided" if sides == 1 else "two_sided"]
     citations = res.get("citations", [])
+    na_word = pack["words"].get("not_applicable", "n/a")
+
+    ap = res.get("achieved_power")
+    if ap is None:
+        ap = inputs.get("power")
+    power_str = f"{float(ap):.4f}" if ap is not None else na_word
+
+    alpha_val = inputs.get("alpha")
+    alpha_str = (
+        f"{float(alpha_val):.3f}"
+        if isinstance(alpha_val, (int, float)) else na_word
+    )
+
+    tp = inputs.get("power")
+    if tp is None:
+        tp = res.get("achieved_power")
+    target_power_str = (
+        f"{float(tp):.2f}" if isinstance(tp, (int, float)) else na_word
+    )
+
     return {
         "method_name": rec.get("method_name", res.get("method_id", "this procedure")),
-        "alpha": inputs.get("alpha", "α"),
-        "power": float(res.get("achieved_power", inputs.get("power") or 0.0)),
-        "target_power": inputs.get("power") or res.get("achieved_power"),
+        "alpha": alpha_str,
+        "power": power_str,
+        "target_power": target_power_str,
         "sides_word": sides_word,
         "n_phrase": _n_phrase(res, pack),
         "citation": citations[0] if citations else "",

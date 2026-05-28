@@ -46,6 +46,8 @@ def cmd_show(args: argparse.Namespace) -> int:
 
 def cmd_calc(args: argparse.Namespace) -> int:
     """Run a calculation for the given method id."""
+    from pathlib import Path
+
     from samplesize.registry import resolve_method
     from samplesize.reporting.audit import write_audit
 
@@ -57,7 +59,32 @@ def cmd_calc(args: argparse.Namespace) -> int:
         print(f"method '{args.method}' is registered but not yet implemented",
               file=sys.stderr)
         return 3
-    kwargs = json.loads(args.json_args) if args.json_args else {}
+
+    # exactly one of --json-args / --json-args-file must supply kwargs
+    if args.json_args_file:
+        try:
+            raw = Path(args.json_args_file).read_text()
+        except OSError as e:
+            print(f"could not read --json-args-file: {e}", file=sys.stderr)
+            return 2
+    else:
+        raw = args.json_args or "{}"
+    try:
+        kwargs = json.loads(raw)
+    except json.JSONDecodeError as e:
+        print(f"invalid JSON in args: {e}", file=sys.stderr)
+        return 2
+    if not isinstance(kwargs, dict):
+        print("JSON args must decode to a dict of kwargs", file=sys.stderr)
+        return 2
+
+    # whitelist kwargs against the calculator's signature
+    allowed = {p["name"] for p in method.get("signature", {}).get("kwargs", [])}
+    unknown = set(kwargs) - allowed
+    if unknown:
+        print(f"unknown kwargs: {sorted(unknown)}", file=sys.stderr)
+        return 2
+
     fn = method["_callable"]
     result = fn(**kwargs)
 
@@ -94,8 +121,11 @@ def cmd_report(args: argparse.Namespace) -> int:
         return 2
 
     rec = _json.loads(audit_path.read_text())
-    method_id = rec.get("method_id") or rec["result"]["method_id"]
-    inputs = dict(rec["result"]["inputs_echo"])
+    # Audit JSON nests calculator output under `result` (see
+    # `cli.cmd_calc` -> `write_audit`).
+    result = rec["result"]
+    method_id = rec.get("method_id") or result["method_id"]
+    inputs = dict(result.get("inputs_echo", {}))
 
     if args.kind == "power-curve":
         from samplesize.reporting.plots import power_curve
@@ -122,7 +152,7 @@ def cmd_report(args: argparse.Namespace) -> int:
 
     if args.kind == "grant":
         from samplesize.reporting.protocol import grant_aims
-        text = grant_aims(audit_path)
+        text = grant_aims(audit_path, lang=args.lang)
         if args.out:
             Path(args.out).write_text(text + "\n")
             print(f"wrote {args.out}")
@@ -161,6 +191,8 @@ def cmd_report(args: argparse.Namespace) -> int:
             print("--vary accepts at most 2 sweep dimensions", file=sys.stderr)
             return 2
         base = {k: v for k, v in inputs.items() if v is not None}
+        for k in ("n", "n1", "n2", "power"):
+            base.pop(k, None)
         for key, _ in sweeps:
             base.pop(key, None)
         if len(sweeps) == 1:
@@ -230,8 +262,12 @@ def _build_parser() -> argparse.ArgumentParser:
 
     sub_calc = sub.add_parser("calc", help="run a calculation")
     sub_calc.add_argument("method", help="method id (see `samplesize list`)")
-    sub_calc.add_argument("--json-args", default="{}",
-                          help="JSON-encoded parameter dict")
+    calc_args = sub_calc.add_mutually_exclusive_group()
+    calc_args.add_argument("--json-args", default=None,
+                           help="JSON-encoded parameter dict")
+    calc_args.add_argument("--json-args-file", default=None,
+                           help="path to a file containing the JSON parameter "
+                                "dict (avoids shell-quoting)")
     sub_calc.set_defaults(func=cmd_calc)
 
     sub_report = sub.add_parser("report", help="generate report artefacts")
